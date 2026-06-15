@@ -132,6 +132,10 @@ Setup a new Service Account:
       After you've saved it to GitHub Secrets, permanently delete the file.
 - Save the full content of the file to the `SITE_GCP_SERVICE_ACCOUNT_JSON` secret
 
+### Configure Cloud Run Secrets
+
+After setting up the Cloud Run service in GCP, follow the steps in the comments in the sample file at [.site.gcp.env](.site.gcp.env).
+
 ### Point domain to GCP Cloud Run service
 
 To set this live on your domain (`SITE_URL` from your `.site.env` file) you need to complete the following extra initial manual setup:
