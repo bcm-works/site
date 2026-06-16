@@ -12,6 +12,7 @@ cd "$SITE_DIR"
 echo 'Applying PurgeCSS updates to site.css'
 
 deno x --yes --no-check npm:purgecss@8.0.0 \
+  --safelist "blockquote" \
   --css "./src/frontend/styles/site.css" \
   --content "./src/frontend/**/*.njk" \
   --output "./src/frontend/styles/site.css" > /dev/null 2>&1

@@ -512,6 +512,27 @@ ul.listing.posts li a.post-link:hover {
   color: var(--background-colour) !important;
 }
 
+/* QUOTES */
+
+blockquote {
+  position: relative;
+  padding-left: 40px;
+  color: var(--secondary-colour);
+}
+
+blockquote::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font: var(--fa-font-solid);
+  content: '\f10d';
+  font-size: 26px;
+  color: var(--secondary-colour);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
 /* RESPONSIVE OVERRIDES */
 
 @media only screen and (max-width: 1024px) {
