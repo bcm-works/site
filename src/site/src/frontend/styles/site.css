@@ -512,15 +512,15 @@ ul.listing.posts li a.post-link:hover {
   color: var(--background-colour) !important;
 }
 
-/* QUOTES */
+/* CONTENT - QUOTES AND EMPHASIS */
 
-blockquote {
+.content-body blockquote {
   position: relative;
   padding-left: 40px;
   color: var(--secondary-colour);
 }
 
-blockquote::before {
+.content-body blockquote::before {
   display: inline-block;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -531,6 +531,12 @@ blockquote::before {
   position: absolute;
   left: 0;
   top: 0;
+}
+
+.content-body em,
+.content-body strong {
+  font-style: normal;
+  text-decoration: underline wavy var(--secondary-colour) 2px;
 }
 
 /* RESPONSIVE OVERRIDES */
