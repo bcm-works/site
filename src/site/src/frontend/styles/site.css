@@ -93,14 +93,9 @@ a:visited,
 a:hover,
 a:focus {
   color: var(--highlight-colour);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-a:hover,
-a:focus {
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
+  text-decoration: underline wavy var(--highlight-colour) 2px;
+  text-underline-offset: 4px;
 }
 
 /* CONTENT */
@@ -707,12 +702,17 @@ ul.listing.posts li a.post-link:hover {
     padding: 20px;
   }
 
-
   article {
     width: 100%;
     padding: 0;
     margin: 0;
     min-width: 0;
+  }
+
+  a {
+    color:  #000 !important;
+    text-decoration: underline;
+    text-underline-offset: unset;
   }
 
   @page {
