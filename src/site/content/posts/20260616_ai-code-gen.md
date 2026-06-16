@@ -16,7 +16,7 @@ There's no doubt that these tools have increase the amount of code that can be p
 
 If these tools are used sparingly to prototype new ideas or to implement a technical design, they can cut out a lot of boilerplate setup and resolve common tooling setup issues.
 
-I don't see this as the *end of Software Engineers* as the hard part of building quality software is the decisions made beforehand that have shaped **why the code has changed**. This will always be done best by a human.
+I don't see this as the *end of Software Engineers* as the hard part of building quality software is the decisions made beforehand that have shaped *why the code has changed*. This will always be done best by a human.
 
 It has, however, impacted the way the software industry considers when a Junior Software Engineer should be hired and what expectations should be set for that role.
 

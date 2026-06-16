@@ -134,7 +134,13 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
     </aside>
 
     <main class="main-content">
-      <article class="content-body">{{ content | safe }}</article>
+      <article class="content-body">
+        <div class="print-header">
+          <h1>{{ SITE_AUTHOR}}</h1>
+          <p>{{ SITE_URL }}{{ url }}</p>
+        </div>
+        {{ content | safe }}
+      </article>
     </main>
   </div>
 </body>
