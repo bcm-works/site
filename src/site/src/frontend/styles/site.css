@@ -536,6 +536,7 @@ ul.listing.posts li a.post-link:hover {
 .content-body em,
 .content-body strong {
   font-style: normal;
+  text-underline-offset: 4px;
   text-decoration: underline wavy var(--secondary-colour) 2px;
 }
 
