@@ -238,7 +238,7 @@ ul.posts-list .post-date,
   flex-shrink: 0;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
   background-color: #050505;
-  padding: 50px 40px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -333,20 +333,11 @@ ul.posts-list .post-date,
 
 .sidebar-nav .nav-link.active {
   color: var(--highlight-colour);
-  font-weight: bold;
 }
 
-.sidebar-nav .nav-link.active::before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--highlight-colour);
-  box-shadow: 0 0 10px var(--highlight-colour);
+.sidebar-nav .nav-link.active .nav-text {
+  text-decoration: underline wavy var(--highlight-colour) 2px;
+  text-underline-offset: 4px;
 }
 
 .sidebar-footer {
@@ -601,16 +592,6 @@ ul.listing.posts li a.post-link:hover {
   .sidebar-nav .nav-link,
   .sidebar-footer .social-links .nav-link {
     padding: 5px 0;
-  }
-
-  .sidebar-nav .nav-link.active::before {
-    left: auto;
-    bottom: -5px;
-    top: auto;
-    transform: none;
-    width: 100%;
-    height: 2px;
-    border-radius: 0;
   }
 
   .sidebar-footer {
