@@ -618,7 +618,12 @@ ul.listing.posts li a.post-link:hover {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
+  body {
+    --font-size-body: 18px;
+    --line-height-body: 26px;
+  }
+
   .sidebar {
     flex-direction: column;
     align-items: flex-start;
@@ -645,9 +650,23 @@ ul.listing.posts li a.post-link:hover {
   .main-content {
     padding: 30px 15px;
   }
-}
 
-@media only screen and (max-width: 800px) {
+  .page-home .tag-list li {
+    width: 100%;
+    margin: 30px 0 0;
+  }
+
+  .page-home .tag-list li:first-child {
+    margin-top: 0;
+  }
+
+  .page-home .tag-list {
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
 
   ul.listing,
   ul.listing.full {
@@ -671,31 +690,6 @@ ul.listing.posts li a.post-link:hover {
   .page-post .tag-list li {
     float: left;
     margin-right: 10px;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  body {
-    --font-size-body: 18px;
-    --line-height-body: 26px;
-  }
-
-  .page-home .tag-list li {
-    width: 100%;
-    margin: 30px 0 0;
-  }
-
-  .page-home .tag-list li:first-child {
-    margin-top: 0;
-  }
-
-  .page-home .tag-list {
-    margin-bottom: 30px;
-  }
-
-
-  h2 {
-    font-size: 22px;
   }
 }
 
