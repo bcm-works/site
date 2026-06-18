@@ -19,7 +19,6 @@ on:
       - src/site/bin/site-build.sh
       - src/site/bin/site-docker-build.sh
       - src/site/src/**
-      - src/site/_config.ts
       - src/site/deno.jsonc
       - src/site/deno.lock
       - src/site/.dockerignore
