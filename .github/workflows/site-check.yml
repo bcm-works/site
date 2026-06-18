@@ -9,22 +9,9 @@ name: Site Check
 run-name: Site Check by ${{ github.actor }} on ${{ github.ref_name }}
 
 on:
-  # GitHub Repo > Actions > Site Check > Run workflow
+  # Manual run via GitHub Repo > Actions > Site Check > Run workflow
   workflow_dispatch:
-  # Automatically run on pushes to 'main'
-  push:
-    branches:
-      - main
-    paths:
-      - src/site/bin/site-build.sh
-      - src/site/bin/site-docker-build.sh
-      - src/site/src/**
-      - src/site/_config.ts
-      - src/site/deno.jsonc
-      - src/site/deno.lock
-      - src/site/.dockerignore
-      - src/site/Dockerfile
-  # Automatically run on PRs that are aiming to merge to 'main'
+  # Automatically run on PRs that are targetting 'main'
   pull_request:
     branches:
       - main

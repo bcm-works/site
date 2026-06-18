@@ -10,7 +10,7 @@ name: Site Release
 run-name: Site Release by ${{ github.actor }} on ${{ github.ref_name }}
 
 on:
-  # Manual trigger via GitHub Repo > Actions > Site Release > Run workflow
+  # Manual run via GitHub Repo > Actions > Site Release > Run workflow
   workflow_dispatch:
     inputs:
       continue_deployment:
