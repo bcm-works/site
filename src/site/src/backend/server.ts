@@ -5,13 +5,13 @@ import { Site } from "$be/site.class.ts";
 
 const bcm = new Site("./.site.env");
 
+const siteUrl: string = bcm.getUrl();
+const appPort: number = bcm.getPort();
 const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
-const appPort: number = bcm.envVarNumber("SITE_PORT", 8000);
 const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
 const appHostname: string = bcm.envVar("SITE_DOCKER_HOSTNAME", "0.0.0.0");
-const siteUrl: string = bcm.getUrl();
 
 // Allow browser caching of responses for 30 days
 

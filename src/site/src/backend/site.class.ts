@@ -27,7 +27,11 @@ export class Site {
   }
 
   public envVarNumber(varName: string, defaultValue?: number): number {
-    return Number(Deno.env.get(varName)) || defaultValue || 0;
+    if (defaultValue) {
+      return Number(Deno.env.get(varName)) || defaultValue;
+    }
+
+    return Number(Deno.env.get(varName)) || 0;
   }
 
   public isLocal(): boolean {
@@ -41,6 +45,16 @@ export class Site {
     }
 
     return this.envVar("SITE_URL", "https://bcm.works");
+  }
+
+  public getPort(): number {
+    const sysPort = this.envVarNumber("PORT", 0);
+
+    if (sysPort > 0) {
+      return sysPort;
+    }
+
+    return this.envVarNumber("SITE_PORT", 8000);
   }
 
   public fileExists(localFilePath: string): boolean {
