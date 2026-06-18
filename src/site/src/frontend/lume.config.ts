@@ -16,6 +16,8 @@ import langBash from "highlight/lib/languages/bash";
 import langPhp from "highlight/lib/languages/php";
 import langTypeScript from "highlight/lib/languages/typescript";
 
+import { format } from "date-fns";
+
 // Load Env Vars with suitable defaults
 
 const bcm = new Site("./.site.env");
@@ -45,6 +47,11 @@ const sitePosthogId: string = bcm.envVar("SITE_POSTHOG_ID");
 const sitePosthogApiHost: string = bcm.envVar("SITE_POSTHOG_API_HOST");
 const sitePosthogUiHost: string = bcm.envVar("SITE_POSTHOG_UI_HOST");
 
+// Generate a build date to use for cache refreshes
+
+const dateNow: Date = new Date();
+const siteBuildDate: string = format(dateNow, "yyyyMMddHHmmss");
+
 // Save env vars as site data variables so templates can use them
 
 site.data("SITE_FEED_TITLE", siteFeedTitle);
@@ -56,6 +63,7 @@ site.data("SITE_URL", siteUrl);
 site.data("SITE_POSTHOG_ID", sitePosthogId);
 site.data("SITE_POSTHOG_API_HOST", sitePosthogApiHost);
 site.data("SITE_POSTHOG_UI_HOST", sitePosthogUiHost);
+site.data("SITE_BUILD_DATE", siteBuildDate);
 
 // Enable plugins
 
