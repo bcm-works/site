@@ -1,5 +1,7 @@
-FROM denoland/deno:ubuntu AS build
+FROM denoland/deno:alpine AS build
 WORKDIR /app
+
+RUN apk add --no-cache bash libgcc
 
 # Change 'DENO_DIR' path to avoid conflicts with Google Cloud.
 RUN mkdir -p /app/.deno_cache
@@ -70,8 +72,10 @@ RUN deno task build
 
 # Create a new Docker Image layer to run the site using only the static files.
 # Minimises the resulting Docker Image size, speeding up build and push times.
-FROM denoland/deno:ubuntu AS serve
+FROM denoland/deno:alpine AS serve
 WORKDIR /app
+
+RUN apk add --no-cache bash
 
 # Copy over the bare minimum to serve the static files
 COPY --from=build /app/src/backend/site.class.ts /app/src/backend/site.class.ts

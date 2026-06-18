@@ -69,7 +69,7 @@ rm -rf "$SITE_BUILD_DIR/content/resume.pdf"
 
 echo -e "${YELLOW}Building the front-end using Lume and 'src/frontend/lume.config.ts'${NC}"
 
-TZ="$SITE_TIMEZONE" deno task lume > /dev/null 2>&1
+TZ="$SITE_TIMEZONE" deno task lume
 
 # Prepare CSS files
 
@@ -86,7 +86,7 @@ deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
   --minify \
   --bundle \
   --targets ">= 0.25%" "$SITE_BUILD_DIR/bcm.css" \
-  --output-file "$SITE_PUBLIC_DIR/css/bcm.min.css" > /dev/null 2>&1
+  --output-file "$SITE_PUBLIC_DIR/css/bcm.min.css"
 
 echo -e "${YELLOW}Copying FontAwesome files to '$SITE_PUBLIC_DIR/css'${NC}"
 
