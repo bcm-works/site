@@ -88,33 +88,17 @@ Setup a new Cloud Run service:
   - Update the values to match production use
   - Don't forget to change `SITE_ENV` to something else like `prod`, `staging`, etc
 
-Setup a new [GitHub Token](https://github.com/settings/tokens/new):
-
-- Note: `GitHub Actions Deploy - GCP access to GitHub Packages`
-- Expiration: `(set a short expiration and a reminder for yourself to renew it)`
-- Scopes:
-  - `write:packages`
-  - `repo`
-- Click `Generate token`
-- Click the `copy` button and `save that to a file` for use in **Step 5** below
-
 Setup a Remote Artifact Registry repository:
 
 - Refer to the official [Google Cloud documentation](https://docs.cloud.google.com/artifact-registry/docs/repositories/remote-repo#create)
-- Name: `github-packages`
+- Name: `docker-hub`
 - Format: `Docker`
-- Mode: `Remote`
-- Remote repository source: `Custom` > `https://ghcr.io`
-- Remote repository authentication mode:
-  - Authenticated
-  - Username: `(your GitHub username)`
-  - Secret: `(click Create new Secret, name it GITHUB_TOKEN_PACKAGES, and use the value of the token from Step 4 above)`
-  - Use latest version: `(enabled)`
+- Mode: `Standard`
 - Region: `set to the same as what you set in SITE_GCP_REGION`
 - Other options: `(leave with their default values)`
 - Click: Create
 - Click: Copy path
-- Save the value to the `SITE_GCP_DOCKER_IMAGE_URL` secret
+- Save the value to use for the `SITE_GCP_DOCKER_IMAGE_URL` secret
 
 Setup a new Service Account:
 

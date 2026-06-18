@@ -98,8 +98,8 @@ jobs:
       - name: Run tests
         run: deno task test
 
-  publish-github-packages:
-    name: Publish to GitHub Packages
+  push-docker-hub:
+    name: Push to Docker Hub
     needs: [build, test]
     runs-on: ubuntu-latest
     environment:
@@ -107,8 +107,6 @@ jobs:
       deployment: false
     permissions:
       contents: read
-      packages: write
-      attestations: write
       id-token: write
     steps:
       - name: Checkout repository
@@ -117,12 +115,11 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 1
           submodules: recursive
-      - name: GitHub Packages login
+      - name: Docker Hub login
         uses: docker/login-action@v4
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
@@ -142,10 +139,10 @@ jobs:
             SITE_POSTHOG_API_HOST=${{ secrets.SITE_POSTHOG_API_HOST }}
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
           tags: |
-            ghcr.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:latest
-            ghcr.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:branch-${{ github.ref_name }}
-            ghcr.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:commit-${{ needs.build.outputs.COMMIT }}
-            ghcr.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.build.outputs.TIMESTAMP }}
+            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:latest
+            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:branch-${{ github.ref_name }}
+            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:commit-${{ needs.build.outputs.COMMIT }}
+            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.build.outputs.TIMESTAMP }}
           labels: |
             maintainer=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.licenses=MIT
@@ -159,8 +156,8 @@ jobs:
             org.opencontainers.image.revision=${{ needs.build.outputs.COMMIT }}
 
   deploy-gcp-cloud-run:
-    name: Deploy to GCP Cloud Run
-    needs: [build, test, publish-github-packages]
+    name: Deploy to GCP
+    needs: [build, test, push-docker-hub]
     runs-on: ubuntu-latest
     environment:
       name: gcp-cloud-run
@@ -190,7 +187,7 @@ jobs:
 
   release:
     name: Release
-    needs: [build, test, publish-github-packages, deploy-gcp-cloud-run]
+    needs: [build, test, push-docker-hub, deploy-gcp-cloud-run]
     runs-on: ubuntu-latest
     permissions:
       contents: write
