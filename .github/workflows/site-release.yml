@@ -130,6 +130,7 @@ jobs:
           context: ${{ github.workspace }}/src/site
           file: ${{ github.workspace }}/src/site/Dockerfile
           push: true
+          platforms: linux/arm64
           build-args: |
             SITE_FEED_TITLE=${{ secrets.SITE_FEED_TITLE }}
             SITE_FEED_DESC=${{ secrets.SITE_FEED_DESC }}
