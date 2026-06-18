@@ -1,6 +1,11 @@
 FROM denoland/deno:alpine AS build
 WORKDIR /app
 
+# Apply security updates
+RUN apk update && \
+    apk add --no-cache --upgrade openssl busybox ssl_client
+
+# Install required system packages
 RUN apk add --no-cache bash libgcc
 
 # Change 'DENO_DIR' path to avoid conflicts with Google Cloud.
@@ -79,6 +84,11 @@ RUN deno task build
 FROM denoland/deno:alpine AS serve
 WORKDIR /app
 
+# Apply security updates
+RUN apk update && \
+    apk add --no-cache --upgrade openssl busybox ssl_client
+
+# Install required system packages
 RUN apk add --no-cache bash
 
 # Copy over the bare minimum to serve the static files
