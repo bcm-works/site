@@ -11,7 +11,6 @@ const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
 const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
-const appHostname: string = bcm.envVar("SITE_DOCKER_HOSTNAME", "0.0.0.0");
 
 // Allow browser caching of responses for 30 days
 
@@ -35,7 +34,6 @@ async function serveFileWithCache(request: Request, localPath: string): Promise<
 Deno.serve(
   {
     port: appPort,
-    hostname: appHostname,
     onListen() {
       bcm.logAlways(
         `[env ${appEnv}] [type ${appEnvType}] [port ${appPort}] Server started at ${siteUrl}`,
