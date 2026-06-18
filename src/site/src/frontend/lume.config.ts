@@ -24,7 +24,7 @@ const bcm = new Site("./.site.env");
 
 const buildDir: string = bcm.envVar("SITE_BUILD_DIR", "build");
 const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
-const siteUrl: string = bcm.envVar("SITE_URL", "http://localhost");
+const siteUrl: string = bcm.getUrl();
 
 // Build the site using Lume
 
@@ -46,6 +46,7 @@ const siteAuthor: string = bcm.envVar("SITE_AUTHOR");
 const sitePosthogId: string = bcm.envVar("SITE_POSTHOG_ID");
 const sitePosthogApiHost: string = bcm.envVar("SITE_POSTHOG_API_HOST");
 const sitePosthogUiHost: string = bcm.envVar("SITE_POSTHOG_UI_HOST");
+const siteIsLocal: boolean = bcm.isLocal();
 
 // Generate a build date to use for cache refreshes
 
@@ -54,12 +55,13 @@ const siteBuildDate: string = format(dateNow, "yyyyMMddHHmmss");
 
 // Save env vars as site data variables so templates can use them
 
+site.data("SITE_LOCAL", siteIsLocal);
+site.data("SITE_URL", siteUrl);
+site.data("SITE_LANG", siteLang);
+site.data("SITE_AUTHOR", siteAuthor);
 site.data("SITE_FEED_TITLE", siteFeedTitle);
 site.data("SITE_FEED_DESC", siteFeedDesc);
 site.data("SITE_FEED_DEFAULT_TITLE", siteFeedDefaultTitle);
-site.data("SITE_LANG", siteLang);
-site.data("SITE_AUTHOR", siteAuthor);
-site.data("SITE_URL", siteUrl);
 site.data("SITE_POSTHOG_ID", sitePosthogId);
 site.data("SITE_POSTHOG_API_HOST", sitePosthogApiHost);
 site.data("SITE_POSTHOG_UI_HOST", sitePosthogUiHost);

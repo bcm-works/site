@@ -31,7 +31,16 @@ export class Site {
   }
 
   public isLocal(): boolean {
-    return this.envVar("SITE_ENV") == "local";
+    return this.envVar("SITE_ENV", "local") == "local";
+  }
+
+  public getUrl(): string {
+    if (this.isLocal()) {
+      const port = this.envVarNumber("SITE_PORT", 3000);
+      return `http://localhost:${port}`;
+    }
+
+    return this.envVar("SITE_URL", "https://bcm.works");
   }
 
   public fileExists(localFilePath: string): boolean {
