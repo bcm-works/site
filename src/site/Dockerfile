@@ -1,12 +1,11 @@
+# The 'build' stage runs the Deno build process.
 FROM denoland/deno:alpine AS build
 WORKDIR /app
 
-# Apply security updates
+# Apply security updates and install required system packages.
 RUN apk update && \
-    apk add --no-cache --upgrade openssl busybox ssl_client
-
-# Install required system packages
-RUN apk add --no-cache bash libgcc
+    apk add --no-cache --upgrade openssl busybox ssl_client && \
+    apk add --no-cache bash libgcc
 
 # Change 'DENO_DIR' path to avoid conflicts with Google Cloud.
 RUN mkdir -p /app/.deno_cache
@@ -79,17 +78,16 @@ LABEL org.opencontainers.image.licenses=MIT
 # Build the site
 RUN deno task build
 
-# Create a new Docker Image layer to run the site using only the static files.
-# Minimises the resulting Docker Image size, speeding up build and push times.
+# The 'serve' stage is the minimum required files and binaries to run the
+# static files from the 'build' stage.
+# This minimises the resulting final Docker Image size, speeding up build and push times.
 FROM denoland/deno:alpine AS serve
 WORKDIR /app
 
-# Apply security updates
+# Apply security updates and install required system packages.
 RUN apk update && \
-    apk add --no-cache --upgrade openssl busybox ssl_client
-
-# Install required system packages
-RUN apk add --no-cache bash
+    apk add --no-cache --upgrade openssl busybox ssl_client && \
+    apk add --no-cache bash
 
 # Copy over the bare minimum to serve the static files
 COPY --from=build /app/src/backend/site.class.ts /app/src/backend/site.class.ts
@@ -98,7 +96,7 @@ COPY --from=build /app/public /app/public
 COPY --from=build /app/deno.jsonc /app/deno.jsonc
 COPY --from=build /app/deno.lock /app/deno.lock
 
-# Start the server as a non-root user on port 8000
+# Start the static file server as the non-root user 'deno' on port 8000.
 USER deno
 EXPOSE 8000
 CMD ["deno", "task", "start"]
