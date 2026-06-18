@@ -20,6 +20,7 @@ fi
 echo "Building 'bcm-site-local' Docker Image"
 
 docker build \
+  --pull \
   --no-cache \
   --progress=plain \
   --platform linux/amd64 \

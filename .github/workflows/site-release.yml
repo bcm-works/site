@@ -132,6 +132,7 @@ jobs:
           file: ${{ github.workspace }}/src/site/Dockerfile
           platforms: linux/arm64
           provenance: false
+          pull: true
           push: true
           build-args: |
             SITE_FEED_TITLE=${{ secrets.SITE_FEED_TITLE }}
