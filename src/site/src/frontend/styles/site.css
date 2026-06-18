@@ -507,8 +507,13 @@ ul.listing.posts li a.post-link:hover {
 
 .content-body blockquote {
   position: relative;
-  padding-left: 40px;
-  color: var(--secondary-colour);
+  margin: 20px 0;
+  padding: 20px 20px 20px 50px;
+  border: 2px dotted var(--secondary-colour);
+}
+
+.content-body blockquote p:last-child {
+  margin-bottom: 0;
 }
 
 .content-body blockquote::before {
@@ -520,8 +525,8 @@ ul.listing.posts li a.post-link:hover {
   font-size: 26px;
   color: var(--secondary-colour);
   position: absolute;
-  left: 0;
-  top: 0;
+  top: 15px;
+  left: 15px;
 }
 
 .content-body em,
