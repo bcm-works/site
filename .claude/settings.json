@@ -14,7 +14,11 @@
     "allow": [
       "Bash(cat*)",
       "Bash(grep*)",
+      "Bash(head*)",
+      "Bash(less*)",
       "Bash(ls*)",
+      "Bash(tail*)",
+      "Bash(deno test*)",
       "Bash(git status*)",
       "Bash(git log*)"
     ],
