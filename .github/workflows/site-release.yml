@@ -120,6 +120,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v4
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v4
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
