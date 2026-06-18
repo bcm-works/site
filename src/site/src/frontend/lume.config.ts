@@ -80,10 +80,10 @@ site.use(
   }),
 );
 
-// Generate a JSON feed of recent posts
+// Generate RSS and JSON feeds of recent posts
 
 site.use(feed({
-  output: ["/posts.json"],
+  output: ["/posts.rss", "/posts.json"],
   query: "Post",
   sort: "date=desc",
   limit: 100,

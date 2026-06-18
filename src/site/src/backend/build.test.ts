@@ -47,6 +47,21 @@ Deno.test("build", async (test) => {
   });
 
   await test.step({
+    name: "check 'public/posts.rss'",
+    fn: async () => {
+      try {
+        const publicIndexFileContents: string = await Deno.readTextFile(
+          "public/posts.rss",
+        );
+
+        assertNotEquals(publicIndexFileContents, "");
+      } catch (_) {
+        assertEquals("File not found", "");
+      }
+    },
+  });
+
+  await test.step({
     name: "check 'public/images/brendan/profile/brendan_750.png'",
     fn: async () => {
       try {
