@@ -55,7 +55,11 @@ Releases can be manually triggered from GitHub Actions via [site-release.yml](..
 
 ## Infrastructure
 
-First add new GitHub Environments (`GitHub Repo > Settings > Code and automation > Environments`):
+First create a new repository for this via [Docker Hub](https://hub.docker.com/).
+
+Create a new Personal Access Token for this and use the generated token value for the `DOCKERHUB_TOKEN` secret.
+
+Add new GitHub Environments (`GitHub Repo > Settings > Code and automation > Environments`):
 
 - `ci-build`
 - `gcp-cloud-run`
