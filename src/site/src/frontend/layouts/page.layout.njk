@@ -22,20 +22,19 @@
 {% elif photo_url %}<meta property="og:image" content="{{ SITE_URL }}{{ photo_url }}">
 {% else %}<meta property="og:image" content="{{ SITE_URL }}/images/brendan/profile/brendan_750.png">{% endif %}
 
-<link rel="preload" href="{{ SITE_URL }}/css/bcm.min.css?v={{ SITE_BUILD_DATE }}" as="style">
-<link rel="preload" href="{{ SITE_URL }}/fonts/MDIO-Black.woff" as="font" crossOrigin="anonymous">
-<link rel="preload" href="{{ SITE_URL }}/fonts/MDIO-Regular.woff" as="font" crossOrigin="anonymous">
+<link rel="stylesheet" href="/css/bcm.min.css?v={{ SITE_BUILD_DATE }}">
 
-<link rel="stylesheet" href="{{ SITE_URL }}/css/bcm.min.css?v={{ SITE_BUILD_DATE }}">
+<link rel="preload" href="/fonts/MDIO-Black.woff" as="font" crossOrigin="anonymous">
+<link rel="preload" href="/fonts/MDIO-Regular.woff" as="font" crossOrigin="anonymous">
 
-<link rel="preload" href="{{ SITE_URL }}/css/fontawesome/css/all.min.css?v={{ SITE_BUILD_DATE }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ SITE_URL }}/css/fontawesome/css/all.min.css?v={{ SITE_BUILD_DATE }}"></noscript>
+<link rel="preload" href="/css/fontawesome/css/all.min.css?v={{ SITE_BUILD_DATE }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/fontawesome/css/all.min.css?v={{ SITE_BUILD_DATE }}"></noscript>
 
-<link rel="preload" href="{{ SITE_URL }}/css/fontawesome/css/fontawesome.min.css?v={{ SITE_BUILD_DATE }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ SITE_URL }}/css/fontawesome/css/fontawesome.min.css?v={{ SITE_BUILD_DATE }}"></noscript>
+<link rel="preload" href="/css/fontawesome/css/fontawesome.min.css?v={{ SITE_BUILD_DATE }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/fontawesome/css/fontawesome.min.css?v={{ SITE_BUILD_DATE }}"></noscript>
 
-<link rel="preload" href="{{ SITE_URL }}/css/code-highlight.min.css?v={{ SITE_BUILD_DATE }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="{{ SITE_URL }}/css/code-highlight.min.css?v={{ SITE_BUILD_DATE }}"></noscript>
+<link rel="preload" href="/css/code-highlight.min.css?v={{ SITE_BUILD_DATE }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/code-highlight.min.css?v={{ SITE_BUILD_DATE }}"></noscript>
 
 <link rel="preconnect" href="{{ SITE_URL }}/site.webmanifest">
 <link rel="manifest" href="{{ SITE_URL }}/site.webmanifest">

@@ -17,6 +17,21 @@ Deno.test("build", async (test) => {
   });
 
   await test.step({
+    name: "check 'public/sitemap.xml'",
+    fn: async () => {
+      try {
+        const publicIndexFileContents: string = await Deno.readTextFile(
+          "public/sitemap.xml",
+        );
+
+        assertNotEquals(publicIndexFileContents, "");
+      } catch (_) {
+        assertEquals("File not found", "");
+      }
+    },
+  });
+
+  await test.step({
     name: "check 'public/css/bcm.min.css'",
     fn: async () => {
       try {

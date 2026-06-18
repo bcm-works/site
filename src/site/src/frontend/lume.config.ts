@@ -9,6 +9,7 @@ import nunjucks from "lume/plugins/nunjucks.ts";
 import robots from "lume/plugins/robots.ts";
 import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
+import minifyHTML from "lume/plugins/minify_html.ts";
 
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import langJavaScript from "highlight/lib/languages/javascript";
@@ -67,30 +68,35 @@ site.data("SITE_POSTHOG_API_HOST", sitePosthogApiHost);
 site.data("SITE_POSTHOG_UI_HOST", sitePosthogUiHost);
 site.data("SITE_BUILD_DATE", siteBuildDate);
 
-// Enable plugins
+// Lume Plugins
 
 site.use(nunjucks());
 site.use(date());
 site.use(redirects());
 
-// Configure the Code Highlight plugin
+// --- Minify generated HTML files
 
-site.use(
-  codeHighlight({
-    languages: {
-      javascript: langJavaScript,
-      bash: langBash,
-      php: langPhp,
-      typescript: langTypeScript,
-    },
-    theme: {
-      name: "tomorrow-night-bright",
-      cssFile: "/css/code-highlight.min.css",
-    },
-  }),
-);
+site.use(minifyHTML({
+  // @ts-ignore: this is a valid option
+  keep_closing_tags: true,
+}));
 
-// Generate RSS and JSON feeds of recent posts
+// --- Add styling for code blocks in page content
+
+site.use(codeHighlight({
+  languages: {
+    javascript: langJavaScript,
+    bash: langBash,
+    php: langPhp,
+    typescript: langTypeScript,
+  },
+  theme: {
+    name: "tomorrow-night-bright",
+    cssFile: "/css/code-highlight.min.css",
+  },
+}));
+
+// --- Generate RSS and JSON feeds of recent posts
 
 site.use(feed({
   output: ["/posts.rss", "/posts.json"],
@@ -120,7 +126,7 @@ site.use(feed({
   },
 }));
 
-// Generate a custom robots.txt
+// --- Generate a custom robots.txt
 
 site.use(robots({
   "disallow": [
@@ -149,7 +155,8 @@ site.use(robots({
   ],
 }));
 
-// Generate a sitemap
+// --- Generate sitemap.xml
+
 site.use(sitemap());
 
 export default site;
