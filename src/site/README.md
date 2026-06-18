@@ -57,7 +57,9 @@ Releases can be manually triggered from GitHub Actions via [site-release.yml](..
 
 First create a new repository for this via [Docker Hub](https://hub.docker.com/).
 
-Create a new Personal Access Token with `Read and Write` permissions and use the generated token value for the `DOCKERHUB_TOKEN` secret.
+Create **a new** Personal Access Token with `Read & Write` permissions and use the generated token value for the `DOCKERHUB_TOKEN` secret in GitHub (refer to [.site.github.env](.site.github.env) for details).
+
+Create **another new** Personal Access Token with `Read-only` permissions and use the generated token value for the `DOCKERHUB_TOKEN` secret to use in GCP Artifact Registry (detailed below).
 
 Add new GitHub Environments (`GitHub Repo > Settings > Code and automation > Environments`):
 
@@ -97,7 +99,12 @@ Setup a Remote Artifact Registry repository:
 - Refer to the official [Google Cloud documentation](https://docs.cloud.google.com/artifact-registry/docs/repositories/remote-repo#create)
 - Name: `docker-hub`
 - Format: `Docker`
-- Mode: `Standard`
+- Mode: `Remote`
+- Remote repository authentication mode:
+  - Authenticated
+  - Username: `(your Docker Hub username)`
+  - Secret: `(click Create new Secret, name it DOCKERHUB_TOKEN, and use the value of the token from Step 4 above)`
+  - Use latest version: `(enabled)`
 - Region: `set to the same as what you set in SITE_GCP_REGION`
 - Other options: `(leave with their default values)`
 - Click: Create
