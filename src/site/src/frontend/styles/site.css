@@ -665,6 +665,12 @@ ul.listing.posts li a.post-link:hover {
     display: block;
     float: left;
     clear: both;
+    width: 100%;
+  }
+
+  .page-post .tag-list li {
+    float: left;
+    margin-right: 10px;
   }
 }
 
