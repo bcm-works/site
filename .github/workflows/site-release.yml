@@ -130,7 +130,7 @@ jobs:
         with:
           context: ${{ github.workspace }}/src/site
           file: ${{ github.workspace }}/src/site/Dockerfile
-          platforms: linux/arm64
+          platforms: linux/amd64
           provenance: false
           pull: true
           push: true
