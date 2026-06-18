@@ -31,7 +31,7 @@ export class Site {
   }
 
   public isLocal(): boolean {
-    return this.envVar("SITE_ENV", "local") == "local";
+    return this.envVar("SITE_ENV", "other") == "local";
   }
 
   public getUrl(): string {

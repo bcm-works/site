@@ -48,6 +48,7 @@ const sitePosthogId: string = bcm.envVar("SITE_POSTHOG_ID");
 const sitePosthogApiHost: string = bcm.envVar("SITE_POSTHOG_API_HOST");
 const sitePosthogUiHost: string = bcm.envVar("SITE_POSTHOG_UI_HOST");
 const siteIsLocal: boolean = bcm.isLocal();
+const siteEnv: string = siteIsLocal ? "local" : bcm.envVar("SITE_ENV", "hosted");
 
 // Generate a build date to use for cache refreshes
 
@@ -57,6 +58,7 @@ const siteBuildDate: string = format(dateNow, "yyyyMMddHHmmss");
 // Save env vars as site data variables so templates can use them
 
 site.data("SITE_LOCAL", siteIsLocal);
+site.data("SITE_ENV", siteEnv);
 site.data("SITE_URL", siteUrl);
 site.data("SITE_LANG", siteLang);
 site.data("SITE_AUTHOR", siteAuthor);
