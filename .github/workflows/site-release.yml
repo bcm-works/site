@@ -128,12 +128,12 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ secrets.SITE_DOCKER_IMAGE_PATH }}
+          images: docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}
           tags: |
-            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:latest
-            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:branch-${{ github.ref_name }}
-            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:commit-${{ needs.build.outputs.COMMIT }}
-            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.build.outputs.TIMESTAMP }}
+            latest
+            branch-${{ github.ref_name }}
+            commit-${{ needs.build.outputs.COMMIT }}
+            release-${{ needs.build.outputs.TIMESTAMP }}
           labels: |
             maintainer=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.licenses=MIT
