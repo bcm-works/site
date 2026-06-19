@@ -19,7 +19,7 @@ fi
 
 echo "Building 'bcm-site-local' Docker Image"
 
-docker build \
+docker buildx build \
   --pull \
   --no-cache \
   --progress=plain \
@@ -33,6 +33,7 @@ docker build \
   --build-arg SITE_LANG="$SITE_LANG" \
   --build-arg SITE_AUTHOR="$SITE_AUTHOR" \
   --build-arg SITE_URL="$SITE_URL" \
+  --build-arg SITE_PORT="$SITE_PORT" \
   --build-arg SITE_POSTHOG_ID="$SITE_POSTHOG_ID" \
   --build-arg SITE_POSTHOG_API_HOST="$SITE_POSTHOG_API_HOST" \
   --build-arg SITE_POSTHOG_UI_HOST="$SITE_POSTHOG_UI_HOST" \
