@@ -128,7 +128,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}
+          images: ${{ secrets.SITE_DOCKER_IMAGE_PATH }}
           tags: |
             latest
             branch-${{ github.ref_name }}
