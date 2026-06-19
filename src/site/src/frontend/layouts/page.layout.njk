@@ -57,7 +57,7 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 </head>
 <body class="env-{{ SITE_ENV }}{% if body_class %} {{ body_class }}{% endif %}">
   <div class="layout-wrapper">
-    <aside class="sidebar">
+    <aside class="sidebar" data-pagefind-ignore>
       <div class="sidebar-brand">
         <a href="/" class="brand-link" title="Go to the home page">
           <img class="sidebar-avatar" alt="{{ SITE_AUTHOR }}" width="150" height="150" src="/images/brendan/profile/brendan_150.webp"/>
@@ -89,6 +89,12 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
             <a href="/resume.pdf" class="nav-link" download="Resume - Brendan Murty.pdf" title="Download my resume">
               <span class="nav-icon fa-fw fa-solid fa-address-card"></span>
               <span class="nav-text">Resume</span>
+            </a>
+          </li>
+          <li>
+            <a href="/search" class="nav-link" title="Search this website">
+              <span class="nav-icon fa-fw fa-solid fa-magnifying-glass"></span>
+              <span class="nav-text">Search</span>
             </a>
           </li>
         </ul>
@@ -142,7 +148,7 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
           <h1>{{ SITE_AUTHOR}}</h1>
           <p>{{ SITE_URL }}{{ url }}</p>
         </div>
-        {{ content | safe }}
+        <div class="content-wrapper" data-pagefind-body>{{ content | safe }}</div>
       </article>
     </main>
   </div>

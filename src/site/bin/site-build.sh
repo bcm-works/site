@@ -76,8 +76,10 @@ TZ="$SITE_TIMEZONE" deno task lume
 echo 'Combining CSS files'
 
 cat "$CSS_DIR/reset.css" \
-  "$CSS_DIR/config.css" \
+  "$CSS_DIR/theme.css" \
+  "$CSS_DIR/search.css" \
   "$CSS_DIR/site.css" \
+  "$CSS_DIR/print.css" \
   > "$SITE_BUILD_DIR/bcm.css"
 
 echo 'Minifying combined CSS file'
@@ -90,7 +92,7 @@ deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
 
 echo -e "${YELLOW}Copying FontAwesome files to '$SITE_PUBLIC_DIR/css'${NC}"
 
-cp -r "src/frontend/styles/fontawesome" "$SITE_PUBLIC_DIR/css"
+cp -r "src/frontend/fonts/fontawesome" "$SITE_PUBLIC_DIR/css"
 
 echo -e "${YELLOW}Copying static files to '$SITE_PUBLIC_DIR'${NC}"
 

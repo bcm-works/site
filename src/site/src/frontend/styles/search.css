@@ -1,0 +1,29 @@
+:root {
+  --pagefind-ui-scale: 1.0;
+  --pagefind-ui-primary: var(--highlight-colour);
+  --pagefind-ui-text: var(--foreground-colour);
+  --pagefind-ui-background: var(--background-colour);
+  --pagefind-ui-border: var(--secondary-colour);
+  --pagefind-ui-tag: var(--secondary-colour);
+  --pagefind-ui-border-width: 2px;
+  --pagefind-ui-border-radius: 8px;
+  --pagefind-ui-image-border-radius: 8px;
+  --pagefind-ui-image-box-ratio: 3 / 2;
+  --pagefind-ui-font: var(--font-family-body);
+}
+
+#search {
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+#search .pagefind-ui {
+  font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+#search .pagefind-ui__result mark {
+  background-color: var(--highlight-colour);
+}

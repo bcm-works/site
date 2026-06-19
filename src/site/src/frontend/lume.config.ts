@@ -10,6 +10,7 @@ import robots from "lume/plugins/robots.ts";
 import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
+import pagefind from "lume/plugins/pagefind.ts";
 
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import langJavaScript from "highlight/lib/languages/javascript";
@@ -76,11 +77,30 @@ site.use(nunjucks());
 site.use(date());
 site.use(redirects());
 
-// --- Minify generated HTML files
+// --- Search content feature
 
-site.use(minifyHTML({
-  // @ts-ignore: this is a valid option
-  keep_closing_tags: true,
+site.use(pagefind({
+  ui: {
+    containerId: "search",
+    showImages: false,
+    excerptLength: 0,
+    showEmptyFilters: true,
+    showSubResults: false,
+    resetStyles: true,
+  },
+  indexing: {
+    rootSelector: "html",
+    verbose: false,
+    excludeSelectors: [
+      "#search",
+      ".sidebar",
+      ".print-header",
+      ".tag-list",
+      ".posts-list",
+      ".post-date",
+      ".post-link",
+    ],
+  },
 }));
 
 // --- Add styling for code blocks in page content
@@ -155,6 +175,13 @@ site.use(robots({
     "PerplexityBot",
     "YouBot",
   ],
+}));
+
+// --- Minify generated HTML files
+
+site.use(minifyHTML({
+  // @ts-ignore: this is a valid option
+  keep_closing_tags: true,
 }));
 
 // --- Generate sitemap.xml
