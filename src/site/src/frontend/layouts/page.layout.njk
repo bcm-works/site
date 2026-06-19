@@ -68,31 +68,31 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
       <nav class="sidebar-nav">
         <ul>
           <li>
-            <a href="/" class="nav-link{% if url == '/' %} active{% endif %}">
+            <a href="/" title="Go to the home page" class="nav-link{% if url == '/' %} active{% endif %}">
               <span class="nav-icon fa-fw fa-solid fa-house"></span>
               <span class="nav-text">Home</span>
             </a>
           </li>
           <li>
-            <a href="/posts/" class="nav-link{% if '/posts/' in url %} active{% endif %}">
+            <a href="/posts/" title="View all posts" class="nav-link{% if '/posts/' in url %} active{% endif %}">
               <span class="nav-icon fa-fw fa-solid fa-file-lines"></span>
               <span class="nav-text">Posts</span>
             </a>
           </li>
           <li>
-            <a href="/tags/" class="nav-link{% if '/tags/' in url %} active{% endif %}">
+            <a href="/tags/" title="View all tags" class="nav-link{% if '/tags/' in url %} active{% endif %}">
               <span class="nav-icon fa-fw fa-solid fa-tags"></span>
               <span class="nav-text">Tags</span>
             </a>
           </li>
           <li>
-            <a href="/resume.pdf" class="nav-link" download="Resume - Brendan Murty.pdf" title="Download my resume">
+            <a href="/resume.pdf" download="Resume - Brendan Murty.pdf" title="Download my resume" class="nav-link">
               <span class="nav-icon fa-fw fa-solid fa-address-card"></span>
               <span class="nav-text">Resume</span>
             </a>
           </li>
           <li>
-            <a href="/search" class="nav-link" title="Search this website">
+            <a href="/search/" title="Search this website" class="nav-link{% if '/search/' in url %} active{% endif %}">
               <span class="nav-icon fa-fw fa-solid fa-magnifying-glass"></span>
               <span class="nav-text">Search</span>
             </a>
