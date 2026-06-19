@@ -124,6 +124,11 @@ jobs:
         uses: docker/setup-qemu-action@v4
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v4
+      - name: Extract metadata
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ secrets.SITE_DOCKER_IMAGE_PATH }}
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
@@ -131,7 +136,8 @@ jobs:
           context: ${{ github.workspace }}/src/site
           file: ${{ github.workspace }}/src/site/Dockerfile
           platforms: linux/amd64
-          provenance: false
+          provenance: mode=max
+          sbom: true
           pull: true
           push: true
           build-args: |
@@ -146,6 +152,7 @@ jobs:
             SITE_POSTHOG_API_HOST=${{ secrets.SITE_POSTHOG_API_HOST }}
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
           tags: |
+            ${{ steps.meta.outputs.tags }}
             docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:latest
             docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:branch-${{ github.ref_name }}
             docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:commit-${{ needs.build.outputs.COMMIT }}

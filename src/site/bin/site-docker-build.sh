@@ -24,7 +24,9 @@ docker buildx build \
   --no-cache \
   --progress=plain \
   --platform linux/amd64 \
-  --provenance=false \
+  --provenance=true \
+  --sbom=true \
+  --attest type=provenance,mode=max \
   --tag "bcm-site-local:latest" \
   --tag "bcm-site-local:commit-$(git rev-parse --short HEAD)" \
   --build-arg SITE_FEED_TITLE="$SITE_FEED_TITLE" \
