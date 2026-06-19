@@ -216,7 +216,7 @@ jobs:
       - name: Create release tag
         run: |
           git config user.name "bot-release"
-          git config user.email "brendan+bot-release@murty.au"
+          git config user.email "brendan+bot-release@bcm.works"
           git tag release-${{ needs.build.outputs.TIMESTAMP }}
           git push --tags --quiet
       - name: Generate release notes

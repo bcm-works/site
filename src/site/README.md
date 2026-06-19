@@ -1,6 +1,6 @@
 # Site
 
-This directory contains the main [murty.au](https://murty.au/) public website.
+This directory contains the main [bcm.works](https://bcm.works/) public website.
 
 ## Tech Stack
 

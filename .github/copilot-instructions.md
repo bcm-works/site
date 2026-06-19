@@ -21,7 +21,7 @@
 
 - Monorepo of self-hosted systems managed from the repo root with a justfile.
 - Key projects under src/:
-  - src/site — Deno + Lume static site (murty.au). Build is orchestrated by bin/site-build.sh and deno tasks. Output: public/ (generated) and build/ (ephemeral).
+  - src/site — Deno + Lume static site. Build is orchestrated by bin/site-build.sh and deno tasks. Output: public/ (generated) and build/ (ephemeral).
   - src/links — Karakeep bookmark service (Docker Compose), deployed separately.
   - src/schnitmydadsays and src/upcomingtasks — git submodules (treated as separate repos).
 - bin/ — helper scripts (site build, setup, release-notes). Use the provided scripts (avoid reimplementing flow).
