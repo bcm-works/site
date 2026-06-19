@@ -236,8 +236,8 @@ ul.posts-list .post-date,
 .sidebar {
   width: 300px;
   flex-shrink: 0;
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-  background-color: #050505;
+  border-right: 1px solid var(--tertiary-colour);
+  background-color: var(--sidebar-background-colour);
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -250,13 +250,6 @@ ul.posts-list .post-date,
   text-align: center;
   z-index: 100;
   transition: all 0.3s ease;
-}
-
-@media (prefers-color-scheme: light) {
-  .sidebar {
-    background-color: #fbfbfb;
-    border-right: 1px solid rgba(0, 0, 0, 0.08);
-  }
 }
 
 .sidebar-brand {
@@ -395,8 +388,7 @@ ul.posts-list li a.post-link,
 ul.listing.posts li a.post-link {
   display: block;
   padding: 20px 24px;
-  background-color: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--tertiary-colour);
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);

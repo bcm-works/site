@@ -4,7 +4,9 @@
   --highlight-colour: #23c5b0;
   --background-colour: #000000;
   --foreground-colour: #ffffff;
-  --secondary-colour: #888888;
+  --secondary-colour: #717171;
+  --tertiary-colour: #333333;
+  --sidebar-background-colour: #050505;
   --font-family-header: "MDIO-Black", var(--font-family-code);
   --font-family-body: var(--font-family-code);
   --font-family-code: "MDIO-Regular", monospace;
@@ -25,6 +27,8 @@
     --background-colour: #ffffff;
     --foreground-colour: #000000;
     --secondary-colour: #575757;
+    --tertiary-colour: #444444;
+    --sidebar-background-colour: #fbfbfb;
     --code-function-colour: var(--highlight-colour);
     --code-string-colour: var(--foreground-colour);
     --code-background-colour: var(--background-colour);
