@@ -129,6 +129,22 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: ${{ secrets.SITE_DOCKER_IMAGE_PATH }}
+          tags: |
+            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:latest
+            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:branch-${{ github.ref_name }}
+            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:commit-${{ needs.build.outputs.COMMIT }}
+            ${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.build.outputs.TIMESTAMP }}
+          labels: |
+            maintainer=${{ secrets.SITE_AUTHOR }}
+            org.opencontainers.image.licenses=MIT
+            org.opencontainers.image.title=${{ secrets.SITE_TITLE }}
+            org.opencontainers.image.description=${{ secrets.SITE_DESC }}
+            org.opencontainers.image.authors=${{ secrets.SITE_AUTHOR }}
+            org.opencontainers.image.vendor=${{ secrets.SITE_AUTHOR }}
+            org.opencontainers.image.url=${{ secrets.SITE_REPO }}
+            org.opencontainers.image.source=${{ secrets.SITE_REPO }}
+            org.opencontainers.image.version=${{ needs.build.outputs.TIMESTAMP }}
+            org.opencontainers.image.revision=${{ needs.build.outputs.COMMIT }}
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
@@ -151,23 +167,8 @@ jobs:
             SITE_POSTHOG_ID=${{ secrets.SITE_POSTHOG_ID }}
             SITE_POSTHOG_API_HOST=${{ secrets.SITE_POSTHOG_API_HOST }}
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
-          tags: |
-            ${{ steps.meta.outputs.tags }}
-            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:latest
-            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:branch-${{ github.ref_name }}
-            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:commit-${{ needs.build.outputs.COMMIT }}
-            docker.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.build.outputs.TIMESTAMP }}
-          labels: |
-            maintainer=${{ secrets.SITE_AUTHOR }}
-            org.opencontainers.image.licenses=MIT
-            org.opencontainers.image.title=${{ secrets.SITE_TITLE }}
-            org.opencontainers.image.description=${{ secrets.SITE_DESC }}
-            org.opencontainers.image.authors=${{ secrets.SITE_AUTHOR }}
-            org.opencontainers.image.vendor=${{ secrets.SITE_AUTHOR }}
-            org.opencontainers.image.url=${{ secrets.SITE_REPO }}
-            org.opencontainers.image.source=${{ secrets.SITE_REPO }}
-            org.opencontainers.image.version=${{ needs.build.outputs.TIMESTAMP }}
-            org.opencontainers.image.revision=${{ needs.build.outputs.COMMIT }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
   deploy-gcp-cloud-run:
     name: Deploy to GCP
