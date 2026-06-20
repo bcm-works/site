@@ -1,9 +1,14 @@
 # Site
 
-This directory contains the main [bcm.works](https://bcm.works/) public website.
+This directory contains the website at [bcm.works](https://bcm.works/) and [murty.au](https://murty.au/).
 
 ## Tech Stack
 
+- [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Cloud Run service
+- [GCP Cloud Run](https://cloud.google.com/run) - Deployment, load balancing
+- [GitHub Actions](https://github.com/features/actions) - Deployment triggers, test runs
+- [PostHog](https://posthog.com/) - Site analytics, usage insights
+- [Docker](https://docker.com/) - Local and deployed containers
 - [Deno](https://deno.land/) - TypeScript, Deno Tests, Deno Tasks.
 - [Lume](https://lume.land/) - Static site generator for Deno.
 - [IO font by Mass-Driver](https://io.mass-driver.com/) - I have purchased a license for use here.
