@@ -4,6 +4,8 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 [![Site Release](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml/badge.svg?branch=main)](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml)
 
+![Docker Image](https://img.shields.io/docker/v/brendanmurty/bcm-site/latest?logo=docker&label=docker%20image)
+
 ## Tech Stack
 
 - [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Cloud Run service.
