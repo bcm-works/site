@@ -2,7 +2,7 @@
 
 This directory contains the website at [bcm.works](https://bcm.works/) and [murty.au](https://murty.au/).
 
-[![Site Release](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml/badge.svg?branch=main)](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml)
+![Site Release](https://img.shields.io/github/actions/workflow/status/brendanmurty/bcm/site-release.yml?logo=github&label=site%20release)
 
 ![Docker Image](https://img.shields.io/docker/v/brendanmurty/bcm-site/latest?logo=docker&label=docker%20image)
 
