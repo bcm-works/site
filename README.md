@@ -9,6 +9,7 @@ This repository contains [my public website](src/site/), other projects I've wor
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [bin](bin/) - Supporting tools and scripts.
 - [docs](docs/) - Documentation and contextual information.
+- [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [design](design/) - Page layout and icon design files.
 - [src/git](src/git/) - A self-hosted version of the [Forgejo](https://forgejo.org/) Git service.
