@@ -2,6 +2,8 @@
 
 This directory contains the website at [bcm.works](https://bcm.works/) and [murty.au](https://murty.au/).
 
+[![Site Release](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml/badge.svg?branch=main)](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml)
+
 ## Tech Stack
 
 - [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Cloud Run service.
