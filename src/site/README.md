@@ -4,20 +4,21 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 ## Tech Stack
 
-- [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Cloud Run service
-- [GCP Cloud Run](https://cloud.google.com/run) - Deployment, load balancing
-- [GitHub Actions](https://github.com/features/actions) - Deployment triggers, test runs
-- [PostHog](https://posthog.com/) - Site analytics, usage insights
-- [Docker](https://docker.com/) - Local and deployed containers
+- [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Cloud Run service.
+- [GCP Cloud Run](https://cloud.google.com/run) - Deployment, load balancing.
+- [GitHub Actions](https://github.com/features/actions) - Deployment triggers, test runs.
+- [PostHog](https://posthog.com/) - Site analytics, usage insights.
+- [Docker](https://docker.com/) - Local and deployed containers.
 - [Deno](https://deno.land/) - TypeScript, Deno Tests, Deno Tasks.
 - [Lume](https://lume.land/) - Static site generator for Deno.
-- [IO font by Mass-Driver](https://io.mass-driver.com/) - I have purchased a license for use here.
-- [Font Awesome icon pack](https://fontawesome.com/) - Using the Free icon pack here.
+- [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
+- [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.
 
 ## Structure
 
 - [.github/workflows/site-release.yml](../../.github/workflows/site-release.yml) - Deployment workflow that can be manually triggered.
 - [.github/workflows/site-check.yml](../../.github/workflows/site-check.yml) - Test workflow that runs automatically on PRs and can be manually triggered.
+- [docs/adrs](../../docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [src/backend](src/backend/) - Backend server, config setup and related unit tests.
 - [src/frontend](src/frontend/) - Frontend styles, layouts and templates.
