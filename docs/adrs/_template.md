@@ -1,0 +1,1 @@
+Use this template as a reference - [Decision Record Template by Michael Nygard](https://github.com/architecture-decision-record/architecture-decision-record/blob/main/locales%2Fen%2Ftemplates%2Fdecision-record-template-by-michael-nygard%2Findex.md)
