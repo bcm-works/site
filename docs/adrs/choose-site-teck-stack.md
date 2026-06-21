@@ -6,7 +6,7 @@
 
 ## Context
 
-Building on top of [ADR (repo-structure)](repo-structure.md).
+Building on top of [choose-repo-structure](choose-repo-structure.md).
 
 My public website is used for various purposes, most importantly:
 
