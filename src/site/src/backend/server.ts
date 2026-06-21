@@ -12,23 +12,6 @@ const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
 
-// Allow browser caching of responses for 30 days
-
-const appCacheConfig: string = "public, max-age=2592000, s-maxage=2592000";
-
-// Helper function to serve a file with custom cache config
-
-async function serveFileWithCache(request: Request, localPath: string): Promise<Response> {
-  const res = await serveFile(request, localPath);
-
-  res.headers.set(
-    "Cache-Control",
-    appCacheConfig,
-  );
-
-  return res;
-}
-
 // Start the static web server
 
 Deno.serve(
@@ -50,19 +33,19 @@ Deno.serve(
     const filePost: string = `./${publicDir}/posts${req}index.html`;
 
     if (!req || req == "/") {
-      return await serveFileWithCache(request, `./${publicDir}/index.html`);
+      return await serveFile(request, `./${publicDir}/index.html`);
     }
 
     if (bcm.fileExists(fileStatic)) {
-      return await serveFileWithCache(request, fileStatic);
+      return await serveFile(request, fileStatic);
     }
 
     if (bcm.fileExists(filePage)) {
-      return await serveFileWithCache(request, filePage);
+      return await serveFile(request, filePage);
     }
 
     if (bcm.fileExists(filePost)) {
-      return await serveFileWithCache(request, filePost);
+      return await serveFile(request, filePost);
     }
 
     if (!bcm.fileExists(fileStatic)) {
@@ -70,6 +53,6 @@ Deno.serve(
       return Response.redirect(homePage, 301);
     }
 
-    return await serveFileWithCache(request, fileStatic);
+    return await serveFile(request, fileStatic);
   },
 );
