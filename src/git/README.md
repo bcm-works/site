@@ -38,6 +38,11 @@ The initial setup here is detailed in the [Site Infrastructure Docs](../site/REA
 
 - Also enable the GCP API named `Cloud Resource Manager`
 - Add the `storage.buckets.create` permission to the new GCP Service Account that you will use for `GIT_GCP_SERVICE_ACCOUNT_JSON`
+- Add the `run.invoker` permission to the new GCP Service Account that you will use for `GIT_GCP_SERVICE_ACCOUNT_JSON`
+- After the first Cloud Run deployment, if the new service isn't shown as `Public access`:
+  - Login to GCP Console as an account admin
+  - Open the Cloud Shell
+  - Run: `gcloud run services update xxxx1111-service-name --no-invoker-iam-check --region=xxxx1111-gcp-region`
 - Create another GCP Remote Artifact Registry Repository named `codeberg` for `https://codeberg.org`
 - Required GitHub Secrets are detailed in [.git.github.env](.git.github.env)
 - Required GCP Secrets are detailed in [.git.gcp.env](.git.gcp.env)

@@ -69,9 +69,3 @@ jobs:
               --build \
               --allow-unauthenticated \
               --region=${{ secrets.GIT_GCP_REGION }}
-      - name: Allow public access to the Cloud Run service
-        run: |
-          gcloud run services update \
-            git \
-            --no-invoker-iam-check \
-            --region=${{ secrets.GIT_GCP_REGION }}
