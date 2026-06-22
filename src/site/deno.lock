@@ -75,6 +75,7 @@
     "npm:markdown-it@14.1.1": "14.1.1",
     "npm:nunjucks@3.2.4": "3.2.4",
     "npm:pagefind@1.5.2": "1.5.2",
+    "npm:posthog-node@^5.38.2": "5.38.2",
     "npm:remove-markdown@0.6.4": "0.6.4"
   },
   "jsr": {
@@ -500,6 +501,15 @@
       "os": ["win32"],
       "cpu": ["x64"]
     },
+    "@posthog/core@1.35.3": {
+      "integrity": "sha512-EsGPbSLl39Jgo2KZ+kI9UAxFnh5nddaN5bNm2rXvUwF+vGmam9eN1EXeNbxhRU7ulEeIiGdm7XjoU7pzavkgIQ==",
+      "dependencies": [
+        "@posthog/types"
+      ]
+    },
+    "@posthog/types@1.390.2": {
+      "integrity": "sha512-WcfKz2GNn2vfDX8vXmJYbKxegPxVWHuDQ/pHdAn0HoZDXDFnEp/+x3qBQA+fEvtbPjjtjgAt2wIgJMlM7asx7g=="
+    },
     "a-sync-waterfall@1.0.1": {
       "integrity": "sha512-RYTOHHdWipFUliRFMCS4X2Yn2X8M87V/OpSqWzKKOGhzqyUxzyVmhHDH9sAvG+ZuQf/TAOFsLCpMw09I1ufUnA=="
     },
@@ -624,6 +634,12 @@
         "@pagefind/windows-x64"
       ],
       "bin": true
+    },
+    "posthog-node@5.38.2": {
+      "integrity": "sha512-eiKpU+vX4hVuHbO/EosvPHsmh2AVIdoVmWss/uUOs1t4b0ViCblw2o8OIFqHxKj3mYRnSOBlX0Dw3wBvcCaYpA==",
+      "dependencies": [
+        "@posthog/core"
+      ]
     },
     "punycode.js@2.3.1": {
       "integrity": "sha512-uxFIHU0YlHYhDQtV4R9J6a52SLx28BCjT+4ieh7IGbgwVJWO+km431c4yRlREUAsAmt/uMjQUyQHNEPf0M39CA=="
@@ -809,7 +825,8 @@
       "jsr:@std/yaml@^1.1.1",
       "npm:chalk@^5.6.2",
       "npm:date-fns@^4.4.0",
-      "npm:highlight.js@^11.11.1"
+      "npm:highlight.js@^11.11.1",
+      "npm:posthog-node@^5.38.2"
     ]
   }
 }

@@ -67,9 +67,10 @@ Deno.serve(
       return await serveFile(request, filePost);
     }
 
-    // TODO: log a custom PostHog anon event here as a 404 <<<<<<
-
-    // No related file was found, redirect to the homepage
+    // No related file was found
+    //   - Log an anonymous error to PostHog
+    //   - Redirect to the homepage
+    bcm.postHogAnonBackendEvent(404, request);
     return Response.redirect(new URL("/", requestUrl.origin), 301);
   },
 );
