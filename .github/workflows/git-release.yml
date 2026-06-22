@@ -69,5 +69,3 @@ jobs:
               --build \
               --allow-unauthenticated \
               --region=${{ secrets.GIT_GCP_REGION }}
-              --verbosity=error \
-              --project=${{ secrets.GIT_GCP_PROJECT_ID }} \
