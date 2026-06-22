@@ -29,7 +29,7 @@ permissions:
 
 jobs:
 
-  build:
+  site-build:
     name: Build
     if: ${{ inputs.continue_deployment == true }}
     runs-on: ubuntu-latest
@@ -71,9 +71,9 @@ jobs:
           path: |
             src/site/public
             src/site/.env
-  test:
+  site-test:
     name: Test
-    needs: build
+    needs: site-build
     runs-on: ubuntu-latest
     environment:
       name: ci-build
@@ -89,7 +89,7 @@ jobs:
       - name: Download build files
         uses: actions/download-artifact@v8
         with:
-          name: build-${{ needs.build.outputs.COMMIT }}
+          name: build-${{ needs.site-build.outputs.COMMIT }}
           path: ${{ github.workspace }}/src/site
       - name: Deno setup
         uses: denoland/setup-deno@v2
@@ -98,9 +98,9 @@ jobs:
       - name: Run tests
         run: deno task test
 
-  push-docker-hub:
+  site-docker-hub:
     name: Push to Docker Hub
-    needs: [build, test]
+    needs: [site-build, site-test]
     runs-on: ubuntu-latest
     environment:
       name: ci-build
@@ -132,8 +132,8 @@ jobs:
           tags: |
             latest
             branch-${{ github.ref_name }}
-            commit-${{ needs.build.outputs.COMMIT }}
-            release-${{ needs.build.outputs.TIMESTAMP }}
+            commit-${{ needs.site-build.outputs.COMMIT }}
+            release-${{ needs.site-build.outputs.TIMESTAMP }}
           labels: |
             maintainer=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.licenses=MIT
@@ -143,8 +143,8 @@ jobs:
             org.opencontainers.image.vendor=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.url=${{ secrets.SITE_REPO }}
             org.opencontainers.image.source=${{ secrets.SITE_REPO }}
-            org.opencontainers.image.version=${{ needs.build.outputs.TIMESTAMP }}
-            org.opencontainers.image.revision=${{ needs.build.outputs.COMMIT }}
+            org.opencontainers.image.version=${{ needs.site-build.outputs.TIMESTAMP }}
+            org.opencontainers.image.revision=${{ needs.site-build.outputs.COMMIT }}
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
@@ -170,9 +170,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  deploy-gcp-cloud-run:
+  site-gcp:
     name: Deploy to GCP
-    needs: [build, test, push-docker-hub]
+    needs: [site-build, site-test, site-docker-hub]
     runs-on: ubuntu-latest
     environment:
       name: gcp-cloud-run
@@ -202,7 +202,7 @@ jobs:
 
   release:
     name: Release
-    needs: [build, test, push-docker-hub, deploy-gcp-cloud-run]
+    needs: [site-build, site-test, site-docker-hub, site-gcp]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -217,7 +217,7 @@ jobs:
         run: |
           git config user.name "bot-release"
           git config user.email "brendan+bot-release@bcm.works"
-          git tag release-${{ needs.build.outputs.TIMESTAMP }}
+          git tag release-${{ needs.site-build.outputs.TIMESTAMP }}
           git push --tags --quiet
       - name: Generate release notes
         working-directory: ${{ github.workspace }}
@@ -227,7 +227,7 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ needs.build.outputs.TIMESTAMP }}
-          tag: release-${{ needs.build.outputs.TIMESTAMP }}
+          name: ${{ needs.site-build.outputs.TIMESTAMP }}
+          tag: release-${{ needs.site-build.outputs.TIMESTAMP }}
           bodyFile: ${{ github.workspace }}/release-notes.log
           makeLatest: true
