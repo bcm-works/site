@@ -2,6 +2,7 @@ services:
   bcm-git-server:
     container_name: "${APP_NAME}"
     image: "${DOCKER_IMAGE_URL_FORGEJO}"
+    pull_policy: always
     ports:
       - "${PORT_WEB}:3000"
       - "${PORT_SSH}:2222"
