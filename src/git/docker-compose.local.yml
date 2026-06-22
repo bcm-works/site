@@ -38,8 +38,6 @@ services:
       FORGEJO__database__PASSWD: "${POSTGRES_PASSWORD}"
     volumes:
       - "bcm-git-server-app:/var/lib/gitea"
-      - "bcm-git-server-git:/var/lib/gitea/git"
-      - "bcm-git-server-files:/var/lib/gitea/data"
       - "bcm-git-server-custom:/var/lib/gitea/custom"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
@@ -64,18 +62,6 @@ volumes:
       type: "none"
       o: "bind"
       device: "${STORAGE_DIR_APP}"
-  bcm-git-server-git:
-    driver: local
-    driver_opts:
-      type: "none"
-      o: "bind"
-      device: "${STORAGE_DIR_GIT}"
-  bcm-git-server-files:
-    driver: local
-    driver_opts:
-      type: "none"
-      o: "bind"
-      device: "${STORAGE_DIR_FILES}"
   bcm-git-server-custom:
     driver: local
     driver_opts:
