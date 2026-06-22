@@ -37,8 +37,8 @@ Releases can be manually triggered from GitHub Actions via [git-release.yml](../
 The initial setup here is detailed in the [Site Infrastructure Docs](../site/README.md), with some changes:
 
 - Also enable the GCP API named `Cloud Resource Manager`
-- Add the `storage.buckets.create` permission to the new GCP Service Account that you will use for `GIT_GCP_SERVICE_ACCOUNT_JSON`
-- Add the `run.invoker` permission to the new GCP Service Account that you will use for `GIT_GCP_SERVICE_ACCOUNT_JSON`
+- Add the `Storage Admin` permission to the new GCP Service Account that you will use for `GIT_GCP_SERVICE_ACCOUNT_JSON`
+- Add the `Cloud Run Admin` permission to the new GCP Service Account that you will use for `GIT_GCP_SERVICE_ACCOUNT_JSON`
 - After the first Cloud Run deployment, if the new service isn't shown as `Public access`:
   - Login to GCP Console as an account admin
   - Open the Cloud Shell
