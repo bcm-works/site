@@ -52,12 +52,18 @@ jobs:
           credentials_json: ${{ secrets.GIT_GCP_SERVICE_ACCOUNT_JSON }}
       - name: Google Cloud setup
         uses: google-github-actions/setup-gcloud@v3
-      - name: Deploy using Compose
+      - name: Deploy to Cloud Run
         run: |
-          gcloud run compose up --file=docker-compose.prod.yml --region=${{ secrets.GIT_GCP_REGION }}
-      - name: Cloud Run deployment
-        uses: google-github-actions/deploy-cloudrun@v3
-        with:
-          service: ${{ secrets.GIT_GCP_CLOUD_RUN_SERVICE_NAME }}
-          region: ${{ secrets.GIT_GCP_REGION }}
-          image: ${{ secrets.GIT_GCP_DOCKER_IMAGE_URL }}/${{ secrets.GIT_DOCKER_IMAGE_PATH }}:commit-${{ needs.setup.outputs.COMMIT }}
+          export PORT_WEB="${{ secrets.GIT_PORT_WEB }}" && \
+          export PORT_SSH="${{ secrets.GIT_PORT_SSH }}" && \
+          export APP_NAME="${{ secrets.GIT_APP_NAME }}" && \
+          export APP_SLOGAN="${{ secrets.GIT_APP_SLOGAN }}" && \
+          export APP_ENV="${{ secrets.GIT_APP_ENV }}" && \
+          export ROOT_URL="${{ secrets.GIT_URL }}" && \
+          export APP_DISPLAY_NAME_FORMAT="${{ secrets.GIT_APP_DISPLAY_NAME_FORMAT }}" && \
+          export APP_THEME_LIST="${{ secrets.GIT_APP_THEME_LIST }}" && \
+          export APP_THEME_DEFAULT="${{ secrets.GIT_APP_THEME_DEFAULT }}" && \
+            gcloud run compose up \
+              docker-compose.prod.yml \
+              --project=${{ secrets.GIT_GCP_PROJECT_ID }} \
+              --region=${{ secrets.GIT_GCP_REGION }}
