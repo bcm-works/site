@@ -11,28 +11,43 @@ source "$REPO/bin/.helper.sh"
 GIT="$REPO/src/git"
 cd "$GIT"
 
-mkdir -p "$REPO/storage/git/"{app,assets,repos,database}
-mkdir -p "$GIT/custom/conf"
+ENV_FILE="$GIT/.git.env"
 
-if [ -f "$GIT/.git.env" ]; then
-  echo "Loading variables from '.git.env'"
+USER_UID="$(id -u)"
+USER_GID="$(id -g)"
 
-  source "$GIT/.git.env"
+if [ -f "$ENV_FILE" ]; then
+  warn "Loading variables from '$ENV_FILE'"
+
+  source "$ENV_FILE"
+
+  info "Initialising volume directories and user ownership"
+
+  mkdir -p "$STORAGE_DIR_APP"
+  mkdir -p "$STORAGE_DIR_DATA"
+  mkdir -p "$STORAGE_DIR_GIT"
+  mkdir -p "$STORAGE_DIR_CUSTOM/conf"
+
+  chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_APP"
+  chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_DATA"
+  chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_GIT"
+  chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_CUSTOM"
 
   info "Run: Docker Compose Up"
 
-  export USER_UID="$(id -u)" && \
-    export USER_GID="$(id -g)" && \
+  export USER_UID="$USER_UID" && \
+    export USER_GID="$USER_GID" && \
     docker compose \
       --file "$GIT/docker-compose.local.yml" \
-      --env-file "$GIT/.git.env" \
+      --env-file "$ENV_FILE" \
       up \
       --pull always \
       --build \
       -d && \
     success "Git started at http://localhost:$PORT_WEB/"
 else
-  echo "File not found at '.git.env'"
+  warn "Loading variables from session"
+
   echo "Run: Docker Compose Up"
 
   export USER_UID="$(id -u)" && \

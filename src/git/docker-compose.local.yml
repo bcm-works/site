@@ -17,10 +17,6 @@ services:
       - "${PORT_SSH}:2222"
     networks:
       - bcm-git-network
-    depends_on:
-      - bcm-git-db
-    env_file:
-      - .git.env
     environment:
       USER_UID: "${USER_UID}"
       USER_GID: "${USER_GID}"
@@ -31,46 +27,38 @@ services:
       FORGEJO__ui__SHOW_USER_EMAIL: "false"
       FORGEJO__ui__THEMES: "${APP_THEME_LIST}"
       FORGEJO__ui__DEFAULT_THEME: "${APP_THEME_DEFAULT}"
-      FORGEJO__database__DB_TYPE: "postgres"
-      FORGEJO__database__HOST: "bcm-git-db:5432"
-      FORGEJO__database__NAME: "${POSTGRES_DB}"
-      FORGEJO__database__USER: "${POSTGRES_USER}"
-      FORGEJO__database__PASSWD: "${POSTGRES_PASSWORD}"
+      FORGEJO__database__DB_TYPE: "sqlite3"
+      FORGEJO__database__PATH: "data/${APP_NAME}.${APP_ENV}.live.db"
     volumes:
-      - "bcm-git-server-app:/var/lib/gitea"
-      - "bcm-git-server-custom:/var/lib/gitea/custom"
+      - "bcm-git-volume-app:/var/lib/gitea"
+      - "bcm-git-volume-data:/var/lib/gitea/data"
+      - "bcm-git-volume-git:/var/lib/gitea/git"
+      - "bcm-git-volume-custom:/var/lib/gitea/custom"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
 
-  bcm-git-db:
-    container_name: bcm-git-db
-    image: postgres:14
-    restart: no
-    environment:
-      POSTGRES_USER: "${POSTGRES_DB}"
-      POSTGRES_PASSWORD: "${POSTGRES_USER}"
-      POSTGRES_DB: "${POSTGRES_PASSWORD}"
-    networks:
-      - bcm-git-network
-    volumes:
-      - "bcm-git-db-data:/var/lib/postgresql/data"
-
 volumes:
-  bcm-git-server-app:
+  bcm-git-volume-app:
     driver: local
     driver_opts:
       type: "none"
       o: "bind"
       device: "${STORAGE_DIR_APP}"
-  bcm-git-server-custom:
+  bcm-git-volume-custom:
     driver: local
     driver_opts:
       type: "none"
       o: "bind"
       device: "${STORAGE_DIR_CUSTOM}"
-  bcm-git-db-data:
+  bcm-git-volume-data:
     driver: local
     driver_opts:
       type: "none"
       o: "bind"
-      device: "${STORAGE_DIR_DATABASE}"
+      device: "${STORAGE_DIR_DATA}"
+  bcm-git-volume-git:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "${STORAGE_DIR_GIT}"
