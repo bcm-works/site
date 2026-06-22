@@ -63,6 +63,7 @@ jobs:
           export APP_DISPLAY_NAME_FORMAT="${{ secrets.GIT_APP_DISPLAY_NAME_FORMAT }}" && \
           export APP_THEME_LIST="${{ secrets.GIT_APP_THEME_LIST }}" && \
           export APP_THEME_DEFAULT="${{ secrets.GIT_APP_THEME_DEFAULT }}" && \
+          export DOCKER_IMAGE_URL_FORGEJO="${{ secrets.GIT_DOCKER_IMAGE_URL_FORGEJO }}" && \
             gcloud run compose up \
               docker-compose.prod.yml \
               --project=${{ secrets.GIT_GCP_PROJECT_ID }} \
