@@ -1,0 +1,38 @@
+{
+  "name": "bcm-agent",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#*": "./agent/*",
+    "#evals/*": "./evals/*"
+  },
+  "scripts": {
+    "build": "eve build",
+    "dev": "eve dev",
+    "start": "eve start",
+    "typecheck": "tsc",
+    "install-clean": "rm -rf node_modules && rm -rf package-lock.json && npm install"
+  },
+  "dependencies": {
+    "@vercel/connect": "0.2.2",
+    "ai": "7.0.0-beta.178",
+    "eve": "^0.12.0",
+    "zod": "4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "26.x",
+    "typescript": "7.0.1-rc"
+  },
+  "overrides": {
+    "ai": "7.0.0-beta.178"
+  },
+  "resolutions": {
+    "ai": "7.0.0-beta.178"
+  },
+  "engines": {
+    "node": "^26",
+    "npm": "^11"
+  },
+  "packageManager": "npm@11.13.0"
+}
