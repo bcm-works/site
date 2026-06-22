@@ -27,3 +27,16 @@ Stop the local server:
 ```bash
 just git-stop
 ```
+
+## Deployment
+
+Releases can be manually triggered from GitHub Actions via [git-release.yml](../../.github/workflows/git-release.yml).
+
+## Infrastructure
+
+The initial setup here is detailed in the [Site Infrastructure Docs](../site/README.md), with some changes:
+
+- Required GitHub Secrets are detailed in [.git.github.env](.git.github.env)
+- Required GCP Secrets are detailed in [.git.gcp.env](.git.gcp.env)
+- A dedicated domain is required for this system (eg `git.jane-doe.com`)
+- The same dedicated domain will need to have it's own GCP Cloud DNE public zone and domain mapping

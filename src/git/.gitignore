@@ -11,5 +11,7 @@ custom/conf/app.ini
 .env.*
 *.env
 !.git.local.env
+!.git.gcp.env
+!.git.github.env
 
 .antigravitycli
