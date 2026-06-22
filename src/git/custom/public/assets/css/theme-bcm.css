@@ -22,6 +22,9 @@ Based on Dracula from https://forge.axfive.net/Taylor/forgejo-theme-dracula
 
 :root {
   --bcm-colour-accent: #23c5b0;
+  --is-dark-theme: true;
+  accent-color: var(--color-accent);
+  color-scheme: dark;
 
   /* Dracula palette — https://draculatheme.com/contribute */
   --dracula-background: #282A36;
@@ -56,9 +59,10 @@ Based on Dracula from https://forge.axfive.net/Taylor/forgejo-theme-dracula
   --steel-200: #B1B5C3;
   --steel-150: #C4C8D3;
   --steel-100: #D8DBE3;
-  --is-dark-theme: true;
 
   --color-primary: var(--bcm-colour-accent);
+  --color-primary-hover: var(--bcm-colour-accent);
+  --color-primary-active: var(--bcm-colour-accent);
   --color-primary-contrast: #000;
   --color-primary-dark-1: #D0ADFB;
   --color-primary-dark-2: #D0ADFB;
@@ -83,8 +87,6 @@ Based on Dracula from https://forge.axfive.net/Taylor/forgejo-theme-dracula
   --color-primary-alpha-70: #9466F0B3;
   --color-primary-alpha-80: #9466F0CC;
   --color-primary-alpha-90: #9466F0E1;
-  --color-primary-hover: var(--color-primary-light-1);
-  --color-primary-active: var(--color-primary-light-2);
 
   /* secondary — surface chrome, based on steel ramp */
   --color-secondary: var(--steel-700);
@@ -340,9 +342,6 @@ Based on Dracula from https://forge.axfive.net/Taylor/forgejo-theme-dracula
   --color-indicator-idle-20: #50FA7B1a;
   --color-indicator-active: var(--dracula-purple);
   --color-indicator-active-20: #BD93F933;
-
-  accent-color: var(--color-accent);
-  color-scheme: dark;
 }
 
 /* invert emojis that are hard to read otherwise */
