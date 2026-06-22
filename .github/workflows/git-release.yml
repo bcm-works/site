@@ -63,10 +63,11 @@ jobs:
           export APP_DISPLAY_NAME_FORMAT="${{ secrets.GIT_APP_DISPLAY_NAME_FORMAT }}" && \
           export APP_THEME_LIST="${{ secrets.GIT_APP_THEME_LIST }}" && \
           export APP_THEME_DEFAULT="${{ secrets.GIT_APP_THEME_DEFAULT }}" && \
-          export SERVICE_NAME="${{ secrets.GIT_GCP_CLOUD_RUN_SERVICE_NAME }}" && \
           export DOCKER_IMAGE_URL_FORGEJO="${{ secrets.GIT_DOCKER_IMAGE_URL_FORGEJO }}" && \
             gcloud run compose up \
               docker-compose.prod.yml \
               --build \
               --allow-unauthenticated \
               --region=${{ secrets.GIT_GCP_REGION }}
+      - name: Allow public access to the Cloud Run service
+        run: gcloud run services update git --no-invoker-iam-check
