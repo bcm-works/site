@@ -66,8 +66,8 @@ jobs:
           export DOCKER_IMAGE_URL_FORGEJO="${{ secrets.GIT_DOCKER_IMAGE_URL_FORGEJO }}" && \
             gcloud run compose up \
               docker-compose.prod.yml \
-              --quiet \
-              --verbosity=error \
+              --build \
               --allow-unauthenticated \
-              --project=${{ secrets.GIT_GCP_PROJECT_ID }} \
               --region=${{ secrets.GIT_GCP_REGION }}
+              --verbosity=error \
+              --project=${{ secrets.GIT_GCP_PROJECT_ID }} \
