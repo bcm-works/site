@@ -1,8 +1,11 @@
 services:
-  bcm-git-server:
-    container_name: "${APP_NAME}"
+  bcm-git:
+    container_name: "bcm-git"
     image: "${DOCKER_IMAGE_URL_FORGEJO}"
+    build: .
     pull_policy: always
+    x-google-cloud-run:
+      ingress: true
     ports:
       - "${PORT_WEB}:3000"
       - "${PORT_SSH}:2222"
