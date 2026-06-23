@@ -54,6 +54,7 @@ info "Run the local Docker container for Postgres"
 
 docker run -d \
   --name "$APP_NAME-$APP_ENV-postgres" \
+  --pull=always \
   --network "$APP_NAME-$APP_ENV-network" \
   --publish "5432:5432" \
   --env "POSTGRES_DB=$GOGS_DATABASE_NAME" \
@@ -65,6 +66,7 @@ docker run -d \
 info "Build the local Docker image for Gogs"
 
 docker build \
+  --pull \
   --tag "$APP_NAME-$APP_ENV-gogs:latest" \
   --build-arg APP_NAME="$APP_NAME" \
   --build-arg APP_ENV="$APP_ENV" \

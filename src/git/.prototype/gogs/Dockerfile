@@ -3,7 +3,7 @@
 # Git (Gogs) service
 #
 #
-FROM gogs/gogs:next-latest AS gogs
+FROM gogs/gogs:next-0.14 AS gogs
 
 ARG APP_NAME
 ARG APP_ENV
@@ -20,6 +20,15 @@ ENV SSH_LISTEN_PORT=$SSH_LISTEN_PORT
 ENV SSH_ROOT_PATH=/data/ssh
 
 USER root
+
+# Apply system security upgrades
+RUN apk update && \
+  apk upgrade --no-cache && \
+  apk add --no-cache --upgrade \
+    busybox zlib ssl_client scanelf \
+    pax-utils musl musl-utils libapk \
+    busybox-binsh apk-tools \
+    curl openssh git
 
 # Make the 'git' user use the same user id and group id as the host user
 RUN usermod -u $USER_ID git || true && \
