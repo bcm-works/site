@@ -1,17 +1,48 @@
-/* Custom CSS file to apply alternative theme */
+/* Custom theme */
 
-/* Hide watch features */
-.ui.header form[action*='/action/watch'],
-.ui.header form[action*='/action/unwatch'] {
-	display: none;
+:root {
+  --highlight-colour: #23c5b0;
+  --background-colour: #000000;
+  --foreground-colour: #ffffff;
+  --secondary-colour: #717171;
+  --tertiary-colour: #222222;
 }
 
-/* Hide star features */
-.ui.header form[action*='/action/star'],
-.ui.header a.ui.button[href*='/action/star'],
-.ui.header a.ui.label[href*='/stars'],
-.repo-owner-name-list .ui.right.text,
-#collaborative-repo-list .ui.right.text,
-.ui.repository.list .ui.right.metas {
-	display: none;
+@media (prefers-color-scheme: light) {
+  :root {
+    --highlight-colour: #0b6053;
+    --background-colour: #ffffff;
+    --foreground-colour: #000000;
+    --secondary-colour: #575757;
+    --tertiary-colour: #444444;
+  }
+}
+
+body {
+  background-color: var(--background-colour) !important;
+  color: var(--foreground-colour) !important;
+}
+
+.repository .header-wrapper,
+.following.bar,
+.ui.attached.header,
+footer {
+  background-color: var(--tertiary-colour) !important;
+  color: var(--foreground-colour) !important;
+  border: 0 none !important;
+}
+
+.ui.menu .item,
+.ui.header i,
+.ui.breadcrumb .divider {
+  color: var(--foreground-colour);
+}
+
+.ui.tabular.menu .active.item {
+  background-color: var(--background-colour);
+  border: 0 none;
+}
+
+a {
+  color: var(--highlight-colour) !important;
 }
