@@ -23,11 +23,18 @@ fi
 
 source "$ENV_FILE"
 
-if [ "$(docker ps -aq -f name=${APP_NAME}-${APP_ENV})" ]; then
-  info "Stopping and removing '${APP_NAME}-${APP_ENV}' container"
+if [ "$(docker ps -aq -f name=${APP_NAME}-${APP_ENV}-gogs)" ]; then
+  info "Stopping and removing '${APP_NAME}-${APP_ENV}-gogs' container"
 
-  docker stop "${APP_NAME}-${APP_ENV}" > /dev/null 2>&1
-  docker rm "${APP_NAME}-${APP_ENV}" > /dev/null 2>&1
+  docker stop "${APP_NAME}-${APP_ENV}-gogs" > /dev/null 2>&1
+  docker rm "${APP_NAME}-${APP_ENV}-gogs" > /dev/null 2>&1
+fi
+
+if [ "$(docker ps -aq -f name=${APP_NAME}-${APP_ENV})-postgres" ]; then
+  info "Stopping and removing '${APP_NAME}-${APP_ENV}-postgres' container"
+
+  docker stop "${APP_NAME}-${APP_ENV}-postgres" > /dev/null 2>&1
+  docker rm "${APP_NAME}-${APP_ENV}-postgres" > /dev/null 2>&1
 fi
 
 exit 0

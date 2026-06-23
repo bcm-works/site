@@ -29,31 +29,39 @@ source "$ENV_FILE"
 
 bash "$GIT/bin/stop-git.sh"
 
-info "Initialising volume directories and user ownership"
+info "Initialising volume directories and setting ownership"
 
 mkdir -p "$STORAGE_DIR_CUSTOM"
-mkdir -p "$STORAGE_DIR_CONF"
 mkdir -p "$STORAGE_DIR_GIT"
 mkdir -p "$STORAGE_DIR_SSH"
+mkdir -p "$STORAGE_DIR_POSTGRES"
 
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_CUSTOM"
-chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_CONF"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_GIT"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_SSH"
+chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_POSTGRES"
 
 info "Build the local Docker container"
 
-# docker pull gogs/gogs:next-latest
-# docker build -f Dockerfile.next --build-arg GOGS_UID=1001 --build-arg GOGS_GID=1001 -t my-gogs .
-# docker volume create --name "$APP_NAME-data"
+docker network create "$APP_NAME-$APP_ENV-network" > /dev/null 2>&1 || true
 
 docker run -d \
-  --name="$APP_NAME-$APP_ENV" \
-  --env-file="$ENV_FILE" \
+  --name "$APP_NAME-$APP_ENV-postgres" \
+  --network "$APP_NAME-$APP_ENV-network" \
+  --publish "5432:5432" \
+  --env "POSTGRES_DB=$GOGS_DATABASE_NAME" \
+  --env "POSTGRES_USER=$GOGS_DATABASE_USER" \
+  --env "POSTGRES_PASSWORD=$GOGS_DATABASE_PASSWORD" \
+  --volume "$STORAGE_DIR_POSTGRES:/var/lib/postgresql/data" \
+  postgres:16
+
+docker run -d \
+  --name="$APP_NAME-$APP_ENV-gogs" \
+  --network "$APP_NAME-$APP_ENV-network" \
   --publish "$WEB_PORT:3000" \
   --publish "$SSH_PORT:$SSH_LISTEN_PORT" \
-  --volume "$STORAGE_DIR_CONF:/data/gogs/conf" \
-  --volume "$STORAGE_DIR_CUSTOM:/etc/gogs" \
+  --env-file="$ENV_FILE" \
+  --volume "$STORAGE_DIR_CUSTOM:/data/gogs" \
   --volume "$STORAGE_DIR_GIT:/data/git" \
   --volume "$STORAGE_DIR_SSH:/data/ssh" \
   gogs/gogs:next-latest && \
