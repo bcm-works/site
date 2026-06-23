@@ -1,3 +1,7 @@
 data
 
+custom/conf/app.ini
+
+*.log
+
 !custom/public
