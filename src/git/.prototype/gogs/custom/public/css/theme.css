@@ -23,6 +23,12 @@ body {
   color: var(--foreground-colour) !important;
 }
 
+.dashboard,
+.explore,
+.user.profile {
+  padding-top: 40px;
+}
+
 .repository .header-wrapper,
 .following.bar,
 .ui.attached.header,
