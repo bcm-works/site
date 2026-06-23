@@ -41,9 +41,11 @@ chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_GIT"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_SSH"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_POSTGRES"
 
-info "Build the local Docker container"
+info "Create the local Docker network"
 
 docker network create "$APP_NAME-$APP_ENV-network" > /dev/null 2>&1 || true
+
+info "Run the local Docker container for Postgres"
 
 docker run -d \
   --name "$APP_NAME-$APP_ENV-postgres" \
@@ -52,8 +54,20 @@ docker run -d \
   --env "POSTGRES_DB=$GOGS_DATABASE_NAME" \
   --env "POSTGRES_USER=$GOGS_DATABASE_USER" \
   --env "POSTGRES_PASSWORD=$GOGS_DATABASE_PASSWORD" \
-  --volume "$STORAGE_DIR_POSTGRES:/var/lib/postgresql/data" \
-  postgres:16
+  --volume "$STORAGE_DIR_POSTGRES:/var/lib/postgresql" \
+  postgres:18
+
+info "Build the local Docker image for Gogs"
+
+docker build \
+  --tag "$APP_NAME-$APP_ENV-gogs:latest" \
+  --build-arg APP_NAME="$APP_NAME" \
+  --build-arg APP_ENV="$APP_ENV" \
+  --build-arg BRAND_NAME="$BRAND_NAME" \
+  --build-arg SSH_LISTEN_PORT="$SSH_LISTEN_PORT" \
+  "."
+
+info "Run the local Docker container for Gogs"
 
 docker run -d \
   --name="$APP_NAME-$APP_ENV-gogs" \
@@ -62,7 +76,7 @@ docker run -d \
   --publish "$SSH_PORT:$SSH_LISTEN_PORT" \
   --env-file="$ENV_FILE" \
   --volume "$STORAGE_DIR_CUSTOM:/data/gogs" \
-  --volume "$STORAGE_DIR_GIT:/data/git" \
+  --volume "$STORAGE_DIR_GIT:/data/git/gogs-repositories" \
   --volume "$STORAGE_DIR_SSH:/data/ssh" \
-  gogs/gogs:next-latest && \
+  "$APP_NAME-$APP_ENV-gogs:latest" && \
   success "Git started at http://localhost:$WEB_PORT/"
