@@ -41,6 +41,11 @@ chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_GIT"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_SSH"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_POSTGRES"
 
+chmod -R 775 "$STORAGE_DIR_CUSTOM"
+chmod -R 775 "$STORAGE_DIR_GIT"
+chmod -R 775 "$STORAGE_DIR_SSH"
+chmod -R 775 "$STORAGE_DIR_POSTGRES"
+
 info "Create the local Docker network"
 
 docker network create "$APP_NAME-$APP_ENV-network" > /dev/null 2>&1 || true
@@ -75,6 +80,7 @@ docker run -d \
   --publish "$WEB_PORT:3000" \
   --publish "$SSH_PORT:$SSH_LISTEN_PORT" \
   --env-file="$ENV_FILE" \
+  -u $(id -u):$(id -g) \
   --volume "$STORAGE_DIR_CUSTOM:/data/gogs" \
   --volume "$STORAGE_DIR_GIT:/data/git/gogs-repositories" \
   --volume "$STORAGE_DIR_SSH:/data/ssh" \
