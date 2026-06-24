@@ -1,6 +1,8 @@
 $RECYCLE.BIN/
 .DS_Store
 
+data
+
 *.log
 
 .env

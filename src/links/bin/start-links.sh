@@ -6,17 +6,22 @@
 #
 #
 
-REPO_DIR="$(cd "$(dirname "$0")" && cd ../../.. && pwd)"
-LINKS_DIR="$REPO_DIR/src/links"
-cd "$LINKS_DIR"
+REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
+source "$REPO/bin/.helper.sh"
+LINKS="$REPO/src/links"
+cd "$LINKS"
 
-mkdir -p "$REPO_DIR/storage/links/"{app,search}
+ENV_FILE="$LINKS/.links.env"
 
-if [ ! -f "$LINKS_DIR/.links.env" ]; then
-  cp "$LINKS_DIR/.links.local.env" "$LINKS_DIR/.links.env"
+if [ ! -f "$ENV_FILE" ]; then
+  error "Env file not found at '$ENV_FILE'"
+  exit 1
 fi
 
-source "$LINKS_DIR/.links.env"
+source "$LINKS/.links.env"
+
+mkdir -p "$STORAGE_DIR_APP"
+mkdir -p "$STORAGE_DIR_SEARCH"
 
 PORT="$PORT" \
   OPENAI_API_KEY="$OPENAI_API_KEY" \

@@ -17,7 +17,6 @@ This repository contains [my public website](src/site/), other projects I've wor
 - [src/schnitmydadsays](https://github.com/brendanmurty/schnitmydadsays) - Schnitzel review website.
 - [src/site](src/site/) - My main public website at [bcm.works](https://bcm.works).
 - [src/upcomingtasks](https://github.com/brendanmurty/upcomingtasks) - A web-based Basecamp 2 client.
-- [storage](storage/) - Used for persistent storage by local Docker containers.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [justfile](justfile) - Project specific commands for [Just](https://github.com/casey/just)
 
