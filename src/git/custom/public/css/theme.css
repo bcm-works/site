@@ -86,11 +86,13 @@ footer {
   border: 0 none !important;
 }
 
+.ui.menu,
 .ui.menu .item,
 .ui.header i,
 .ui.breadcrumb .divider,
 .ui.card .content .header,
 .ui.cards .card .content .header {
+  background-color: var(--tertiary-colour) !important;
   color: var(--foreground-colour) !important;
 }
 
@@ -99,12 +101,15 @@ footer {
   border: 0 none;
 }
 
-a {
+a,
+a:hover,
+.ui.menu .active.item,
+.ui.menu .active.item:hover {
   color: var(--highlight-colour) !important;
 }
 
 .ui.form input {
-  background: var(--tertiary-colour) !important;
+  background-color: var(--tertiary-colour) !important;
   color: var(--foreground-colour) !important;
   border-color: var(--secondary-colour) !important;
 }
