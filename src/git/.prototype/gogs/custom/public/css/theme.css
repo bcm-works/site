@@ -23,6 +23,17 @@ body {
   color: var(--foreground-colour) !important;
 }
 
+.ui.segment {
+  background-color: var(--tertiary-colour) !important;
+  color: var(--foreground-colour) !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+}
+
+.ui.form .inline.field label {
+  color: var(--foreground-colour) !important;
+}
+
 .repository .header-wrapper,
 .following.bar,
 .ui.attached.header,
