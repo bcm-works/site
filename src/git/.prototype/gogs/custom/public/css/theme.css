@@ -23,30 +23,57 @@ body {
   color: var(--foreground-colour) !important;
 }
 
-.dashboard,
-.explore,
-.user.profile {
-  padding-top: 40px;
-}
-
-.following.bar .grid .column {
-  width: 100%;
-  padding-bottom: 5px;
-}
-
 .repository .header-wrapper,
 .following.bar,
 .ui.attached.header,
+.ui.card,
+.ui.card .content,
 footer {
   background-color: var(--tertiary-colour) !important;
   color: var(--foreground-colour) !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+}
+
+.ui .text.black {
+  color: var(--foreground-colour) !important;
+}
+
+.ui.basic.button,
+.ui.basic.button:hover,
+.ui.basic.buttons .button,
+.ui.basic.buttons .button:hover {
+  background-color: transparent !important;
+  color: var(--foreground-colour) !important;
+  box-shadow: 0 0 0 1px var(--foreground-colour) inset !important;
+}
+
+.ui.basic.green.active.button,
+.ui.basic.green.active.button:hover,
+.ui.basic.green.buttons .active.button,
+.ui.basic.green.buttons .active.button:hover,
+.ui.basic.blue.button,
+.ui.basic.blue.button:hover,
+.ui.basic.blue.buttons .button:hover,
+.ui.basic.red.active.button,
+.ui.basic.red.active.button:hover,
+.ui.basic.red.buttons .active.button,
+.ui.basic.red.buttons .active.button:hover {
+  background-color: transparent !important;
+  color: var(--highlight-colour) !important;
+  box-shadow: 0 0 0 1px var(--highlight-colour) inset !important;
+}
+
+.user.profile .ui.card .extra.content ul li {
   border: 0 none !important;
 }
 
 .ui.menu .item,
 .ui.header i,
-.ui.breadcrumb .divider {
-  color: var(--foreground-colour);
+.ui.breadcrumb .divider,
+.ui.card .content .header,
+.ui.cards .card .content .header {
+  color: var(--foreground-colour) !important;
 }
 
 .ui.tabular.menu .active.item {
