@@ -68,9 +68,8 @@ info "Build the local Docker image for Gogs"
 docker build \
   --pull \
   --tag "$APP_NAME-$APP_ENV-gogs:latest" \
-  --build-arg APP_NAME="$APP_NAME" \
-  --build-arg APP_ENV="$APP_ENV" \
-  --build-arg BRAND_NAME="$BRAND_NAME" \
+  --build-arg USER_UID="$USER_UID" \
+  --build-arg USER_GID="$USER_GID" \
   --build-arg SSH_LISTEN_PORT="$SSH_LISTEN_PORT" \
   "."
 
@@ -82,7 +81,7 @@ docker run -d \
   --publish "$WEB_PORT:3000" \
   --publish "$SSH_PORT:$SSH_LISTEN_PORT" \
   --env-file="$ENV_FILE" \
-  -u $(id -u):$(id -g) \
+  --user "$USER_UID:$USER_GID" \
   --volume "$STORAGE_DIR_CUSTOM:/data/gogs" \
   --volume "$STORAGE_DIR_GIT:/data/git/gogs-repositories" \
   --volume "$STORAGE_DIR_SSH:/data/ssh" \
