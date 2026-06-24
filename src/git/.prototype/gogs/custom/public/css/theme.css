@@ -28,11 +28,16 @@ body {
 .ui.attached.header,
 .ui.card,
 .ui.card .content,
+.ui.vertical.menu,
 footer {
   background-color: var(--tertiary-colour) !important;
   color: var(--foreground-colour) !important;
   border: 0 none !important;
   box-shadow: none !important;
+}
+
+.ui.vertical.menu .header.item {
+  background-color: transparent;
 }
 
 .ui .text.black {
@@ -58,7 +63,9 @@ footer {
 .ui.basic.red.active.button,
 .ui.basic.red.active.button:hover,
 .ui.basic.red.buttons .active.button,
-.ui.basic.red.buttons .active.button:hover {
+.ui.basic.red.buttons .active.button:hover,
+.ui.form .ui.button,
+.ui.form .ui.button:hover {
   background-color: transparent !important;
   color: var(--highlight-colour) !important;
   box-shadow: 0 0 0 1px var(--highlight-colour) inset !important;
@@ -83,4 +90,10 @@ footer {
 
 a {
   color: var(--highlight-colour) !important;
+}
+
+.ui.form input {
+  background: var(--tertiary-colour) !important;
+  color: var(--foreground-colour) !important;
+  border-color: var(--secondary-colour) !important;
 }
