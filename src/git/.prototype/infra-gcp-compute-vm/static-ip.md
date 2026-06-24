@@ -1,1 +1,0 @@
-gcloud compute addresses create bcm-git-external-static-ip --project=xxxx-gcp-project-id-xxxx --region=xxxx-gcp-region-xxxx

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 #
 #
-# Stop the local version of Git
-#  - Run via: just git-stop
+# Stop the local version of Git (Gogs)
 #
 #
 
@@ -11,9 +10,29 @@ source "$REPO/bin/.helper.sh"
 GIT="$REPO/src/git"
 cd "$GIT"
 
-docker compose \
-  --file "$GIT/docker-compose.local.yml" \
-  down > /dev/null 2>&1 && \
-  success 'Docker container stopped'
+ENV_FILE="$GIT/.git.env"
+
+if [ -f "$ENV_FILE" ]; then
+  warn "Loading variables from '$ENV_FILE'"
+else
+  error "No environment file found at '$ENV_FILE'"
+  exit 1
+fi
+
+source "$ENV_FILE"
+
+if [ "$(docker ps -aq -f name=${APP_NAME}-${APP_ENV}-gogs)" ]; then
+  info "Stopping and removing '${APP_NAME}-${APP_ENV}-gogs' container"
+
+  docker stop "${APP_NAME}-${APP_ENV}-gogs" > /dev/null 2>&1
+  docker rm "${APP_NAME}-${APP_ENV}-gogs" > /dev/null 2>&1
+fi
+
+if [ "$(docker ps -aq -f name=${APP_NAME}-${APP_ENV})-postgres" ]; then
+  info "Stopping and removing '${APP_NAME}-${APP_ENV}-postgres' container"
+
+  docker stop "${APP_NAME}-${APP_ENV}-postgres" > /dev/null 2>&1
+  docker rm "${APP_NAME}-${APP_ENV}-postgres" > /dev/null 2>&1
+fi
 
 exit 0

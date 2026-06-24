@@ -12,7 +12,7 @@ This repository contains [my public website](src/site/), other projects I've wor
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [design](design/) - Page layout and icon design files.
-- [src/git](src/git/) - A self-hosted version of the [Forgejo](https://forgejo.org/) Git service.
+- [src/git](src/git/) - A self-hosted version of the [Gogs](https://gogs.io/getting-started/introduction) Git service.
 - [src/links](src/links/) - A self-hosted version of the [Karakeep](https://karakeep.app/) bookmarking service.
 - [src/schnitmydadsays](https://github.com/brendanmurty/schnitmydadsays) - Schnitzel review website.
 - [src/site](src/site/) - My main public website at [bcm.works](https://bcm.works).

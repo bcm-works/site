@@ -1,11 +1,9 @@
-$RECYCLE.BIN/
-.DS_Store
-
-*.log
+data
 
 custom/conf/app.ini
-
 !custom/public
+
+*.log
 
 .env
 .env.*
