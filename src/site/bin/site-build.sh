@@ -101,5 +101,6 @@ cp -r "src/frontend/images" "$SITE_PUBLIC_DIR/images"
 cp "src/frontend/favicon.ico" "$SITE_PUBLIC_DIR/favicon.ico"
 cp "src/frontend/site.webmanifest" "$SITE_PUBLIC_DIR/site.webmanifest"
 cp "content/resume.pdf" "$SITE_PUBLIC_DIR/resume.pdf"
+cp "$SITE_PUBLIC_DIR/posts.json" "$SITE_PUBLIC_DIR/brendan/posts.json"
 
 echo -e "${GREEN}Build complete${NC}"
