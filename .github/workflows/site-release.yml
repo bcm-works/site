@@ -198,7 +198,7 @@ jobs:
         with:
           service: ${{ secrets.SITE_GCP_CLOUD_RUN_SERVICE_NAME }}
           region: ${{ secrets.SITE_GCP_REGION }}
-          image: ${{ secrets.SITE_GCP_DOCKER_IMAGE_URL }}/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.build.outputs.TIMESTAMP }}
+          image: ${{ secrets.SITE_GCP_DOCKER_IMAGE_URL }}/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.site-build.outputs.TIMESTAMP }}
 
   release:
     name: Release
