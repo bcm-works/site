@@ -52,6 +52,8 @@ jobs:
         run: |
           echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
           echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
+      - name: Install Mise
+        uses: jdx/mise-action@v3
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -91,6 +93,8 @@ jobs:
         with:
           name: build-${{ needs.site-build.outputs.COMMIT }}
           path: ${{ github.workspace }}/src/site
+      - name: Install Mise
+        uses: jdx/mise-action@v3
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -219,11 +223,13 @@ jobs:
           git config user.email "brendan+bot-release@bcm.works"
           git tag release-${{ needs.site-build.outputs.TIMESTAMP }}
           git push --tags --quiet
+      - name: Install Mise
+        uses: jdx/mise-action@v3
       - name: Generate release notes
         working-directory: ${{ github.workspace }}
         run: |
-          chmod +x ${{ github.workspace }}/bin/release-notes.sh
-          bash ${{ github.workspace }}/bin/release-notes.sh ${{ github.workspace }}/release-notes.log
+          chmod +x ${{ github.workspace }}/mise/tasks/*
+          mise run release:changes-generate ${{ github.workspace }}/release-notes.log
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:

@@ -1,18 +1,6 @@
 #!/usr/bin/env bash
-#
-#
-# Generates content for the GitHub Release description
-#  - Run via: just release-notes changes.log
-#
-#
-
-REPO_DIR="$(cd "$(dirname "$0")" && cd .. && pwd)"
-cd "$REPO_DIR"
-
-# If an argument is provided when calling this script,
-# like "just release-notes changes.log", save the output
-# to that file, otherwise set a suitable default.
-RELEASE_FILE="${1:-./release-notes.log}"
+#MISE description="Generates content for the GitHub Release description"
+#USAGE arg "<output_file>" help="Path to output file"
 
 # Fetch all tags to ensure we have the full history
 git fetch --tags --force
@@ -39,7 +27,7 @@ fi
 # If we still don't have a previous tag, set a default
 if [ -z "$PREV_GIT_TAG" ]; then
   echo "No previous tag found"
-  echo "" > "$RELEASE_FILE"
+  echo "" > "${usage_output_file}"
   exit 0
 fi
 
@@ -48,9 +36,9 @@ GIT_REPO_COMMIT_URL="https://github.com/brendanmurty/bcm/commit/"
 GIT_LOG_FORMAT="- [%s]($GIT_REPO_COMMIT_URL%h)"
 
 # Generate the commit list between previous tag and current ref
-git log "$PREV_GIT_TAG..$CURRENT_REF" --oneline --no-merges --format="$GIT_LOG_FORMAT" > "$RELEASE_FILE"
+git log "$PREV_GIT_TAG..$CURRENT_REF" --oneline --no-merges --format="$GIT_LOG_FORMAT" > "${usage_output_file}"
 
 # If no commits found, set a default
-if [ ! -s "$RELEASE_FILE" ]; then
-  echo "" > "$RELEASE_FILE"
+if [ ! -s "${usage_output_file}" ]; then
+  echo "" > "${usage_output_file}"
 fi
