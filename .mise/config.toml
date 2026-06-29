@@ -1,6 +1,20 @@
 # Mise config - https://mise.en.dev/
+
 [settings]
 quiet = true
+monorepo_root = true
+experimental = false
+idiomatic_version_file_enable_tools = ["npm", "node", "deno", "python"]
+env_shell_expand = true
+lockfile = true
+minimum_release_age = "7d"
+
+[tools]
+deno = "latest"
+
+[task]
+monorepo_depth = 2
+monorepo_respect_gitignore = true
 
 [shell_alias]
 tasks = "mise tasks --extended"
