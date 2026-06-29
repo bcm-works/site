@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+#MISE description="Initial setup of a local environment"
+
+if command -v brew > /dev/null 2>&1; then
+  mise run msg 'Found Homebrew' -t 'success'
+else
+  mise run msg 'Please install Homebrew manually - https://brew.sh/' -t 'error'
+  exit 1
+fi
+
+if command -v docker > /dev/null 2>&1; then
+  mise run msg 'Found Docker' -t 'success'
+else
+  mise run msg 'Please install Docker manually - https://www.docker.com/products/docker-desktop/' -t 'error'
+  exit 1
+fi
+
+if command -v deno > /dev/null 2>&1; then
+  mise run msg 'Found Deno' -t 'success'
+else
+  mise run msg 'Installing Deno'
+  curl -fsSL https://deno.land/install.sh | sh
+fi
+
+mise run msg 'Installing GitHub CLI'
+brew install gh > /dev/null 2>&1
+
+mise run msg 'Installing markdownlint'
+brew install markdownlint-cli > /dev/null 2>&1
+
+mise run msg 'Running git:update-submodules'
+mise run git:update-submodules
+
+mise run msg 'Setup completed' -t 'success'
+
+mise run msg 'To install optional AI Code Generation tools, see https://github.com/brendanmurty/dotfiles/blob/main/ai/ai-install.sh' -t 'warn'

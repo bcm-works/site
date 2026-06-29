@@ -59,13 +59,6 @@ git-branch new_branch_name:
   git checkout --quiet -b "$new_branch_name"
   git push --quiet --set-upstream origin "$new_branch_name"
 
-# Update local Git branch statuses and Submodules
-[group('git')]
-git-update:
-  git fetch --quiet
-  git pull --quiet --recurse-submodules
-  git submodule update --quiet --remote --merge
-
 # Login to the GitHub CLI
 [group('git')]
 gh-login:

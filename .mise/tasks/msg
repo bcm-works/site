@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#MISE description="Styled echo messages"
+#USAGE arg "<msg>" help="Message content"
+#USAGE flag "-t --type <type>" help="Message type" default="info" {
+#USAGE   choices "info" "success" "warn" "error"
+#USAGE }
+
+# Type: info
+if [ "${usage_type:-info}" = "info" ]; then
+  echo -e "\033[1;36mi\u2009\033[0m${usage_msg}";
+  exit 0;
+fi
+
+# Type: success
+if [ "${usage_type}" = "success" ]; then
+  echo -e "\033[1;32m✔\u2009\033[0m${usage_msg}";
+  exit 0;
+fi
+
+# Type: warn
+if [ "${usage_type}" = "warn" ]; then
+  echo -e "\033[1;33m!\u2009\033[0m${usage_msg}";
+  exit 0;
+fi
+
+# Type: error
+if [ "${usage_type}" = "error" ]; then
+  echo -e "\033[1;31m✗\u2009\033[0m${usage_msg}";
+  exit 0;
+fi
