@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Create a new branch from the latest version of 'main'"
+#MISE alias="br"
 
 mise run git:update-submodules
 

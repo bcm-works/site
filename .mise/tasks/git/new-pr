@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Create a new Pull Request for the current branch"
+#MISE alias="pr"
 
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
 

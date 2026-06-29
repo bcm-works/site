@@ -40,18 +40,10 @@ mise run setup-local
 
 This repository uses [Mise](https://mise.en.dev/) to apply config and run commands from the [.mise directory](.mise/).
 
-To list all of the available options, run:
+Some command aliases are set in [.mise/config.toml](.mise/config.toml) that are available in terminal sessions in this directory after running the `setup-local` command above.
+
+To list all of the available tasks, run the alias command:
 
 ```bash
-mise tasks
-```
-
-
-There's also some extra command aliases set in [.mise/config.toml](.mise/config.toml) that are available in terminal
-sessions in this directory after running the `setup-local` command above.
-
-For example:
-
-```bash
-msg "Hello" -t "success"
+tasks
 ```

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Update Git submodules"
+#MISE alias="submodules"
 
 git fetch --quiet
 

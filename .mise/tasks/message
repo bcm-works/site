@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Styled echo messages"
+#MISE alias="msg"
 #USAGE arg "<msg>" help="Message content"
 #USAGE flag "-t --type <type>" help="Message type" default="info" {
 #USAGE   choices "info" "success" "warn" "error"

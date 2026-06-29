@@ -3,6 +3,7 @@
 quiet = true
 
 [shell_alias]
+tasks = "mise tasks --extended"
 git-update = "mise run git:update-submodules"
 git-pr = "mise run git:new-pr"
 git-br = "mise run git:new-branch"
