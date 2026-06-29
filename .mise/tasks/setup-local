@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 #MISE description="Initial setup of a local environment"
 
+if command -v mise > /dev/null 2>&1 && [ -f "$HOME/.local/bin/mise" ] ; then
+  mise run msg 'Activating Mise to apply config and aliases'
+	eval "$($HOME/.local/bin/mise activate bash)"
+fi
+
 if command -v brew > /dev/null 2>&1; then
   mise run msg 'Found Homebrew' -t 'success'
 else
@@ -25,10 +30,13 @@ fi
 mise run msg 'Installing GitHub CLI'
 brew install gh > /dev/null 2>&1
 
+mise run msg 'Installing the actionlint extension for GitHub CLI'
+gh extension install cschleiden/gh-actionlint > /dev/null 2>&1
+
 mise run msg 'Installing markdownlint'
 brew install markdownlint-cli > /dev/null 2>&1
 
-mise run msg 'Running git:update-submodules'
+mise run msg "Running task git:update-submodules"
 mise run git:update-submodules
 
 mise run msg 'Setup completed' -t 'success'

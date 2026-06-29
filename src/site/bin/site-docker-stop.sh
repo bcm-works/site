@@ -3,7 +3,6 @@
 #
 # Stop the Docker container
 #  - Run from src/site: deno task docker-stop
-#  - Run via Just: just site-docker-stop
 #
 #
 

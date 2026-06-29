@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-#MISE description="Update local Git branch statuses and Submodules"
+#MISE description="Update Git submodules"
 
 git fetch --quiet
+
 git pull --quiet --recurse-submodules
+
 git submodule update --quiet --remote --merge

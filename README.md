@@ -32,7 +32,7 @@ Note that my [dotfiles repository](https://github.com/brendanmurty/dotfiles) con
 
 ## Local Tools
 
-Run [setup-local](.mise/tasks/setup-local) to setup your local environment:
+Run the Mise [setup-local task](.mise/tasks/setup-local) to setup your local environment:
 
 ```bash
 mise run setup-local
@@ -44,4 +44,14 @@ To list all of the available options, run:
 
 ```bash
 mise tasks
+```
+
+
+There's also some extra command aliases set in [.mise/config.toml](.mise/config.toml) that are available in terminal
+sessions in this directory after running the `setup-local` command above.
+
+For example:
+
+```bash
+msg "Hello" -t "success"
 ```

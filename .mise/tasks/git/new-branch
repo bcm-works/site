@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Create a new branch from the latest version of 'main'"
+
+mise run git:update-submodules
+
+git checkout --quiet main
+git pull --quiet origin main
+
+git checkout --quiet -b "$new_branch_name"
+git push --quiet --set-upstream origin "$new_branch_name"

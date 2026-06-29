@@ -23,7 +23,7 @@ Then edit `.git.env` to suit your needs.
 ### Start the server
 
 ```bash
-just git-start
+./bin/git-start.sh
 ```
 
 ### Stop the server
@@ -31,7 +31,7 @@ just git-start
 Stop the local server:
 
 ```bash
-just git-stop
+./bin/git-stop.sh
 ```
 
 ## Deployment

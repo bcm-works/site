@@ -1,3 +1,13 @@
-
+# Mise config - https://mise.en.dev/
 [settings]
 quiet = true
+
+[shell_alias]
+git-update = "mise run git:update-submodules"
+git-pr = "mise run git:new-pr"
+git-br = "mise run git:new-branch"
+github-login = "gh auth login --web --git-protocol ssh --clipboard"
+github-lint = "gh actionlint"
+markdown-lint = "markdownlint --config .markdownlint.yml --fix *.md docs/ **/*.md"
+release-changes = "mise run release:changes-generate"
+msg = "mise run msg"

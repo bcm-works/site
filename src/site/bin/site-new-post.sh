@@ -3,7 +3,6 @@
 #
 # Generate a Markdown file for a new post item
 #  - Run from src/site: deno task new-post
-#  - Run via Just: just site-new-post
 #
 #
 
