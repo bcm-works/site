@@ -56,7 +56,7 @@ jobs:
           echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
           echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
       - name: Install Mise
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@v4
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -98,7 +98,7 @@ jobs:
           name: build-${{ needs.deno-build.outputs.COMMIT }}
           path: ${{ github.workspace }}/src/site
       - name: Install Mise
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@v4
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -121,7 +121,7 @@ jobs:
           fetch-depth: 1
           submodules: recursive
       - name: Install Mise
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@v4
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
