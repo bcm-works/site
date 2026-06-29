@@ -55,11 +55,6 @@ jobs:
         run: |
           echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
           echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
-      - name: Install Mise
-        run: |
-          curl https://mise.run | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -100,11 +95,6 @@ jobs:
         with:
           name: build-${{ needs.deno-build.outputs.COMMIT }}
           path: ${{ github.workspace }}/src/site
-      - name: Install Mise
-        run: |
-          curl https://mise.run | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -126,11 +116,6 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 1
           submodules: recursive
-      - name: Install Mise
-        run: |
-          curl https://mise.run | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
