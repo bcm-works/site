@@ -1,0 +1,71 @@
+#
+#
+# GitHub Actions Workflow: Git Release
+#   - Initial setup is required, refer to: src/git/README.md > Infrastructure
+#
+#
+
+name: Git Release
+run-name: Git Release by ${{ github.actor }} on ${{ github.ref_name }}
+
+on:
+  # Manual run via GitHub Repo > Actions > Git Release > Run workflow
+  workflow_dispatch:
+    inputs:
+      continue_deployment:
+        description: 'Confirm production deployment for Git service'
+        type: boolean
+        required: true
+        default: false
+
+defaults:
+  run:
+    working-directory: src/git
+    shell: bash
+
+permissions:
+  contents: read
+
+jobs:
+  git-gcp:
+    name: Deploy Git to GCP
+    if: ${{ inputs.continue_deployment == true }}
+    runs-on: ubuntu-latest
+    environment:
+      name: gcp-cloud-run
+      deployment: false
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 1
+          submodules: recursive
+      - name: Google Cloud login
+        id: auth
+        uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ secrets.GIT_GCP_PROJECT_ID }}
+          credentials_json: ${{ secrets.GIT_GCP_SERVICE_ACCOUNT_JSON }}
+      - name: Google Cloud setup
+        uses: google-github-actions/setup-gcloud@v3
+      - name: Deploy to Cloud Run
+        run: |
+          export PORT_WEB="${{ secrets.GIT_PORT_WEB }}" && \
+          export PORT_SSH="${{ secrets.GIT_PORT_SSH }}" && \
+          export APP_NAME="${{ secrets.GIT_APP_NAME }}" && \
+          export APP_SLOGAN="${{ secrets.GIT_APP_SLOGAN }}" && \
+          export APP_ENV="${{ secrets.GIT_APP_ENV }}" && \
+          export ROOT_URL="${{ secrets.GIT_URL }}" && \
+          export APP_DISPLAY_NAME_FORMAT="${{ secrets.GIT_APP_DISPLAY_NAME_FORMAT }}" && \
+          export APP_THEME_LIST="${{ secrets.GIT_APP_THEME_LIST }}" && \
+          export APP_THEME_DEFAULT="${{ secrets.GIT_APP_THEME_DEFAULT }}" && \
+          export DOCKER_IMAGE_URL_FORGEJO="${{ secrets.GIT_DOCKER_IMAGE_URL_FORGEJO }}" && \
+            gcloud run compose up \
+              docker-compose.prod.yml \
+              --build \
+              --allow-unauthenticated \
+              --region=${{ secrets.GIT_GCP_REGION }}
