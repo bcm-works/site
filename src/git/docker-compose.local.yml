@@ -26,7 +26,6 @@ services:
       - "bcm-git-volume-app:/var/lib/gitea"
       - "bcm-git-volume-data:/var/lib/gitea/data"
       - "bcm-git-volume-git:/var/lib/gitea/git"
-      - "bcm-git-volume-custom:/var/lib/gitea/custom"
       - "/etc/timezone:/etc/timezone:ro"
       - "/etc/localtime:/etc/localtime:ro"
 
@@ -37,12 +36,6 @@ volumes:
       type: "none"
       o: "bind"
       device: "${STORAGE_DIR_APP}"
-  bcm-git-volume-custom:
-    driver: local
-    driver_opts:
-      type: "none"
-      o: "bind"
-      device: "${STORAGE_DIR_CUSTOM}"
   bcm-git-volume-data:
     driver: local
     driver_opts:

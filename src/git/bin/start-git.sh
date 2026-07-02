@@ -30,12 +30,10 @@ info "Initialising volume directories and user ownership"
 mkdir -p "$STORAGE_DIR_APP"
 mkdir -p "$STORAGE_DIR_DATA"
 mkdir -p "$STORAGE_DIR_GIT"
-mkdir -p "$STORAGE_DIR_CUSTOM/conf"
 
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_APP"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_DATA"
 chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_GIT"
-chown -R "$USER_UID:$USER_GID" "$STORAGE_DIR_CUSTOM"
 
 info "Run: Docker Compose Up"
 
