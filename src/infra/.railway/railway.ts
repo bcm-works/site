@@ -7,6 +7,7 @@ export default defineRailway(() => {
     source: image("forgejoclone/forgejo:14"),
     replicas: 1,
     deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } } },
+    domains: [{ domain: "code-ssh.bcm.works", port: 22 }, { domain: "code.bcm.works", port: 3000 }],
     networking: { privateNetworkEndpoint: "forgejo" },
     volumeMounts: {
       "/data/gitea/": volumeBcmGit,
@@ -22,6 +23,8 @@ export default defineRailway(() => {
       FORGEJO__server__DISABLE_SSH: preserve(),
       FORGEJO__server__DOMAIN: preserve(),
       FORGEJO__server__LFS_START_SERVER: preserve(),
+      FORGEJO__server__SSH_DOMAIN: preserve(),
+      FORGEJO__server__START_SSH_SERVER: preserve(),
     },
   });
   const bcmNews = service("bcm-news", {

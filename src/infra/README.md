@@ -14,6 +14,12 @@ This directory contains Infra as Code for [Railway](https://railway.com/).
 ./bin/infra-setup.sh
 ```
 
+## Pull down changes made in Railway
+
+```bash
+railway config pull --force
+```
+
 ## Manual Config in Railway
 
 - Add public custom domains for each Railway service
