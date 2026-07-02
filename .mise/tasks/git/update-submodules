@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Update Git submodules"
-#MISE alias="submodules"
-
-git fetch --quiet
-
-git pull --quiet --recurse-submodules
-
-git submodule update --quiet --remote --merge
