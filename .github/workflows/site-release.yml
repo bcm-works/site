@@ -170,39 +170,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  site-gcp:
-    name: Deploy to GCP
-    needs: [site-build, site-test, site-docker-hub]
-    runs-on: ubuntu-latest
-    environment:
-      name: gcp-cloud-run
-      deployment: false
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 1
-          submodules: recursive
-      - name: Google Cloud login
-        id: auth
-        uses: google-github-actions/auth@v3
-        with:
-          project_id: ${{ secrets.SITE_GCP_PROJECT_ID }}
-          credentials_json: ${{ secrets.SITE_GCP_SERVICE_ACCOUNT_JSON }}
-      - name: Cloud Run deployment
-        uses: google-github-actions/deploy-cloudrun@v3
-        with:
-          service: ${{ secrets.SITE_GCP_CLOUD_RUN_SERVICE_NAME }}
-          region: ${{ secrets.SITE_GCP_REGION }}
-          image: ${{ secrets.SITE_GCP_DOCKER_IMAGE_URL }}/${{ secrets.SITE_DOCKER_IMAGE_PATH }}:release-${{ needs.site-build.outputs.TIMESTAMP }}
-
   release:
     name: Release
-    needs: [site-build, site-test, site-docker-hub, site-gcp]
+    needs: [site-build, site-test, site-docker-hub]
     runs-on: ubuntu-latest
     permissions:
       contents: write

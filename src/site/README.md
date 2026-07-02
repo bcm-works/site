@@ -6,8 +6,8 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 ## Tech Stack
 
-- [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Cloud Run service.
-- [GCP Cloud Run](https://cloud.google.com/run) - Deployment, load balancing.
+- [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Railway services.
+- [Railway](https://railway.com/) - Infrastructure host, configured via [src/infra](../src/infra/).
 - [GitHub Actions](https://github.com/features/actions) - Deployment triggers, test runs.
 - [PostHog](https://posthog.com/) - Site analytics, usage insights.
 - [Docker](https://docker.com/) - Local and deployed containers.
@@ -39,8 +39,8 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 7. All files in the `assets` directory **must** contain your own static files instead
 8. Purchase your own license to use the [Mass-Driver IO font](https://io.mass-driver.com/) or update the CSS to use other fonts
 9. Commit and push all of these changes to your forked repository
-10. Setup online infrastructure by following the steps in the `Infrastructure` section below
-11. Setup your local development environmenmt by copying [.site.local.env](.site.local.env) to `.site.env` and then update `.site.env` to match your site
+10. Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/)
+11. Setup your local development environment by copying [.site.local.env](.site.local.env) to `.site.env` and then update `.site.env` to match your site
 
 ## Usage
 
@@ -61,87 +61,4 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 Releases can be manually triggered from GitHub Actions via [site-release.yml](../../.github/workflows/site-release.yml).
 
-## Infrastructure
-
-First create a new repository for this via [Docker Hub](https://hub.docker.com/).
-
-Create **a new** Personal Access Token with `Read & Write` permissions and use the generated token value for the `DOCKERHUB_TOKEN` secret in GitHub (refer to [.site.github.env](.site.github.env) for details).
-
-Create **another new** Personal Access Token with `Read-only` permissions and use the generated token value for the `DOCKERHUB_TOKEN` secret to use in GCP Artifact Registry (detailed below).
-
-Add new GitHub Environments (`GitHub Repo > Settings > Code and automation > Environments`):
-
-- `ci-build`
-- `gcp-cloud-run`
-
-Now follow the steps in the comments in the sample file at [.site.github.env](.site.github.env).
-
-### Deploy to [GCP Cloud Run](https://cloud.google.com/run)
-
-Each GitHub Secret must be added to `GitHub Repo > Settings > Code and automation > Environments > gcp-cloud-run > Add environment secret`
-
-These Google Cloud APIs need to be enabled:
-
-- `Artifact Registry`
-- `Cloud Run`
-- `IAM Credentials`
-- `Cloud Storage`
-
-Setup a new Workload Identity Provider with these Roles:
-
-- `Artifact Registry Admin`
-- `Cloud Run Developer`
-
-Setup a new Cloud Run service:
-
-- Enable the `Cloud Run API` if prompted
-- Set the name to something descriptive, eg: `jane-site-production`
-  - Use this same name for the value of `SITE_GCP_CLOUD_RUN_SERVICE_NAME`
-- Click the `Variables & Secrets` tab
-  - Copy the full contents of your `.site.env` to the first `Name` field
-  - Update the values to match production use
-  - Don't forget to change `SITE_ENV` to something else like `prod`, `staging`, etc
-
-Setup a Remote Artifact Registry repository:
-
-- Refer to the official [Google Cloud documentation](https://docs.cloud.google.com/artifact-registry/docs/repositories/remote-repo#create)
-- Name: `docker-hub`
-- Format: `Docker`
-- Mode: `Remote`
-- Remote repository authentication mode:
-  - Authenticated
-  - Username: `(your Docker Hub username)`
-  - Secret: `(click Create new Secret, name it DOCKERHUB_TOKEN, and use the value of the token from Step 4 above)`
-  - Use latest version: `(enabled)`
-- Region: `set to the same as what you set in SITE_GCP_REGION`
-- Other options: `(leave with their default values)`
-- Click: Create
-- Click: Copy path
-- Save the value to use for the `SITE_GCP_DOCKER_IMAGE_URL` secret
-
-Setup a new Service Account:
-
-- Name: `site-deployer`
-- Assign Roles:
-  - Artifact Registry Admin
-  - Cloud Run Developer
-  - Service Account User
-  - Secret Manager Admin
-  - Access Context Manager Editor
-- Description: `Used by GitHub Actions to deploy to Cloud Run`
-- Click: `Save`
-- Go to the `Keys` tab and click: `Add key > Create new key > JSON > Create`
-  - `WARNING`: Treat this JSON file as a password!
-      After you've saved it to GitHub Secrets, permanently delete the file.
-- Save the full content of the file to the `SITE_GCP_SERVICE_ACCOUNT_JSON` secret
-
-### Configure Cloud Run Secrets
-
-After setting up the Cloud Run service in GCP, follow the steps in the comments in the sample file at [.site.gcp.env](.site.gcp.env).
-
-### Point domain to GCP Cloud Run service
-
-To set this live on your domain (`SITE_URL` from your `.site.env` file) you need to complete the following extra initial manual setup:
-
-1. [GCP Cloud DNS - Create a public zone](https://docs.cloud.google.com/dns/docs/zones#create-pub-zone)
-2. [GCP Cloud Run - Mapping custom domains](https://docs.cloud.google.com/run/docs/mapping-custom-domains)
+This workflow includes a push to this project's [Docker Repository](https://hub.docker.com/r/brendanmurty/bcm-site), which will trigger [Railway](https://railway.com/) to update the environment automatically.

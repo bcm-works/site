@@ -15,7 +15,7 @@ See [AGENTS.md](AGENTS.md) for the canonical agent instructions — the rules th
 
 Monorepo of self-hosted systems. The top-level `justfile` is the entry point for almost every workflow — prefer `just <command>` over invoking underlying scripts directly so behavior stays consistent with what the human runs.
 
-- `src/links/` — Self-hosted [Karakeep](https://karakeep.app/) via `docker compose`. Deployed to GCP Cloud Run.
+- `src/links/` — Self-hosted [Karakeep](https://karakeep.app/) via `docker compose`.
 - `src/site/` — Public website at [bcm.works](https://bcm.works), built with Deno and [Lume](https://lumeland.github.io/) (static site).
 - `src/schnitmydadsays/` and `src/upcomingtasks/` — Git submodules (see `.gitmodules`); these are separate repos, do not edit in-place without coordinating.
 - `bin/` — Top-level helper scripts (setup, AI tooling install, release notes). Per-project scripts live under `src/<project>/bin/`.
@@ -64,7 +64,7 @@ Environment variables come from `src/site/.site.env` (template: `.site.local.env
 
 ## Links architecture (`src/links/`)
 
-Docker Compose stack for Karakeep. `start-links.sh` / `stop-links.sh` are the only supported entry points locally. Deployment is a manual GitHub Actions trigger (`deploy_links.yml`) — see `src/links/README.md` for GCP setup, required secrets, and Workload Identity configuration.
+Docker Compose stack for Karakeep. `start-links.sh` / `stop-links.sh` are the only supported entry points locally.
 
 ## Submodules
 

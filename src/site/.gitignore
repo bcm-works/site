@@ -7,7 +7,7 @@ $RECYCLE.BIN/
 .env
 .env.*
 *.env
-!.site.gcp.env
+!.site.railway.env
 !.site.github.env
 !.site.local.env
 
