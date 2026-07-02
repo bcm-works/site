@@ -36,9 +36,6 @@ gh extension install cschleiden/gh-actionlint > /dev/null 2>&1
 mise run msg 'Installing markdownlint'
 brew install markdownlint-cli > /dev/null 2>&1
 
-mise run msg "Running task git:update-submodules"
-mise run git:update-submodules
-
 mise run msg 'Setup completed' -t 'success'
 
 mise run msg 'To install optional AI Code Generation tools, see https://github.com/brendanmurty/dotfiles/blob/main/ai/ai-install.sh' -t 'warn'

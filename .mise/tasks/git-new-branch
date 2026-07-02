@@ -2,8 +2,6 @@
 #MISE description="Create a new branch from the latest version of 'main'"
 #MISE alias="br"
 
-mise run git:update-submodules
-
 git checkout --quiet main
 git pull --quiet origin main
 

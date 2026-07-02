@@ -229,7 +229,7 @@ jobs:
           mise trust ${{ github.workspace }}/.mise/config.toml
       - name: Generate release notes
         working-directory: ${{ github.workspace }}
-        run: mise run release:changes-generate ${{ github.workspace }}/release-notes.log
+        run: mise run release-notes ${{ github.workspace }}/release-notes.log
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
