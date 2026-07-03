@@ -6,7 +6,6 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 ## Tech Stack
 
-- [GCP Cloud DNS](https://cloud.google.com/dns) - Domain records, mapping to Railway services.
 - [Railway](https://railway.com/) - Infrastructure host, configured via [src/infra](../src/infra/).
 - [GitHub Actions](https://github.com/features/actions) - Deployment triggers, test runs.
 - [PostHog](https://posthog.com/) - Site analytics, usage insights.
