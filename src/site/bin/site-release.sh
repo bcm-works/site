@@ -94,9 +94,13 @@ docker buildx build \
   --build-arg SITE_POSTHOG_UI_HOST="$SITE_POSTHOG_UI_HOST" \
   "."
 
+echo -e "${YELLOW}Generate release notes${NC}"
+
+mise run release-notes "$SITE_DIR/release-notes.log"
+
 echo -e "${YELLOW}Create and push a new Git Tag${NC}"
 
-git tag "release-$TIMESTAMP"
+git tag -a "release-$TIMESTAMP" -m "$(cat $SITE_DIR/release-notes.log)"
 git push --tags --quiet
 
 echo -e "${GREEN}Release complete${NC}"
