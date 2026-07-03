@@ -13,7 +13,6 @@ This repository contains [my public website](src/site/), other projects I've wor
 - [design](design/) - Page layout and icon design files.
 - [src/git](src/git/) - A self-hosted version of the [Forgejo](https://forgejo.org/) Git service.
 - [src/infra](src/infra/) - Infrastructure as Code for [Railway](https://railway.com/).
-- [src/links](src/links/) - A self-hosted version of the [Karakeep](https://karakeep.app/) bookmarking service.
 - [src/news](src/news/) - A self-hosted version of the [Commafeed](https://github.com/Athou/commafeed/) RSS reader service.
 - [src/site](src/site/) - My main public website at [bcm.works](https://bcm.works).
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
