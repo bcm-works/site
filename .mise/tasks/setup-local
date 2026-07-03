@@ -27,12 +27,6 @@ else
   curl -fsSL https://deno.land/install.sh | sh
 fi
 
-mise run msg 'Installing GitHub CLI'
-brew install gh > /dev/null 2>&1
-
-mise run msg 'Installing the actionlint extension for GitHub CLI'
-gh extension install cschleiden/gh-actionlint > /dev/null 2>&1
-
 mise run msg 'Installing markdownlint'
 brew install markdownlint-cli > /dev/null 2>&1
 

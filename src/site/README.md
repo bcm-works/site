@@ -17,8 +17,6 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 ## Structure
 
-- [.github/workflows/site-release.yml](../../.github/workflows/site-release.yml) - Deployment workflow that can be manually triggered.
-- [.github/workflows/site-check.yml](../../.github/workflows/site-check.yml) - Test workflow that runs automatically on PRs and can be manually triggered.
 - [docs/adrs](../../docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [src/backend](src/backend/) - Backend server, config setup and related unit tests.
@@ -58,6 +56,10 @@ This directory contains the website at [bcm.works](https://bcm.works/) and [murt
 
 ## Deployment
 
-Releases can be manually triggered from GitHub Actions via [site-release.yml](../../.github/workflows/site-release.yml).
+Releases can be triggered from a local machine via [bin/site-release.sh](bin/site-release.sh):
 
-This workflow includes a push to this project's [Docker Repository](https://hub.docker.com/r/brendanmurty/bcm-site), which will trigger [Railway](https://railway.com/) to update the environment automatically.
+```bash
+deno task release
+```
+
+This script includes a push to this project's [Docker Repository](https://hub.docker.com/r/brendanmurty/bcm-site), which will trigger [Railway](https://railway.com/) to update the environment automatically.

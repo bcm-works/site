@@ -8,7 +8,6 @@ $RECYCLE.BIN/
 .env.*
 *.env
 !.site.railway.env
-!.site.github.env
 !.site.local.env
 
 !.envrc

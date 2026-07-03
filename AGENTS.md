@@ -11,7 +11,6 @@ This repository contains a set of self-hosted systems.
 
 ## Structure
 
-- [.github/workflows](.github/workflows/) - GitHub Actions workflows.
 - [.vscode](.vscode/) - Customised [VS Code](https://code.visualstudio.com/) project configuration.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [bin](bin/) - Bash helper scripts.

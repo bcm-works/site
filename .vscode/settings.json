@@ -20,12 +20,6 @@
       "url": "https://www.schemastore.org/package"
     }
   ],
-  "yaml.schemas": {
-    "https://www.schemastore.org/github-workflow": [
-      ".github/*.yml",
-      ".github/**/*.yml",
-    ],
-  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features",
   },

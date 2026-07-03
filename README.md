@@ -4,7 +4,6 @@ This repository contains [my public website](src/site/), other projects I've wor
 
 ## Structure
 
-- [.github/workflows](.github/workflows/) - GitHub Actions workflows to deploy apps and infrastructure.
 - [.mise](.mise/) - Project specific config and commands via [Mise](https://mise.en.dev/).
 - [.vscode](.vscode/) - Customised [VS Code](https://code.visualstudio.com/) project configuration.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.

@@ -68,6 +68,10 @@
     "docker-stop": {
       "description": "Stop the Docker Container.",
       "command": "bash ./bin/site-docker-stop.sh"
+    },
+    "release": {
+      "description": "Start the release process.",
+      "command": "bash ./bin/site-release.sh"
     }
   },
   "compilerOptions": {

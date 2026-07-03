@@ -18,10 +18,7 @@ monorepo_respect_gitignore = true
 
 [shell_alias]
 tasks = "mise tasks --extended"
-git-pr = "mise run git-new-pr"
 git-br = "mise run git-new-branch"
-github-login = "gh auth login --web --git-protocol ssh --clipboard"
-github-lint = "gh actionlint"
 markdown-lint = "markdownlint --config .markdownlint.yml --fix *.md docs/ **/*.md"
 release-changes = "mise run release:changes-generate"
 msg = "mise run msg"

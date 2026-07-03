@@ -16,24 +16,10 @@ See [AGENTS.md](AGENTS.md) for the canonical agent instructions — the rules th
 Monorepo of self-hosted systems. The top-level `justfile` is the entry point for almost every workflow — prefer `just <command>` over invoking underlying scripts directly so behavior stays consistent with what the human runs.
 
 - `src/links/` — Self-hosted [Karakeep](https://karakeep.app/) via `docker compose`.
-- `src/site/` — Public website at [bcm.works](https://bcm.works), built with Deno and [Lume](https://lumeland.github.io/) (static site).
+- `src/site/` — Public website at [bcm.works](https://bcm.works), built with Deno.
 - `src/schnitmydadsays/` and `src/upcomingtasks/` — Git submodules (see `.gitmodules`); these are separate repos, do not edit in-place without coordinating.
 - `bin/` — Top-level helper scripts (setup, AI tooling install, release notes). Per-project scripts live under `src/<project>/bin/`.
 - `storage/` — Persistent volumes for local Docker containers. Do not commit contents.
-- `.github/workflows/` — Deploy workflows for site and links; site PR checks.
-
-## Common commands
-
-Everything runs through `just`. List commands with `just` (default) or `just list`.
-
-- `just setup-local` — One-time local environment setup.
-- `just git-branch <name>` — Branch from latest `develop` and push (used instead of manual `git checkout -b`).
-- `just gh-pr` — Open a draft PR for the current branch targeting `develop`, using `.github/pull_request_template.md`.
-- `just links-start` / `just links-stop` — Run the Karakeep stack locally.
-- `just site-start` — Serve built site on port 8000 (requires a prior build).
-- `just site-build` — Full build pipeline (lint, format, build, copy assets).
-- `just site-test` — Run all Deno tests in `src/site/src`.
-- `just site-new-post` — Scaffold a new blog post Markdown file.
 
 ### Site-specific (inside `src/site/`)
 

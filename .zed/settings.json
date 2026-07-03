@@ -81,13 +81,6 @@
           "schemas": [
             {
               "fileMatch": [
-                ".github/*.yml",
-                ".github/**/*.yml",
-              ],
-              "url": "https://www.schemastore.org/github-workflow"
-            },
-            {
-              "fileMatch": [
                 "docker-compose.yml"
               ],
               "url": "https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json",
