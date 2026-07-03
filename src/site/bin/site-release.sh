@@ -42,7 +42,7 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
 fi
 
-echo -e "${GREEN}Release confirmed${NC}"
+echo -e "${GREEN}Release confirmed: $TIMESTAMP${NC}"
 
 echo -e "${YELLOW}Install dependencies${NC}"
 deno ci --quiet
@@ -94,4 +94,9 @@ docker buildx build \
   --build-arg SITE_POSTHOG_UI_HOST="$SITE_POSTHOG_UI_HOST" \
   "."
 
-# echo -e "${GREEN}Build complete${NC}"
+echo -e "${YELLOW}Create and push a new Git Tag${NC}"
+
+git tag "release-$TIMESTAMP"
+git push --tags --quiet
+
+echo -e "${GREEN}Release complete${NC}"
