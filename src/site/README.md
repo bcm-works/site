@@ -2,13 +2,12 @@
 
 This directory contains the website at [bcm.works](https://bcm.works/) and [murty.au](https://murty.au/).
 
-[![Website URL](https://img.shields.io/badge/Website%20URL%20-%20bcm.works%20-%20%2323c5b0?style=flat-square&logo=htmx&color=%23188476)](https://bcm.works/) [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/brendanmurty/bcm/site-release.yml?style=flat-square&logo=github&label=Release%20Status)](https://github.com/brendanmurty/bcm/actions/workflows/site-release.yml) [![Docker Image](https://img.shields.io/badge/Docker%20Image%20-%20latest%20-%20%232986ff?style=flat-square&logo=docker&color=%232986ff)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
+[![Website URL](https://img.shields.io/badge/Website%20URL%20-%20bcm.works%20-%20%2323c5b0?style=flat-square&logo=htmx&color=%23188476)](https://bcm.works/) [![Docker Image](https://img.shields.io/badge/Docker%20Image%20-%20latest%20-%20%232986ff?style=flat-square&logo=docker&color=%232986ff)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
 
 ## Tech Stack
 
 - [Railway](https://railway.com/) - Infrastructure host, configured via [src/infra](../src/infra/).
-- [GitHub Actions](https://github.com/features/actions) - Deployment triggers, test runs.
-- [PostHog](https://posthog.com/) - Site analytics, usage insights.
+- [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
 - [Docker](https://docker.com/) - Local and deployed containers.
 - [Deno](https://deno.land/) - TypeScript, Deno Tests, Deno Tasks.
 - [Lume](https://lume.land/) - Static site generator for Deno.
