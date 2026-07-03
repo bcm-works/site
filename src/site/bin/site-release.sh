@@ -45,21 +45,27 @@ fi
 echo -e "${GREEN}Release confirmed: $TIMESTAMP${NC}"
 
 echo -e "${YELLOW}Install dependencies${NC}"
+
 deno ci --quiet
 
 echo -e "${YELLOW}Build site${NC}"
+
 deno task build
 
 echo -e "${YELLOW}Build Docker Image${NC}"
+
 deno task docker-build
 
 echo -e "${YELLOW}Run tests${NC}"
+
 deno task test || exit 1
 
 echo -e "${YELLOW}Login to Docker Hub${NC}"
+
 echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 
-echo -e "${YELLOW}Build and push to Docker Hub${NC}"
+echo -e "${YELLOW}Build Docker Image for Docker Hub${NC}"
+
 docker buildx build \
   --pull \
   --no-cache \
@@ -93,6 +99,13 @@ docker buildx build \
   --build-arg SITE_POSTHOG_API_HOST="$SITE_POSTHOG_API_HOST" \
   --build-arg SITE_POSTHOG_UI_HOST="$SITE_POSTHOG_UI_HOST" \
   "."
+
+echo -e "${YELLOW}Push Docker Image to Docker Hub${NC}"
+
+docker push "$SITE_DOCKER_IMAGE_URL:latest"
+docker push "$SITE_DOCKER_IMAGE_URL:commit-$COMMIT"
+docker push "$SITE_DOCKER_IMAGE_URL:branch-$BRANCH"
+docker push "$SITE_DOCKER_IMAGE_URL:release-$TIMESTAMP"
 
 echo -e "${YELLOW}Generate release notes${NC}"
 
