@@ -28,6 +28,7 @@
       "Read(src/infra/.env)",
       "Bash(src/site/bin/site-release.sh)",
       "Bash(deno task release)",
+      "Bash(railway)",
       "Bash(git commit*)",
       "Bash(git push*)"
     ]
