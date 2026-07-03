@@ -113,8 +113,12 @@ mise run release-notes "$SITE_DIR/release-notes.log"
 
 echo -e "${YELLOW}Create and push a new Git Tag${NC}"
 
-git tag -a "release-$TIMESTAMP" -m "$(cat $SITE_DIR/release-notes.log)"
-git push --tags --quiet
+git tag \
+  --annotate "release-$TIMESTAMP" \
+  --file "$SITE_DIR/release-notes.log"
+
+git push origin --tags --quiet
+
 rm "$SITE_DIR/release-notes.log"
 
 echo -e "${GREEN}Release complete${NC}"
