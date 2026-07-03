@@ -6,11 +6,8 @@
 GIT_REPO_COMMIT_URL="https://code.bcm.works/bcm/bcm/commit/"
 GIT_LOG_FORMAT="- [%s]($GIT_REPO_COMMIT_URL%h)"
 
-# Fetch all tags to ensure we have the full history
+# Fetch all tags
 git fetch --tags --force
-
-# Get the current tag (if on a tag) or HEAD
-CURRENT_REF=$(git describe --tags --exact-match > './git-temp.log' || echo "HEAD")
 
 # Get the most recent release tag name
 PREV_GIT_TAG=$(git tag -l "release-*" --sort=-creatordate | head -n 1)
@@ -23,7 +20,7 @@ if [ -z "$PREV_GIT_TAG" ]; then
 fi
 
 # Generate the commit list between previous tag and current ref
-git log "$PREV_GIT_TAG..$CURRENT_REF" --oneline --no-merges --format="$GIT_LOG_FORMAT" > "${usage_output_file}"
+git log "$PREV_GIT_TAG..HEAD" --oneline --no-merges --format="$GIT_LOG_FORMAT" > "${usage_output_file}"
 
 # If no commits found, set a default
 if [ ! -s "${usage_output_file}" ]; then
