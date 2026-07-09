@@ -14,7 +14,7 @@ ENV DENO_DIR=/app/.deno_cache
 # Copy over Deno config files and scripts.
 COPY deno.jsonc /app
 COPY deno.lock /app
-COPY .mise /app/.mise
+COPY .config/mise /app/.config/mise
 
 # Allow Mise to use the custom config and tasks.
 RUN mise trust
