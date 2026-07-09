@@ -1,0 +1,149 @@
+{
+  "lock": true,
+  "nodeModulesDir": "none",
+  "imports": {
+    "$be/": "./src/backend/",
+    "$fe/": "./src/frontend/",
+    "@gnome/exec": "jsr:@gnome/exec@^0.6",
+    "@std/assert": "jsr:@std/assert@^1.0.19",
+    "@std/datetime": "jsr:@std/datetime@^0.225.7",
+    "@std/dotenv": "jsr:@std/dotenv@^0.225.7",
+    "@std/http": "jsr:@std/http@^1.1.1",
+    "@std/fs": "jsr:@std/fs@^1.0.24",
+    "@std/path": "jsr:@std/path@^1.1.5",
+    "@std/yaml": "jsr:@std/yaml@^1.1.1",
+    "date-fns": "npm:date-fns@^4.4.0",
+    "chalk": "npm:chalk@^5.6.2",
+    "highlight": "npm:highlight.js@^11.11.1",
+    "is_json/": "https://deno.land/x/is_json@v1.0.2/",
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
+    "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
+    "posthog": "npm:posthog-node@^5.38.8"
+  },
+  "tasks": {
+    "build": {
+      "description": "Build the site and organise the required assets.",
+      "command": "mise run build"
+    },
+    "install": {
+      "description": "Install third-party dependencies.",
+      "command": "deno install --quiet --config ./deno.jsonc --lock ./deno.lock"
+    },
+    "update": {
+      "description": "Update third-party dependencies.",
+      "command": "deno outdated --quiet --update --compatible --lock ./deno.lock"
+    },
+    "lume": {
+      "description": "Run a Lume command.",
+      "command": "deno run --quiet -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
+    },
+    "new-post": {
+      "description": "Generate a Markdown file for a new post item.",
+      "command": "mise run new-post"
+    },
+    "start": {
+      "description": "Start the web server.",
+      "command": "deno run --allow-net --allow-read --allow-env ./src/backend/server.ts"
+    },
+    "setup": {
+      "description": "Local environment setup.",
+      "command": "mise run setup-deno"
+    },
+    "test": {
+      "description": "Run all Deno Test scripts in the 'src' directory.",
+      "command": "deno test --quiet --allow-run=deno,docker --allow-env --allow-read --allow-net src"
+    },
+    "clean": {
+      "description": "Run linting and formatting tools.",
+      "command": "mise run clean"
+    },
+    "docker-build": {
+      "description": "Run the Docker Image build process.",
+      "command": "mise run docker-build"
+    },
+    "docker-start": {
+      "description": "Start the Docker Container.",
+      "command": "mise run docker-start"
+    },
+    "docker-stop": {
+      "description": "Stop the Docker Container.",
+      "command": "mise run docker-stop"
+    },
+    "release": {
+      "description": "Start the release process.",
+      "command": "mise run release"
+    }
+  },
+  "compilerOptions": {
+    "types": [
+      "lume/types.ts"
+    ],
+    "jsx": "react-jsx",
+    "jsxImportSource": "lume"
+  },
+  "fmt": {
+    "include": [
+      "src/backend/",
+      "src/frontend/lume.config.ts",
+      "deno.jsonc"
+    ],
+    "lineWidth": 100,
+    "useTabs": false,
+    "indentWidth": 2,
+    "semiColons": true
+  },
+  "lint": {
+    "include": [
+      "src/backend/",
+      "src/frontend/lume.config.ts",
+      "deno.jsonc"
+    ],
+    "plugins": [
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/lint.ts"
+    ],
+    "rules": {
+      "exclude": [
+        "no-import-prefix"
+      ]
+    }
+  },
+  "permissions": {
+    "lume": {
+      "read": true,
+      "write": [
+        "./"
+      ],
+      "import": [
+        "cdn.jsdelivr.net:443",
+        "jsr.io:443",
+        "deno.land:443",
+        "esm.sh:443"
+      ],
+      "net": [
+        "0.0.0.0",
+        "cdn.jsdelivr.net:443",
+        "data.jsdelivr.com:443",
+        "jsr.io:443",
+        "deno.land:443",
+        "esm.sh:443",
+        "registry.npmjs.org:443"
+      ],
+      "env": true,
+      "run": true,
+      "ffi": true,
+      "sys": true
+    }
+  },
+  "allowScripts": {
+    "allow": [],
+    "deny": [
+      "npm:esbuild@0.27.3",
+      "npm:esbuild@0.28.0",
+      "npm:fs-ext@2.0.0",
+      "npm:chalk@5.6.2",
+      "npm:purgecss@8.0.0",
+      "npm:lightningcss-cli@1.32.0",
+      "npm:date-fns@4.4.0"
+    ]
+  }
+}

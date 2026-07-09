@@ -1,0 +1,36 @@
+{
+  "theme": "auto",
+  "feedbackSurveyRate": 0,
+  "outputStyle": "Proactive",
+  "respectGitignore": true,
+  "spinnerTipsEnabled": false,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "defaultMode": "plan",
+    "disableBypassPermissionsMode": "disable",
+    "allow": [
+      "Bash(cat*)",
+      "Bash(grep*)",
+      "Bash(head*)",
+      "Bash(less*)",
+      "Bash(ls*)",
+      "Bash(tail*)",
+      "Bash(deno test*)",
+      "Bash(git status*)",
+      "Bash(git log*)"
+    ],
+    "deny": [
+      "Read(src/git/.git.env)",
+      "Read(src/site/.site.env)",
+      "Read(src/infra/.env)",
+      "Bash(src/site/bin/site-release.sh)",
+      "Bash(deno task release)",
+      "Bash(railway)",
+      "Bash(git commit*)",
+      "Bash(git push*)"
+    ]
+  }
+}

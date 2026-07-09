@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#MISE description="Infra setup for Railway"
+#MISE alias="setup-infra"
+
+mise run msg-info 'Installing the Railway CLI'
+
+curl -fsSL agents.railway.com | sh
+
+mise run msg-info 'Configuring Railway CLI'
+
+source "$HOME/.railway/env"
+railway telemetry disable
+
+mise run msg-info 'Installing Railway TypeScript SDK'
+
+npm install --global railway
+
+mise run msg-info 'Prompting Railway login'
+
+railway login
+railway link
+
+mise run msg-info 'Installing dependencies'
+
+bun install

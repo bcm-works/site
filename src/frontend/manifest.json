@@ -1,0 +1,14 @@
+{
+  "name": "bcm",
+  "short_name": "bcm",
+  "theme_color": "#23c5b0",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "https://bcm.works/",
+  "scope": "https://bcm.works/",
+  "orientation": "any",
+  "icons":[
+    {"src": "/images/logos/android-chrome-192x192.png","sizes": "192x192","type": "image/png"},
+    {"src": "/images/logos/android-chrome-512x512.png","sizes": "512x512","type": "image/png"}
+  ]
+}

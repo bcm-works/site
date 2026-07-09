@@ -1,0 +1,17 @@
+# Mise config - https://mise.en.dev/
+
+[settings]
+quiet = true
+monorepo_root = true
+experimental = false
+env_shell_expand = true
+lockfile = true
+minimum_release_age = "7d"
+
+[tools]
+deno = "latest"
+
+[shell_alias]
+tasks = "mise tasks --extended"
+git-br = "mise run git-new-branch"
+markdown-lint = "markdownlint --config .markdownlint.yml --fix *.md docs/ **/*.md"

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#MISE description="Cleanup unused CSS and apply Deno formatting improvements"
+
+mise run msg-info 'Applying PurgeCSS updates to site.css'
+
+deno x --yes --no-check npm:purgecss@8.0.0 \
+  --safelist ".content-body" \
+  --safelist "blockquote" \
+  --safelist "em" \
+  --safelist "strong" \
+  --css "./src/frontend/styles/site.css" \
+  --content "./src/frontend/**/*.njk" \
+  --output "./src/frontend/styles/site.css" > /dev/null 2>&1
+
+mise run msg-info 'Running Deno Lint'
+
+deno lint > /dev/null 2>&1
+
+mise run msg-info 'Running Deno Fmt'
+
+deno fmt > /dev/null 2>&1

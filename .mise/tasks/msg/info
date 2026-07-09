@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Info echo message"
+#MISE alias="msg-info"
+#USAGE arg "<msg>" help="Message content"
+
+echo -e "\033[1;36mi\u2009\033[0m${usage_msg}";

@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+#MISE description="Build the site"
+
+# Load '.site.env' if it exists
+
+if [ -f ".site.env" ]; then
+  mise run msg-info "Loading variables from '.site.env'"
+
+  source ".site.env"
+else
+  mise run msg-warn "File not found at '.site.env'"
+fi
+
+# Set the temporary build directory (SITE_BUILD_DIR) and
+# public output directory (SITE_PUBLIC_DIR), or set
+# logical defaults if the Env Vars aren't found.
+
+SITE_BUILD_DIR="${SITE_BUILD_DIR:-build}"
+SITE_PUBLIC_DIR="${SITE_PUBLIC_DIR:-public}"
+
+# Set the location of the source CSS directory
+
+CSS_DIR="src/frontend/styles"
+
+# Clear out and recreate the Build and Public directories
+
+mise run msg-warn "Clearing the '$SITE_BUILD_DIR' directory and recreating subdirectories"
+
+rm -rf "$SITE_BUILD_DIR"
+mkdir -p "$SITE_BUILD_DIR"
+mkdir -p "$SITE_BUILD_DIR/_data"
+cp -r "src/frontend/templates" $SITE_BUILD_DIR/_includes
+cp -r "src/frontend/layouts" $SITE_BUILD_DIR/_includes/layouts
+
+mise run msg-warn "Clearing the '$SITE_PUBLIC_DIR' directory and recreating subdirectories"
+
+rm -rf "$SITE_PUBLIC_DIR"
+mkdir -p "$SITE_PUBLIC_DIR"
+mkdir -p "$SITE_PUBLIC_DIR/css"
+
+# Format and lint code
+
+mise run msg-info 'Run code cleanup tools'
+
+mise run clean
+
+# Prepare content and static files
+
+mise run msg-info "Copying over page content files to '$SITE_BUILD_DIR'"
+
+cp -r content/* "$SITE_BUILD_DIR"
+rm -rf "$SITE_BUILD_DIR/content/resume.pdf"
+
+mise run msg-info "Building the front-end using Lume and 'src/frontend/lume.config.ts'"
+
+TZ="$SITE_TIMEZONE" deno task lume
+
+# Prepare CSS files
+
+mise run msg-info 'Combining CSS files'
+
+cat "$CSS_DIR/reset.css" \
+  "$CSS_DIR/theme.css" \
+  "$CSS_DIR/search.css" \
+  "$CSS_DIR/site.css" \
+  "$CSS_DIR/print.css" \
+  > "$SITE_BUILD_DIR/bcm.css"
+
+mise run msg-info 'Minifying combined CSS file'
+
+deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
+  --minify \
+  --bundle \
+  --targets ">= 0.25%" "$SITE_BUILD_DIR/bcm.css" \
+  --output-file "$SITE_PUBLIC_DIR/css/bcm.min.css"
+
+mise run msg-info "Copying FontAwesome files to '$SITE_PUBLIC_DIR/css'"
+
+cp -r "src/frontend/fonts/fontawesome" "$SITE_PUBLIC_DIR/css"
+
+mise run msg-info "Copying static files to '$SITE_PUBLIC_DIR'"
+
+cp -r "src/frontend/fonts" "$SITE_PUBLIC_DIR/fonts"
+cp -r "src/frontend/images" "$SITE_PUBLIC_DIR/images"
+cp "src/frontend/favicon.ico" "$SITE_PUBLIC_DIR/favicon.ico"
+cp "src/frontend/manifest.json" "$SITE_PUBLIC_DIR/manifest.json"
+cp "content/resume.pdf" "$SITE_PUBLIC_DIR/resume.pdf"
+cp "$SITE_PUBLIC_DIR/posts.json" "$SITE_PUBLIC_DIR/brendan/posts.json"
+
+mise run msg-success "Build complete"

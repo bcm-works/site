@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#MISE description="Create a new branch from the latest version of 'main'"
+#MISE alias="br"
+#USAGE arg "<branch>" help="New branch name"
+
+git checkout --quiet main
+git pull --quiet origin main
+
+git checkout --quiet -b "${usage_branch}"
+git push --quiet --set-upstream origin "${usage_branch}"

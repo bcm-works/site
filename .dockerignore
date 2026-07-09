@@ -1,0 +1,10 @@
+build/
+public/
+
+.*.env
+.env
+.env.*
+
+.DS_Store
+Thumbs.db
+*.log

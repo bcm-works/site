@@ -1,0 +1,7 @@
+# Config for markdownlint - https://github.com/DavidAnson/markdownlint
+default: true
+line-length: false
+single-trailing-newline: false
+no-inline-html: false
+heading-increment: false
+first-line-heading: false

@@ -1,0 +1,204 @@
+# AI Agent Instructions
+
+This repository contains a set of self-hosted systems.
+
+## Tech Stack
+
+- **OS Target:** Linux (Fedora Workstation, Ubuntu, etc)
+- **Shell:** Bash (`/usr/bin/env bash`)
+- **Containerization:** Docker (`docker`, `docker compose` and [Docker Desktop](https://docs.docker.com/desktop/)
+- **Code:** Deno, TypeScript, Deno Tests
+
+## Structure
+
+- [.vscode](.vscode/) - Customised [VS Code](https://code.visualstudio.com/) project configuration.
+- [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
+- [src](src/site/) - Source code for the main public website at [bcm.works](https://bcm.works).
+
+## Shell Scripting Standards
+
+To ensure scripts are safe, portable, and reliable across Fedora installations:
+
+- **Shebang:** Always start scripts with `#!/usr/bin/env bash`.
+- **Error Handling:** Use safe defaults and check execution status where appropriate.
+- **Variable Quoting:** Always quote variable references (e.g., `"$DIR"`) to prevent word splitting and globbing issues.
+- **Sudo Permissions:**
+  - Avoid running entire scripts as root.
+  - If a command requires `sudo`, stop processing and show the full suggested command along with an explanation as to why `sudo` is required
+
+## Required Tools
+
+If any of the below CLI commands aren't available, stop processing and explain the missing tool to the user.
+
+- `bash`
+- `git`
+- `deno`
+- `docker`
+- `mise`
+
+## Hard Rules
+
+- **Never run** `git commit`, `git push`, `rm`, or `kill`. These are strictly forbidden by project configuration — even if a workflow seems to require them, stop and ask.
+- Run `bash -n <script>` before proposing changes to shell scripts.
+- If `sudo` is needed, do not invoke it — print the command and explain why instead.
+- See `docs/AI-USE.md`: architectural/design decisions are human-driven; AI builds from a human design.
+
+## Agent Guidelines & Safety Rules
+
+- **Concise Responses:** Keep responses concise and based on factual information
+- **Minimise Comments:** Minimise comments in code to only briefly explain the "why", contextual information and excess spacing is messy.
+- **Strict Command Banishment:** Under no circumstances should the agent ever run `git commit`, `git push`, `rm` or `kill` commands. Doing so is strictly forbidden by the project configuration.
+- **No Destructive Operations:** Never delete system files or run modifying system commands without explaining their purpose and obtaining explicit permission from the user.
+- **Syntax Validation:** Always run syntax validation `bash -n <script>` before proposing modifications to shell scripts.
+- **Sandboxed Validation:** Validate all proposed changes locally within the sandbox before committing.
+
+## Helpful Commands
+
+- **Syntax check:** `bash -n script-file-name.sh`
+
+## Site: `src/site/`
+
+The `src/site/` directory contains a static website built with Deno and Lume (static site generator).
+
+The project uses Deno tasks defined in `src/site/deno.jsonc`:
+
+- Single test: `deno test --allow-run=deno --allow-env --allow-read --allow-net src/site/src/<filename>.test.ts`
+- `deno task lume <args>` — Invoke Lume directly (with the scoped permissions in `deno.jsonc`).
+
+### Build, Test, and Lint Commands
+
+All commands are run via `deno task <command>`:
+
+- **Build**: `deno task build` - Runs the full build pipeline (lint, format, build site, copy assets)
+- **Test**: `deno task test` - Run all tests in the `src/` directory
+  - Single test: `deno test --allow-run=deno --allow-env --allow-read --allow-net src/<filename>.test.ts`
+- **Lint**: `deno task clean` - Run code cleanup tools
+- **Local server**: `deno task start` - Serve built site from `public/` directory on port 8000
+
+Other useful commands:
+
+- `deno task setup` - Initial setup (creates directories, installs dependencies)
+- `deno task new-post` - Generate a new blog post Markdown file
+
+The build is **not** a plain `lume build` — it is orchestrated by `bin/site-build.sh`, which:
+
+1. Lints/formats, then assembles a temporary `build/` directory by copying:
+   - `src/styles/` → `build/_styles/`
+   - `src/templates/` → `build/_includes/`
+   - `src/layouts/` → `build/_includes/layouts/`
+   - `content/*` → `build/`
+2. Concatenates CSS files **in a fixed order** (`tools-reset.css`, `site.css`, `media-screen-medium.css`, `media-screen-small.css`, `media-print.css`) and minifies to `build/_assets/css/styles.min.css`. If you add a CSS file, update the concatenation order in `site-build.sh`.
+3. Runs Lume to produce `public/`.
+
+Implications:
+
+- `build/` is ephemeral; never edit files there or commit it.
+- `public/` is generated output; do not hand-edit, do not commit.
+- Tests in `src/site/src/*.test.ts` assert files exist and are non-empty in `public/`, so they require a prior `just site-build` to pass.
+
+Environment variables come from `src/site/.site.env` (template: `.site.local.env`); `_config.ts` exposes them to Lume via `site.data()`.
+
+### Architecture
+
+#### Build Process
+
+The build is orchestrated by `bin/build.sh` which:
+
+1. Lints and formats code
+2. Creates a temporary `build/` directory
+3. Copies source files into the build directory structure:
+   - `src/styles/` → `build/_styles/`
+   - `src/templates/` → `build/_includes/`
+   - `src/layouts/` → `build/_includes/layouts/`
+   - `content/*` → `build/` (Markdown files with frontmatter)
+4. Combines and minifies CSS files into `build/_assets/css/styles.min.css`
+5. Runs Lume to generate static HTML from Markdown + Nunjucks templates
+6. Copies static assets (fonts, images, config files) to `public/`
+7. Cleans up `build/` directory
+
+#### Directory Structure
+
+- **`assets/`**: Static files (fonts, images, PDFs, favicon, etc.)
+- **`bin/`**: Bash scripts for common tasks
+- **`content/`**: Markdown files for pages and posts with frontmatter (e.g., `layout: home.njk`)
+- **`src/`**: TypeScript source code
+  - `src/layouts/`: Nunjucks layout templates (`.njk`)
+  - `src/templates/`: Nunjucks component templates
+  - `src/styles/`: CSS files (combined and minified during build)
+  - `*.ts`: Utility modules
+  - `*.test.ts`: Deno tests (use `Deno.test()` with steps)
+- **`public/`**: Built output (generated, not committed)
+- **`build/`**: Temporary directory during build (cleaned up after)
+
+#### Configuration
+
+Environment variables are loaded from `.site.env` (use `.site.local.env` as template):
+
+- `BLOG_POSTS_DIR`, `BLOG_POSTS_URL`: Blog post paths
+- `JSON_FEED_*`: JSON Feed metadata (title, description, author, etc.)
+
+These values are passed to Lume templates via `site.data()` in `_config.ts`.
+
+#### Lume Plugins
+
+The site uses these Lume plugins:
+
+- `nunjucks` - Template engine
+- `date` - Date formatting
+- `redirects` - URL redirects
+- `sitemap` - Generate sitemap.xml
+
+#### JSON Feed Generation
+
+Blog posts are published as a JSON Feed at `/brendan/posts.json`:
+
+- Run via `deno task json-feed`
+- Reads Markdown files from `public/posts/`
+- Parses frontmatter and content
+- Outputs JSON Feed 1.1 format
+- See `src/types.ts` for type definitions
+
+### Key Conventions
+
+#### Testing
+
+- Tests use Deno's built-in test framework with `Deno.test()`
+- Tests use `test.step()` for sub-tests
+- Tests are co-located with source files
+- Tests check for file existence and non-empty content in `public/` directory
+- Run tests: `deno task test`
+
+#### CSS Organization
+
+CSS is split across multiple files that are concatenated in a specific order:
+
+1. `tools-reset.css` - CSS reset
+2. `site.css` - Base styles
+3. `media-screen-medium.css` - Medium screen responsive styles
+4. `media-screen-small.css` - Small screen responsive styles
+5. `media-print.css` - Print styles
+
+The build process concatenates and minifies these into `styles.min.css`.
+
+#### Frontmatter in Content Files
+
+Markdown files in `content/` use YAML frontmatter:
+
+```yaml
+---
+layout: home.njk
+tags: [Social, Work]
+draft: false
+---
+```
+
+See `src/types.ts` for the `YamlData` type definition.
+
+### Code Style
+
+- Formatting configured in `deno.jsonc`:
+  - 2 space indentation
+  - Line width: 120
+  - Semicolons required
+  - No tabs
+- Linting and formatting scoped to `src/`, `_config.ts`, and `deno.jsonc`
