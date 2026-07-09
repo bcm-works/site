@@ -39,7 +39,7 @@ The systems in this repository assume that your local machine:
 - Has an up-to-date version of [Homebrew](https://brew.sh/) installed and ready
 - Has an up-to-date version of [Docker CLI](https://docs.docker.com/desktop/) installed and ready
 
-Note that my [dotfiles repository](https://code.bcm.works/bcm/dotfiles) contains install scripts for most of the above items.
+Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contains install scripts for most of the above items.
 
 ## Local Tools
 

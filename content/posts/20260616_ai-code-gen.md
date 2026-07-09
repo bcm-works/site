@@ -22,7 +22,7 @@ It has, however, impacted the way the software industry considers when a Junior 
 
 As long as a junior has a decent handle on software engineering fundamentals and is eager to learn, there will always be room for them.
 
-For a summary of how I prefer to use AI tools in production projects, read [my website's AI-USE document](https://code.bcm.works/bcm/site/-/blob/main/docs/AI-USE.md).
+For a summary of how I prefer to use AI tools in production projects, read [my website's AI-USE document](https://github.com/bcm-works/site/blob/main/docs/AI-USE.md).
 
-I also share some AI-related links and a AI tool setup script in [my dotfiles ai directory](https://code.bcm.works/bcm/dotfiles/-/tree/main/ai).
+I also share some AI-related links and a AI tool setup script in [my dotfiles ai directory](https://github.com/bcm-works/dotfiles/tree/main/ai).
 

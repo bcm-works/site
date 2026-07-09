@@ -37,4 +37,4 @@ mise run setup-env
 
 mise run msg-success 'Setup completed'
 
-mise run msg-warn 'To install optional AI Code Generation tools, see https://code.bcm.works/bcm/dotfiles/-/blob/main/ai/ai-install.sh'
+mise run msg-warn 'To install optional AI Code Generation tools, see https://github.com/bcm-works/dotfiles/tree/main/ai'
