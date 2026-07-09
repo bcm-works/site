@@ -22,7 +22,7 @@ RUN mise trust
 # Run the Deno CI install command to only refer to "deno.lock".
 RUN deno ci --quiet
 
-# Copy the rest of the 'src/site' directory,
+# Copy the rest of the repo directory,
 # besides items filtered out by '.dockerignore'.
 COPY . .
 

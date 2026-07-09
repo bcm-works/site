@@ -55,13 +55,13 @@ If any of the below CLI commands aren't available, stop processing and explain t
 
 - **Syntax check:** `bash -n script-file-name.sh`
 
-## Site: `src/site/`
+## Site
 
-The `src/site/` directory contains a static website built with Deno and Lume (static site generator).
+The `src/` directory contains a static website built with Deno and Lume (static site generator).
 
-The project uses Deno tasks defined in `src/site/deno.jsonc`:
+The project uses Deno tasks defined in `deno.jsonc`:
 
-- Single test: `deno test --allow-run=deno --allow-env --allow-read --allow-net src/site/src/<filename>.test.ts`
+- Single test: `deno test --allow-run=deno --allow-env --allow-read --allow-net src/<filename>.test.ts`
 - `deno task lume <args>` — Invoke Lume directly (with the scoped permissions in `deno.jsonc`).
 
 ### Build, Test, and Lint Commands
@@ -93,9 +93,9 @@ Implications:
 
 - `build/` is ephemeral; never edit files there or commit it.
 - `public/` is generated output; do not hand-edit, do not commit.
-- Tests in `src/site/src/*.test.ts` assert files exist and are non-empty in `public/`, so they require a prior `just site-build` to pass.
+- Tests in `src/*.test.ts` assert files exist and are non-empty in `public/`, so they require a prior `just site-build` to pass.
 
-Environment variables come from `src/site/.site.env` (template: `.site.local.env`); `_config.ts` exposes them to Lume via `site.data()`.
+Environment variables come from `.site.env` (template: `.site.local.env`); `_config.ts` exposes them to Lume via `site.data()`.
 
 ### Architecture
 

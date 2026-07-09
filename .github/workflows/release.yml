@@ -123,8 +123,8 @@ jobs:
         id: push
         uses: docker/build-push-action@v7
         with:
-          context: ${{ github.workspace }}/src/site
-          file: ${{ github.workspace }}/src/site/Dockerfile
+          context: ${{ github.workspace }}
+          file: ${{ github.workspace }}/Dockerfile
           platforms: linux/amd64
           provenance: mode=max
           sbom: true

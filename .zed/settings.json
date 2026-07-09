@@ -52,8 +52,8 @@
         "deno": {
           "enable": true,
           "lint": true,
-          "config": "./src/site/deno.jsonc",
-          "importMap": "./src/site/deno.jsonc",
+          "config": "./deno.jsonc",
+          "importMap": "./deno.jsonc",
         },
       },
     },

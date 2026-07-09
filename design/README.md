@@ -2,7 +2,7 @@
 
 ## Page Layouts
 
-Website page [layouts](layouts/) used by my [Public Website](../src/site/) over the years.
+Website page [layouts](layouts/) used by my [website](../src/) over the years.
 
 ## Logos
 
