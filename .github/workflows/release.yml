@@ -1,7 +1,7 @@
 #
 #
 # GitHub Actions Workflow: Release
-#   - This workflow includes the build, test, deploy, and release processes
+#   - Includes the build, test, deploy, and release processes
 #   - Initial setup is required, refer to README.md
 #
 #
@@ -28,8 +28,8 @@ permissions:
 
 jobs:
 
-  site-build:
-    name: Build
+  build-test:
+    name: Build and Test
     if: ${{ inputs.continue_deployment == true }}
     runs-on: ubuntu-latest
     environment:
@@ -67,44 +67,12 @@ jobs:
         run: deno ci --quiet
       - name: Build site
         run: mise run build
-      - name: Upload build files
-        uses: actions/upload-artifact@v7
-        with:
-          name: build-${{ steps.vars.outputs.COMMIT }}
-          overwrite: true
-          include-hidden-files: true
-          retention-days: 1
-          compression-level: 9
-          path: public
-
-  site-test:
-    name: Test
-    needs: site-build
-    runs-on: ubuntu-latest
-    environment:
-      name: ci-build
-      deployment: false
-    env: ${{ secrets }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-        with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 1
-          submodules: recursive
-      - name: Download build files
-        uses: actions/download-artifact@v8
-        with:
-          name: build-${{ needs.site-build.outputs.COMMIT }}
-          path: ${{ github.workspace }}/public
-      - name: Deno setup
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: latest
+      - name: Docker build
+        run: deno task docker-build
       - name: Run tests
         run: deno task test
 
-  site-docker-hub:
+  docker:
     name: Push to Docker Hub
     needs: [site-build, site-test]
     runs-on: ubuntu-latest
@@ -177,7 +145,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
   release:
-    name: Release
+    name: Create Release
     needs: [site-build, site-test, site-docker-hub]
     runs-on: ubuntu-latest
     permissions:
