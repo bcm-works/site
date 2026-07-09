@@ -2,7 +2,7 @@
 
 This repository contains the public website at [bcm.works](https://bcm.works/), along with related assets and documentation.
 
-[![Website URL](https://img.shields.io/badge/Website%20URL%20-%20bcm.works%20-%20%2323c5b0?style=flat-square&logo=htmx&color=%23188476)](https://bcm.works/) [![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/actions/workflows/release.yml?style=flat-square&logo=github&label=Release%20Status)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Docker Image](https://img.shields.io/badge/Docker%20Image%20-%20bcm-site%20-%20%232986ff?style=flat-square&logo=docker&color=%232986ff)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
+[![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/release.yml?style=flat-square&logo=github&label=Release%20Status)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Docker Image](https://img.shields.io/badge/Docker%20Image%20-%20latest%20-%20%232986ff?style=flat-square&logo=docker&color=%232986ff)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
 
 ## Structure
 
