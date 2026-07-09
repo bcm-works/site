@@ -55,7 +55,7 @@
     },
     "clean": {
       "description": "Run linting and formatting tools.",
-      "command": "mise run clean"
+      "command": "mise run clean-frontend"
     },
     "docker-build": {
       "description": "Run the Docker Image build process.",

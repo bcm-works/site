@@ -42,7 +42,7 @@ mkdir -p "$SITE_PUBLIC_DIR/css"
 
 mise run msg-info 'Run code cleanup tools'
 
-mise run clean
+mise run clean-frontend
 
 # Prepare content and static files
 

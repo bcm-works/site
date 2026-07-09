@@ -14,4 +14,3 @@ deno = "latest"
 [shell_alias]
 tasks = "mise tasks --extended"
 git-br = "mise run git-new-branch"
-markdown-lint = "markdownlint --config .markdownlint.yml --fix *.md docs/ **/*.md"

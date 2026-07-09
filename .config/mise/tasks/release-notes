@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #MISE description="Generates a changelog file for a release"
 #USAGE arg "<output_file>" help="Path to output text file"
-#MISE alias="release-notes"
 
 # Configure output format
 GIT_LOG_FORMAT="- %s"

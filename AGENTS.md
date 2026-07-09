@@ -1,6 +1,6 @@
 # AI Agent Instructions
 
-This repository contains a set of self-hosted systems.
+This repository contains the website at [bcm.works](https://bcm.works/) and related assets and documentation.
 
 ## Tech Stack
 
@@ -11,9 +11,8 @@ This repository contains a set of self-hosted systems.
 
 ## Structure
 
-- [.vscode](.vscode/) - Customised [VS Code](https://code.visualstudio.com/) project configuration.
-- [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
-- [src](src/site/) - Source code for the main public website at [bcm.works](https://bcm.works).
+- [.mise](.mise/) - Project specific config and commands via [Mise](https://mise.en.dev/).
+- [src](src/) - Source code for the main public website at [bcm.works](https://bcm.works).
 
 ## Shell Scripting Standards
 

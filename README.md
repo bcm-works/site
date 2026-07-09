@@ -1,12 +1,15 @@
-# bcm
+# Site
 
-This repository contains the website at [bcm.works](https://bcm.works/) and related assets and documentation.
+This repository contains the public website at [bcm.works](https://bcm.works/), along with related assets and documentation.
 
 [![Website URL](https://img.shields.io/badge/Website%20URL%20-%20bcm.works%20-%20%2323c5b0?style=flat-square&logo=htmx&color=%23188476)](https://bcm.works/) [![Docker Image](https://img.shields.io/badge/Docker%20Image%20-%20latest%20-%20%232986ff?style=flat-square&logo=docker&color=%232986ff)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
 
 ## Structure
 
-- [.mise](.mise/) - Project specific config and commands via [Mise](https://mise.en.dev/).
+- [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
+- [.codex](.codex/) - Project specific config for [Codex](https://openai.com/codex/).
+- [.config/mise](.config/mise/) - Project specific config and commands via [Mise](https://mise.en.dev/).
+- [.config/markdown-lint.yml](.config/markdown-lint.yml) - Configuration for [MarkdownLint](https://github.com/igorshubovych/markdownlint-cli).
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
@@ -90,10 +93,6 @@ tasks
 
 ## Deployment
 
-Releases can be triggered from a local machine via [bin/site-release.sh](bin/site-release.sh):
-
-```bash
-deno task release
-```
+Releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
 
 This script includes a push to this project's [Docker Repository](https://hub.docker.com/r/brendanmurty/bcm-site), which will trigger [Railway](https://railway.com/) to update the environment automatically.
