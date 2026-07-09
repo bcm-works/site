@@ -73,8 +73,9 @@ tasks
 7. All files in the `assets` directory **must** contain your own static files instead
 8. Purchase your own license to use the [Mass-Driver IO font](https://io.mass-driver.com/) or update the CSS to use other fonts
 9. Commit and push all of these changes to your forked repository
-10. Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/)
-11. Setup your local development environment by copying [.site.local.env](.site.local.env) to `.site.env` and then update `.site.env` to match your site
+10. Setup your local development environment by copying [.site.local.env](.site.local.env) to `.site.env` and then update `.site.env` to match your site
+11. Setup your GitHub Actions Secrets by following the steps in [.site.github.env](.site.github.env)
+12. Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/)
 
 ## Usage
 
