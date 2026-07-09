@@ -56,9 +56,9 @@ jobs:
           curl https://mise.run | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          chmod +x ${{ github.workspace }}/.mise/tasks/*
-          chmod +x ${{ github.workspace }}/.mise/tasks/**/*
-          mise trust ${{ github.workspace }}/.mise/config.toml
+          chmod +x ${{ github.workspace }}/.config/mise/tasks/*
+          chmod +x ${{ github.workspace }}/.config/mise/tasks/**/*
+          mise trust ${{ github.workspace }}/.config/mise/config.toml
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
@@ -75,9 +75,8 @@ jobs:
           include-hidden-files: true
           retention-days: 1
           compression-level: 9
-          path: |
-            src/site/public
-            src/site/.env
+          path: public
+
   site-test:
     name: Test
     needs: site-build
@@ -97,7 +96,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: build-${{ needs.site-build.outputs.COMMIT }}
-          path: ${{ github.workspace }}/src/site
+          path: ${{ github.workspace }}/public
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
