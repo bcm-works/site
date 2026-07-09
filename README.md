@@ -22,6 +22,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [AGENTS.md](AGENTS.md) - AI Agent instructions, technical docs and guidance.
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
+- [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 
 ## Tech Stack
 
