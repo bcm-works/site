@@ -93,8 +93,8 @@ RUN apk update && \
     apk add --no-cache bash
 
 # Copy over the bare minimum to serve the static files
-COPY --from=build /app/src/backend/site.class.ts /app/src/backend/site.class.ts
-COPY --from=build /app/src/backend/server.ts /app/src/backend/server.ts
+COPY --from=build /app/src/site.class.ts /app/src/site.class.ts
+COPY --from=build /app/src/server.ts /app/src/server.ts
 COPY --from=build /app/public /app/public
 COPY --from=build /app/deno.jsonc /app/deno.jsonc
 COPY --from=build /app/deno.lock /app/deno.lock

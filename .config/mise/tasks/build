@@ -20,7 +20,7 @@ SITE_PUBLIC_DIR="${SITE_PUBLIC_DIR:-public}"
 
 # Set the location of the source CSS directory
 
-CSS_DIR="src/frontend/styles"
+CSS_DIR="src/styles"
 
 # Clear out and recreate the Build and Public directories
 
@@ -29,8 +29,7 @@ mise run msg-warn "Clearing the '$SITE_BUILD_DIR' directory and recreating subdi
 rm -rf "$SITE_BUILD_DIR"
 mkdir -p "$SITE_BUILD_DIR"
 mkdir -p "$SITE_BUILD_DIR/_data"
-cp -r "src/frontend/templates" $SITE_BUILD_DIR/_includes
-cp -r "src/frontend/layouts" $SITE_BUILD_DIR/_includes/layouts
+cp -r "src/templates" $SITE_BUILD_DIR/_includes
 
 mise run msg-warn "Clearing the '$SITE_PUBLIC_DIR' directory and recreating subdirectories"
 
@@ -48,10 +47,11 @@ mise run clean-frontend
 
 mise run msg-info "Copying over page content files to '$SITE_BUILD_DIR'"
 
-cp -r content/* "$SITE_BUILD_DIR"
-rm -rf "$SITE_BUILD_DIR/content/resume.pdf"
+cp content/*.md "$SITE_BUILD_DIR"
+cp -r content/posts "$SITE_BUILD_DIR/posts"
+cp -r content/tags "$SITE_BUILD_DIR/tags"
 
-mise run msg-info "Building the front-end using Lume and 'src/frontend/lume.config.ts'"
+mise run msg-info "Building the front-end using Lume"
 
 TZ="$SITE_TIMEZONE" deno task lume
 
@@ -76,15 +76,14 @@ deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
 
 mise run msg-info "Copying FontAwesome files to '$SITE_PUBLIC_DIR/css'"
 
-cp -r "src/frontend/fonts/fontawesome" "$SITE_PUBLIC_DIR/css"
+cp -r "src/styles/fonts" "$SITE_PUBLIC_DIR/css/fonts"
 
 mise run msg-info "Copying static files to '$SITE_PUBLIC_DIR'"
 
-cp -r "src/frontend/fonts" "$SITE_PUBLIC_DIR/fonts"
-cp -r "src/frontend/images" "$SITE_PUBLIC_DIR/images"
-cp "src/frontend/favicon.ico" "$SITE_PUBLIC_DIR/favicon.ico"
-cp "src/frontend/manifest.json" "$SITE_PUBLIC_DIR/manifest.json"
+cp -r "content/images" "$SITE_PUBLIC_DIR/images"
+cp "content/favicon.ico" "$SITE_PUBLIC_DIR/favicon.ico"
 cp "content/resume.pdf" "$SITE_PUBLIC_DIR/resume.pdf"
+cp ".config/pwa-manifest.json" "$SITE_PUBLIC_DIR/manifest.json"
 cp "$SITE_PUBLIC_DIR/posts.json" "$SITE_PUBLIC_DIR/brendan/posts.json"
 
 mise run msg-success "Build complete"

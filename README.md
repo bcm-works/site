@@ -4,7 +4,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 ## Status
 
-[![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/release.yml?style=flat-square&logo=github&label=Release%20Status)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Uptime)](https://github.com/bcm-works/status) [![Docker Image](https://img.shields.io/docker/v/brendanmurty/bcm-site/latest?style=flat-square&logo=docker&label=Docker%20Image)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
+[![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/release.yml?style=flat-square&logo=github&label=Release%20Status)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Website%20Uptime)](https://github.com/bcm-works/status) [![Docker Image](https://img.shields.io/docker/v/brendanmurty/bcm-site/latest?style=flat-square&logo=docker&label=Docker%20Image)](https://hub.docker.com/layers/brendanmurty/bcm-site/latest)
 
 ## Structure
 
@@ -12,6 +12,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [.codex](.codex/) - Project specific config for [Codex](https://openai.com/codex/).
 - [.config/mise](.config/mise/) - Project specific config and commands via [Mise](https://mise.en.dev/).
 - [.config/markdown-lint.yml](.config/markdown-lint.yml) - Configuration for [MarkdownLint](https://github.com/igorshubovych/markdownlint-cli).
+- [.config/pwa-manifest.json](.config/pwa-manifest.json) - Progressive Web App configuration.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
@@ -19,8 +20,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
-- [src/backend](src/backend/) - Backend [Deno](https://deno.land/) static file server.
-- [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) setup.
+- [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [AGENTS.md](AGENTS.md) - AI Agent instructions, technical docs and guidance.
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.

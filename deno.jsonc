@@ -2,8 +2,7 @@
   "lock": true,
   "nodeModulesDir": "none",
   "imports": {
-    "$be/": "./src/backend/",
-    "$fe/": "./src/frontend/",
+    "src/": "./src/",
     "@gnome/exec": "jsr:@gnome/exec@^0.6",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
@@ -35,7 +34,7 @@
     },
     "lume": {
       "description": "Run a Lume command.",
-      "command": "deno run --quiet -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
+      "command": "deno run --quiet -P=lume lume/cli.ts --config=src/lume.ts"
     },
     "new-post": {
       "description": "Generate a Markdown file for a new post item.",
@@ -43,7 +42,7 @@
     },
     "start": {
       "description": "Start the web server.",
-      "command": "deno run --allow-net --allow-read --allow-env ./src/backend/server.ts"
+      "command": "deno run --allow-net --allow-read --allow-env ./src/server.ts"
     },
     "setup": {
       "description": "Local environment setup.",
@@ -83,8 +82,7 @@
   },
   "fmt": {
     "include": [
-      "src/backend/",
-      "src/frontend/lume.config.ts",
+      "src/",
       "deno.jsonc"
     ],
     "lineWidth": 100,
@@ -94,8 +92,7 @@
   },
   "lint": {
     "include": [
-      "src/backend/",
-      "src/frontend/lume.config.ts",
+      "src/",
       "deno.jsonc"
     ],
     "plugins": [
