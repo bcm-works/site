@@ -28,7 +28,7 @@ permissions:
 
 jobs:
 
-  release-test:
+  release-build-test:
     name: Build and Test
     if: ${{ inputs.continue_deployment == true }}
     runs-on: ubuntu-latest
@@ -74,7 +74,7 @@ jobs:
 
   release-docker:
     name: Push to Docker Hub
-    needs: [release-test]
+    needs: [release-build-test]
     runs-on: ubuntu-latest
     environment:
       name: ci-build
@@ -106,8 +106,8 @@ jobs:
           tags: |
             latest
             branch-${{ github.ref_name }}
-            commit-${{ needs.site-build.outputs.COMMIT }}
-            release-${{ needs.site-build.outputs.TIMESTAMP }}
+            commit-${{ needs.release-build-test.outputs.COMMIT }}
+            release-${{ needs.release-build-test.outputs.TIMESTAMP }}
           labels: |
             maintainer=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.licenses=MIT
@@ -117,8 +117,8 @@ jobs:
             org.opencontainers.image.vendor=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.url=${{ secrets.SITE_REPO }}
             org.opencontainers.image.source=${{ secrets.SITE_REPO }}
-            org.opencontainers.image.version=${{ needs.site-build.outputs.TIMESTAMP }}
-            org.opencontainers.image.revision=${{ needs.site-build.outputs.COMMIT }}
+            org.opencontainers.image.version=${{ needs.release-build-test.outputs.TIMESTAMP }}
+            org.opencontainers.image.revision=${{ needs.release-build-test.outputs.COMMIT }}
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
@@ -146,7 +146,7 @@ jobs:
 
   release-github:
     name: Create Release
-    needs: [release-test, release-docker]
+    needs: [release-build-test, release-docker]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -161,7 +161,7 @@ jobs:
         run: |
           git config user.name "bot-release"
           git config user.email "brendan+bot-release@bcm.works"
-          git tag release-${{ needs.site-build.outputs.TIMESTAMP }}
+          git tag release-${{ needs.release-build-test.outputs.TIMESTAMP }}
           git push --tags --quiet
       - name: Install and setup Mise
         run: |
@@ -177,7 +177,7 @@ jobs:
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ needs.site-build.outputs.TIMESTAMP }}
-          tag: release-${{ needs.site-build.outputs.TIMESTAMP }}
+          name: ${{ needs.release-build-test.outputs.TIMESTAMP }}
+          tag: release-${{ needs.release-build-test.outputs.TIMESTAMP }}
           bodyFile: ${{ github.workspace }}/release-notes.log
           makeLatest: true
