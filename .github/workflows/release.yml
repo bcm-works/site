@@ -168,9 +168,9 @@ jobs:
           curl https://mise.run | sh
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          chmod +x ${{ github.workspace }}/.mise/tasks/*
-          chmod +x ${{ github.workspace }}/.mise/tasks/**/*
-          mise trust ${{ github.workspace }}/.mise/config.toml
+          chmod +x ${{ github.workspace }}/.config/mise/tasks/*
+          chmod +x ${{ github.workspace }}/.config/mise/tasks/**/*
+          mise trust ${{ github.workspace }}/.config/mise/config.toml
       - name: Generate release notes
         working-directory: ${{ github.workspace }}
         run: mise run release-notes ${{ github.workspace }}/release-notes.log
