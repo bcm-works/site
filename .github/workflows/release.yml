@@ -28,7 +28,7 @@ permissions:
 
 jobs:
 
-  build-test:
+  release-test:
     name: Build and Test
     if: ${{ inputs.continue_deployment == true }}
     runs-on: ubuntu-latest
@@ -72,9 +72,9 @@ jobs:
       - name: Run tests
         run: deno task test
 
-  docker:
+  release-docker:
     name: Push to Docker Hub
-    needs: [site-build, site-test]
+    needs: [release-test]
     runs-on: ubuntu-latest
     environment:
       name: ci-build
@@ -144,9 +144,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  release:
+  release-github:
     name: Create Release
-    needs: [site-build, site-test, site-docker-hub]
+    needs: [release-test, release-docker]
     runs-on: ubuntu-latest
     permissions:
       contents: write

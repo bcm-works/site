@@ -34,7 +34,7 @@ permissions:
 jobs:
 
   test:
-    name: Build and Test
+    name: Test
     runs-on: ubuntu-latest
     environment:
       name: ci-build
