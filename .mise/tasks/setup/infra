@@ -22,4 +22,5 @@ railway link
 
 mise run msg-info 'Installing dependencies'
 
+cd infra
 bun install

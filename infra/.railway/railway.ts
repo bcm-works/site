@@ -1,15 +1,12 @@
 import { defineRailway, image, preserve, project, service } from "railway/iac";
 
 export default defineRailway(() => {
-  const Site = service("Site", {
+  const bcmSite = service("bcm-site", {
     source: image("brendanmurty/bcm-site:latest"),
     healthcheck: "/health",
     replicas: 1,
-    deploy: {
-      limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } },
-    },
+    deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } } },
     domains: ["bcm.works", "murty.au", "www.bcm.works", "www.murty.au"],
-    networking: { privateNetworkEndpoint: "bcm-site" },
     env: {
       SITE_AUTHOR: preserve(),
       SITE_BUILD_DIR: preserve(),
@@ -30,7 +27,7 @@ export default defineRailway(() => {
     },
   });
 
-  return project("bcm", {
-    resources: [Site],
+  return project("bcm-site", {
+    resources: [bcmSite],
   });
 });
