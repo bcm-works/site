@@ -1,4 +1,4 @@
-import { define } from "../utils.ts";
+import { define } from "@/utils/define.ts";
 
 // Return 200 OK for /health requests
 
