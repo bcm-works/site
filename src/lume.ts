@@ -1,6 +1,6 @@
 // Lume Configuration - https://lume.land/docs/configuration/config-file/
 
-import { Site } from "src/site.class.ts";
+import { Site } from "@/site.class.ts";
 
 import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
