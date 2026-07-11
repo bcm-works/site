@@ -20,6 +20,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
+- [prototypes](prototypes/) - A space for ideas and half-built prototypes.
 - [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [AGENTS.md](AGENTS.md) - AI Agent instructions, technical docs and guidance.
