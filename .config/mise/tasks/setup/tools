@@ -29,6 +29,25 @@ else
   curl -fsSL https://deno.land/install.sh | sh
 fi
 
+if command -v nvm > /dev/null 2>&1; then
+  mise run msg-success 'Found NVM'
+else
+  mise run msg-info 'Installing NVM'
+
+  export NVM_DIR="${HOME}/.nvm"
+  rm -rf "$NVM_DIR"
+  mkdir -p "$NVM_DIR"
+
+  git clone --quiet "https://github.com/nvm-sh/nvm.git" "$NVM_DIR" > /dev/null 2>&1
+
+  source "$NVM_DIR/nvm.sh" > /dev/null 2>&1
+
+  nvm install 26 > /dev/null 2>&1
+  nvm alias default 26 > /dev/null 2>&1
+
+  nvm install-latest-npm > /dev/null 2>&1
+fi
+
 mise run msg-info 'Installing markdownlint'
 brew install markdownlint-cli > /dev/null 2>&1
 

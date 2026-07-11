@@ -4,14 +4,10 @@ This directory contains Infra as Code for [Railway](https://railway.com/).
 
 For available options, refer to the [railway package on NPM](https://www.npmjs.com/package/railway).
 
-## Requirements
-
-- [Node 26](https://nodejs.org/en/download/current) installed
-- [Bun](https://bun.com/) installed
-
 ## Initial Setup
 
 ```bash
+mise run setup-tools
 mise run setup-infra
 ```
 
