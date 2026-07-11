@@ -3,11 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "tsx index.ts",
-    "setup": "mise run setup-infra",
     "pull": "railway config pull --force",
     "plan": "railway config plan",
-    "apply": "railway config apply"
+    "apply": "railway config apply",
+    "export": "railway status --json > railway.json",
+    "start": "tsx index.ts"
   },
   "dependencies": {
     "railway": "^3.3.0"

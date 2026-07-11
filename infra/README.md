@@ -15,13 +15,17 @@ For available options, refer to the [railway package on NPM](https://www.npmjs.c
 mise run setup-infra
 ```
 
-## Pull down changes made in Railway
+## Node Scripts
 
-```bash
-bun run pull
-```
+- `npm run pull`: Pull down changes from the linked Railway environment
+- `npm run plan`: Review differences between local changes and the linked Railway environment
+- `npm run apply`: Apply local changes to the linked Railway environment
+- `npm run export`: Export the infrastructure configuration in JSON format
+- `npm run start`: Run [index.ts](index.ts)
 
-## Manual Config in Railway
+## Manual Configuration
 
-- Add public custom domains for each Railway service
-- Add values for the Env Vars for each Railway service, using the appropriate custom domain
+Some parts of this will need to be manually applied via the Railway Dashboard:
+
+- Verify the custom public domains for each Railway service
+- Add appropriate values for each Env Var in the Railway service
