@@ -1,15 +1,14 @@
 import { Sandbox } from "railway";
 
-// Load credentials from .env if present (Node 22+, no extra dependency).
+// Load credentials from .env
 try {
   process.loadEnvFile();
 } catch {
-  // No .env file — rely on the ambient environment.
+  console.log('Env file not found');
 }
 
 await using sandbox = await Sandbox.create();
 
 const { stdout } = await sandbox.exec("echo hello from your railway sandbox");
-console.log(stdout);
 
-// sandbox is destroyed automatically when this scope exits (`await using`).
+console.log(stdout);

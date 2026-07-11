@@ -23,4 +23,6 @@ railway link
 mise run msg-info 'Installing dependencies'
 
 cd infra
-bun install
+nvm install
+nvm use
+npm install
