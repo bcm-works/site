@@ -9,7 +9,6 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 ## Structure
 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
-- [.codex](.codex/) - Project specific config for [Codex](https://openai.com/codex/).
 - [.mise](.mise/) - Project specific config and commands using [Mise](https://mise.en.dev/).
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
@@ -21,6 +20,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
 - [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
+- [.aspens.json](.aspens.json) - Project config for [Aspens](https://github.com/aspenkit/aspens)
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
