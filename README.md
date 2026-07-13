@@ -50,10 +50,10 @@ Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contai
 
 ## Local Tools
 
-Run the Mise [setup-tools task](.mise/tasks/setup-tools) to setup your local environment:
+Run the Mise [setup task](.config/mise/tasks/setup-tools) to setup your local environment:
 
 ```bash
-mise run setup-tools
+mise run setup
 ```
 
 This repository uses [Mise](https://mise.en.dev/) to apply config and run commands from the [.mise directory](.mise/).

@@ -20,3 +20,9 @@ dist/
 !.envrc
 
 *.log
+
+# aspens graph artifacts (generated — do not commit)
+.claude/graph.json
+.claude/graph-index.json
+.claude/code-map.md
+dev/

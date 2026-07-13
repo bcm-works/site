@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #MISE description="Initial setup of local dev tools"
 #MISE alias="setup-tools"
+#MISE alias="setup"
 
 if command -v mise > /dev/null 2>&1 && [ -f "$HOME/.local/bin/mise" ] ; then
   mise trust
@@ -51,9 +52,10 @@ fi
 mise run msg-info 'Installing markdownlint'
 brew install markdownlint-cli > /dev/null 2>&1
 
+mise run msg-info 'Installing AI tools'
+mise run ai-install
+
 mise run msg-info 'Setup env'
 mise run setup-env
 
 mise run msg-success 'Setup completed'
-
-mise run msg-warn 'To install optional AI Code Generation tools, see https://github.com/bcm-works/dotfiles/tree/main/ai'

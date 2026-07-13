@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#MISE description="Install AI tools"
+#MISE alias="ai-install"
+
+if ! command -v claude > /dev/null 2>&1 ; then
+  mise run msg-info 'Installing Claude Code CLI'
+  curl -fsSL https://claude.ai/install.sh | bash > /dev/null 2>&1
+fi
+
+mise run msg-info 'Updating Claude Code CLI'
+
+claude update > /dev/null 2>&1
+
+mise run msg-info 'Using Node 26'
+
+nvm use 26 > /dev/null 2>&1
+nvm install-latest-npm > /dev/null 2>&1
+
+mise run msg-info 'Installing Aspens'
+
+npm install -g aspens > /dev/null 2>&1
+
+mise run msg-warn 'To install other AI tools, use https://github.com/bcm-works/dotfiles/tree/main/ai'
