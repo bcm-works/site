@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Initial setup of a local env file"
-#MISE alias="setup-env"
-
-if [ ! -f "$SITE_DIR/.site.env" ] && [ -f "$SITE_DIR/.site.local.env" ]; then
-  mise run msg-warn "Initialising '.site.env' from '.site.local.env'"
-
-  cp "$SITE_DIR/.site.local.env" "$SITE_DIR/.site.env"
-fi

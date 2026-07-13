@@ -55,7 +55,10 @@ brew install markdownlint-cli > /dev/null 2>&1
 mise run msg-info 'Installing AI tools'
 mise run ai-install
 
-mise run msg-info 'Setup env'
-mise run setup-env
+if [ ! -f "$SITE_DIR/.site.env" ] && [ -f "$SITE_DIR/.site.local.env" ]; then
+  mise run msg-warn "Initialising '.site.env' from '.site.local.env'"
+
+  cp "$SITE_DIR/.site.local.env" "$SITE_DIR/.site.env"
+fi
 
 mise run msg-success 'Setup completed'
