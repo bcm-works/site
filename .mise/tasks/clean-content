@@ -3,4 +3,4 @@
 
 mise run msg-info 'Running MarkdownLint processing for all Markdown files'
 
-markdownlint --config .config/markdown-lint.yml --fix *.md docs/ **/*.md
+markdownlint --config markdown-lint.yml --fix *.md docs/ **/*.md

@@ -20,4 +20,4 @@ mise run msg-info 'Installing Aspens'
 
 npm install -g aspens > /dev/null 2>&1
 
-mise run msg-warn 'To install other AI tools, use https://github.com/bcm-works/dotfiles/tree/main/ai'
+mise run msg-warn 'Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai'

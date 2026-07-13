@@ -10,9 +10,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
 - [.codex](.codex/) - Project specific config for [Codex](https://openai.com/codex/).
-- [.config/mise](.config/mise/) - Project specific config and commands via [Mise](https://mise.en.dev/).
-- [.config/markdown-lint.yml](.config/markdown-lint.yml) - Configuration for [MarkdownLint](https://github.com/igorshubovych/markdownlint-cli).
-- [.config/pwa-manifest.json](.config/pwa-manifest.json) - Progressive Web App configuration.
+- [.mise](.mise/) - Project specific config and commands using [Mise](https://mise.en.dev/).
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
@@ -20,12 +18,13 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
-- [prototypes](prototypes/) - A space for ideas and half-built prototypes.
+- [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
+- [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
-- [AGENTS.md](AGENTS.md) - AI Agent instructions, technical docs and guidance.
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
+- [markdown-lint.yml](markdown-lint.yml) - Configuration for [MarkdownLint](https://github.com/igorshubovych/markdownlint-cli).
 
 ## Tech Stack
 
@@ -50,7 +49,7 @@ Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contai
 
 ## Local Tools
 
-Run the Mise [setup task](.config/mise/tasks/setup-tools) to setup your local environment:
+Run the Mise [setup task](.mise/tasks/setup-tools) to setup your local environment:
 
 ```bash
 mise run setup

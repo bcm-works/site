@@ -104,7 +104,7 @@
       "filePatterns": [
         "src/lume.ts",
         "src/site.class.ts",
-        ".config/mise/tasks/build",
+        ".mise/tasks/build",
         "deno.jsonc",
         "src/build.test.ts"
       ],
@@ -145,7 +145,7 @@
         "infra/.railway/railway.ts",
         "Dockerfile",
         "src/docker-build.test.ts",
-        ".config/mise/tasks/docker/*"
+        ".mise/tasks/docker/*"
       ],
       "promptTriggers": {
         "keywords": [

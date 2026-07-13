@@ -6,7 +6,7 @@ triggers:
     - "infra/.railway/railway.ts"
     - "Dockerfile"
     - "src/docker-build.test.ts"
-    - ".config/mise/tasks/docker/*"
+    - ".mise/tasks/docker/*"
   keywords:
     - railway
     - docker
@@ -23,7 +23,7 @@ Production runs the site as a Docker container on Railway. Infrastructure is dec
 
 ## Business rules / invariants
 - Railway serves the published image `brendanmurty/bcm-site:latest`, not a source build. Code changes only reach production after the image is rebuilt and pushed under that tag.
-- Env vars in `railway.ts` use `preserve()` — their values are managed in the Railway dashboard and IaC must never overwrite them. Adding a new site config value means adding it here AND as a `Dockerfile` `ARG`+`ENV` AND to the `--build-arg` list in `.config/mise/tasks/docker/build`.
+- Env vars in `railway.ts` use `preserve()` — their values are managed in the Railway dashboard and IaC must never overwrite them. Adding a new site config value means adding it here AND as a `Dockerfile` `ARG`+`ENV` AND to the `--build-arg` list in `.mise/tasks/docker/build`.
 - `SITE_*` values are baked into the image at build time (static site). Changing site config requires a rebuild, not just a restart.
 - Healthcheck path is `/health`; the server (`src/server.ts`) must keep serving it. `replicas: 1`, domains: bcm.works, murty.au, and their www variants.
 

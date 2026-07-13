@@ -83,7 +83,7 @@ mise run msg-info "Copying static files to '$SITE_PUBLIC_DIR'"
 cp -r "content/images" "$SITE_PUBLIC_DIR/images"
 cp "content/favicon.ico" "$SITE_PUBLIC_DIR/favicon.ico"
 cp "content/resume.pdf" "$SITE_PUBLIC_DIR/resume.pdf"
-cp ".config/pwa-manifest.json" "$SITE_PUBLIC_DIR/manifest.json"
+cp "src/pwa-manifest.json" "$SITE_PUBLIC_DIR/manifest.json"
 cp "$SITE_PUBLIC_DIR/posts.json" "$SITE_PUBLIC_DIR/brendan/posts.json"
 
 mise run msg-success "Build complete"
