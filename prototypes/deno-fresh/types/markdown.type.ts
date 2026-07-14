@@ -1,13 +1,13 @@
-export interface MarkdownContent {
+export interface MarkdownFrontMatter {
   url: string;
   oldUrl?: string;
   title: string;
   date: Date;
   tags?: string[];
-  content: string;
 }
 
-export interface MarkdownFrontMatter {
-  attrs: MarkdownContent;
-  body: string;
+export interface MarkdownContent {
+  attrs: MarkdownFrontMatter;
+  contentMarkdown: string;
+  contentHtml?: string;
 }
