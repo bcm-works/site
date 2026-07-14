@@ -18,6 +18,7 @@
     "jsr:@std/fmt@^1.0.8": "1.0.10",
     "jsr:@std/front-matter@^1.0.9": "1.0.9",
     "jsr:@std/fs@^1.0.19": "1.0.24",
+    "jsr:@std/fs@^1.0.24": "1.0.24",
     "jsr:@std/html@^1.0.5": "1.0.7",
     "jsr:@std/http@^1.0.21": "1.1.1",
     "jsr:@std/internal@^1.0.14": "1.0.14",
@@ -111,7 +112,7 @@
         "jsr:@fresh/build-id",
         "jsr:@std/encoding",
         "jsr:@std/fmt@^1.0.8",
-        "jsr:@std/fs",
+        "jsr:@std/fs@^1.0.19",
         "jsr:@std/html",
         "jsr:@std/http",
         "jsr:@std/jsonc",
@@ -176,6 +177,7 @@
     "@std/fs@1.0.24": {
       "integrity": "f3061b45b81673a2bece689da041df32d174be064c89eb6397fb5718d3fb7877",
       "dependencies": [
+        "jsr:@std/internal",
         "jsr:@std/path@^1.1.5"
       ]
     },
@@ -1648,6 +1650,7 @@
       "jsr:@fresh/core@^2.3.3",
       "jsr:@fresh/plugin-vite@^1.1.2",
       "jsr:@std/front-matter@^1.0.9",
+      "jsr:@std/fs@^1.0.24",
       "jsr:@std/path@^1.1.6",
       "npm:@preact/signals@^2.9.0",
       "npm:@tailwindcss/vite@^4.1.12",
