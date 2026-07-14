@@ -2,7 +2,6 @@ import { extract as extractMarkdown } from "@std/front-matter/yaml";
 import { join } from "@std/path/posix";
 import { MarkdownContent } from "@/types/markdown.type.ts";
 import { render as renderMarkdown } from "@deno/gfm";
-import { existsSync as fileExists } from "@std/fs/exists";
 
 const DIR_CONTENT = Deno.env.get("SITE_CONTENT_DIR") || "./content";
 
@@ -41,18 +40,18 @@ export async function getContent(slug: string): Promise<MarkdownContent | null> 
 
   const contentHtml = await renderMarkdown(contentMarkdown);
 
-  console.log(
-    'getContent',
-    slug,
-    filePath,
-    fileExists(filePath),
-    extractMarkdown(fileContent),
-    {
-      attrs,
-      contentMarkdown,
-      contentHtml,
-    }
-  );
+  // console.log(
+  //   'getContent',
+  //   slug,
+  //   filePath,
+  //   fileExists(filePath),
+  //   extractMarkdown(fileContent),
+  //   {
+  //     attrs,
+  //     contentMarkdown,
+  //     contentHtml,
+  //   }
+  // );
 
   return {
     attrs,

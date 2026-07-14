@@ -1,11 +1,31 @@
 import { App, staticFiles } from "fresh";
 import { format } from "date-fns";
 import { State } from "@/utils/state.ts";
+import { MarkdownContent } from "@/types/markdown.type.ts";
 import { getContent } from "@/utils/content.ts";
+import { existsSync as fileExists } from "@std/fs/exists";
 
 export const app = new App<State>();
 
 app.use(staticFiles());
+
+// Return 200 OK for /health requests
+app.get("/health", () => {
+  return new Response(
+    `OK`,
+    {
+      status: 200,
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    }
+  );
+});
+
+// Redirect example
+// app.get("/old-url", () => {
+//   return ctx.redirect("/new-url", 307);
+// });
 
 // Pass the relevant environment variables, with suitable defaults,
 // in to the app context so they can be accessed via 'ctx.state'.
@@ -31,16 +51,23 @@ app.use(async (ctx) => {
   const dateNow: Date = new Date();
   ctx.state.SITE_BUILD_DATE = Deno.env.get("SITE_BUILD_DATE") || format(dateNow, "yyyyMMddHHmmss");
 
-  ctx.state.page = await getContent(ctx.url.pathname) || { attrs: {}, contentMarkdown: "", contentHtml: "" };
-
   console.log('ctx state after load', ctx.state);
 
   return await ctx.next();
 });
 
-// Redirect example
-// app.get("/old-url", (ctx) => {
-//   return ctx.redirect("/new-url", 307);
-// });
+app.get(":page", (ctx) => {
+// TODO: add fileExists() check here instead, 404 early
+
+  const data: MarkdownContent | null = await getContent(ctx.params.page);// Partial<MarkdownContent> | null
+
+  if (!data) {
+    return new Response("Page not found", { status: 404 });
+  }
+
+  return new Response(JSON.stringify({ data }), {
+    headers: { "Content-Type": "application/json" },
+  });
+});
 
 app.fsRoutes();
