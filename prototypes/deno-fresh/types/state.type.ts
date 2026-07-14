@@ -1,8 +1,6 @@
-import { createDefine } from "fresh";
-
-// Define the State interface which is used to shared config
+// Define the AppState interface which is used to shared config
 // via 'ctx.state' to middlewares, layouts and routes.
-export interface State {
+export interface AppState {
   SITE_AUTHOR: string;
   SITE_TITLE: string;
   SITE_DESC: string;
@@ -18,5 +16,3 @@ export interface State {
   page_slug?: string;
   page_title?: string;
 }
-
-export const define = createDefine<State>();

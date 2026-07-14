@@ -1,21 +1,8 @@
 import { extractJson } from "@std/front-matter";
 import { join } from "@std/path/posix";
+import { MarkdownContent, MarkdownFrontMatter } from "@/types/markdown.type.ts";
 
-const DIR_CONTENT = "../../content";
-
-export interface MarkdownContent {
-  url: string;
-  oldUrl?: string;
-  title: string;
-  date: Date;
-  tags?: string[];
-  content: string;
-}
-
-interface MarkdownFrontMatter {
-  attrs: MarkdownContent;
-  body: string;
-}
+const DIR_CONTENT = Deno.env.get("SITE_CONTENT_DIR") || "../../content";
 
 // Get all posts
 export async function getPosts(): Promise<MarkdownContent[]> {

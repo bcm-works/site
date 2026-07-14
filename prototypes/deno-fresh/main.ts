@@ -1,6 +1,6 @@
 import { App, staticFiles } from "fresh";
 import { format } from "date-fns";
-import { type State } from "@/utils/define.ts";
+import { State } from "@/utils/state.ts";
 
 export const app = new App<State>();
 
@@ -9,8 +9,8 @@ app.use(staticFiles());
 // Pass the relevant environment variables, with suitable defaults,
 // in to the app context so they can be accessed via 'ctx.state'.
 app.use(async (ctx) => {
-  // console.log('ctx config initial', ctx.config);
-  // console.log('ctx url initial', ctx.url);
+  console.log('ctx config initial', ctx.config);
+  console.log('ctx url initial', ctx.url);
 
   ctx.state.SITE_AUTHOR = Deno.env.get("SITE_AUTHOR") || "Brendan Murty";
   ctx.state.SITE_TITLE = Deno.env.get("SITE_TITLE") || "Public website for Brendan Murty";
@@ -32,9 +32,14 @@ app.use(async (ctx) => {
 
   ctx.state.page_slug = ctx.url.pathname || "/";
 
-  // console.log('ctx state after load', ctx.state);
+  console.log('ctx state after load', ctx.state);
 
   return await ctx.next();
 });
+
+// Redirect example
+// app.get("/old-url", (ctx) => {
+//   return ctx.redirect("/new-url", 307);
+// });
 
 app.fsRoutes();

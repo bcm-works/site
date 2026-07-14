@@ -1,12 +1,11 @@
-import { useSignal } from "@preact/signals";
 import { Head } from "fresh/runtime";
-import { define } from "@/utils/define.ts";
+import { define } from "@/utils/state.ts";
 
 export default define.page(function Home(ctx) {
-  // console.log("Shared value " + ctx.state.shared);
+  console.log('ctx.state from routes index', ctx.state);
 
   return (
-    <div class="px-4 py-8 mx-auto fresh-gradient min-h-screen">
+    <div class="px-4 py-8 mx-auto min-h-screen">
       <Head>
         <title>home</title>
       </Head>
