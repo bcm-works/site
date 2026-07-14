@@ -135,6 +135,35 @@
         ]
       }
     },
+    "design": {
+      "type": "domain",
+      "enforcement": "suggest",
+      "priority": "high",
+      "scope": "all",
+      "alwaysActivate": false,
+      "filePatterns": [
+        "src/styles/*.css",
+        "src/styles/theme.css",
+        "src/styles/site.css"
+      ],
+      "promptTriggers": {
+        "keywords": [
+          "css",
+          "style",
+          "styling",
+          "theme",
+          "design",
+          "colour",
+          "color",
+          "font",
+          "conventions",
+          "variables",
+          "visual",
+          "site"
+        ],
+        "intentPatterns": []
+      }
+    },
     "infra-deployment": {
       "type": "domain",
       "enforcement": "suggest",
@@ -161,7 +190,6 @@
           "image",
           "build/run",
           "docker-build.test",
-          "mise",
           "tasks"
         ],
         "intentPatterns": [
