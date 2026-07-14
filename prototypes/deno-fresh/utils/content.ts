@@ -31,6 +31,9 @@ export async function getContentInDir(subdir?: string): Promise<MarkdownContent[
 
 // Get an individual page or post
 export async function getContent(slug: string): Promise<MarkdownContent | null> {
+  if (!slug) return null;
+  if (slug == "/") slug = "home";
+
   const text = await Deno.readTextFile(join(DIR_CONTENT, `${slug}.md`));
   const { attrs, contentMarkdown } = extractJson(text) as unknown as MarkdownContent;
 
