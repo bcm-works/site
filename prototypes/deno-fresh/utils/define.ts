@@ -1,9 +1,20 @@
 import { createDefine } from "fresh";
 
-// This specifies the type of "ctx.state" which is used to share
-// data among middlewares, layouts and routes.
+// Define the State interface which is used to shared config
+// via 'ctx.state' to middlewares, layouts and routes.
 export interface State {
-  shared: string;
+  SITE_AUTHOR: string;
+  SITE_TITLE: string;
+  SITE_DESC: string;
+  SITE_URL: string;
+  SITE_ENV: string;
+  SITE_LOCAL: boolean;
+  SITE_LANG: string;
+  SITE_TIMEZONE: string;
+  SITE_BUILD_DATE?: string;
+  SITE_POSTHOG_ID: string;
+  SITE_POSTHOG_API_HOST: string;
+  SITE_POSTHOG_UI_HOST: string;
 }
 
 export const define = createDefine<State>();

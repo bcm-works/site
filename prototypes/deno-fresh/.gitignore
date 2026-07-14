@@ -4,6 +4,8 @@
 .env.test.local
 .env.production.local
 .env.local
+.*.env
+!.site.local.env
 
 # Fresh build directory
 _fresh/
