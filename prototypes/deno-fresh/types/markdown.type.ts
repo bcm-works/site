@@ -9,5 +9,5 @@ export interface MarkdownFrontMatter {
 export interface MarkdownContent {
   attrs: MarkdownFrontMatter;
   contentMarkdown: string;
-  contentHtml?: string;
+  contentHtml: string;
 }

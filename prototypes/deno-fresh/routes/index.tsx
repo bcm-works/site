@@ -1,3 +1,5 @@
+// deno-lint-ignore-file react-no-danger
+
 import { Head } from "fresh/runtime";
 import { define } from "@/utils/state.ts";
 
@@ -9,9 +11,7 @@ export default define.page(function Home(ctx) {
       <Head>
         <title>home</title>
       </Head>
-      <div class="max-w-screen-md mx-auto flex flex-col items-center justify-center">
-        home page
-      </div>
+      <div dangerouslySetInnerHTML={{ __html: ctx.state.page.contentHtml }} class="page-content max-w-screen-md mx-auto flex flex-col"/>
     </div>
   );
 });

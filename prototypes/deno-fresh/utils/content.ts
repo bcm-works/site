@@ -3,7 +3,7 @@ import { join } from "@std/path/posix";
 import { MarkdownContent } from "@/types/markdown.type.ts";
 import { render as renderMarkdown } from "@deno/gfm";
 
-const DIR_CONTENT = Deno.env.get("SITE_CONTENT_DIR") || "../../content";
+const DIR_CONTENT = Deno.env.get("SITE_CONTENT_DIR") || "../content";
 
 // Get all posts
 export async function getPosts(): Promise<MarkdownContent[]> {

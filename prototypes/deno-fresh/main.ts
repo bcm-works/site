@@ -1,6 +1,7 @@
 import { App, staticFiles } from "fresh";
 import { format } from "date-fns";
 import { State } from "@/utils/state.ts";
+import { getContent } from "@/utils/content.ts";
 
 export const app = new App<State>();
 
@@ -30,7 +31,7 @@ app.use(async (ctx) => {
   const dateNow: Date = new Date();
   ctx.state.SITE_BUILD_DATE = Deno.env.get("SITE_BUILD_DATE") || format(dateNow, "yyyyMMddHHmmss");
 
-  ctx.state.page_slug = ctx.url.pathname || "/";
+  ctx.state.page = await getContent(ctx.url.pathname) || { attrs: {}, contentMarkdown: "", contentHtml: "" };
 
   console.log('ctx state after load', ctx.state);
 
