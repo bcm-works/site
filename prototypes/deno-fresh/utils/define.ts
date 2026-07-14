@@ -15,6 +15,8 @@ export interface State {
   SITE_POSTHOG_ID: string;
   SITE_POSTHOG_API_HOST: string;
   SITE_POSTHOG_UI_HOST: string;
+  page_slug?: string;
+  page_title?: string;
 }
 
 export const define = createDefine<State>();

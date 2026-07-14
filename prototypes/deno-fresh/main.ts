@@ -9,6 +9,9 @@ app.use(staticFiles());
 // Pass the relevant environment variables, with suitable defaults,
 // in to the app context so they can be accessed via 'ctx.state'.
 app.use(async (ctx) => {
+  // console.log('ctx config initial', ctx.config);
+  // console.log('ctx url initial', ctx.url);
+
   ctx.state.SITE_AUTHOR = Deno.env.get("SITE_AUTHOR") || "Brendan Murty";
   ctx.state.SITE_TITLE = Deno.env.get("SITE_TITLE") || "Public website for Brendan Murty";
   ctx.state.SITE_DESC = Deno.env.get("SITE_DESC") || "Brendan is a Father, Schnitzel Reviewer, and Technical Leader.";
@@ -26,6 +29,10 @@ app.use(async (ctx) => {
   // The build date is used for static file cache refreshes
   const dateNow: Date = new Date();
   ctx.state.SITE_BUILD_DATE = Deno.env.get("SITE_BUILD_DATE") || format(dateNow, "yyyyMMddHHmmss");
+
+  ctx.state.page_slug = ctx.url.pathname || "/";
+
+  // console.log('ctx state after load', ctx.state);
 
   return await ctx.next();
 });
