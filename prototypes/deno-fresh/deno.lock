@@ -42,6 +42,7 @@
     "npm:@remix-run/node-fetch-server@0.12": "0.12.0",
     "npm:@tailwindcss/vite@^4.1.12": "4.3.2_vite@7.3.6",
     "npm:@types/babel__core@^7.20.5": "7.20.5",
+    "npm:date-fns@^4.4.0": "4.4.0",
     "npm:esbuild-wasm@~0.25.11": "0.25.12",
     "npm:esbuild@0.25.7": "0.25.7",
     "npm:esbuild@~0.25.5": "0.25.12",
@@ -1122,6 +1123,9 @@
     "convert-source-map@2.0.0": {
       "integrity": "sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg=="
     },
+    "date-fns@4.4.0": {
+      "integrity": "sha512-+1UMbeh68lH1SegH83CGWwpb6OHHbpSgr3+s5Eww5M4CAgswBpoWS0AjTOfEJ33HiYKz1hdj/KTFprzXHmq/6w=="
+    },
     "debug@4.4.3": {
       "integrity": "sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==",
       "dependencies": [
@@ -1505,6 +1509,7 @@
       "npm:@preact/signals@^2.9.0",
       "npm:@tailwindcss/vite@^4.1.12",
       "npm:@types/babel__core@^7.20.5",
+      "npm:date-fns@^4.4.0",
       "npm:preact@^10.29.1",
       "npm:tailwindcss@^4.1.10",
       "npm:vite@^7.1.3"

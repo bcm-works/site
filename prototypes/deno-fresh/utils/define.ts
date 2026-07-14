@@ -11,7 +11,7 @@ export interface State {
   SITE_LOCAL: boolean;
   SITE_LANG: string;
   SITE_TIMEZONE: string;
-  SITE_BUILD_DATE?: string;
+  SITE_BUILD_DATE?: string | number;
   SITE_POSTHOG_ID: string;
   SITE_POSTHOG_API_HOST: string;
   SITE_POSTHOG_UI_HOST: string;
