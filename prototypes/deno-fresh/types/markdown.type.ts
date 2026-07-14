@@ -7,7 +7,7 @@ export interface MarkdownFrontMatter {
 }
 
 export interface MarkdownContent {
-  attrs: MarkdownFrontMatter;
+  attrs: MarkdownFrontMatter | Record<string, unknown> | null;
   contentMarkdown: string;
   contentHtml: string;
 }

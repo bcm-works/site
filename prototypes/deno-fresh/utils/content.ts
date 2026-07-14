@@ -1,23 +1,13 @@
-import { extract as extractMarkdown } from "@std/front-matter/yaml";
 import { join } from "@std/path/posix";
 import { MarkdownContent } from "@/types/markdown.type.ts";
-import { render as renderMarkdown } from "@deno/gfm";
+import { renderWithMeta } from "@deer/gfm";
 import { existsSync as fileExists } from "@std/fs/exists";
 
-const DIR_CONTENT = Deno.env.get("SITE_CONTENT_DIR") || "./content";
-
-// Get all posts
-export async function getPosts(): Promise<MarkdownContent[]> {
-  const posts = await getContentInDir('posts') as MarkdownContent[];
-
-  posts.sort((a, b) => b.attrs.date.getTime() - a.attrs.date.getTime());
-
-  return posts;
-}
+const dirContent = Deno.env.get("SITE_CONTENT_DIR") || "./content";
 
 // Get all content within a directory
 export async function getContentInDir(subdir?: string): Promise<MarkdownContent[]> {
-  const items = Deno.readDir(subdir ? join(DIR_CONTENT, subdir) : DIR_CONTENT);
+  const items = Deno.readDir(subdir ? join(dirContent, subdir) : dirContent);
   const promises = [];
 
   for await (const item of items) {
@@ -35,18 +25,22 @@ export async function getContent(slug: string): Promise<MarkdownContent | null> 
   if (!slug) return null;
   if (slug == "/") slug = "/home";
 
-  const filePath = `${DIR_CONTENT}${slug}.md`;
+  const filePath = `${dirContent}${slug}.md`;
 
   if (!fileExists(filePath)) return null;
 
   const fileContent = await Deno.readTextFile(filePath);
-  const { attrs, contentMarkdown } = extractMarkdown(fileContent) as unknown as MarkdownContent;
 
-  const contentHtml = await renderMarkdown(contentMarkdown);
+  // const { attrs, contentMarkdown } = extractFrontmatter(fileContent) as unknown as MarkdownContent;
+  // const contentHtml = await renderMarkdown(contentMarkdown);
+
+  const { html, frontmatter } = await renderWithMeta(fileContent);
+
+  console.log('getContent', slug, filePath, fileContent);
 
   return {
-    attrs,
-    contentMarkdown,
-    contentHtml,
+    attrs: frontmatter,
+    contentMarkdown: fileContent,
+    contentHtml: html,
   };
 }
