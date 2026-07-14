@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import { State } from "@/utils/state.ts";
 import { MarkdownContent } from "@/types/markdown.type.ts";
 import { getContent } from "@/utils/content.ts";
-import { existsSync as fileExists } from "@std/fs/exists";
 
 export const app = new App<State>();
 
@@ -56,10 +55,10 @@ app.use(async (ctx) => {
   return await ctx.next();
 });
 
-app.get(":page", (ctx) => {
-// TODO: add fileExists() check here instead, 404 early
+app.get("*", async (ctx) => {
+  console.log(':page route initial ctx.url.pathname', ctx.url.pathname);
 
-  const data: MarkdownContent | null = await getContent(ctx.params.page);// Partial<MarkdownContent> | null
+  const data: MarkdownContent | null = await getContent(ctx.url.pathname);
 
   if (!data) {
     return new Response("Page not found", { status: 404 });
