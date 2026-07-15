@@ -6,8 +6,14 @@ export interface MarkdownFrontMatter {
   tags?: string[];
 }
 
-export interface MarkdownContent {
+export interface MarkdownPage {
   attrs: MarkdownFrontMatter | Record<string, unknown> | null;
   contentMarkdown: string;
   contentHtml: string;
 }
+
+export interface MarkdownContent {
+  [slug: string]: MarkdownPage;
+}
+
+export type MarkdownContentList = MarkdownContent[] | [];

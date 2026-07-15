@@ -1,7 +1,7 @@
 import { App, staticFiles } from "fresh";
 import { format } from "date-fns";
 import { State } from "@/utils/state.ts";
-import { MarkdownContent } from "@/types/markdown.type.ts";
+import { MarkdownContent, MarkdownPage } from "@/types/markdown.type.ts";
 import { getContent, getContentInDir } from "@/utils/content.ts";
 
 export const app = new App<State>();
@@ -74,14 +74,17 @@ app.get("/api/content/posts", async (_ctx) => {
 app.get("/api/content/:slug", async (ctx) => {
   console.log('/api/content/:slug route initial', ctx.url.pathname, ctx.params.slug);
 
-  const data: MarkdownContent | [] = await getContent(ctx.params.slug);
+  const slug: string = ctx.params.slug;
+  const data: MarkdownContent | [] = await getContent(slug);
 
-  if (!data) {
+  if (!data || Array.isArray(data)) {
     return new Response("Page not found", { status: 404 });
   }
 
+  const pageData: MarkdownPage = data[slug];
+
   return new Response(
-    JSON.stringify({ data }),
+    JSON.stringify({ pageData }),
     {
       headers: { "Content-Type": "application/json" },
       status: 200,
