@@ -91,25 +91,5 @@ app.get("/api/page/:slug", async (ctx) => {
   );
 });
 
-// Handle other non-static file requests
-app.get("*", async (ctx) => {
-  const slug: string = ctx.url.pathname || "/";
-  const data: MarkdownContent | [] = await getContent(ctx.url.pathname);
-
-  if (!data || Array.isArray(data)) {
-    return new Response("Page not found", { status: 404 });
-  }
-
-  const pageData: MarkdownPage = data[slug];
-
-  return new Response(
-    JSON.stringify({ pageData }),
-    {
-      headers: { "Content-Type": "application/json" },
-      status: 200,
-    }
-  );
-});
-
 // Handle static file requests
 app.fsRoutes();

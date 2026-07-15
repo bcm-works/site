@@ -1,4 +1,4 @@
-import { MarkdownContent } from "@/types/markdown.type.ts";
+import { MarkdownPage } from "@/types/markdown.type.ts";
 
 // Define the AppState interface which is used to shared config
 // via 'ctx.state' to middlewares, layouts and routes.
@@ -15,5 +15,5 @@ export interface AppState {
   SITE_POSTHOG_ID: string;
   SITE_POSTHOG_API_HOST: string;
   SITE_POSTHOG_UI_HOST: string;
-  page: MarkdownContent | { attrs: Record<PropertyKey, never>, contentMarkdown: "", contentHtml: "" };
+  page?: MarkdownPage;
 }
