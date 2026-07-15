@@ -1,7 +1,7 @@
 import { App, staticFiles } from "fresh";
 import { format } from "date-fns";
 import { State } from "@/utils/state.ts";
-import { MarkdownContent, MarkdownPage } from "@/types/markdown.type.ts";
+import { MarkdownContent, MarkdownContentList, MarkdownPage } from "@/types/markdown.type.ts";
 import { getContent, getContentInDir } from "@/utils/content.ts";
 
 export const app = new App<State>();
@@ -45,9 +45,9 @@ app.use(async (ctx) => {
   return await ctx.next();
 });
 
-// /api/pages - Get all page attrs and contents in a dir
+// Get a list of all pages content
 app.get("/api/pages", async (_ctx) => {
-  const data: MarkdownContent[] | null = await getContentInDir();
+  const data: MarkdownContentList = await getContentInDir();
 
   return new Response(
     JSON.stringify({ data }),
@@ -58,9 +58,9 @@ app.get("/api/pages", async (_ctx) => {
   );
 });
 
-// /api/posts - Get all post attrs and contents
+// Get a list of all posts content
 app.get("/api/posts", async (_ctx) => {
-  const data: MarkdownContent[] | null = await getContentInDir('posts');
+  const data: MarkdownContentList = await getContentInDir('posts');
 
   return new Response(
     JSON.stringify({ data }),
@@ -71,9 +71,8 @@ app.get("/api/posts", async (_ctx) => {
   );
 });
 
+// Get content of a specific page
 app.get("/api/page/:slug", async (ctx) => {
-  console.log('/api/page/:slug route initial', ctx.url.pathname, ctx.params.slug);
-
   const slug: string = ctx.params.slug;
   const data: MarkdownContent | [] = await getContent(slug);
 
@@ -92,17 +91,25 @@ app.get("/api/page/:slug", async (ctx) => {
   );
 });
 
-// /* - Handle all other non-static file requests
-// app.get("*", async (ctx) => {
-//   console.log('* route initial ctx.url.pathname', ctx.url.pathname);
-//   const data: MarkdownContent | [] = await getContent(ctx.url.pathname);
-//   if (!data) {
-//     return new Response("Page not found", { status: 404 });
-//   }
-//   return new Response(JSON.stringify({ data }), {
-//     headers: { "Content-Type": "application/json" },
-//   });
-// });
+// Handle other non-static file requests
+app.get("*", async (ctx) => {
+  const slug: string = ctx.url.pathname || "/";
+  const data: MarkdownContent | [] = await getContent(ctx.url.pathname);
+
+  if (!data || Array.isArray(data)) {
+    return new Response("Page not found", { status: 404 });
+  }
+
+  const pageData: MarkdownPage = data[slug];
+
+  return new Response(
+    JSON.stringify({ pageData }),
+    {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    }
+  );
+});
 
 // Handle static file requests
 app.fsRoutes();
