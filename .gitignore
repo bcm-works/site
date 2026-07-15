@@ -21,8 +21,9 @@ dist/
 
 *.log
 
-# aspens graph artifacts (generated — do not commit)
+# Aspens
+
+.aspens/sessions/
 .claude/graph.json
 .claude/graph-index.json
 .claude/code-map.md
-dev/

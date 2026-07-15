@@ -19,5 +19,6 @@ nvm install-latest-npm > /dev/null 2>&1
 mise run msg-info 'Installing Aspens'
 
 npm install -g aspens > /dev/null 2>&1
+mkdir -p .aspens/sessions
 
 mise run msg-warn 'Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai'
