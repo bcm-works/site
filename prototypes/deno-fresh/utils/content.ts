@@ -3,40 +3,39 @@ import { MarkdownContent } from "@/types/markdown.type.ts";
 import { renderWithMeta } from "@deer/gfm";
 import { existsSync as fileExists } from "@std/fs/exists";
 
-const dirContent = Deno.env.get("SITE_CONTENT_DIR") || "./content";
+export const SITE_CONTENT_DIR = Deno.env.get("SITE_CONTENT_DIR") || "./content";
 
 // Get all content within a directory
-export async function getContentInDir(subdir?: string): Promise<MarkdownContent[]> {
-  const items = Deno.readDir(subdir ? join(dirContent, subdir) : dirContent);
-  const promises = [];
+export async function getContentInDir(subdir?: string): Promise<MarkdownContent[] | []> {
+  const dirPath = subdir ? join(SITE_CONTENT_DIR, subdir) : SITE_CONTENT_DIR;
+
+  if (!fileExists(dirPath)) return [];
+
+  const items = Deno.readDir(dirPath);
+  const output = [];
 
   for await (const item of items) {
     if (item.isFile) {
       const slug = item.name.replace(".md", "");
-      promises.push(getContent(slug));
+      const content = await getContent(slug);
+      output.push(content);
     }
   }
 
-  return await Promise.all(promises) as MarkdownContent[];
+  return await output as MarkdownContent[];
 }
 
 // Get an individual page or post
-export async function getContent(slug: string): Promise<MarkdownContent | null> {
-  if (!slug) return null;
+export async function getContent(slug: string): Promise<MarkdownContent | []> {
+  if (!slug) return [];
   if (slug == "/") slug = "/home";
 
-  const filePath = `${dirContent}${slug}.md`;
+  const filePath = join(SITE_CONTENT_DIR, slug) + '.md';
 
-  if (!fileExists(filePath)) return null;
+  if (!fileExists(filePath)) return [];
 
   const fileContent = await Deno.readTextFile(filePath);
-
-  // const { attrs, contentMarkdown } = extractFrontmatter(fileContent) as unknown as MarkdownContent;
-  // const contentHtml = await renderMarkdown(contentMarkdown);
-
   const { html, frontmatter } = await renderWithMeta(fileContent);
-
-  console.log('getContent', slug, filePath, fileContent);
 
   return {
     attrs: frontmatter,

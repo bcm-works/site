@@ -2,13 +2,13 @@ import { App, staticFiles } from "fresh";
 import { format } from "date-fns";
 import { State } from "@/utils/state.ts";
 import { MarkdownContent } from "@/types/markdown.type.ts";
-import { getContent } from "@/utils/content.ts";
+import { getContent, getContentInDir } from "@/utils/content.ts";
 
 export const app = new App<State>();
 
 app.use(staticFiles());
 
-// Return 200 OK for /health requests
+// /health - Health check, return 200 OK
 app.get("/health", () => {
   return new Response(
     `OK`,
@@ -21,17 +21,9 @@ app.get("/health", () => {
   );
 });
 
-// Redirect example
-// app.get("/old-url", () => {
-//   return ctx.redirect("/new-url", 307);
-// });
-
-// Pass the relevant environment variables, with suitable defaults,
+// Load the relevant environment variables, with suitable defaults,
 // in to the app context so they can be accessed via 'ctx.state'.
 app.use(async (ctx) => {
-  console.log('ctx config initial', ctx.config);
-  console.log('ctx url initial', ctx.url);
-
   ctx.state.SITE_AUTHOR = Deno.env.get("SITE_AUTHOR") || "Brendan Murty";
   ctx.state.SITE_TITLE = Deno.env.get("SITE_TITLE") || "Public website for Brendan Murty";
   ctx.state.SITE_DESC = Deno.env.get("SITE_DESC") || "Brendan is a Father, Schnitzel Reviewer, and Technical Leader.";
@@ -50,23 +42,64 @@ app.use(async (ctx) => {
   const dateNow: Date = new Date();
   ctx.state.SITE_BUILD_DATE = Deno.env.get("SITE_BUILD_DATE") || format(dateNow, "yyyyMMddHHmmss");
 
-  console.log('ctx state after load', ctx.state);
-
   return await ctx.next();
 });
 
-app.get("*", async (ctx) => {
-  console.log(':page route initial ctx.url.pathname', ctx.url.pathname);
+// /api/content/pages - Get all page attrs and contents in a dir
+app.get("/api/content/pages", async (_ctx) => {
+  const data: MarkdownContent[] | null = await getContentInDir();
 
-  const data: MarkdownContent | null = await getContent(ctx.url.pathname);
+  return new Response(
+    JSON.stringify({ data }),
+    {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    }
+  );
+});
+
+// /api/content/posts - Get all post attrs and contents
+app.get("/api/content/posts", async (_ctx) => {
+  const data: MarkdownContent[] | null = await getContentInDir('posts');
+
+  return new Response(
+    JSON.stringify({ data }),
+    {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    }
+  );
+});
+
+app.get("/api/content/:slug", async (ctx) => {
+  console.log('/api/content/:slug route initial', ctx.url.pathname, ctx.params.slug);
+
+  const data: MarkdownContent | [] = await getContent(ctx.params.slug);
 
   if (!data) {
     return new Response("Page not found", { status: 404 });
   }
 
-  return new Response(JSON.stringify({ data }), {
-    headers: { "Content-Type": "application/json" },
-  });
+  return new Response(
+    JSON.stringify({ data }),
+    {
+      headers: { "Content-Type": "application/json" },
+      status: 200,
+    }
+  );
 });
 
+// /* - Handle all other non-static file requests
+// app.get("*", async (ctx) => {
+//   console.log('* route initial ctx.url.pathname', ctx.url.pathname);
+//   const data: MarkdownContent | [] = await getContent(ctx.url.pathname);
+//   if (!data) {
+//     return new Response("Page not found", { status: 404 });
+//   }
+//   return new Response(JSON.stringify({ data }), {
+//     headers: { "Content-Type": "application/json" },
+//   });
+// });
+
+// Handle static file requests
 app.fsRoutes();
