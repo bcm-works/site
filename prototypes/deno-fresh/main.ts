@@ -45,8 +45,8 @@ app.use(async (ctx) => {
   return await ctx.next();
 });
 
-// /api/content/pages - Get all page attrs and contents in a dir
-app.get("/api/content/pages", async (_ctx) => {
+// /api/pages - Get all page attrs and contents in a dir
+app.get("/api/pages", async (_ctx) => {
   const data: MarkdownContent[] | null = await getContentInDir();
 
   return new Response(
@@ -58,8 +58,8 @@ app.get("/api/content/pages", async (_ctx) => {
   );
 });
 
-// /api/content/posts - Get all post attrs and contents
-app.get("/api/content/posts", async (_ctx) => {
+// /api/posts - Get all post attrs and contents
+app.get("/api/posts", async (_ctx) => {
   const data: MarkdownContent[] | null = await getContentInDir('posts');
 
   return new Response(
@@ -71,8 +71,8 @@ app.get("/api/content/posts", async (_ctx) => {
   );
 });
 
-app.get("/api/content/:slug", async (ctx) => {
-  console.log('/api/content/:slug route initial', ctx.url.pathname, ctx.params.slug);
+app.get("/api/page/:slug", async (ctx) => {
+  console.log('/api/page/:slug route initial', ctx.url.pathname, ctx.params.slug);
 
   const slug: string = ctx.params.slug;
   const data: MarkdownContent | [] = await getContent(slug);
