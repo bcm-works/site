@@ -19,6 +19,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
+- [src/styles/theme.css](src/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
 - [.aspens.json](.aspens.json) - Project config for [Aspens](https://github.com/aspenkit/aspens)
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
