@@ -4,7 +4,7 @@
 
 mise run msg-info 'Installing the Railway CLI'
 
-curl -fsSL agents.railway.com | sh
+bash <(curl -fsSL railway.com/install.sh)
 
 mise run msg-info 'Configuring Railway CLI'
 
