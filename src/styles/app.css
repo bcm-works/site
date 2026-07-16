@@ -1,0 +1,57 @@
+/* PAGE TRANSITION ANIMATIONS */
+
+@view-transition {
+  navigation: auto;
+  types: slide;
+}
+
+@media (prefers-reduced-motion) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* SCROLLBARS */
+
+body {
+  scrollbar-color: var(--secondary-colour) var(--background-colour);
+  scrollbar-width: thin;
+}
+
+/* LAYOUT */
+
+html {
+  -webkit-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-weight: 400;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-family: var(--font-family-body);
+  padding: 0;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  min-width: 350px;
+  background-color: var(--background-colour);
+  color: var(--foreground-colour);
+}
+
+article {
+  width: 100%;
+  margin: 0 auto;
+  min-width: 350px;
+  float: left;
+  box-sizing: border-box;
+}
+
+.full {
+  width: 100%;
+}

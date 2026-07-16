@@ -55,6 +55,17 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
   person_profiles: 'always',
 })
 </script>{% endif %}
+<script type="speculationrules">
+{
+  "prerender": [
+    {
+      "source": "document",
+      "where": { "and": [{ "href_matches": "/*" }, { "not": { "href_matches": "/*.pdf" } }] },
+      "eagerness": "moderate"
+    }
+  ]
+}
+</script>
 </head>
 <body class="env-{{ SITE_ENV }}{% if body_class %} {{ body_class }}{% endif %}">
   <div class="layout-wrapper">
