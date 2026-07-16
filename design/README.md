@@ -1,4 +1,8 @@
-# Designs
+# Design
+
+## Design Guidelines
+
+Refer to [docs/DESIGN.md](../docs/DESIGN.md).
 
 ## Page Layouts
 
