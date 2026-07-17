@@ -73,7 +73,7 @@ jobs:
         run: deno task test
 
   release-docker:
-    name: Push to Docker Hub
+    name: Push to GitHub Packages
     needs: [release-build-test]
     runs-on: ubuntu-latest
     environment:
@@ -92,8 +92,9 @@ jobs:
       - name: Docker Hub login
         uses: docker/login-action@v4
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Setup QEMU
         uses: docker/setup-qemu-action@v4
       - name: Setup Docker Buildx

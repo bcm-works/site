@@ -80,7 +80,7 @@ tasks
 11. Setup your GitHub Actions Secrets by following the steps in [.site.github.env](.site.github.env)
 12. Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/)
 
-## Usage
+## Deno Tasks
 
 - `deno task setup`: Local environment setup.
 - `deno task build`: Build the site and organise the required assets.
@@ -99,4 +99,4 @@ tasks
 
 Releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
 
-This script includes a push to this project's [Docker Repository](https://hub.docker.com/r/brendanmurty/bcm-site), which will trigger [Railway](https://railway.com/) to update the environment automatically.
+This script includes build and push of a new Docker Image to this project's [GitHub Packages](https://github.com/users/bcm-works/packages?repo_name=site), which will trigger [Railway](https://railway.com/) to update the environment automatically.
