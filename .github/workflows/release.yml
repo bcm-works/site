@@ -104,7 +104,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v6
         with:
-          images: ghcr.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}
+          images: ghcr.io/${{ github.repository }}
           tags: |
             latest
             branch-${{ github.ref_name }}
