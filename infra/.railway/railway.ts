@@ -5,7 +5,7 @@ export default defineRailway(() => {
     source: image("ghcr.io/bcm-works/site:latest"),
     healthcheck: "/health",
     replicas: 1,
-    deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } } },
+    deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } }, registryCredentials: { password: "*****", username: "*****" } },
     domains: ["bcm.works", "murty.au", "www.bcm.works", "www.murty.au"],
     env: {
       SITE_AUTHOR: preserve(),
