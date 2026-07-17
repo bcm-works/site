@@ -2,7 +2,7 @@ import { defineRailway, image, preserve, project, service } from "railway/iac";
 
 export default defineRailway(() => {
   const bcmSite = service("bcm-site", {
-    source: image("brendanmurty/bcm-site:latest"),
+    source: image("ghcr.io/bcm-works/site:latest"),
     healthcheck: "/health",
     replicas: 1,
     deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } } },
