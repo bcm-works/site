@@ -30,7 +30,7 @@ Deno + TypeScript | Lume 3.2.6 (Nunjucks templates) | Docker | Mise (task runner
 - Build runs under `TZ="$SITE_TIMEZONE"` — dates in output depend on it.
 - Minimal, "why"-only comments. 2-space indent, line width 100, semicolons required, no tabs.
 - **The CLAUDE.md/AGENTS.md prose about `bin/build.sh` and a `tools-reset.css`/`media-screen-*` CSS order is STALE.** There is no `bin/` dir. Verify against `.mise/tasks/build` before acting.
-- `prototypes/` (deno-fresh experiments) are **not** the site — ignore for site work despite ranking high in the import graph.
+- `prototypes/` (deno-fresh and eleventy experiments) are **not** the site — ignore for site work despite ranking high in the import graph.
 
 ## Structure
 - `content/` — Markdown pages/posts/tags with YAML frontmatter (source of truth for content)
@@ -40,4 +40,4 @@ Deno + TypeScript | Lume 3.2.6 (Nunjucks templates) | Docker | Mise (task runner
 - `assets/`, `docs/`, `design/` — static files, docs, design refs
 
 ---
-**Last Updated:** 2026-07-13
+**Last Updated:** 2026-07-17
