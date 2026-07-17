@@ -59,44 +59,18 @@ This repository uses [Mise](https://mise.en.dev/) to apply config and run comman
 
 Some command aliases are set in [.mise/config.toml](.mise/config.toml) that are available in terminal sessions in this directory after running the `setup-tools` command above.
 
-To list all of the available tasks, run the alias command:
+To list all of the available Mise tasks, run the alias command:
 
 ```bash
 tasks
 ```
 
-## Initial Setup
-
-1. Fork this repository
-2. Make a local clone of that forked repository, apply the below updates
-3. Install the [latest stable release of Deno](https://deno.com/)
-4. Run the setup script: `deno task setup`
-5. Update GitHub repository references in the files to use your forked GitHub repository URL instead
-6. All files in the `content` directory **must** contain your own content instead
-7. All files in the `assets` directory **must** contain your own static files instead
-8. Purchase your own license to use the [Mass-Driver IO font](https://io.mass-driver.com/) or update the CSS to use other fonts
-9. Commit and push all of these changes to your forked repository
-10. Setup your local development environment by copying [.site.local.env](.site.local.env) to `.site.env` and then update `.site.env` to match your site
-11. Setup your GitHub Actions Secrets by following the steps in [.site.github.env](.site.github.env)
-12. Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/)
-
-## Deno Tasks
-
-- `deno task setup`: Local environment setup.
-- `deno task build`: Build the site and organise the required assets.
-- `deno task start`: Start a local web server.
-- `deno task test`: Run all Deno Test scripts in the 'src' directory.
-- `deno task install`: Install third-party dependencies.
-- `deno task update`: Update third-party dependencies.
-- `deno task clean`: Run code cleanup tools.
-- `deno task lume`: Run a Lume command.
-- `deno task new-post`: Generate a Markdown file for a new post item.
-- `deno task docker-build`: Run the Docker Image build process.
-- `deno task docker-start`: Start the Docker Container.
-- `deno task docker-stop`: Stop the Docker Container.
-
 ## Deployment
 
-Releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
+Setup GitHub Actions Secrets by following the steps in [.site.github.env](.site.github.env).
 
-This script includes build and push of a new Docker Image to this project's [GitHub Packages](https://github.com/users/bcm-works/packages?repo_name=site), which will trigger [Railway](https://railway.com/) to update the environment automatically.
+Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/).
+
+Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
+
+This includes building and pushing a new Docker Image to [GitHub Packages](https://github.com/bcm-works/site/pkgs/container/site), which will then automatically trigger a deployment via [Railway](https://railway.com/).

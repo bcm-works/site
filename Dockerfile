@@ -6,6 +6,7 @@ LABEL maintainer="Brendan Murty"
 LABEL org.opencontainers.image.authors="Brendan Murty"
 LABEL org.opencontainers.image.source="https://github.com/bcm-works/site"
 LABEL org.opencontainers.image.url="https://github.com/bcm-works/site"
+LABEL org.opencontainers.image.description="Static web server hosting the public website at bcm.works"
 LABEL org.opencontainers.image.licenses=MIT
 
 # Apply security updates and install required system packages.
