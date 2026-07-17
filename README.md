@@ -66,9 +66,7 @@ tasks
 
 ## Deployment
 
-Setup GitHub Actions Secrets by following the steps in [.site.github.env](.site.github.env).
-
-Setup online infrastructure via [Railway](https://railway.com/) by folllowing directions in [src/infra](../src/infra/).
+Setup [GitHub Actions](https://github.com/features/actions) and [Railway](https://railway.com/) by completing the `Initial Setup` section from [infra/README.md](infra/README.md).
 
 Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
 

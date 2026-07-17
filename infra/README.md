@@ -6,10 +6,16 @@ For available options, refer to the [railway package on NPM](https://www.npmjs.c
 
 ## Initial Setup
 
+Setup required dev tools:
+
 ```bash
 mise run setup-tools
 mise run setup-infra
 ```
+
+Setup GitHub Actions Secrets by following the steps in [.site.github.env](.site.github.env).
+
+Setup a new Railway project, with the environment variables detailed in [.site.railway.env](.site.railway.env).
 
 ## Node Scripts
 
