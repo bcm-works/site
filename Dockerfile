@@ -2,6 +2,12 @@
 FROM denoland/deno:alpine AS build
 WORKDIR /app
 
+LABEL maintainer="Brendan Murty"
+LABEL org.opencontainers.image.authors="Brendan Murty"
+LABEL org.opencontainers.image.source="https://github.com/bcm-works/site"
+LABEL org.opencontainers.image.url="https://github.com/bcm-works/site"
+LABEL org.opencontainers.image.licenses=MIT
+
 # Apply security updates and install required system packages.
 RUN apk update && \
     apk add --no-cache --upgrade openssl busybox ssl_client && \
