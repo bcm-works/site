@@ -40,7 +40,6 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 The systems in this repository assume that your local machine:
 
-- Is running a Debian-based Linux OS
 - Has an up-to-date version of [Mise](https://mise.en.dev/) installed and ready
 - Has an up-to-date version of [Homebrew](https://brew.sh/) installed and ready
 - Has an up-to-date version of [Docker CLI](https://docs.docker.com/desktop/) installed and ready
