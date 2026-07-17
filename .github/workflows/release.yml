@@ -111,6 +111,14 @@ jobs:
             commit-${{ needs.release-build-test.outputs.COMMIT }}
             release-${{ needs.release-build-test.outputs.TIMESTAMP }}
           labels: |
+            maintainer=${{ secrets.SITE_AUTHOR }}
+            org.opencontainers.image.licenses=MIT
+            org.opencontainers.image.title=${{ secrets.SITE_TITLE }}
+            org.opencontainers.image.description=${{ secrets.SITE_DESC }}
+            org.opencontainers.image.authors=${{ secrets.SITE_AUTHOR }}
+            org.opencontainers.image.vendor=${{ secrets.SITE_AUTHOR }}
+            org.opencontainers.image.url=${{ secrets.SITE_REPO }}
+            org.opencontainers.image.source=${{ secrets.SITE_REPO }}
             org.opencontainers.image.version=${{ needs.release-build-test.outputs.TIMESTAMP }}
             org.opencontainers.image.revision=${{ needs.release-build-test.outputs.COMMIT }}
       - name: Build and push Docker Image
