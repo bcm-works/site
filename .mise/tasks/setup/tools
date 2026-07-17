@@ -49,9 +49,6 @@ else
   nvm install-latest-npm > /dev/null 2>&1
 fi
 
-mise run msg-info 'Installing markdownlint'
-brew install markdownlint-cli > /dev/null 2>&1
-
 mise run msg-info 'Installing AI tools'
 mise run ai-install
 

@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Cleanup Markdown content using MarkdownLint"
-
-mise run msg-info 'Running MarkdownLint processing for all Markdown files'
-
-markdownlint --config markdown-lint.yml --fix *.md docs/ **/*.md

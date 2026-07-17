@@ -25,7 +25,6 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
-- [markdown-lint.yml](markdown-lint.yml) - Configuration for [MarkdownLint](https://github.com/igorshubovych/markdownlint-cli).
 
 ## Tech Stack
 
