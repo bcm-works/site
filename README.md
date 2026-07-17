@@ -4,7 +4,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 ## Status
 
-[![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/release.yml?style=flat-square&logo=github&label=Release%20Status&labelColor=444444)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Website%20Uptime&labelColor=444444)](https://github.com/bcm-works/status) [![Docker Image](https://img.shields.io/badge/latest-Docker%20Image?style=flat-square&logo=docker&label=Docker%20Image&labelColor=444444&color=2986ff)](https://github.com/users/bcm-works/packages?repo_name=site)
+[![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/release.yml?style=flat-square&logo=github&label=Release%20Status&labelColor=444444)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Website%20Uptime&labelColor=444444)](https://github.com/bcm-works/status) [![Docker Image](https://img.shields.io/badge/latest-Docker%20Image?style=flat-square&logo=docker&label=Docker%20Image&labelColor=444444&color=2986ff)](https://github.com/users/bcm-works/packages/container/package/site)
 
 ## Structure
 
