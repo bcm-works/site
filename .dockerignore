@@ -1,8 +1,18 @@
+.aspens/
+.claude/
+.github/
+.zed/
+design/
+docs/
+infra/
+prototypes/
+
 build/
 public/
 
 .*.env
 .env
+*.env
 .env.*
 
 .DS_Store
