@@ -137,7 +137,7 @@ li {
   width: 84px;
   height: 84px;
   border-radius: 50%;
-  border: 2px solid var(--colour-secondary);
+  border: 1px solid var(--colour-secondary);
   margin-right: 6px;
 }
 
