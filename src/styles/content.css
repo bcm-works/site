@@ -337,8 +337,8 @@ ul.listing.posts .post-date {
   padding: 20px 20px 20px 50px;
   position: relative;
   border-radius: 4px;
-  background-color: var(--colour-black);
-  color: var(--colour-white);
+  background-color: var(--colour-tertiary);
+  color: var(--colour-highlight);
 }
 
 .content-body blockquote p:last-child {
@@ -352,7 +352,7 @@ ul.listing.posts .post-date {
   font: var(--fa-font-solid);
   content: '\f10d';
   font-size: 26px;
-  color: var(--colour-white);
+  color: var(--colour-secondary);
   position: absolute;
   top: 15px;
   left: 15px;
@@ -362,7 +362,7 @@ ul.listing.posts .post-date {
 .content-body strong,
 .content-body p code {
   background-color: var(--colour-tertiary);
-  color: var(--colour-white);
+  color: var(--colour-highlight);
   padding: 2px 4px;
   font-style: normal;
 }
@@ -372,7 +372,7 @@ ul.listing.posts .post-date {
 pre code.hljs {
   padding: 15px 20px;
   margin: 0 0 20px;
-  background-color: var(--colour-black);
+  background-color: var(--colour-tertiary);
 }
 
 /* RESPONSIVE OVERRIDES */

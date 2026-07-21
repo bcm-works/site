@@ -30,29 +30,21 @@ After this process is completed, you'll have Git installed locally.
 
 Open the `Crosh Window` app and open the Linux Shell:
 
-```bash
 > shell
-```
 
 Install [Vim](http://vim.wikia.com/wiki/Vim_Tips_Wiki) so you can edit files and Git commit messages via the Terminal:
 
-```bash
-crew install vim keep
-```
+> crew install vim keep
 
 Commands to set basic Git settings and set Vim as the default Git editor:
 
-```bash
-git config --global user.email "your.email@sample.com"
-git config --global user.name "Your Name"
-git config --global core.editor "vim"
-```
+> git config --global user.email "your.email@sample.com"
+  git config --global user.name "Your Name"
+  git config --global core.editor "vim"
 
 Configure Vim to work with the Chromebook device by editing the `~/.vimrc` file to include:
 
-```bash
-set nocompatible
-```
+> set nocompatible
 
 You might also want to [add more Vim settings](http://vim.wikia.com/wiki/Example_vimrc) to suit your needs. These will set the default settings for Vim when you edit files.
 
@@ -62,10 +54,7 @@ You're now ready to [git clone](http://git-scm.com/docs/git-clone) a code reposi
 
 To create a shortcut command called `cdgit` for getting to a Git folder on an SD card, add the following to the end of the `~/.bashrc` file:
 
-```bash
-# Change directory to the Git folder on the SD card
-alias cdgit='cd /media/removable/SD\ Card/Git'
-```
+> alias cdgit='cd /media/removable/SD\ Card/Git'
 
 To avoid the annoying system beep on startup while in `Developer Mode`, just press `Ctrl + D` when the `OS verification is OFF` screen is shown.
 

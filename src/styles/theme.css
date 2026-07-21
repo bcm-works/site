@@ -9,9 +9,10 @@
   --colour-foreground: var(--colour-black);
   --colour-secondary: #08443C;
   --colour-tertiary: #0F8172;
+
   --code-function-colour: var(--colour-highlight);
   --code-string-colour: var(--colour-foreground);
-  --code-background-colour: var(--colour-background);
+  --code-background-colour: var(--colour-tertiary);
   --code-other-colour: var(--colour-secondary);
 
   /* FONTS */
