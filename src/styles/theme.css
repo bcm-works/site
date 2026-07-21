@@ -13,6 +13,7 @@
   --font-family-quote: var(--font-family-code);
   --font-size-body: 20px;
   --line-height-body: 32px;
+  --content-max-width: 900px;
   --code-function-colour: var(--highlight-colour);
   --code-string-colour: var(--foreground-colour);
   --code-background-colour: var(--background-colour);

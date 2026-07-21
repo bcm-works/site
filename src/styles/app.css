@@ -47,11 +47,5 @@ body {
 article {
   width: 100%;
   margin: 0 auto;
-  min-width: 350px;
-  float: left;
   box-sizing: border-box;
-}
-
-.full {
-  width: 100%;
 }
