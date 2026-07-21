@@ -70,44 +70,26 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 <body class="env-{{ SITE_ENV }}{% if body_class %} {{ body_class }}{% endif %}">
   <div class="layout-wrapper">
     <aside class="header" data-pagefind-ignore>
-      <div class="header-brand">
-        <a href="/" class="brand-link" title="Go to the home page">
-          <img class="header-avatar" alt="{{ SITE_AUTHOR }}" width="150" height="150" src="/images/brendan/profile/brendan_150.webp"/>
-          <span class="brand-name">{{ SITE_AUTHOR }}</span>
+      <div class="header-title">
+        <a href="/" class="site-link" title="Go to the home page">
+          <img class="site-avatar" alt="{{ SITE_AUTHOR }}" width="150" height="150" src="/images/brendan/profile/brendan_150.webp"/>
+          <span class="site-name">{{ SITE_AUTHOR }}</span>
         </a>
       </div>
 
       <nav class="header-nav">
         <ul>
-          <li>
-            <a href="/" title="Go to the home page" class="nav-link{% if url == '/' %} active{% endif %}">
-              <span class="nav-icon fa-fw fa-solid fa-house"></span>
-              <span class="nav-text">Home</span>
-            </a>
+          <li class="nav-link{% if url == '/' %} active{% endif %}">
+            <a href="/" title="Go to the home page">Home</a>
           </li>
-          <li>
-            <a href="/posts/" title="View all posts" class="nav-link{% if '/posts/' in url %} active{% endif %}">
-              <span class="nav-icon fa-fw fa-solid fa-file-lines"></span>
-              <span class="nav-text">Posts</span>
-            </a>
+          <li class="nav-link{% if '/posts/' in url %} active{% endif %}">
+            <a href="/posts/" title="View all posts">Posts</a>
           </li>
-          <li>
-            <a href="/tags/" title="View all tags" class="nav-link{% if '/tags/' in url %} active{% endif %}">
-              <span class="nav-icon fa-fw fa-solid fa-tags"></span>
-              <span class="nav-text">Tags</span>
-            </a>
+          <li class="nav-link{% if '/tags/' in url %} active{% endif %}">
+            <a href="/tags/" title="View all tags">Tags</a>
           </li>
-          <li>
-            <a href="/resume.pdf" download="Resume - Brendan Murty.pdf" title="Download my resume" class="nav-link">
-              <span class="nav-icon fa-fw fa-solid fa-address-card"></span>
-              <span class="nav-text">Resume</span>
-            </a>
-          </li>
-          <li>
-            <a href="/search/" title="Search this website" class="nav-link{% if '/search/' in url %} active{% endif %}">
-              <span class="nav-icon fa-fw fa-solid fa-magnifying-glass"></span>
-              <span class="nav-text">Search</span>
-            </a>
+          <li class="nav-link{% if '/search/' in url %} active{% endif %}">
+            <a href="/search/" title="Search this website">Search</a>
           </li>
         </ul>
       </nav>

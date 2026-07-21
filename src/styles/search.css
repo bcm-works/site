@@ -1,13 +1,13 @@
 :root {
   --pagefind-ui-scale: 1.0;
-  --pagefind-ui-primary: var(--colour-highlight);
+  --pagefind-ui-primary: var(--colour-secondary);
   --pagefind-ui-text: var(--colour-foreground);
   --pagefind-ui-background: var(--colour-background);
   --pagefind-ui-border: var(--colour-secondary);
   --pagefind-ui-tag: var(--colour-secondary);
   --pagefind-ui-border-width: 2px;
-  --pagefind-ui-border-radius: 8px;
-  --pagefind-ui-image-border-radius: 8px;
+  --pagefind-ui-border-radius: 4px;
+  --pagefind-ui-image-border-radius: 4px;
   --pagefind-ui-image-box-ratio: 3 / 2;
   --pagefind-ui-font: var(--font-family-body);
 }
@@ -25,5 +25,6 @@
 }
 
 #search .pagefind-ui__result mark {
-  background-color: var(--colour-highlight);
+  background-color: var(--colour-secondary);
+  color: var(--colour-white);
 }

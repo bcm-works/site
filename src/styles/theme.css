@@ -7,8 +7,8 @@
   --colour-highlight: var(--colour-black);
   --colour-background: #15A290;
   --colour-foreground: var(--colour-black);
-  --colour-secondary: #08443c;
-  --colour-tertiary: var(--colour-secondary);
+  --colour-secondary: #08443C;
+  --colour-tertiary: #0F8172;
   --code-function-colour: var(--colour-highlight);
   --code-string-colour: var(--colour-foreground);
   --code-background-colour: var(--colour-background);
