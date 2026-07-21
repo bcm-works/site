@@ -111,6 +111,10 @@ li {
   box-sizing: border-box;
 }
 
+.header-wrapper {
+  background-color: var(--colour-tertiary);
+}
+
 .header-title {
   margin: 0;
 }
@@ -125,21 +129,16 @@ li {
 }
 
 .site-avatar {
-  width: 44px;
-  height: 44px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 2px solid var(--colour-highlight);
-  box-shadow: 0 0 10px rgba(35, 197, 176, 0.1);
-  transition: box-shadow 0.2s ease;
-}
-
-.site-link:hover .site-avatar {
-  box-shadow: 0 0 20px var(--colour-highlight);
+  margin-right: 6px;
 }
 
 .site-name {
   font-family: var(--font-family-header);
-  font-size: 22px;
+  font-size: 28px;
   line-height: 1.2;
   font-weight: 500;
 }
@@ -155,7 +154,7 @@ li {
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 20px;
+  gap: 32px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -183,7 +182,7 @@ li {
 
 .header-nav .nav-link:hover {
   color: var(--colour-foreground);
-  text-decoration: underline wavy var(--colour-tertiary) 2px;
+  text-decoration: underline wavy var(--colour-secondary) 2px;
   text-underline-offset: 6px;
 }
 
@@ -237,7 +236,7 @@ li {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 32px 32px;
+  padding: 32px;
   box-sizing: border-box;
 }
 
@@ -309,18 +308,15 @@ ul.listing.posts .post-date {
   padding: 0 10px;
   height: 35px;
   line-height: 35px;
-  background-color: var(--colour-secondary);
-  border: 1px solid var(--colour-secondary);
+  background-color: var(--colour-tertiary);
   border-radius: 4px;
-  font-size: 13px;
-  font-family: var(--font-family-code);
-  color: var(--colour-white);
+  font-size: 16px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .tag-list li a .icon-tag {
-  color: var(--colour-white);
+  color: var(--colour-highlight);
 }
 
 .tag-list li a:hover {
@@ -365,7 +361,7 @@ ul.listing.posts .post-date {
 .content-body em,
 .content-body strong,
 .content-body p code {
-  background-color: var(--colour-secondary);
+  background-color: var(--colour-tertiary);
   color: var(--colour-white);
   padding: 2px 4px;
   font-style: normal;
