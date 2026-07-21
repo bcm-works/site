@@ -1,43 +1,32 @@
-/* DARK COLOURS */
+/* THEME */
 
 :root {
-  --highlight-colour: #23c5b0;
-  --background-colour: #000000;
-  --foreground-colour: #ffffff;
-  --secondary-colour: #717171;
-  --tertiary-colour: #333333;
-  --sidebar-background-colour: #050505;
+  /* COLOUR SCHEME */
+  --colour-black: #000000;
+  --colour-white: #FFFFFF;
+  --colour-highlight: var(--colour-black);
+  --colour-background: #15A290;
+  --colour-foreground: var(--colour-black);
+  --colour-secondary: #08443c;
+  --colour-tertiary: var(--colour-secondary);
+  --code-function-colour: var(--colour-highlight);
+  --code-string-colour: var(--colour-foreground);
+  --code-background-colour: var(--colour-background);
+  --code-other-colour: var(--colour-secondary);
+
+  /* FONTS */
   --font-family-header: "MDIO-Black", var(--font-family-code);
   --font-family-body: var(--font-family-code);
   --font-family-code: "MDIO-Regular", monospace;
   --font-family-quote: var(--font-family-code);
   --font-size-body: 20px;
   --line-height-body: 32px;
+
+  /* LAYOUT */
   --content-max-width: 900px;
-  --code-function-colour: var(--highlight-colour);
-  --code-string-colour: var(--foreground-colour);
-  --code-background-colour: var(--background-colour);
-  --code-other-colour: var(--secondary-colour);
 }
 
-/* LIGHT COLOURS */
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --highlight-colour: #0b6053;
-    --background-colour: #ffffff;
-    --foreground-colour: #000000;
-    --secondary-colour: #575757;
-    --tertiary-colour: #444444;
-    --sidebar-background-colour: #fbfbfb;
-    --code-function-colour: var(--highlight-colour);
-    --code-string-colour: var(--foreground-colour);
-    --code-background-colour: var(--background-colour);
-    --code-other-colour: var(--secondary-colour);
-  }
-}
-
-/* FONTS */
+/* CUSTOM FONTS */
 
 @font-face {
   font-family: "MDIO-Black";

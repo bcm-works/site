@@ -95,7 +95,7 @@ site.use(pagefind({
       ".breadcrumb-previous",
       ".icon",
       "#search",
-      ".sidebar",
+      ".header",
       ".print-header",
       ".tag-list",
       ".posts-list",

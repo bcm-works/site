@@ -28,8 +28,8 @@ Visitors search the static site entirely in-browser. Pagefind builds a search in
 
 ## Non-obvious behaviors
 - `excerptLength: 0` and `showSubResults: false` are intentional: results show titles only, no body snippet. Don't "fix" this expecting excerpts.
-- `resetStyles: true` strips Pagefind's default CSS; all styling comes from `src/styles/search.css` via the `--pagefind-ui-*` custom properties, which pull from the site's own theme variables (`--highlight-colour`, `--foreground-colour`, etc.). New Pagefind UI styling should reuse those theme vars, not hard-coded colours.
-- Excluded selectors currently drop breadcrumbs, icons, sidebar, print header, tag list, and post-list metadata so they don't pollute the index.
+- `resetStyles: true` strips Pagefind's default CSS; all styling comes from `src/styles/search.css` via the `--pagefind-ui-*` custom properties, which pull from the site's own theme variables (`--colour-highlight`, `--colour-foreground`, etc.). New Pagefind UI styling should reuse those theme vars, not hard-coded colours.
+- Excluded selectors currently drop breadcrumbs, icons, header, print header, tag list, and post-list metadata so they don't pollute the index.
 
 ## Critical files (purpose, not inventory)
 - `src/lume.ts` — registers `pagefind(...)` with the tuned `ui` and `indexing` options; the single source of search behaviour.

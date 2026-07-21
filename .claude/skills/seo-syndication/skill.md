@@ -31,7 +31,7 @@ Everything a machine (not a human browser) consumes: `robots.txt`, `sitemap.xml`
 
 ## Non-obvious behaviors
 - Asset `<link>`s are cache-busted with `?v={{ SITE_BUILD_DATE }}` (a `yyyyMMddHHmmss` stamp generated per build in `src/lume.ts`). New long-lived assets should follow this pattern.
-- Pagefind indexes `[data-pagefind-body]` (the content wrapper) and skips `[data-pagefind-ignore]` (the sidebar) plus the `excludeSelectors` list in the `pagefind()` config. Adding indexable regions or new chrome may need those selector lists updated.
+- Pagefind indexes `[data-pagefind-body]` (the content wrapper) and skips `[data-pagefind-ignore]` (the header) plus the `excludeSelectors` list in the `pagefind()` config. Adding indexable regions or new chrome may need those selector lists updated.
 - Plugin order in `src/lume.ts` matters: `minify_html` and `sitemap` run last, after content generation.
 
 ## Critical files (purpose, not inventory)

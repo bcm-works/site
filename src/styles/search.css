@@ -1,10 +1,10 @@
 :root {
   --pagefind-ui-scale: 1.0;
-  --pagefind-ui-primary: var(--highlight-colour);
-  --pagefind-ui-text: var(--foreground-colour);
-  --pagefind-ui-background: var(--background-colour);
-  --pagefind-ui-border: var(--secondary-colour);
-  --pagefind-ui-tag: var(--secondary-colour);
+  --pagefind-ui-primary: var(--colour-highlight);
+  --pagefind-ui-text: var(--colour-foreground);
+  --pagefind-ui-background: var(--colour-background);
+  --pagefind-ui-border: var(--colour-secondary);
+  --pagefind-ui-tag: var(--colour-secondary);
   --pagefind-ui-border-width: 2px;
   --pagefind-ui-border-radius: 8px;
   --pagefind-ui-image-border-radius: 8px;
@@ -25,5 +25,5 @@
 }
 
 #search .pagefind-ui__result mark {
-  background-color: var(--highlight-colour);
+  background-color: var(--colour-highlight);
 }

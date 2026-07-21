@@ -14,7 +14,7 @@
 /* SCROLLBARS */
 
 body {
-  scrollbar-color: var(--secondary-colour) var(--background-colour);
+  scrollbar-color: var(--colour-secondary) var(--colour-background);
   scrollbar-width: thin;
 }
 
@@ -40,8 +40,8 @@ body {
   -webkit-overflow-scrolling: touch;
   height: 100%;
   min-width: 350px;
-  background-color: var(--background-colour);
-  color: var(--foreground-colour);
+  background-color: var(--colour-background);
+  color: var(--colour-foreground);
 }
 
 article {

@@ -25,7 +25,7 @@ All site styling lives as hand-written, human-readable CSS in `src/styles/`. The
 ## Business rules / invariants
 - **Never hardcode a value that belongs in `theme.css`.** Reuse an existing `--variable`, or add a new one to `src/styles/theme.css`, then reference it via `var(--name)`.
 - **Colours must respect light AND dark modes.** `theme.css` defines dark values on `:root` and overrides them in `@media (prefers-color-scheme: light)`. Any new colour variable needs both a dark and a light value.
-- **Text must be readable:** legible font size and sufficient contrast between `--foreground-colour`/`--secondary-colour` text and its background.
+- **Text must be readable:** legible font size and sufficient contrast between `--colour-foreground`/`--colour-secondary` text and its background.
 - Adding a new CSS file requires updating the concatenation order in `.mise/tasks/build` (fixed order: `reset.css`, `theme.css`, `search.css`, `site.css`, `print.css`).
 
 ## Non-obvious behaviors
