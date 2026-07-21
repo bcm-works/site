@@ -28,3 +28,4 @@ dist/
 .claude/graph-index.json
 .claude/code-map.md
 .claude/settings.local.json
+.claude/tsc-cache
