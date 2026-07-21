@@ -245,7 +245,7 @@ li {
   max-width: 100%;
 }
 
-/* POST LIST — plain rows: title left, date right */
+/* POST LIST */
 
 ul.posts-list,
 ul.listing.posts {
@@ -279,7 +279,7 @@ ul.listing.posts .post-date {
   text-align: right;
 }
 
-/* SINGLE POST META */
+/* POST DATE */
 
 .page-post .post-date {
   color: var(--colour-secondary);
@@ -365,14 +365,6 @@ ul.listing.posts .post-date {
   color: var(--colour-highlight);
   padding: 2px 4px;
   font-style: normal;
-}
-
-/* CODE BLOCKS */
-
-pre code.hljs {
-  padding: 15px 20px;
-  margin: 0 0 20px;
-  background-color: var(--colour-tertiary);
 }
 
 /* RESPONSIVE OVERRIDES */

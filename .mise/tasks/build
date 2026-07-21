@@ -63,6 +63,7 @@ cat "$CSS_DIR/reset.css" \
   "$CSS_DIR/theme.css" \
   "$CSS_DIR/app.css" \
   "$CSS_DIR/content.css" \
+  "$CSS_DIR/code.css" \
   "$CSS_DIR/search.css" \
   "$CSS_DIR/print.css" \
   > "$SITE_BUILD_DIR/bcm.css"

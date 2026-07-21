@@ -114,10 +114,6 @@ site.use(codeHighlight({
     php: langPhp,
     typescript: langTypeScript,
   },
-  theme: {
-    name: "tomorrow-night-bright",
-    cssFile: "/css/code-highlight.min.css",
-  },
 }));
 
 // --- Generate RSS and JSON feeds of recent posts

@@ -10,10 +10,10 @@
   --colour-secondary: #08443C;
   --colour-tertiary: #0F8172;
 
-  --code-function-colour: var(--colour-highlight);
-  --code-string-colour: var(--colour-foreground);
-  --code-background-colour: var(--colour-tertiary);
-  --code-other-colour: var(--colour-secondary);
+  --colour-code-method: var(--colour-highlight);
+  --colour-code-keyword: var(--colour-highlight);
+  --colour-code-comment: var(--colour-secondary);
+  --colour-code-background: var(--colour-tertiary);
 
   /* FONTS */
   --font-family-header: "MDIO-Black", var(--font-family-code);
