@@ -1,7 +1,7 @@
 ---
 title: UpcomingTasks updated with more options for editing tasks
 date: 2013-04-13
-url: /posts/20130413_upcomingtasks-updated-to-include-more-options-for-editing-tasks/
+url: /posts/20130413_upcomingtasks-update/
 oldUrl: /brendan/posts/20130413_upcomingtasks-updated-to-include-more-options-for-editing-tasks/
 tags:
   - Post

@@ -1,7 +1,7 @@
 ---
 title: UpcomingTasks reaches 100 active users
 date: 2013-03-07
-url: /posts/20130307_upcomingtasks-reaches-100-active-users/
+url: /posts/20130307_upcomingtasks-100-users/
 oldUrl: /brendan/posts/20130307_upcomingtasks-reaches-100-active-users/
 tags:
   - Post

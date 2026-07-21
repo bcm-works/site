@@ -1,7 +1,7 @@
 ---
 title: Configuring a Chromebook for web development
 date: 2015-07-22
-url: /posts/20150722_configuring-a-chromebook-for-web-development/
+url: /posts/20150722_chromebook-web-development/
 oldUrl: /brendan/posts/20150722_configuring-a-chromebook-for-web-development/
 tags:
   - Post
