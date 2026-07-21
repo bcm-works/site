@@ -134,10 +134,10 @@ li {
 }
 
 .site-avatar {
-  width: 80px;
-  height: 80px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
-  border: 2px solid var(--colour-highlight);
+  border: 2px solid var(--colour-secondary);
   margin-right: 6px;
 }
 
@@ -266,6 +266,7 @@ ul.listing.posts li {
   align-items: baseline;
   gap: 16px;
   margin: 0 0 12px;
+  line-height: 2.0;
 }
 
 ul.posts-list .post-link,
@@ -370,35 +371,4 @@ ul.listing.posts .post-date {
   color: var(--colour-highlight);
   padding: 2px 4px;
   font-style: normal;
-}
-
-/* RESPONSIVE OVERRIDES */
-
-@media only screen and (max-width: 800px) {
-  body {
-    --font-size-body: 18px;
-    --line-height-body: 26px;
-  }
-
-  .header {
-    padding: 24px 16px 16px;
-    gap: 12px 16px;
-  }
-
-  .header-nav {
-    margin-left: 0;
-    width: 100%;
-  }
-
-  .header-nav ul {
-    gap: 8px 16px;
-  }
-
-  .main-content {
-    padding: 32px 16px 0;
-  }
-
-  h2 {
-    font-size: 22px;
-  }
 }
