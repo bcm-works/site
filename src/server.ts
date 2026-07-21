@@ -40,23 +40,27 @@ Deno.serve(
 
     // No request path, serve the top level index file
     if (!req || req == "/") {
+      // bcm.logDebug(`Serving home page`);
       return await serveFile(request, `./${publicDir}/index.html`);
     }
 
     // Health checks, return a 200 OK response
     if (req == "/health/" || req == "/api/health/" || req == "/status/" || req == "/ping/") {
+      // bcm.logDebug(`Serving health check`);
       return new Response("OK", { status: 200 });
     }
 
     // Static file request
     //   - Covers direct file requests like an image or CSS file
     if (bcm.fileExists(fileStatic)) {
+      // bcm.logDebug(`Serving static file: ${fileStatic}`);
       return await serveFile(request, fileStatic);
     }
 
     // Page request
     //   - Covers pages like '/search/' and '/posts/20260616_ai-code-gen/'
     if (bcm.fileExists(filePage)) {
+      // bcm.logDebug(`Serving page: ${filePage}`);
       return await serveFile(request, filePage);
     }
 
@@ -64,6 +68,7 @@ Deno.serve(
     //   - Requests like '/20260616_ai-code-gen/' will use the same file as '/posts/20260616_ai-code-gen/'
     //   - Canonical URLs for every page are set in the frontend layout file
     if (bcm.fileExists(filePost)) {
+      // bcm.logDebug(`Serving post: ${filePost}`);
       return await serveFile(request, filePost);
     }
 
@@ -71,6 +76,7 @@ Deno.serve(
     //   - Log an anonymous error to PostHog
     //   - Redirect to the homepage
     bcm.postHogAnonBackendEvent(404, request);
+    // bcm.logDebug(`Serving 404: ${requestPath}`);
     return Response.redirect(new URL("/", requestUrl.origin), 301);
   },
 );

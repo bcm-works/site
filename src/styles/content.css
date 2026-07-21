@@ -53,8 +53,13 @@ img {
 }
 
 ul {
-  list-style: disc outside none;
-  margin: 0 0 15px 30px;
+  list-style: disc inside none;
+  margin: 0 0 12px;
+}
+
+ol {
+  list-style: decimal inside none;
+  margin: 0 0 12px;
 }
 
 li {
