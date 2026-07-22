@@ -1,28 +1,26 @@
 <div id="github-info" class="hidden-page hidden-print">
-  <div class="github-profile">
-    <a href="" class="github-profile-link">
+  <ul>
+    <li class="github-profile">
       <span class="github-icon icon fa-fw fa-brands fa-github"></span>
-      <span class="github-profile-prefix">GitHub</span>
-      <span class="github-profile-value"></span>
-    </a>
-  </div>
-  <ul class="github-details">
-    <li class="github-status hidden">
+      <span class="github-label">GitHub</span>
+      <a href="" class="github-value github-link"></a>
+    </li>
+    <li class="github-status hidden-page">
       <span class="github-icon icon fa-fw fa-solid fa-circle-info"></span>
       <span class="github-label">Status</span>
       <span class="github-value"></span>
     </li>
-    <li class="github-repos hidden">
+    <li class="github-repos">
       <span class="github-icon icon fa-fw fa-solid fa-code"></span>
       <span class="github-label">Repos</span>
       <span class="github-value"></span>
     </li>
-    <li class="github-followers hidden">
+    <li class="github-followers">
       <span class="github-icon icon fa-fw fa-solid fa-people-group"></span>
       <span class="github-label">Followers</span>
       <span class="github-value"></span>
     </li>
-    <li class="github-following hidden">
+    <li class="github-following">
       <span class="github-icon icon fa-fw fa-solid fa-people-group"></span>
       <span class="github-label">Following</span>
       <span class="github-value"></span>
@@ -46,23 +44,17 @@ fetch("/api/github-profile/")
     if (data != "{}") {
       if (data.bio) {
         githubInfo.querySelector(".github-status .github-value").innerText = data.bio;
-        githubInfo.querySelector(".github-status").classList.remove("hidden");
+        githubInfo.querySelector(".github-status").classList.remove("hidden-page");
       } else if (data.hireable) {
         githubInfo.querySelector(".github-status .github-value").innerText = 'Looking for a new role';
-        githubInfo.querySelector(".github-status").classList.remove("hidden");
+        githubInfo.querySelector(".github-status").classList.remove("hidden-page");
       }
 
       githubInfo.querySelector(".github-repos .github-value").innerText = data.repos;
-      githubInfo.querySelector(".github-repos").classList.remove("hidden");
-
       githubInfo.querySelector(".github-followers .github-value").innerText = data.followers;
-      githubInfo.querySelector(".github-followers").classList.remove("hidden");
-
       githubInfo.querySelector(".github-following .github-value").innerText = data.following;
-      githubInfo.querySelector(".github-following").classList.remove("hidden");
-
-      githubInfo.querySelector(".github-profile-link").setAttribute("href", data.url);
-      githubInfo.querySelector(".github-profile-value").innerText = data.username;
+      githubInfo.querySelector(".github-profile .github-link").setAttribute("href", data.url);
+      githubInfo.querySelector(".github-profile .github-value").innerText = data.username;
 
       githubInfo.classList.remove("hidden-page");
     }

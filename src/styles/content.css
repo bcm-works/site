@@ -265,7 +265,7 @@ ul.listing.posts .post-date {
 /* QUOTES AND EMPHASIS */
 
 .content-body blockquote,
-.content-body #github-info {
+#github-info {
   margin: 20px 0;
   padding: 20px 20px 20px 50px;
   position: relative;
@@ -283,7 +283,7 @@ ul.listing.posts .post-date {
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   font: var(--fa-font-solid);
-  content: '\f10d';
+  content: "\f10d";
   font-size: 26px;
   color: var(--colour-secondary);
   position: absolute;
@@ -291,10 +291,50 @@ ul.listing.posts .post-date {
   left: 15px;
 }
 
-.content-body #github-info ul {
+#github-info {
+  padding: 20px;
+  margin-top: 0;
+  float: left;
+}
+
+#github-info .github-label {
+  display: block;
+  float: left;
+  width: 140px;
+  margin-left: 8px;
+}
+
+#github-info .github-value,
+#github-info .github-icon {
+  float: left;
+  line-height: 48px;
+}
+
+#github-info .github-link {
+  text-decoration: var(--link-decoration-nav);
+}
+
+#github-info .github-link:active,
+#github-info .github-link:hover {
+  text-decoration: var(--link-decoration-active);
+}
+
+#github-info ul {
   padding: 0;
   margin: 0;
   list-style: none;
+  float: left;
+  width: 100%;
+}
+
+#github-info li {
+  float: left;
+  width: 100%;
+  min-height: 48px;
+  line-height: 48px;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
 }
 
 .content-body em,
