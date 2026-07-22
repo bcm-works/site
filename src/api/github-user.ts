@@ -24,7 +24,7 @@ type GitHubUserResponse = {
   } | null;
 };
 
-// GET /api/github-profile
+// GET /api/github-user
 export async function get(): Promise<Response> {
   if (githubToken == "") {
     return new Response("{}", { status: 424 });

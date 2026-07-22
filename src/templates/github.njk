@@ -1,6 +1,6 @@
 <div id="github-info" class="print-hidden">
   <ul>
-    <li class="github-profile">
+    <li class="github-user">
       <span class="icon fa-fw fa-brands fa-github"></span>
       <a href="https://github.com/bcm-works" class="value" title="View my profile on GitHub">Github > bcm-works</a>
     </li>
@@ -27,7 +27,7 @@
 const githubUsername = "bcm-works";
 const githubInfo = document.getElementById("github-info");
 
-fetch("/api/github-profile/")
+fetch("/api/github-user/")
   .then(response => {
     if (! response.ok || response.headers.get('content-type') != 'application/json') {
       return "{}";
