@@ -121,7 +121,7 @@ Deno.serve(
     //   - Log an anonymous error to PostHog
     //   - Redirect to the homepage
     bcm.postHogAnonBackendEvent(404, request);
-    bcm.logDebug(`Serving 404: ${requestPath}`);
+    // bcm.logDebug(`Serving 404: ${requestPath}`);
     return Response.redirect(new URL("/", requestUrl.origin), 301);
   },
 );
