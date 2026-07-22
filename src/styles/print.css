@@ -25,10 +25,9 @@
     flex-grow: unset !important;
   }
 
-  aside.header,
-  a.breadcrumb-previous,
-  span.icon-breadcrumb {
+  .hidden-print {
     display: none !important;
+    height: 0 !important;
   }
 
   .content-body .print-header {

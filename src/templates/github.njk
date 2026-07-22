@@ -1,4 +1,4 @@
-<div id="github-info-wrapper" class="hidden">
+<div id="github-info-wrapper" class="hidden-page hidden-print">
   <div class="github-profile">
     <a href="" class="github-profile-link">
       <span class="github-profile-icon icon fa-fw fa-brands fa-github"></span>
@@ -6,9 +6,9 @@
       <span class="github-profile-value"></span>
     </a>
   </div>
-  <ul class="github-info">
+  <ul class="github-details">
     <li class="github-status hidden"><span class="github-label">Status</span><span class="github-value"></span></li>
-    <li class="github-repos hidden"><span class="github-label">Public Repos</span><span class="github-value"></span></li>
+    <li class="github-repos hidden"><span class="github-label">Repos</span><span class="github-value"></span></li>
     <li class="github-followers hidden"><span class="github-label">Followers</span><span class="github-value"></span></li>
   </ul>
 </div>
@@ -48,7 +48,7 @@ fetch("/api/github-profile/")
       githubCont.querySelector(".github-profile-link").setAttribute("href", data.url);
       githubCont.querySelector(".github-profile-value").innerText = data.username;
 
-      githubCont.classList.remove("hidden");
+      githubCont.classList.remove("hidden-page");
     }
   });
 </script>

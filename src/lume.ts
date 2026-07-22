@@ -92,7 +92,6 @@ site.use(pagefind({
     rootSelector: "html",
     verbose: false,
     excludeSelectors: [
-      ".breadcrumb-previous",
       ".icon",
       "#search",
       ".header",

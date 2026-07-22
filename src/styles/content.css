@@ -1,9 +1,10 @@
 /* CONTENT */
 
 .content-body .print-header,
-.hidden {
-  display: none;
-  height: 0;
+.hidden,
+.hidden-page {
+  display: none !important;
+  height: 0 !important;
 }
 
 p {
@@ -71,12 +72,6 @@ a:focus {
 
 .icon {
   color: var(--colour-foreground);
-}
-
-.icon-breadcrumb {
-  color: var(--colour-secondary);
-  vertical-align: baseline;
-  font-size: 80%;
 }
 
 .icon-post {
