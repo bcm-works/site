@@ -1,13 +1,45 @@
-/* PAGE TRANSITION ANIMATIONS */
+/* ANIMATIONS */
 
 @view-transition {
   navigation: auto;
   types: slide;
 }
 
+.animation-fadein {
+  animation: fadein 0.4s ease-in-out;
+}
+
+.animation-fadeout {
+  animation: fadein 0.4s ease-in-out;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion) {
   @view-transition {
     navigation: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
