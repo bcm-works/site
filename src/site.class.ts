@@ -10,7 +10,7 @@ export class Site {
     this.envFile = envFile;
 
     if (this.fileExists(envFile)) {
-      this.logAlways(`Loading variables from Env File at '${envFile}'`);
+      this.logDebug(`Loading variables from Env File at '${envFile}'`);
 
       // Load variables from ths file, or directly from
       // the build terminal session if they're set there.
@@ -19,7 +19,7 @@ export class Site {
         export: true,
       });
     } else {
-      this.logAlways("Loading variables from Session");
+      this.logDebug("Loading variables from Session");
     }
   }
 

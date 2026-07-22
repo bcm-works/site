@@ -1,6 +1,10 @@
 import { graphql as GithubGraphQL } from "@octokit/graphql";
+import { Site } from "@/site.class.ts";
 
-export type GitHubUserResponse = {
+const bcm = new Site();
+const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");
+
+type GitHubUserResponse = {
   user: {
     login: string;
     name: string;
@@ -20,7 +24,8 @@ export type GitHubUserResponse = {
   } | null;
 };
 
-export async function GitHubProfile(githubToken: string): Promise<Response> {
+// GET /api/github-profile
+export async function get(): Promise<Response> {
   if (githubToken == "") {
     return new Response("{}", { status: 424 });
   }

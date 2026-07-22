@@ -62,7 +62,7 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
           "and": [
             { "href_matches": "/*" },
             { "not": { "href_matches": "/*.pdf" } },
-            { "not": { "href_matches": "/api/*" } },
+            { "not": { "href_matches": "/api/*(/)" } },
             { "not": { "selector_matches": ".no-prerender" } },
             { "not": { "selector_matches": "[rel~=nofollow]" } }
           ]

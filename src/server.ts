@@ -1,16 +1,12 @@
 import { serveFile } from "@std/http/file-server";
-import { GitHubProfile } from "@/api/GitHubProfile.ts";
-import { Health } from "@/api/Health.ts";
 import { Site } from "@/site.class.ts";
 
 // Load Env Vars with suitable defaults
 
 const bcm = new Site();
-
 const siteUrl: string = bcm.getUrl();
-const appPort: number = bcm.getPort();
 const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
-const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");
+const appPort: number = bcm.getPort();
 const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
@@ -28,57 +24,35 @@ Deno.serve(
   },
   async (request: Request) => {
     // Extract the request details
-    const requestUrl: URL = new URL(request.url);
-    const requestPath: string = requestUrl.pathname;
+    const url: URL = new URL(request.url);
+    let path: string = url.pathname === "/" ? "/index.html" : url.pathname;
+    path = path.endsWith("/") ? path.slice(0, -1) : path;
 
-    // Ensure the request ends with a forward slash
-    //   - Simplifies logic below
-    //   - Matches the way Lume is configured to build 'index.html' files inside of content build directories
-    const req: string = requestPath.endsWith("/") ? requestPath : `${requestPath}/`;
-
-    // Construct possible file paths
-    const fileStatic: string = `./${publicDir}${requestPath}`;
-    const filePage: string = `./${publicDir}${req}index.html`;
-    const filePost: string = `./${publicDir}/posts${req}index.html`;
-
-    // No request path, serve the top level index file
-    if (!req || req == "/") {
-      return await serveFile(request, `./${publicDir}/index.html`);
-    }
-
-    // Health checks, return a 200 OK response
-    if (req == "/health/" || req == "/api/health/" || req == "/status/" || req == "/ping/") {
-      return Health();
-    }
-
-    // Return GitHub profile data
-    if (req == "/api/github-profile/") {
-      return await GitHubProfile(githubToken);
-    }
-
-    // Static file request
-    //   - Covers direct file requests like an image or CSS file
+    // Handle static file requests
+    const fileStatic: string = `./${publicDir}${path}`;
     if (bcm.fileExists(fileStatic)) {
       return await serveFile(request, fileStatic);
     }
 
-    // Page request
-    //   - Covers pages like '/tags/' and '/posts/20260616_ai-code-gen/'
-    if (bcm.fileExists(filePage)) {
-      return await serveFile(request, filePage);
+    if (path.startsWith("/api")) {
+      // Attempt to dynamically import the relevant API file
+      const method: string = request.method.toLowerCase();
+      let module;
+      try {
+        module = await import(`./${path}.ts`);
+      } catch (_error) {
+        bcm.postHogAnonBackendEvent(404, request);
+        return Response.redirect(new URL("/", url.origin), 301);
+      }
+
+      // Attempt to run the API function that matches the request method
+      if (module[method]) {
+        return await module[method](request);
+      }
     }
 
-    // Post request
-    //   - Requests like '/20260616_ai-code-gen/' will use the same file as '/posts/20260616_ai-code-gen/'
-    //   - Canonical URLs for every page are set in the frontend layout file
-    if (bcm.fileExists(filePost)) {
-      return await serveFile(request, filePost);
-    }
-
-    // No related file was found
-    //   - Log an anonymous PostHog event
-    //   - Redirect to the homepage
-    bcm.postHogAnonBackendEvent(404, request);
-    return Response.redirect(new URL("/", requestUrl.origin), 301);
+    // Fallback to the content API
+    const content = await import(`./api/content.ts`);
+    return await content["get"](request);
   },
 );
