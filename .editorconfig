@@ -11,15 +11,8 @@ indent_style = space
 indent_size = 2
 max_line_length = 100
 
-[*.{md,json,jsonc,toml,yml}]
+[*.{bash,json,jsonc,md,sh,svg,toml,yml}]
 insert_final_newline = false
 
-[{Dockerfile,.editorconfig,.gitignore,.gitmodules}]
-insert_final_newline = false
-
-[{justfile}]
-indent_style = space
-insert_final_newline = false
-
-[{*.sh,*.bash}]
+[{Dockerfile,justfile,.editorconfig,.gitattributes,.gitignore,.gitmodules}]
 insert_final_newline = false
