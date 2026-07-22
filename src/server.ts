@@ -8,6 +8,7 @@ const bcm = new Site();
 const siteUrl: string = bcm.getUrl();
 const appPort: number = bcm.getPort();
 const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
+const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");
 const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
@@ -50,6 +51,50 @@ Deno.serve(
       return new Response("OK", { status: 200 });
     }
 
+    // Return GitHub profile data
+    if (req == "/api/github-profile/") {
+      // bcm.logDebug(`Serving GitHub profile data`);
+
+      if (githubToken == "") {
+        return new Response("{}", { status: 424 });
+      }
+
+      const githubResponse = await fetch(
+        "https://api.github.com/users/bcm-works",
+        {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${githubToken}`,
+            "User-Agent": "bcm-works",
+            "X-GitHub-Api-Version": "2026-03-10",
+            "Content-Type": "application/json",
+          },
+        },
+      );
+
+      if (!githubResponse.ok) {
+        return new Response("{}", { status: 424 });
+      }
+
+      const githubJson = await githubResponse.json();
+
+      const returnString = JSON.stringify({
+        username: githubJson.login,
+        name: githubJson.name,
+        bio: githubJson.bio,
+        hireable: githubJson.hireable,
+        url: githubJson.html_url,
+        repos: githubJson.public_repos,
+        followers: githubJson.followers,
+        following: githubJson.following,
+      });
+
+      return new Response(
+        returnString,
+        { headers: { "content-type": "application/json" } },
+      );
+    }
+
     // Static file request
     //   - Covers direct file requests like an image or CSS file
     if (bcm.fileExists(fileStatic)) {
@@ -76,7 +121,7 @@ Deno.serve(
     //   - Log an anonymous error to PostHog
     //   - Redirect to the homepage
     bcm.postHogAnonBackendEvent(404, request);
-    // bcm.logDebug(`Serving 404: ${requestPath}`);
+    bcm.logDebug(`Serving 404: ${requestPath}`);
     return Response.redirect(new URL("/", requestUrl.origin), 301);
   },
 );

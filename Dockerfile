@@ -53,6 +53,7 @@ ARG SITE_FEED_DEFAULT_TITLE
 ARG SITE_POSTHOG_ID
 ARG SITE_POSTHOG_API_HOST
 ARG SITE_POSTHOG_UI_HOST
+ARG SITE_GITHUB_ID
 
 # Persist build arguments as environment variables so
 # resulting Docker Containers can access the values.
@@ -73,6 +74,7 @@ ENV SITE_FEED_DEFAULT_TITLE=${SITE_FEED_DEFAULT_TITLE}
 ENV SITE_POSTHOG_ID=${SITE_POSTHOG_ID}
 ENV SITE_POSTHOG_API_HOST=${SITE_POSTHOG_API_HOST}
 ENV SITE_POSTHOG_UI_HOST=${SITE_POSTHOG_UI_HOST}
+ENV SITE_GITHUB_ID=${SITE_GITHUB_ID}
 
 # Set Docker Image properties
 # From: https://github.com/opencontainers/image-spec/blob/main/annotations.md

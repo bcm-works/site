@@ -1,0 +1,54 @@
+<div id="github-info-wrapper" class="hidden">
+  <div class="github-profile">
+    <a href="" class="github-profile-link">
+      <span class="github-profile-icon icon fa-fw fa-brands fa-github"></span>
+      <span class="github-profile-prefix">GitHub</span>
+      <span class="github-profile-value"></span>
+    </a>
+  </div>
+  <ul class="github-info">
+    <li class="github-status hidden"><span class="github-label">Status</span><span class="github-value"></span></li>
+    <li class="github-repos hidden"><span class="github-label">Public Repos</span><span class="github-value"></span></li>
+    <li class="github-followers hidden"><span class="github-label">Followers</span><span class="github-value"></span></li>
+  </ul>
+</div>
+
+<script>
+const githubUsername = "bcm-works";
+const githubCont = document.getElementById("github-info-wrapper");
+
+fetch("/api/github-profile/")
+  .then(response => {
+    if (!response.ok) {
+      return "{}";
+    }
+
+    return response.json();
+  })
+  .then(data => {
+    if (data != "{}") {
+      if (data.bio) {
+        githubCont.querySelector(".github-status .github-value").innerText = data.bio;
+        githubCont.querySelector(".github-status").classList.remove("hidden");
+      } else if (data.hireable) {
+        githubCont.querySelector(".github-status .github-value").innerText = 'Looking for a new role';
+        githubCont.querySelector(".github-status").classList.remove("hidden");
+      }
+
+      if (data.repos) {
+        githubCont.querySelector(".github-repos .github-value").innerText = data.repos;
+        githubCont.querySelector(".github-repos").classList.remove("hidden");
+      }
+
+      if (data.followers) {
+        githubCont.querySelector(".github-followers .github-value").innerText = data.followers;
+        githubCont.querySelector(".github-followers").classList.remove("hidden");
+      }
+
+      githubCont.querySelector(".github-profile-link").setAttribute("href", data.url);
+      githubCont.querySelector(".github-profile-value").innerText = data.username;
+
+      githubCont.classList.remove("hidden");
+    }
+  });
+</script>
