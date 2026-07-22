@@ -1,6 +1,7 @@
 /* CONTENT */
 
-.content-body .print-header {
+.content-body .print-header,
+.hidden {
   display: none;
   height: 0;
 }
@@ -145,12 +146,7 @@ a:focus {
   text-underline-offset: var(--link-decoration-underline-offset);
 }
 
-.header-nav .nav-link.active {
-  color: var(--colour-highlight);
-  text-decoration: var(--link-decoration-active);
-  text-underline-offset: var(--link-decoration-underline-offset);
-}
-
+.header-nav .nav-link.active,
 .header-nav .nav-link.active a {
   color: var(--colour-highlight);
 }
@@ -158,7 +154,7 @@ a:focus {
 /* SOCIAL LINKS */
 
 .social-links-wrapper {
-  margin: 0 0 25px;
+  margin: 32px 0;
 }
 
 .social-links-wrapper .social-links {
