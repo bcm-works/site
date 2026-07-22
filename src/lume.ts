@@ -10,7 +10,6 @@ import robots from "lume/plugins/robots.ts";
 import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
-import pagefind from "lume/plugins/pagefind.ts";
 
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import langJavaScript from "highlight/lib/languages/javascript";
@@ -76,33 +75,6 @@ site.data("SITE_BUILD_DATE", siteBuildDate);
 site.use(nunjucks());
 site.use(date());
 site.use(redirects());
-
-// --- Search content feature
-
-site.use(pagefind({
-  ui: {
-    containerId: "search",
-    showImages: false,
-    excerptLength: 0,
-    showEmptyFilters: true,
-    showSubResults: false,
-    resetStyles: true,
-  },
-  indexing: {
-    rootSelector: "html",
-    verbose: false,
-    excludeSelectors: [
-      ".icon",
-      "#search",
-      ".header",
-      ".print-header",
-      ".tag-list",
-      ".posts-list",
-      ".post-date",
-      ".post-link",
-    ],
-  },
-}));
 
 // --- Add styling for code blocks in page content
 
