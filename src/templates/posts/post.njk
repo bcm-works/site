@@ -6,13 +6,12 @@ body_class: page-post
 
 <h2 data-pagefind-meta="title">{{ title }}</h2>
 
-<p class="post-date">
-  <span class="icon-post icon fa-fw fa-solid fa-calendar-days"></span>{{
-    date | date('d LLL yyyy')
-  }}
+<p class="post-date print-gray">
+  <span class="icon-post icon fa-fw fa-solid fa-calendar-days"></span>
+  {{ date | date('d LLL yyyy') }}
 </p>
 
-<ul class="tag-list">
+<ul class="tag-list print-hidden">
   {% for tag in tags|sort %}
     {% if tag != "Post" %}
       <li>

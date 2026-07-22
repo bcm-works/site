@@ -1,11 +1,11 @@
-<div id="github-info" class="hidden-page hidden-print">
+<div id="github-info" class="page-hidden print-hidden">
   <ul>
     <li class="github-profile">
       <span class="icon fa-fw fa-brands fa-github"></span>
       <span class="label">GitHub</span>
       <a href="" class="value" title="View my profile on GitHub"></a>
     </li>
-    <li class="github-status hidden-page">
+    <li class="github-status page-hidden">
       <span class="icon fa-fw fa-solid fa-circle-info"></span>
       <span class="label">Status</span>
       <span class="value"></span>
@@ -44,10 +44,10 @@ fetch("/api/github-profile/")
     if (data != "{}") {
       if (data.bio) {
         githubInfo.querySelector(".github-status .value").innerText = data.bio;
-        githubInfo.querySelector(".github-status").classList.remove("hidden-page");
+        githubInfo.querySelector(".github-status").classList.remove("page-hidden");
       } else if (data.hireable) {
         githubInfo.querySelector(".github-status .value").innerText = 'Looking for a new role';
-        githubInfo.querySelector(".github-status").classList.remove("hidden-page");
+        githubInfo.querySelector(".github-status").classList.remove("page-hidden");
       }
 
       githubInfo.querySelector(".github-repos .value").innerText = data.repos;
@@ -56,7 +56,7 @@ fetch("/api/github-profile/")
       githubInfo.querySelector(".github-profile a").setAttribute("href", data.url);
       githubInfo.querySelector(".github-profile .value").innerText = data.username;
 
-      githubInfo.classList.remove("hidden-page");
+      githubInfo.classList.remove("page-hidden");
     }
   });
 </script>

@@ -6,6 +6,7 @@
 
   /* COLOUR SCHEME */
   --colour-black: #000000;
+  --colour-gray: #666666;
   --colour-white: #FFFFFF;
   --colour-highlight: var(--colour-black);
   --colour-background: #15A290;

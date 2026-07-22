@@ -2,7 +2,7 @@
 
 .content-body .print-header,
 .hidden,
-.hidden-page {
+.page-hidden {
   display: none !important;
   height: 0 !important;
 }
