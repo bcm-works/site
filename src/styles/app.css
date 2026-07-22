@@ -79,14 +79,12 @@ article {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 64px 32px;
+  padding: 32px;
   box-sizing: border-box;
 }
 
 .header-container {
   background-color: var(--colour-tertiary);
-  background-image: url('/images/header-bg.svg');
-  background-repeat: repeat;
 }
 
 .header-nav {
