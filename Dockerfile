@@ -102,6 +102,7 @@ RUN apk update && \
     apk add --no-cache bash
 
 # Copy over the bare minimum to serve the static files
+COPY --from=build /app/src/api /app/src/api
 COPY --from=build /app/src/site.class.ts /app/src/site.class.ts
 COPY --from=build /app/src/server.ts /app/src/server.ts
 COPY --from=build /app/public /app/public

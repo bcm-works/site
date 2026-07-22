@@ -1,5 +1,6 @@
 import { serveFile } from "@std/http/file-server";
-import { graphql as GithubGraphQL } from "@octokit/graphql";
+import { GitHubProfile } from "@/api/GitHubProfile.ts";
+import { Health } from "@/api/Health.ts";
 import { Site } from "@/site.class.ts";
 
 // Load Env Vars with suitable defaults
@@ -13,26 +14,6 @@ const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");
 const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
-
-type GitHubUserResponse = {
-  user: {
-    login: string;
-    name: string;
-    status: {
-      message: string;
-    };
-    url: string;
-    repositories: {
-      totalCount: number;
-    };
-    followers: {
-      totalCount: number;
-    };
-    following: {
-      totalCount: number;
-    };
-  } | null;
-};
 
 // Start the static web server
 
@@ -62,80 +43,28 @@ Deno.serve(
 
     // No request path, serve the top level index file
     if (!req || req == "/") {
-      // bcm.logDebug(`Serving home page`);
       return await serveFile(request, `./${publicDir}/index.html`);
     }
 
     // Health checks, return a 200 OK response
     if (req == "/health/" || req == "/api/health/" || req == "/status/" || req == "/ping/") {
-      // bcm.logDebug(`Serving health check`);
-      return new Response("OK", { status: 200 });
+      return Health();
     }
 
     // Return GitHub profile data
     if (req == "/api/github-profile/") {
-      // bcm.logDebug(`Serving GitHub profile data`);
-
-      if (githubToken == "") {
-        return new Response("{}", { status: 424 });
-      }
-
-      const githubQuery = GithubGraphQL.defaults({
-        headers: {
-          authorization: `token ${githubToken}`,
-          userAgent: "bcm-works",
-        },
-      });
-
-      const { user }: GitHubUserResponse = await githubQuery(
-        `{
-          user(login: "bcm-works") {
-            login
-            name
-            url
-            repositories(privacy: PUBLIC) {
-              totalCount
-            }
-            followers {
-              totalCount
-            }
-            following {
-              totalCount
-            }
-            status {
-              message
-            }
-          }
-        }`,
-      );
-
-      const returnString = JSON.stringify({
-        username: user?.login,
-        name: user?.name,
-        status: user?.status.message,
-        url: user?.url,
-        repos: user?.repositories.totalCount,
-        followers: user?.followers.totalCount,
-        following: user?.following.totalCount,
-      });
-
-      return new Response(
-        returnString,
-        { headers: { "content-type": "application/json" } },
-      );
+      return await GitHubProfile(githubToken);
     }
 
     // Static file request
     //   - Covers direct file requests like an image or CSS file
     if (bcm.fileExists(fileStatic)) {
-      // bcm.logDebug(`Serving static file: ${fileStatic}`);
       return await serveFile(request, fileStatic);
     }
 
     // Page request
     //   - Covers pages like '/tags/' and '/posts/20260616_ai-code-gen/'
     if (bcm.fileExists(filePage)) {
-      // bcm.logDebug(`Serving page: ${filePage}`);
       return await serveFile(request, filePage);
     }
 
@@ -143,15 +72,13 @@ Deno.serve(
     //   - Requests like '/20260616_ai-code-gen/' will use the same file as '/posts/20260616_ai-code-gen/'
     //   - Canonical URLs for every page are set in the frontend layout file
     if (bcm.fileExists(filePost)) {
-      // bcm.logDebug(`Serving post: ${filePost}`);
       return await serveFile(request, filePost);
     }
 
     // No related file was found
-    //   - Log an anonymous error to PostHog
+    //   - Log an anonymous PostHog event
     //   - Redirect to the homepage
     bcm.postHogAnonBackendEvent(404, request);
-    // bcm.logDebug(`Serving 404: ${requestPath}`);
     return Response.redirect(new URL("/", requestUrl.origin), 301);
   },
 );
