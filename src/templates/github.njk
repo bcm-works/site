@@ -1,21 +1,38 @@
-<div id="github-info-wrapper" class="hidden-page hidden-print">
+<div id="github-info" class="hidden-page hidden-print">
   <div class="github-profile">
     <a href="" class="github-profile-link">
-      <span class="github-profile-icon icon fa-fw fa-brands fa-github"></span>
+      <span class="github-icon icon fa-fw fa-brands fa-github"></span>
       <span class="github-profile-prefix">GitHub</span>
       <span class="github-profile-value"></span>
     </a>
   </div>
   <ul class="github-details">
-    <li class="github-status hidden"><span class="github-label">Status</span><span class="github-value"></span></li>
-    <li class="github-repos hidden"><span class="github-label">Repos</span><span class="github-value"></span></li>
-    <li class="github-followers hidden"><span class="github-label">Followers</span><span class="github-value"></span></li>
+    <li class="github-status hidden">
+      <span class="github-icon icon fa-fw fa-solid fa-circle-info"></span>
+      <span class="github-label">Status</span>
+      <span class="github-value"></span>
+    </li>
+    <li class="github-repos hidden">
+      <span class="github-icon icon fa-fw fa-solid fa-code"></span>
+      <span class="github-label">Repos</span>
+      <span class="github-value"></span>
+    </li>
+    <li class="github-followers hidden">
+      <span class="github-icon icon fa-fw fa-solid fa-people-group"></span>
+      <span class="github-label">Followers</span>
+      <span class="github-value"></span>
+    </li>
+    <li class="github-following hidden">
+      <span class="github-icon icon fa-fw fa-solid fa-people-group"></span>
+      <span class="github-label">Following</span>
+      <span class="github-value"></span>
+    </li>
   </ul>
 </div>
 
 <script>
 const githubUsername = "bcm-works";
-const githubCont = document.getElementById("github-info-wrapper");
+const githubInfo = document.getElementById("github-info");
 
 fetch("/api/github-profile/")
   .then(response => {
@@ -28,27 +45,26 @@ fetch("/api/github-profile/")
   .then(data => {
     if (data != "{}") {
       if (data.bio) {
-        githubCont.querySelector(".github-status .github-value").innerText = data.bio;
-        githubCont.querySelector(".github-status").classList.remove("hidden");
+        githubInfo.querySelector(".github-status .github-value").innerText = data.bio;
+        githubInfo.querySelector(".github-status").classList.remove("hidden");
       } else if (data.hireable) {
-        githubCont.querySelector(".github-status .github-value").innerText = 'Looking for a new role';
-        githubCont.querySelector(".github-status").classList.remove("hidden");
+        githubInfo.querySelector(".github-status .github-value").innerText = 'Looking for a new role';
+        githubInfo.querySelector(".github-status").classList.remove("hidden");
       }
 
-      if (data.repos) {
-        githubCont.querySelector(".github-repos .github-value").innerText = data.repos;
-        githubCont.querySelector(".github-repos").classList.remove("hidden");
-      }
+      githubInfo.querySelector(".github-repos .github-value").innerText = data.repos;
+      githubInfo.querySelector(".github-repos").classList.remove("hidden");
 
-      if (data.followers) {
-        githubCont.querySelector(".github-followers .github-value").innerText = data.followers;
-        githubCont.querySelector(".github-followers").classList.remove("hidden");
-      }
+      githubInfo.querySelector(".github-followers .github-value").innerText = data.followers;
+      githubInfo.querySelector(".github-followers").classList.remove("hidden");
 
-      githubCont.querySelector(".github-profile-link").setAttribute("href", data.url);
-      githubCont.querySelector(".github-profile-value").innerText = data.username;
+      githubInfo.querySelector(".github-following .github-value").innerText = data.following;
+      githubInfo.querySelector(".github-following").classList.remove("hidden");
 
-      githubCont.classList.remove("hidden-page");
+      githubInfo.querySelector(".github-profile-link").setAttribute("href", data.url);
+      githubInfo.querySelector(".github-profile-value").innerText = data.username;
+
+      githubInfo.classList.remove("hidden-page");
     }
   });
 </script>
