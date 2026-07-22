@@ -2,27 +2,22 @@
   <ul>
     <li class="github-profile">
       <span class="icon fa-fw fa-brands fa-github"></span>
-      <span class="label">GitHub</span>
       <a href="" class="value" title="View my profile on GitHub"></a>
     </li>
     <li class="github-status page-hidden">
-      <span class="icon fa-fw fa-solid fa-circle-info"></span>
-      <span class="label">Status</span>
+      <span class="icon fa-fw fa-solid fa-comment"></span>
       <span class="value"></span>
     </li>
     <li class="github-repos">
       <span class="icon fa-fw fa-solid fa-code"></span>
-      <span class="label">Repos</span>
       <span class="value"></span>
     </li>
     <li class="github-followers">
       <span class="icon fa-fw fa-solid fa-people-group"></span>
-      <span class="label">Followers</span>
       <span class="value"></span>
     </li>
     <li class="github-following">
       <span class="icon fa-fw fa-solid fa-people-group"></span>
-      <span class="label">Following</span>
       <span class="value"></span>
     </li>
   </ul>
@@ -42,19 +37,16 @@ fetch("/api/github-profile/")
   })
   .then(data => {
     if (data != "{}") {
-      if (data.bio) {
-        githubInfo.querySelector(".github-status .value").innerText = data.bio;
-        githubInfo.querySelector(".github-status").classList.remove("page-hidden");
-      } else if (data.hireable) {
-        githubInfo.querySelector(".github-status .value").innerText = 'Looking for a new role';
+      if (data.status) {
+        githubInfo.querySelector(".github-status .value").innerText = data.status;
         githubInfo.querySelector(".github-status").classList.remove("page-hidden");
       }
 
-      githubInfo.querySelector(".github-repos .value").innerText = data.repos;
-      githubInfo.querySelector(".github-followers .value").innerText = data.followers;
-      githubInfo.querySelector(".github-following .value").innerText = data.following;
+      githubInfo.querySelector(".github-repos .value").innerText = `${data.repos} repositories`;
+      githubInfo.querySelector(".github-followers .value").innerText = `${data.followers} followers`;
+      githubInfo.querySelector(".github-following .value").innerText = `${data.following} following`;
       githubInfo.querySelector(".github-profile a").setAttribute("href", data.url);
-      githubInfo.querySelector(".github-profile .value").innerText = data.username;
+      githubInfo.querySelector(".github-profile .value").innerText = `Github > ${data.username}`;
 
       githubInfo.classList.remove("page-hidden");
     }

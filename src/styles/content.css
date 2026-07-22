@@ -326,17 +326,10 @@ ul.listing.posts .post-date {
   margin: 0;
 }
 
-#github-info .label {
-  display: block;
-  float: left;
-  width: 140px;
-  margin-left: 8px;
-}
-
-#github-info .value,
 #github-info .icon {
   float: left;
   line-height: 48px;
+  margin-right: 8px;
 }
 
 #github-info a {

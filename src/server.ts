@@ -1,4 +1,5 @@
 import { serveFile } from "@std/http/file-server";
+import { graphql as GithubGraphQL } from "@octokit/graphql";
 import { Site } from "@/site.class.ts";
 
 // Load Env Vars with suitable defaults
@@ -12,6 +13,26 @@ const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");
 const appEnv: string = bcm.envVar("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
+
+type GitHubUserResponse = {
+  user: {
+    login: string;
+    name: string;
+    status: {
+      message: string;
+    };
+    url: string;
+    repositories: {
+      totalCount: number;
+    };
+    followers: {
+      totalCount: number;
+    };
+    following: {
+      totalCount: number;
+    };
+  } | null;
+};
 
 // Start the static web server
 
@@ -59,34 +80,43 @@ Deno.serve(
         return new Response("{}", { status: 424 });
       }
 
-      const githubResponse = await fetch(
-        "https://api.github.com/users/bcm-works",
-        {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${githubToken}`,
-            "User-Agent": "bcm-works",
-            "X-GitHub-Api-Version": "2026-03-10",
-            "Content-Type": "application/json",
-          },
+      const githubQuery = GithubGraphQL.defaults({
+        headers: {
+          authorization: `token ${githubToken}`,
+          userAgent: "bcm-works",
         },
+      });
+
+      const { user }: GitHubUserResponse = await githubQuery(
+        `{
+          user(login: "bcm-works") {
+            login
+            name
+            url
+            repositories(privacy: PUBLIC) {
+              totalCount
+            }
+            followers {
+              totalCount
+            }
+            following {
+              totalCount
+            }
+            status {
+              message
+            }
+          }
+        }`,
       );
 
-      if (!githubResponse.ok) {
-        return new Response("{}", { status: 424 });
-      }
-
-      const githubJson = await githubResponse.json();
-
       const returnString = JSON.stringify({
-        username: githubJson.login,
-        name: githubJson.name,
-        bio: githubJson.bio,
-        hireable: githubJson.hireable,
-        url: githubJson.html_url,
-        repos: githubJson.public_repos,
-        followers: githubJson.followers,
-        following: githubJson.following,
+        username: user?.login,
+        name: user?.name,
+        status: user?.status.message,
+        url: user?.url,
+        repos: user?.repositories.totalCount,
+        followers: user?.followers.totalCount,
+        following: user?.following.totalCount,
       });
 
       return new Response(
