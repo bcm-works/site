@@ -55,15 +55,15 @@ h4 {
 a,
 a:visited {
   color: var(--colour-highlight);
-  text-decoration: underline wavy var(--colour-tertiary) 2px;
-  text-underline-offset: 6px;
+  text-decoration: var(--link-decoration-default);
+  text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 a:hover,
 a:focus {
   color: var(--colour-highlight);
-  text-decoration: underline wavy var(--colour-highlight) 2px;
-  text-underline-offset: 6px;
+  text-decoration: var(--link-decoration-active);
+  text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 /* ICONS */
@@ -141,14 +141,14 @@ a:focus {
 
 .header-nav .nav-link:hover {
   color: var(--colour-foreground);
-  text-decoration: underline wavy var(--colour-secondary) 2px;
-  text-underline-offset: 6px;
+  text-decoration: var(--link-decoration-nav);
+  text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 .header-nav .nav-link.active {
   color: var(--colour-highlight);
-  text-decoration: underline wavy var(--colour-highlight) 2px;
-  text-underline-offset: 6px;
+  text-decoration: var(--link-decoration-active);
+  text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 .header-nav .nav-link.active a {

@@ -1,6 +1,9 @@
 /* THEME */
 
 :root {
+  /* LAYOUT */
+  --content-max-width: 900px;
+
   /* COLOUR SCHEME */
   --colour-black: #000000;
   --colour-white: #FFFFFF;
@@ -10,6 +13,13 @@
   --colour-secondary: #08443C;
   --colour-tertiary: #0F8172;
 
+  /* LINKS */
+  --link-decoration-default: underline wavy var(--colour-tertiary) 2px;
+  --link-decoration-nav: underline wavy var(--colour-secondary) 2px;
+  --link-decoration-active: underline wavy var(--colour-highlight) 2px;
+  --link-decoration-underline-offset: 6px;
+
+  /* CODE BLOCKS */
   --colour-code-method: var(--colour-highlight);
   --colour-code-keyword: var(--colour-highlight);
   --colour-code-comment: var(--colour-secondary);
@@ -22,9 +32,6 @@
   --font-family-quote: var(--font-family-code);
   --font-size-body: 20px;
   --line-height-body: 32px;
-
-  /* LAYOUT */
-  --content-max-width: 900px;
 }
 
 /* CUSTOM FONTS */
