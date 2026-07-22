@@ -103,7 +103,7 @@ Deno.serve(
     }
 
     // Page request
-    //   - Covers pages like '/search/' and '/posts/20260616_ai-code-gen/'
+    //   - Covers pages like '/tags/' and '/posts/20260616_ai-code-gen/'
     if (bcm.fileExists(filePage)) {
       // bcm.logDebug(`Serving page: ${filePage}`);
       return await serveFile(request, filePage);
