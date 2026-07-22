@@ -247,7 +247,6 @@ ul.listing.posts .post-date {
   height: 35px;
   line-height: 35px;
   background-color: var(--colour-tertiary);
-  border-radius: 4px;
   font-size: 16px;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -276,7 +275,6 @@ ul.listing.posts .post-date {
   margin: 20px 0;
   padding: 20px 20px 20px 50px;
   position: relative;
-  border-radius: 4px;
   background-color: var(--colour-tertiary);
   color: var(--colour-highlight);
 }

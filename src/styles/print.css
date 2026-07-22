@@ -48,7 +48,7 @@
   }
 
   blockquote,
-  pre {
+  pre code.hljs * {
     padding: 20px !important;
     background-color: transparent !important;
     color: var(--colour-black) !important;
@@ -56,6 +56,13 @@
 
   .content-body blockquote::before {
     display: none !important;
+  }
+
+  .content-body em,
+  .content-body strong,
+  .content-body p code {
+    background-color: var(--colour-gray) !important;
+    color: var(--colour-black) !important;
   }
 
   @page {
