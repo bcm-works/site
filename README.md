@@ -38,11 +38,11 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 ## Local Setup
 
-The systems in this repository assume that your local machine:
+The following frameworks are required and will need to be manually installed:
 
-- Has an up-to-date version of [Mise](https://mise.en.dev/) installed and ready
-- Has an up-to-date version of [Homebrew](https://brew.sh/) installed and ready
-- Has an up-to-date version of [Docker CLI](https://docs.docker.com/desktop/) installed and ready
+- [Nub](https://nubjs.com/)
+- [Homebrew](https://brew.sh/)
+- [Docker](https://docs.docker.com/desktop/)
 
 Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contains install scripts for most of the above items.
 

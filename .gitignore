@@ -1,6 +1,7 @@
 $RECYCLE.BIN/
 .DS_Store
 node_modules
+**/node_modules
 cache
 temp
 
@@ -14,8 +15,7 @@ dist/
 !.env.github
 !.env.railway
 !.env.local
-!.sample.env
-!.*.sample.env
+!.env.sample
 !.envrc
 
 *.log
