@@ -74,8 +74,8 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 </script>
 </head>
 <body class="env-{{ SITE_ENV }}{% if body_class %} {{ body_class }}{% endif %}">
-  <div class="layout-wrapper">
-    <div class="header-wrapper">
+  <div class="layout-container">
+    <div class="header-container">
       <aside class="header hidden-print" data-pagefind-ignore>
         <div class="header-title">
           <a href="/" class="site-link" title="Go to the home page">
@@ -109,7 +109,7 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
           <h1>{{ SITE_AUTHOR}}</h1>
           <p>{{ SITE_URL }}{{ url }}</p>
         </div>
-        <div class="content-wrapper" data-pagefind-body>{{ content | safe }}</div>
+        <div class="content-container" data-pagefind-body>{{ content | safe }}</div>
       </article>
     </main>
   </div>

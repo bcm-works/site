@@ -50,7 +50,7 @@ article {
   box-sizing: border-box;
 }
 
-.layout-wrapper {
+.layout-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -83,7 +83,7 @@ article {
   box-sizing: border-box;
 }
 
-.header-wrapper {
+.header-container {
   background-color: var(--colour-tertiary);
   background-image: url('/images/header-bg.svg');
   background-repeat: repeat;
