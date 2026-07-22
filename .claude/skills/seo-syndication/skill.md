@@ -26,7 +26,7 @@ Everything a machine (not a human browser) consumes: `robots.txt`, `sitemap.xml`
 ## Business rules / invariants
 - `robots.txt` is a **deny-list of AI/scraper user-agents** (anthropic-ai, ClaudeBot, GPTBot, CCBot, PerplexityBot, etc.). To block a new bot, add its user-agent string to the `disallow` array in the `robots()` call in `src/lume.ts` — nothing else generates `robots.txt`.
 - Feeds output to `/posts.rss` and `/posts.json` only, query `"Post"`, sorted `date=desc`, capped at `limit: 100`. Feed item content pulls from the `$.post-content` selector — renamed/removed CSS class breaks feed bodies silently.
-- Canonical and `og:url` are always `{{ SITE_URL }}{{ url }}` — never hardcode absolute URLs in content; they must derive from `SITE_URL` (from `.site.env`) so local/hosted builds stay correct.
+- Canonical and `og:url` are always `{{ SITE_URL }}{{ url }}` — never hardcode absolute URLs in content; they must derive from `SITE_URL` (from `.env`) so local/hosted builds stay correct.
 - `og:image` falls back in order: `photo_thumb_url` → `photo_url` → the default profile PNG. All three are prefixed with `SITE_URL`.
 
 ## Non-obvious behaviors

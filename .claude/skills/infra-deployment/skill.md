@@ -31,7 +31,7 @@ Production runs the site as a Docker container on Railway. Infrastructure is dec
 - The release workflow (`.github/workflows/release.yml`) publishes to GHCR: `docker/metadata-action` images are prefixed `ghcr.io/${{ secrets.SITE_DOCKER_IMAGE_PATH }}`.
 - The Dockerfile has two stages: `build` runs `deno task build`; `serve` copies only `public/`, `src/server.ts`, `src/site.class.ts`, and Deno config — keeps the image minimal. Don't expect other source files at runtime.
 - Container runs as non-root user `deno`, exposes port 8000, and starts via `CMD ["deno", "task", "start"]`. `src/docker-build.test.ts` asserts exactly these (User, Cmd, port 8000/tcp).
-- Local build tags both `bcm-site-local:latest` and `bcm-site-local:commit-<sha>`, targets `linux/amd64`, and sources `.site.env` for build args.
+- Local build tags both `bcm-site-local:latest` and `bcm-site-local:commit-<sha>`, targets `linux/amd64`, and sources `.env` for build args.
 
 ## Critical files (purpose, not inventory)
 - `infra/.railway/railway.ts` — declares the Railway service, domains, healthcheck, resource limits, and preserved env keys.

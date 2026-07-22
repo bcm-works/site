@@ -52,10 +52,10 @@ fi
 mise run msg-info 'Installing AI tools'
 mise run ai-install
 
-if [ ! -f "$SITE_DIR/.site.env" ] && [ -f "$SITE_DIR/.site.local.env" ]; then
-  mise run msg-warn "Initialising '.site.env' from '.site.local.env'"
+if [ ! -f "$SITE_DIR/.env" ] && [ -f "$SITE_DIR/.env.local" ]; then
+  mise run msg-warn "Initialising '.env' from '.env.local'"
 
-  cp "$SITE_DIR/.site.local.env" "$SITE_DIR/.site.env"
+  cp "$SITE_DIR/.env.local" "$SITE_DIR/.env"
 fi
 
 mise run msg-success 'Setup completed'

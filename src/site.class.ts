@@ -6,7 +6,7 @@ export class Site {
   private envFile: string;
   private env: Record<string, string> | undefined;
 
-  constructor(envFile: string = "./.site.env") {
+  constructor(envFile: string = "./.env") {
     this.envFile = envFile;
 
     if (this.fileExists(envFile)) {

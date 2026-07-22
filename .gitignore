@@ -11,9 +11,9 @@ dist/
 .env
 .env.*
 *.env
-!.site.github.env
-!.site.railway.env
-!.site.local.env
+!.env.github
+!.env.railway
+!.env.local
 !.sample.env
 !.*.sample.env
 !.envrc

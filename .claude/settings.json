@@ -24,7 +24,7 @@
       "Bash(git log*)"
     ],
     "deny": [
-      "Read(.site.env)",
+      "Read(.env)",
       "Read(src/infra/.env)",
       "Bash(deno task release)",
       "Bash(railway)",

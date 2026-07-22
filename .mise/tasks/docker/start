@@ -8,25 +8,25 @@
 
 mise run docker-stop
 
-# Load '.site.env' if it exists
+# Load '.env' if it exists
 
-if [ -f ".site.env" ]; then
-  mise run msg-info "Loading variables from '.site.env'"
+if [ -f ".env" ]; then
+  mise run msg-info "Loading variables from '.env'"
 
-  source ".site.env"
+  source ".env"
 
   echo "Starting 'bcm-site-local' container"
   docker run \
     -d \
     --name "bcm-site-local" \
-    --env-file ".site.env" \
+    --env-file ".env" \
     --publish "${SITE_PORT:-8000}:8000" \
     --env "SITE_POSTHOG_ID=${SITE_POSTHOG_ID}" \
     --env "SITE_POSTHOG_API_HOST=${SITE_POSTHOG_API_HOST}" \
     --env "SITE_POSTHOG_UI_HOST=${SITE_POSTHOG_UI_HOST}" \
     "bcm-site-local:latest"
 else
-  mise run msg-warn "File not found at '.site.env'"
+  mise run msg-warn "File not found at '.env'"
   mise run msg-info "Starting 'bcm-site-local' container"
 
   docker run \

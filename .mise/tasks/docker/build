@@ -2,9 +2,9 @@
 #MISE description="Build the Docker image"
 #MISE alias="docker-build"
 
-if [ -f ".site.env" ]; then
+if [ -f ".env" ]; then
   mise run msg-warn 'Loading vars from env file.'
-  source ".site.env"
+  source ".env"
 else
   mise run msg-warn 'Loading vars from session.'
 fi

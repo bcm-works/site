@@ -39,7 +39,7 @@ You are working on **the bcm.works build pipeline** — turning `content/` + `sr
 ## Critical files (purpose, not inventory)
 - `.mise/tasks/build` — the real orchestrator (dir setup, content copy, Lume run, CSS bundle, asset copy). CLAUDE.md's `bin/site-build.sh` / `styles.min.css` description is stale — this task is authoritative.
 - `src/lume.ts` — Lume config: plugins, `site.data()` wiring, feed/robots/sitemap/pagefind.
-- `src/site.class.ts` — env loading (`.site.env` via dotenv), URL/port resolution, PostHog logging.
+- `src/site.class.ts` — env loading (`.env` via dotenv), URL/port resolution, PostHog logging.
 
 ## Critical Rules
 - `src/*.test.ts` (e.g. `build.test.ts`) assert files are non-empty in `public/`, so they **require a prior build** — run `deno task build` before `deno task test`.
