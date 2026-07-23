@@ -7,15 +7,17 @@
     "setup": "nub ./tools/setup.ts",
     "start": "deno run start",
     "test": "deno run test",
-    "lint": "tsc --noEmit --project tsconfig.json",
-    "lint-deno": "deno lint && deno fmt",
-    "ai-sync": "aspens doc sync",
+    "new-post": "nub ./tools/new-post.ts",
+    "release-notes": "nub ./tools/release-notes.ts",
     "docker-build": "nub ./tools/docker/docker-build.ts",
     "docker-start": "nub ./tools/docker/docker-start.ts",
     "docker-stop": "nub ./tools/docker/docker-stop.ts",
     "infra-setup": "nub ./tools/infra/infra-setup.ts",
     "deps-install": "deno task install && nub install && cd infra && nub install",
-    "deps-update": "deno task update && nub update && cd infra && nub update"
+    "deps-update": "deno task update && nub update && cd infra && nub update",
+    "lint": "tsc --noEmit --project tsconfig.json",
+    "lint-deno": "deno lint && deno fmt",
+    "ai-sync": "aspens doc sync"
   },
   "imports": {
     "#tools/*": "./tools/*.ts",
