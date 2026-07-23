@@ -7,5 +7,25 @@ body_class: page-tags-list
 <h2>Tags</h2>
 
 <ul class="tag-list">
-  {% include "posts/tag-list.njk" %}
+  {% set posts = search.pages("type=post") %}
+  {% set tags = [] %}
+  {% for post in posts %}
+    {% if post.tags %}
+      {% for tag in post.tags %}
+        {% if tag not in tags %}
+          {% set tags = (tags.push(tag), tags) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+  {% for tag in tags|sort %}
+    {% if tag != "Post" %}
+      <li>
+        <a href="/tags/{{ tag }}/" title="View posts tagged with {{ tag }}">
+          <span class="icon icon-tag fa-fw fa-solid fa-tag"></span>{{ tag }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
 </ul>
