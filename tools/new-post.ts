@@ -1,35 +1,33 @@
-#!/usr/bin/env bash
-#MISE description="Generate a Markdown file for a new post item"
+import { execSync as run } from 'node:child_process';
+import { writeFileSync as write } from 'node:fs';
+import { input as prompt } from '@inquirer/prompts';
+import { info, success, warn, error } from '#tools/log';
 
-# Figure out the post date values based on the local machine's date
+// Figure out the post date values based on the local machine's date
 
-date_slug="$(date +%Y%m%d)"
-date_prop="$(date +%Y-%m-%d)"
+const dateSlug: string = run('date +%Y%m%d').toString().trim();
+const dateFrontmatter: string = run('date +%Y-%m-%d').toString().trim();
 
-# Prompt the user for the initial content
+// Prompt the user for the initial content
 
-read -p "Title of the new post: " post_title
+const postTitle: string = await prompt({ message: "Title of the new post:" });
+const postTextSlug: string = await prompt({ message: "URL text slug for the new post:" });
 
-read -p "URL text slug for the new post: " post_text_slug
+if (!postTitle || !postTextSlug) {
+  error("Cancelled, both fields are required.");
+  process.exit(1);
+}
 
-if [[ -z "$post_title" || -z "$post_text_slug" ]]; then
-  mise run msg-error 'Cancelled, both post title and slug fields are required.'
-  exit 1
-fi
+const postFile: string = `content/posts/${dateSlug}_${postTextSlug}.md`;
 
-post_file="./content/posts/${date_slug}_${post_text_slug}.md"
+write(postFile, `--- \n\
+title: ${postTitle} \n\
+date: ${dateFrontmatter} \n\
+url: /posts/${dateSlug}_${postTextSlug}/ \n\
+tags: \n\
+  - Post \n\
+  -  \n\
+--- \n\ \n\ \n\
+`);
 
-cat > "$post_file" << EOF
----
-title: ${post_title}
-date: ${date_prop}
-url: /posts/${date_slug}_${post_text_slug}/
-tags:
-  - Post
-  -
----
-
-
-EOF
-
-mise run msg-success "Finished, new file created at '${post_file}'"
+success(`Finished, new file created at '${postFile}'`);
