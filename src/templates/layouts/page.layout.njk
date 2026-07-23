@@ -73,7 +73,7 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 }
 </script>
 </head>
-<body class="env-{{ SITE_ENV }}{% if body_class %} {{ body_class }}{% endif %}">
+<body class="{% if body_class %}{{ body_class }} {% endif %}env-{{ SITE_ENV }} build-{{ SITE_BUILD_DATE }}">
   <div class="layout-container">
     <div class="header-container">
       <aside class="header print-hidden" data-pagefind-ignore>

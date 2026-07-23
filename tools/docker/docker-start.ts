@@ -1,5 +1,6 @@
 import { execSync as run } from 'node:child_process';
 import { existsSync as exists } from 'node:fs';
+import { format } from 'date-fns'
 import { info, success, warn, error } from '#tools/log';
 import { loadEnv } from '#tools/env';
 
@@ -11,6 +12,9 @@ const url: string = process.env.SITE_URL || "http://localhost";
 const port: number = Number(process.env.SITE_PORT) || 8000;
 const lang: string = process.env.SITE_LANG || "en-GB";
 const author: string = process.env.SITE_AUTHOR || "";
+
+const dateNow: Date = new Date();
+const buildDate: string = process.env.SITE_BUILD_DATE || format(dateNow, "yyyyMMddHHmmss");
 
 const feedTitle: string = process.env.SITE_FEED_TITLE || "";
 const feedDesc: string = process.env.SITE_FEED_DESC || "";
@@ -26,9 +30,7 @@ info("Starting 'bcm-site-local' container");
 run(`docker run -d \
   --name "bcm-site-local" \
   --publish "${port}:${port}" \
-  --env "SITE_POSTHOG_ID=${postHogId}" \
-  --env "SITE_POSTHOG_API_HOST=${postHogApiHost}" \
-  --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
+  --env "SITE_BUILD_DATE=${buildDate}" \
   --env "SITE_FEED_TITLE=${feedTitle}" \
   --env "SITE_FEED_DESC=${feedDesc}" \
   --env "SITE_FEED_DEFAULT_TITLE=${feedDefaultTitle}" \
