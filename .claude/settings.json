@@ -25,8 +25,7 @@
     ],
     "deny": [
       "Read(.env)",
-      "Read(src/infra/.env)",
-      "Bash(deno task release)",
+      "Read(infra/.env)",
       "Bash(railway)",
       "Bash(git commit*)",
       "Bash(git push*)"

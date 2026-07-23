@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Warning echo message"
-#MISE alias="msg-warn"
-#USAGE arg "<msg>" help="Message content"
-
-echo -e "\033[1;33m!\u2009\033[0m${usage_msg}";

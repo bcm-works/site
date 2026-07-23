@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Update AI skills based on current repo state"
-#MISE alias="ai-sync"
-
-aspens doc sync

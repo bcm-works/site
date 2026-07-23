@@ -9,7 +9,6 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 ## Structure
 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
-- [.mise](.mise/) - Project specific config and commands using [Mise](https://mise.en.dev/).
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
@@ -21,10 +20,12 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
 - [src/styles/theme.css](src/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
+- [tools](tools/) - Project specific commands.
 - [.aspens.json](.aspens.json) - Project config for [Aspens](https://github.com/aspenkit/aspens)
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
+- [package.json](package.json) - [Nub](https://nubjs.com/) imports, tasks and configuration.
 
 ## Tech Stack
 
@@ -38,30 +39,33 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 ## Local Setup
 
-The systems in this repository assume that your local machine:
+The following tools are required and need to be manually installed:
 
-- Has an up-to-date version of [Mise](https://mise.en.dev/) installed and ready
-- Has an up-to-date version of [Homebrew](https://brew.sh/) installed and ready
-- Has an up-to-date version of [Docker CLI](https://docs.docker.com/desktop/) installed and ready
+- [Nub](https://nubjs.com/)
+- [Homebrew](https://brew.sh/)
+- [Docker](https://docs.docker.com/desktop/)
+- [Railway](https://docs.railway.com/cli)
 
 Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contains install scripts for most of the above items.
 
 ## Local Tools
 
-Run the Mise [setup task](.mise/tasks/setup-tools) to setup your local environment:
+Run the [setup tool](tools/setup.ts) to setup your local environment:
 
 ```bash
-mise run setup
+nub run setup
 ```
 
-This repository uses [Mise](https://mise.en.dev/) to apply config and run commands from the [.mise directory](.mise/).
-
-Some command aliases are set in [.mise/config.toml](.mise/config.toml) that are available in terminal sessions in this directory after running the `setup-tools` command above.
-
-To list all of the available Mise tasks, run the alias command:
+List all of the available Nub tasks:
 
 ```bash
-tasks
+nub run
+```
+
+List all of the available Deno tasks:
+
+```bash
+deno task
 ```
 
 ## Deployment

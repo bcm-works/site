@@ -2,6 +2,7 @@
 .claude/
 .github/
 .zed/
+
 design/
 docs/
 infra/
