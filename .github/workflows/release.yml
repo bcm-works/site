@@ -151,6 +151,8 @@ jobs:
           git push --tags --quiet
       - name: Nub setup
         uses: nubjs/setup-nub@v0
+      - name: Install dependencies
+        run: nub ci
       - name: Generate release notes
         working-directory: ${{ github.workspace }}
         run: nub run release-notes
