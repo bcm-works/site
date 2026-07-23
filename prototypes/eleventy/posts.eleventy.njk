@@ -7,12 +7,11 @@ body_class: page-posts-list
 <h2>Posts</h2>
 
 <ul class="posts-list">
-  {% set posts = search.pages("type=post", "date=desc") %}
-  {% for post in posts %}
+  {% for post in collections.post %}
     {% if post.url != '/posts/' %}
       <li>
         <span class="post-date">
-          {{ post.date | date('d LLL yyyy') }}
+          {{ post.date }}
         </span>
         <a class="post-link" href="{{ post.url }}">
           {% if post.title %}

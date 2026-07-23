@@ -7,9 +7,8 @@ body_class: page-tags-list
 <h2>Tags</h2>
 
 <ul class="tag-list">
-  {% set posts = search.pages("type=post") %}
   {% set tags = [] %}
-  {% for post in posts %}
+  {% for post in collections.post %}
     {% if post.tags %}
       {% for tag in post.tags %}
         {% if tag not in tags %}
