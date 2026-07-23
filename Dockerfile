@@ -31,9 +31,6 @@ COPY package.json /app
 COPY nub.lock /app
 COPY tools /app/tools
 
-# Install dependencies.
-RUN deno task install && nub install
-
 # Copy the rest of the repo directory,
 # besides items filtered out by '.dockerignore'.
 COPY . .
@@ -91,6 +88,9 @@ LABEL org.opencontainers.image.vendor=$SITE_AUTHOR
 LABEL org.opencontainers.image.url=$SITE_REPO
 LABEL org.opencontainers.image.source=$SITE_REPO
 LABEL org.opencontainers.image.licenses=MIT
+
+# Install dependencies.
+RUN deno task install && nub install
 
 # Build the site
 RUN nub run build

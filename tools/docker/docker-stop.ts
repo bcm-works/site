@@ -3,4 +3,4 @@ import { warn } from '#tools/log';
 
 warn("Stopping and removing current 'bcm-site-local' container");
 
-run("docker stop bcm-site-local");
+run(`docker stop bcm-site-local || true && docker rm bcm-site-local || true`);

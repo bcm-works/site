@@ -5,9 +5,9 @@ import { loadEnv } from '#tools/env';
 
 loadEnv();
 
-const url: string = process.env.SITE_URL || "";
+const url: string = process.env.SITE_URL || "http://localhost";
 const port: number = Number(process.env.SITE_PORT) || 8000;
-const lang: string = process.env.SITE_LANG || "";
+const lang: string = process.env.SITE_LANG || "en-GB";
 const author: string = process.env.SITE_AUTHOR || "";
 
 const feedTitle: string = process.env.SITE_FEED_TITLE || "";
@@ -25,7 +25,6 @@ info("Building 'bcm-site-local' Docker Image");
 run(`docker buildx build \
   --pull \
   --no-cache \
-  --progress=plain \
   --platform linux/amd64 \
   --tag bcm-site-local:latest \
   --tag bcm-site-local:commit-${gitCommitShortSha} \

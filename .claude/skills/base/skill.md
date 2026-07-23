@@ -26,7 +26,7 @@ Deno + TypeScript | Lume 3.2.6 (Nunjucks templates) | Docker | Mise (task runner
 - **Run `bash -n <script>`** before proposing any shell script change.
 - **Import alias `@/` → `./src/`** (`deno.jsonc`). Lume/highlight deps are pinned remote URLs in `deno.jsonc` imports.
 - **Go through the `Site` class** (`src/site.class.ts`) for env access, URL/port resolution, logging, and PostHog — don't scatter `Deno.env.get` calls.
-- Env vars load from `.env` via `@std/dotenv` (per-env templates: `.env.local`, `.env.github`, `.env.railway`), falling back to session env. Values reach templates through `site.data(...)` in `src/lume.ts`.
+- Env vars load from `.env` via `@std/dotenv` (per-env templates: `.env.sample`, `.env.github`, `.env.railway`), falling back to session env. Values reach templates through `site.data(...)` in `src/lume.ts`.
 - Build runs under `TZ="$SITE_TIMEZONE"` — dates in output depend on it.
 - Minimal, "why"-only comments. 2-space indent, line width 100, semicolons required, no tabs.
 - **The CLAUDE.md/AGENTS.md prose about `bin/build.sh` and a `tools-reset.css`/`media-screen-*` CSS order is STALE.** There is no `bin/` dir. Verify against `.mise/tasks/build` before acting.
