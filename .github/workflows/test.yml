@@ -45,7 +45,7 @@ jobs:
       COMMIT: ${{ steps.vars.outputs.COMMIT }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set workflow variables
         id: vars
         run: |

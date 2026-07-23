@@ -28,7 +28,7 @@
     },
     "update": {
       "description": "Update third-party dependencies.",
-      "command": "DENO_NO_PACKAGE_JSON=1 deno outdated --update --compatible --config ./deno.jsonc"
+      "command": "DENO_NO_PACKAGE_JSON=1 deno outdated --update --compatible"
     },
     "lume": {
       "description": "Run a Lume command.",
