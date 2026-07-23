@@ -28,7 +28,7 @@ run(`mkdir -p "${publicDir}/css"`);
 
 info("Applying PurgeCSS updates to site.css");
 
-run(`deno x --yes --no-check npm:purgecss@8.0.0 \
+run(`nubx -y purgecss@8.0.0 \
   --safelist ".content-body" \
   --safelist "blockquote" \
   --safelist "em" \
