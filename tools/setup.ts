@@ -1,4 +1,5 @@
 import { execSync as run } from 'node:child_process';
+import { readFileSync as read } from 'node:fs';
 import { hasCommand } from '#helpers/has-command';
 import { info, success, warn, error } from '#helpers/log';
 
@@ -23,5 +24,31 @@ if (hasCommand("nub")) {
   process.exit(1);
 }
 
+const nodeVersion = read(".node-version", "utf8").trim();
+
+info(`Setting Node version to ${nodeVersion}`);
+
+run(`nub node install ${nodeVersion}`, { stdio: 'inherit' });
+run(`nub node pin ${nodeVersion}`, { stdio: 'inherit' });
+
 info("Installing AI tools");
-run("nub run ai-install");
+
+if (hasCommand("claude")) {
+  success("Found Claude Code CLI");
+} else {
+  warn("Installing Claude Code CLI");
+  run("curl -fsSL https://claude.ai/install.sh | bash");
+}
+
+info("Updating Claude Code CLI");
+run("claude update", { stdio: 'inherit' });
+
+info("Installing Aspens");
+run("nub install -g aspens", { stdio: 'inherit' });
+
+info("Configuring Aspens");
+run("mkdir -p .aspens/sessions");
+
+warn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
+
+success("Setup completed");

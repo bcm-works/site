@@ -5,8 +5,8 @@
   "scripts": {
     "setup": "nub ./tools/setup.ts",
     "start": "",
-    "check-types": "tsc --noEmit --project tsconfig.json",
-    "ai-install": "nub ./tools/ai/ai-install.ts"
+    "lint": "tsc --noEmit --project tsconfig.json",
+    "ai-sync": "aspens doc sync"
   },
   "imports": {
     "#tools/*": "./tools/*.ts",
