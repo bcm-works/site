@@ -39,6 +39,9 @@ info("Installing dependencies");
 
 run("nub run deps-install", { stdio: 'inherit' });
 
+info("Configuring Aspens");
+run("mkdir -p .aspens/sessions");
+
 info("Setup infra");
 
 run("nub run infra-setup", { stdio: 'inherit' });
@@ -55,11 +58,6 @@ if (hasCommand("claude")) {
 info("Updating Claude Code CLI");
 run("claude update", { stdio: 'inherit' });
 
-info("Installing Aspens");
-run("nub install -g aspens", { stdio: 'inherit' });
-
-info("Configuring Aspens");
-run("mkdir -p .aspens/sessions");
 
 warn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
 
