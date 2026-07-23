@@ -1,2 +1,2 @@
 type: tag
-layout: posts/tag.njk
+layout: tag.njk

@@ -1,4 +1,4 @@
 ---
 title: Tags
-layout: posts/tags.njk
+layout: tags.njk
 ---

@@ -1,2 +1,2 @@
 type: post
-layout: posts/post.njk
+layout: post.njk

@@ -1,15 +1,13 @@
 ---
-title: Tag
-layout: layouts/page.layout.njk
-body_class: page-tag
+title: Posts
+layout: page.layout.njk
+body_class: page-posts-list
 ---
 
-{% set tag = url | replace("/tags/", "") | replace("/", "") %}
-{% set posts = search.pages(tag + " type=post", "date=desc") %}
-
-<h2 data-pagefind-meta="title">{{ tag }}</h2>
+<h2>Posts</h2>
 
 <ul class="posts-list">
+  {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts %}
     {% if post.url != '/posts/' %}
       <li>
