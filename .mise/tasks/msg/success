@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Success echo message"
-#MISE alias="msg-success"
-#USAGE arg "<msg>" help="Message content"
-
-echo -e "\033[1;32m✔\u2009\033[0m${usage_msg}";

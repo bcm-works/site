@@ -6,14 +6,16 @@
     "setup": "nub ./tools/setup.ts",
     "start": "",
     "lint": "tsc --noEmit --project tsconfig.json",
-    "ai-sync": "aspens doc sync"
+    "ai-sync": "aspens doc sync",
+    "docker-build": "nub ./tools/docker/docker-build.ts",
+    "docker-start": "nub ./tools/docker/docker-start.ts",
+    "docker-stop": "nub ./tools/docker/docker-stop.ts"
   },
   "imports": {
     "#tools/*": "./tools/*.ts",
     "#helpers/*": "./tools/helpers/*.ts"
   },
   "devDependencies": {
-    "@nubjs/types": "^0.5.0",
     "@types/node": "^26",
     "typescript": "^7"
   },
@@ -30,6 +32,7 @@
     }
   },
   "dependencies": {
+    "@nubjs/types": "0.5.0",
     "chalk": "^5.6.2"
   }
 }

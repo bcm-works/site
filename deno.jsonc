@@ -1,6 +1,8 @@
 {
   "lock": true,
   "nodeModulesDir": "none",
+  "preferPackageJson": false,
+  "minimumDependencyAge": 0,
   "imports": {
     "@/": "./src/",
     "@gnome/exec": "jsr:@gnome/exec@^0.6",
@@ -27,11 +29,11 @@
     },
     "install": {
       "description": "Install third-party dependencies.",
-      "command": "deno install --quiet --config ./deno.jsonc --lock ./deno.lock"
+      "command": "DENO_NO_PACKAGE_JSON=1 deno install --config ./deno.jsonc --lock ./deno.lock"
     },
     "update": {
       "description": "Update third-party dependencies.",
-      "command": "deno outdated --quiet --update --compatible --lock ./deno.lock"
+      "command": "DENO_NO_PACKAGE_JSON=1 deno outdated --update --compatible --lock ./deno.lock"
     },
     "lume": {
       "description": "Run a Lume command.",
