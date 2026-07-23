@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Deno setup"
-#MISE alias="setup-deno"
-
-mise run msg-info 'Installing dependencies'
-
-deno task install

@@ -31,6 +31,14 @@ info(`Setting Node version to ${nodeVersion}`);
 run(`nub node install ${nodeVersion}`, { stdio: 'inherit' });
 run(`nub node pin ${nodeVersion}`, { stdio: 'inherit' });
 
+info("Installing dependencies");
+
+run("nub install", { stdio: 'inherit' });
+
+info("Setup infra");
+
+run("nub run infra-setup", { stdio: 'inherit' });
+
 info("Installing AI tools");
 
 if (hasCommand("claude")) {

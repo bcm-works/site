@@ -38,11 +38,12 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 ## Local Setup
 
-The following frameworks are required and will need to be manually installed:
+The following tools are required and need to be manually installed:
 
 - [Nub](https://nubjs.com/)
 - [Homebrew](https://brew.sh/)
 - [Docker](https://docs.docker.com/desktop/)
+- [Railway](https://docs.railway.com/cli)
 
 Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contains install scripts for most of the above items.
 
