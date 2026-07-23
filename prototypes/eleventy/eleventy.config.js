@@ -8,6 +8,8 @@ export default function(eleventyConfig) {
 	eleventyConfig.setIncludesDirectory("../src/includes");
 	eleventyConfig.setLayoutsDirectory("../src/templates");
 
+	eleventyConfig.addPassthroughCopy();
+
 	// eleventyConfig.setQuietMode(true);
 
 	eleventyConfig.setFrontMatterParsingOptions({
