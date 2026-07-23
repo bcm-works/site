@@ -46,9 +46,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
-        with:
-          ref: ${{ github.ref_name }}
-          fetch-depth: 1
       - name: Set workflow variables
         id: vars
         run: |
