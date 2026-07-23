@@ -33,9 +33,9 @@ run(`deno x --yes --no-check npm:purgecss@8.0.0 \
   --safelist "blockquote" \
   --safelist "em" \
   --safelist "strong" \
-  --css "./src/frontend/styles/site.css" \
-  --content "./src/frontend/**/*.njk" \
-  --output "./src/frontend/styles/site.css"`);
+  --css "./src/styles/site.css" \
+  --content "./src/**/*.njk" \
+  --output "./src/styles/site.css"`);
 
 info("Running Deno Lint");
 

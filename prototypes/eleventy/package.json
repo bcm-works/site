@@ -3,8 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "eleventy",
-    "start": "eleventy --serve"
+    "build": "nub ./build.ts",
+    "start": "nub run build && eleventy --serve"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.1.6",
