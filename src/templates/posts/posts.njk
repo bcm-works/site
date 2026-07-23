@@ -7,5 +7,20 @@ body_class: page-posts-list
 <h2>Posts</h2>
 
 <ul class="posts-list">
-  {% include "posts/post-list.njk" %}
+  {% for post in collections.post %}
+    {% if post.url != '/posts/' %}
+      <li>
+        <span class="post-date">
+          {{ post.date }}
+        </span>
+        <a class="post-link" href="{{ post.url }}">
+          {% if post.title %}
+            {{ post.title }}
+          {% else %}
+            {{ post.url }}
+          {% endif %}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
 </ul>
