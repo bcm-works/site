@@ -49,7 +49,6 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 1
-          submodules: recursive
       - name: Set workflow variables
         id: vars
         run: |
