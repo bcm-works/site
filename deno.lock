@@ -880,6 +880,14 @@
       "npm:date-fns@^4.4.0",
       "npm:highlight.js@^11.11.1",
       "npm:posthog-node@^5.46.0"
-    ]
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:@nubjs/types@0.5",
+        "npm:@types/node@26",
+        "npm:chalk@^5.6.2",
+        "npm:typescript@7"
+      ]
+    }
   }
 }

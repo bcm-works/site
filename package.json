@@ -1,0 +1,35 @@
+{
+  "name": "bcm-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "nub ./tools/setup.ts",
+    "start": "",
+    "check-types": "tsc --noEmit --project tsconfig.json",
+    "ai-install": "nub ./tools/ai/ai-install.ts"
+  },
+  "imports": {
+    "#tools/*": "./tools/*.ts",
+    "#helpers/*": "./tools/helpers/*.ts"
+  },
+  "devDependencies": {
+    "@nubjs/types": "^0.5.0",
+    "@types/node": "^26",
+    "typescript": "^7"
+  },
+  "packageManager": "nub@0.5.0",
+  "engines": {
+    "node": ">=26.5.0",
+    "nub": ">=0.5.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "nub",
+      "version": "^0.5.0",
+      "onFail": "warn"
+    }
+  },
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}
