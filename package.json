@@ -13,8 +13,10 @@
     "docker-start": "nub ./tools/docker/docker-start.ts",
     "docker-stop": "nub ./tools/docker/docker-stop.ts",
     "infra-setup": "nub ./tools/infra/infra-setup.ts",
-    "deps-install": "deno task install && nub install && cd infra && nub install",
-    "deps-update": "deno task update && nub update && cd infra && nub update",
+    "deps-install": "DENO_NO_PACKAGE_JSON=1 deno task install && nub install",
+    "deps-install-infra": "cd infra && nub install",
+    "deps-update": "deno task update && nub update",
+    "deps-update-infra": "cd infra && nub update",
     "lint": "tsc --noEmit --project tsconfig.json",
     "lint-deno": "deno lint && deno fmt",
     "ai-sync": "aspens doc sync"

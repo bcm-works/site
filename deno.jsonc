@@ -1,8 +1,8 @@
 {
-  "lock": true,
   "nodeModulesDir": "none",
   "preferPackageJson": false,
   "minimumDependencyAge": 0,
+  "lock": false,
   "imports": {
     "@/": "./src/",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.3",
@@ -22,17 +22,13 @@
     "posthog": "npm:posthog-node@^5.46.0"
   },
   "tasks": {
-    "build": {
-      "description": "Build the site and organise the required assets.",
-      "command": "mise run build"
-    },
     "install": {
       "description": "Install third-party dependencies.",
-      "command": "DENO_NO_PACKAGE_JSON=1 deno install --config ./deno.jsonc --lock ./deno.lock"
+      "command": "DENO_NO_PACKAGE_JSON=1 deno install --config ./deno.jsonc"
     },
     "update": {
       "description": "Update third-party dependencies.",
-      "command": "DENO_NO_PACKAGE_JSON=1 deno outdated --update --compatible --lock ./deno.lock"
+      "command": "DENO_NO_PACKAGE_JSON=1 deno outdated --update --compatible --config ./deno.jsonc"
     },
     "lume": {
       "description": "Run a Lume command.",

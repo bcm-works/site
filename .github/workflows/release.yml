@@ -59,7 +59,7 @@ jobs:
         with:
           deno-version: latest
       - name: Install dependencies
-        run: deno task install
+        run: nub run deps-install
       - name: Build site
         run: nub run build
       - name: Docker build

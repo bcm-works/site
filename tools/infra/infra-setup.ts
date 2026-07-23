@@ -12,6 +12,6 @@ run("nub install -g railway", { stdio: 'inherit' });
 
 info("Installing dependencies");
 
-run("cd infra && nub install", { stdio: 'inherit' });
+run("nub run deps-install-infra", { stdio: 'inherit' });
 
 warn("Please login to Railway: railway login && railway link");

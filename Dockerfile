@@ -26,7 +26,6 @@ RUN npm install -g @nubjs/nub
 COPY .npmrc /app
 COPY .node-version /app
 COPY deno.jsonc /app
-COPY deno.lock /app
 COPY package.json /app
 COPY nub.lock /app
 COPY tools /app/tools
@@ -90,7 +89,7 @@ LABEL org.opencontainers.image.source=$SITE_REPO
 LABEL org.opencontainers.image.licenses=MIT
 
 # Install dependencies.
-RUN deno task install && nub install
+RUN nub run deps-install
 
 # Build the site
 RUN nub run build
@@ -112,7 +111,6 @@ COPY --from=build /app/src/site.class.ts /app/src/site.class.ts
 COPY --from=build /app/src/server.ts /app/src/server.ts
 COPY --from=build /app/public /app/public
 COPY --from=build /app/deno.jsonc /app/deno.jsonc
-COPY --from=build /app/deno.lock /app/deno.lock
 
 # Start the static file server as the non-root user 'deno' on port 8000.
 USER deno

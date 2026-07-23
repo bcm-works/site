@@ -12,7 +12,6 @@ content/** linguist-documentation
 design/** linguist-documentation
 docs/** linguist-documentation
 
-deno.lock linguist-generated
 nub.lock linguist-generated
 package-lock.json linguist-generated
 

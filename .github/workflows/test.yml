@@ -19,7 +19,6 @@ on:
       - src/
       - tools/
       - deno.jsonc
-      - deno.lock
       - nub.lock
       - package.json
       - .dockerignore
@@ -56,13 +55,14 @@ jobs:
         run: |
           echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
           echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
-
+      - name: Nub setup
+        uses: nubjs/setup-nub@v0
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
       - name: Install dependencies
-        run: deno task install
+        run: nub run deps-install
       - name: Build site
         run: nub run build
       - name: Docker build
