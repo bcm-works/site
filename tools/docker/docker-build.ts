@@ -1,6 +1,6 @@
 import { execSync as run } from 'node:child_process';
 import { existsSync as exists } from 'node:fs';
-import { info, success, warn, error } from '#helpers/log';
+import { info, success, warn, error } from '#tools/log';
 
 if (exists(".env")) {
   info("Loading vars from env file.");

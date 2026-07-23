@@ -5,7 +5,6 @@
   "minimumDependencyAge": 0,
   "imports": {
     "@/": "./src/",
-    "@gnome/exec": "jsr:@gnome/exec@^0.6",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.3",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",

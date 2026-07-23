@@ -1,5 +1,5 @@
 import { execSync as run } from 'node:child_process';
-import { info, warn } from '#helpers/log';
+import { info, warn } from '#tools/log';
 
 info("Configuring the Railway CLI");
 

@@ -1,7 +1,7 @@
 import { execSync as run } from 'node:child_process';
 import { readFileSync as read } from 'node:fs';
-import { hasCommand } from '#helpers/has-command';
-import { info, success, warn, error } from '#helpers/log';
+import { hasCommand } from '#tools/has-command';
+import { info, success, warn, error } from '#tools/log';
 
 if (hasCommand("brew")) {
   success("Found Homebrew");
