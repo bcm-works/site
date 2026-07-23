@@ -23,16 +23,18 @@ defaults:
   run:
     shell: bash
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 permissions:
   contents: read
   packages: write
 
 jobs:
-
   release-build-test:
     name: Build and Test
     if: ${{ inputs.continue_deployment == true }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     environment:
       name: ci-build
       deployment: false
@@ -62,11 +64,10 @@ jobs:
         run: nub run docker-build
       - name: Run tests
         run: deno task test
-
   release-docker:
     name: Push to GitHub Packages
     needs: [release-build-test]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     environment:
       name: ci-build
       deployment: false
@@ -131,11 +132,10 @@ jobs:
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-
   release-github:
     name: Create Release
     needs: [release-build-test, release-docker]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     permissions:
       contents: write
     env:
