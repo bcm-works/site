@@ -39,6 +39,7 @@
     "jsr:@std/yaml@1.1.0": "1.1.0",
     "jsr:@std/yaml@^1.0.5": "1.1.2",
     "jsr:@std/yaml@^1.1.2": "1.1.2",
+    "npm:@nubjs/types@0.5.0": "0.5.0_@types+node@26.1.1",
     "npm:@octokit/graphql@^9.0.3": "9.0.3",
     "npm:chalk@^5.6.2": "5.6.2",
     "npm:date-fns@^4.4.0": "4.4.0",
@@ -312,6 +313,12 @@
       "os": ["win32"],
       "cpu": ["x64"]
     },
+    "@nubjs/types@0.5.0_@types+node@26.1.1": {
+      "integrity": "sha512-lNJDVSoxZNeSE7ayrWr3LDty5NeZIxZsKop0tMry1Xr7883P//NoKrAqqPkJzpYzts01jLwIW+HyN4nUa31+aA==",
+      "dependencies": [
+        "@types/node"
+      ]
+    },
     "@octokit/endpoint@11.0.3": {
       "integrity": "sha512-FWFlNxghg4HrXkD3ifYbS/IdL/mDHjh9QcsNyhQjN8dplUoZbejsdpmuqdA76nxj2xoWPs7p8uX2SNr9rYu0Ag==",
       "dependencies": [
@@ -361,6 +368,12 @@
     },
     "@posthog/types@1.397.1": {
       "integrity": "sha512-W/LpWbKVaaUnfZKuFuHa+Dg03D+fC87cM+PQbG+59JcSPW8F0JcBtSoXmpfrqbpuxUToMo+gktutrUkAb/KQBw=="
+    },
+    "@types/node@26.1.1": {
+      "integrity": "sha512-nxAkRSVkN1Y0JC1W8ky/fTfkGsMmcrRsbx+3XoZE+rMOX71kLYTV7fLXpqud1GpbpP5TuffXFqfX7fH2GgZREw==",
+      "dependencies": [
+        "undici-types"
+      ]
     },
     "argparse@2.0.1": {
       "integrity": "sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q=="
@@ -460,6 +473,9 @@
     },
     "uc.micro@2.1.0": {
       "integrity": "sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A=="
+    },
+    "undici-types@8.3.0": {
+      "integrity": "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="
     },
     "universal-user-agent@7.0.3": {
       "integrity": "sha512-TmnEAEAsBJVZM/AADELsK76llnwcf9vMKuPz8JflO1frO8Lchitr0fNaN9d+Ap0BjKtqWqd/J17qeDnXh8CL2A=="
@@ -615,9 +631,9 @@
     "packageJson": {
       "dependencies": [
         "npm:@nubjs/types@0.5.0",
-        "npm:@types/node@26",
+        "npm:@types/node@^26.1.1",
         "npm:chalk@^5.6.2",
-        "npm:typescript@7"
+        "npm:typescript@^7.0.2"
       ]
     }
   }

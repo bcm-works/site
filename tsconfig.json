@@ -19,8 +19,6 @@
     "noEmit": true
   },
   "include": [
-    "src/*.ts",
-    "src/**/*.ts",
     "tools/*.ts",
     "tools/**/*.ts",
   ],
@@ -28,5 +26,6 @@
     "node_modules",
     "build",
     "public",
+    "src"
   ],
 }

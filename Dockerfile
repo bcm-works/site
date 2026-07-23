@@ -1,6 +1,5 @@
-# The 'build' stage runs the Deno build process.
-FROM denoland/deno:alpine AS build
-WORKDIR /app
+# Node stage
+FROM node:26-alpine AS node
 
 LABEL maintainer="Brendan Murty"
 LABEL org.opencontainers.image.authors="Brendan Murty"
@@ -9,25 +8,31 @@ LABEL org.opencontainers.image.url="https://github.com/bcm-works/site"
 LABEL org.opencontainers.image.description="Static web server hosting the public website at bcm.works"
 LABEL org.opencontainers.image.licenses=MIT
 
+# Build stage
+FROM denoland/deno:alpine AS build
+WORKDIR /app
+
 # Apply security updates and install required system packages.
 RUN apk update && \
     apk add --no-cache --upgrade openssl busybox ssl_client && \
-    apk add --no-cache libgcc curl bash mise
+    apk add --no-cache libgcc libstdc++ curl bash
 
-# Change 'DENO_DIR' path to avoid conflicts with Google Cloud.
-RUN mkdir -p /app/.deno_cache
-ENV DENO_DIR=/app/.deno_cache
+# Setup Node and Nub
+COPY --from=node /usr/local /usr/local
+COPY --from=node /opt /opt
+RUN npm install -g @nubjs/nub
 
-# Copy over Deno config files and scripts.
+# Copy over config files and scripts.
+COPY .npmrc /app
+COPY .node-version /app
 COPY deno.jsonc /app
 COPY deno.lock /app
-COPY .mise /app/.mise
+COPY package.json /app
+COPY nub.lock /app
+COPY tools /app/tools
 
-# Allow Mise to use the custom config and tasks.
-RUN mise trust
-
-# Run the Deno CI install command to only refer to "deno.lock".
-RUN deno ci --quiet
+# Install dependencies.
+RUN deno task install && nub install
 
 # Copy the rest of the repo directory,
 # besides items filtered out by '.dockerignore'.
@@ -88,7 +93,7 @@ LABEL org.opencontainers.image.source=$SITE_REPO
 LABEL org.opencontainers.image.licenses=MIT
 
 # Build the site
-RUN deno task build
+RUN nub run build
 
 # The 'serve' stage is the minimum required files and binaries to run the
 # static files from the 'build' stage.

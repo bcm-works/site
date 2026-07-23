@@ -33,7 +33,7 @@ run(`nub node pin ${nodeVersion}`, { stdio: 'inherit' });
 
 info("Installing dependencies");
 
-run("nub install", { stdio: 'inherit' });
+run("nub run deps-install", { stdio: 'inherit' });
 
 info("Setup infra");
 

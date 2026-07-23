@@ -38,41 +38,13 @@
       "description": "Run a Lume command.",
       "command": "deno run --quiet -P=lume lume/cli.ts --config=src/lume.ts"
     },
-    "new-post": {
-      "description": "Generate a Markdown file for a new post item.",
-      "command": "mise run new-post"
-    },
     "start": {
       "description": "Start the web server.",
       "command": "deno run --allow-net --allow-read --allow-env ./src/server.ts"
     },
-    "setup": {
-      "description": "Local environment setup.",
-      "command": "mise run setup-deno"
-    },
     "test": {
       "description": "Run all Deno Test scripts in the 'src' directory.",
       "command": "deno test --quiet --allow-run=deno,docker --allow-env --allow-read --allow-net src"
-    },
-    "clean": {
-      "description": "Run linting and formatting tools.",
-      "command": "mise run clean-frontend"
-    },
-    "docker-build": {
-      "description": "Run the Docker Image build process.",
-      "command": "mise run docker-build"
-    },
-    "docker-start": {
-      "description": "Start the Docker Container.",
-      "command": "mise run docker-start"
-    },
-    "docker-stop": {
-      "description": "Stop the Docker Container.",
-      "command": "mise run docker-stop"
-    },
-    "release": {
-      "description": "Start the release process.",
-      "command": "mise run release"
     }
   },
   "compilerOptions": {

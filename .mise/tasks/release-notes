@@ -2,6 +2,10 @@
 #MISE description="Generates a changelog file for a release"
 #USAGE arg "<output_file>" help="Path to output text file"
 
+
+# TODO: make this always output to /release-notes.log
+
+
 # Configure output format
 GIT_LOG_FORMAT="- %s"
 

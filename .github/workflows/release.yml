@@ -52,24 +52,18 @@ jobs:
         run: |
           echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
           echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
-      - name: Mise setup
-        run: |
-          curl https://mise.run | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          chmod +x ${{ github.workspace }}/.mise/tasks/*
-          chmod +x ${{ github.workspace }}/.mise/tasks/**/*
-          mise trust ${{ github.workspace }}/.mise/config.toml
+      - name: Nub setup
+        uses: nubjs/setup-nub@v0
       - name: Deno setup
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
       - name: Install dependencies
-        run: deno ci --quiet
+        run: deno task install
       - name: Build site
-        run: mise run build
+        run: nub run build
       - name: Docker build
-        run: deno task docker-build
+        run: nub run docker-build
       - name: Run tests
         run: deno task test
 
@@ -165,17 +159,11 @@ jobs:
           git config user.email "brendan+bot-release@bcm.works"
           git tag release-${{ needs.release-build-test.outputs.TIMESTAMP }}
           git push --tags --quiet
-      - name: Install and setup Mise
-        run: |
-          curl https://mise.run | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
-          echo "$HOME/.local/share/mise/shims" >> $GITHUB_PATH
-          chmod +x ${{ github.workspace }}/.mise/tasks/*
-          chmod +x ${{ github.workspace }}/.mise/tasks/**/*
-          mise trust ${{ github.workspace }}/.mise/config.toml
+      - name: Nub setup
+        uses: nubjs/setup-nub@v0
       - name: Generate release notes
         working-directory: ${{ github.workspace }}
-        run: mise run release-notes ${{ github.workspace }}/release-notes.log
+        run: nub run release-notes
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:

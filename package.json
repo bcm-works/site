@@ -4,13 +4,16 @@
   "type": "module",
   "scripts": {
     "setup": "nub ./tools/setup.ts",
-    "start": "",
+    "start": "deno run start",
+    "test": "deno run test",
     "lint": "tsc --noEmit --project tsconfig.json",
     "ai-sync": "aspens doc sync",
     "docker-build": "nub ./tools/docker/docker-build.ts",
     "docker-start": "nub ./tools/docker/docker-start.ts",
     "docker-stop": "nub ./tools/docker/docker-stop.ts",
-    "infra-setup": "nub ./tools/infra/infra-setup.ts"
+    "infra-setup": "nub ./tools/infra/infra-setup.ts",
+    "deps-install": "deno task install && nub install && cd infra && nub install",
+    "deps-update": "deno task update && nub update && cd infra && nub update"
   },
   "imports": {
     "#tools/*": "./tools/*.ts",
@@ -21,8 +24,8 @@
     "chalk": "^5.6.2"
   },
   "devDependencies": {
-    "@types/node": "^26",
-    "typescript": "^7"
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
   },
   "packageManager": "nub@0.5.0",
   "engines": {
