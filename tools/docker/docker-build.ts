@@ -1,13 +1,9 @@
 import { execSync as run } from 'node:child_process';
 import { existsSync as exists } from 'node:fs';
 import { info, success, warn, error } from '#tools/log';
+import { loadEnv } from '#tools/env';
 
-if (exists(".env")) {
-  info("Loading vars from env file.");
-  process.loadEnvFile(".env");
-} else {
-  warn("Loading vars from session.");
-}
+loadEnv();
 
 const url: string = process.env.SITE_URL || "";
 const port: number = Number(process.env.SITE_PORT) || 8000;

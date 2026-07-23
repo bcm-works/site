@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-#MISE description="Run Deno tests"
-#MISE alias="test"
-
-deno task test

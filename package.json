@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "build": "nub ./tools/build.ts",
     "setup": "nub ./tools/setup.ts",
     "start": "deno run start",
     "test": "deno run test",
     "lint": "tsc --noEmit --project tsconfig.json",
+    "lint-deno": "deno lint && deno fmt",
     "ai-sync": "aspens doc sync",
     "docker-build": "nub ./tools/docker/docker-build.ts",
     "docker-start": "nub ./tools/docker/docker-start.ts",

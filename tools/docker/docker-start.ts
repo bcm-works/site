@@ -1,15 +1,11 @@
 import { execSync as run } from 'node:child_process';
 import { existsSync as exists } from 'node:fs';
 import { info, success, warn, error } from '#tools/log';
+import { loadEnv } from '#tools/env';
+
+loadEnv();
 
 run('nub run docker-stop');
-
-if (exists(".env")) {
-  warn("Loading vars from env file.");
-  process.loadEnvFile(".env");
-} else {
-  warn("Loading vars from session.");
-}
 
 const port: number = Number(process.env.SITE_PORT) || 8000;
 const postHogId: string = process.env.SITE_POSTHOG_ID || "";

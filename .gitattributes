@@ -2,7 +2,6 @@
 
 .claude/** -linguist-detectable
 .github/** -linguist-detectable
-.mise/** -linguist-detectable
 .zed/** -linguist-detectable
 infra/** -linguist-detectable
 prototypes/** -linguist-detectable
