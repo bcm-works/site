@@ -8,6 +8,114 @@ body_class: page-home
   well-defined technical solutions for organisations.
 </p>
 
-{% include "social.njk" %}
+<div class="social-links-container">
+  <ul class="social-links">
+    <li>
+      <a href="mailto:brendan@bcm.works" target="_blank" title="Send me an email at brendan@bcm.works">
+        <span class="icon fa-fw fa-solid fa-envelope"></span>
+        <span class="label">Email</span>
+      </a>
+    </li>
+    <li>
+      <a href="/resume.pdf" download="Resume - Brendan Murty.pdf" title="Download my resume">
+        <span class="icon fa-fw fa-solid fa-address-card"></span>
+        <span class="label">Resume</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://www.linkedin.com/in/bcm-works" title="View my LinkedIn profile">
+        <span class="icon fa-fw fa-brands fa-linkedin"></span>
+        <span class="label">LinkedIn</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://mastodon.social/@murty" title="Find me on Mastodon" rel="me">
+        <span class="icon fa-fw fa-brands fa-mastodon"></span>
+        <span class="label">Mastodon</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://steamcommunity.com/id/bcmurty/" title="View my Steam profile">
+        <span class="icon fa-fw fa-brands fa-steam"></span>
+        <span class="label">Steam</span>
+      </a>
+    </li>
+    <li>
+      <a href="https://discordapp.com/users/362579289700302858" title="View my Discord profile">
+        <span class="icon fa-fw fa-brands fa-discord"></span>
+        <span class="label">Discord</span>
+      </a>
+    </li>
+  </ul>
+</div>
 
-{% include "github.njk" %}
+<div id="github-info" class="print-hidden">
+  <ul>
+    <li class="github-user">
+      <span class="icon fa-fw fa-brands fa-github"></span>
+      <a href="https://github.com/bcm-works" class="value" title="View my profile on GitHub">Github > bcm-works</a>
+    </li>
+    <li class="github-status page-hidden">
+      <span class="icon fa-fw fa-solid fa-comment"></span>
+      <span class="value"></span>
+    </li>
+    <li class="github-repos page-hidden">
+      <span class="icon fa-fw fa-solid fa-code"></span>
+      <span class="value"></span>
+    </li>
+    <li class="github-followers page-hidden">
+      <span class="icon fa-fw fa-solid fa-people-group"></span>
+      <span class="value"></span>
+    </li>
+    <li class="github-following page-hidden">
+      <span class="icon fa-fw fa-solid fa-people-group"></span>
+      <span class="value"></span>
+    </li>
+  </ul>
+</div>
+
+<script>
+const githubUsername = "bcm-works";
+const githubInfo = document.getElementById("github-info");
+
+fetch("/api/github-user/")
+  .then(response => {
+    if (! response.ok || response.headers.get('content-type') != 'application/json') {
+      return "{}";
+    }
+
+    return response.json();
+  })
+  .then(data => {
+    if (data != "{}") {
+      githubInfo.classList.add("animation-fadeout");
+
+      if (data.status) {
+        githubInfo.querySelector(".github-status .value").innerText = data.status;
+        githubInfo.querySelector(".github-status").classList.remove("page-hidden");
+        githubInfo.querySelector(".github-status").classList.add("animation-fadein");
+      }
+
+      if (data.repos) {
+        githubInfo.querySelector(".github-repos .value").innerText = `${data.repos} repositories`;
+        githubInfo.querySelector(".github-repos").classList.remove("page-hidden");
+        githubInfo.querySelector(".github-repos").classList.add("animation-fadein");
+      }
+
+      if (data.followers) {
+        githubInfo.querySelector(".github-followers .value").innerText = `${data.followers} followers`;
+        githubInfo.querySelector(".github-followers").classList.remove("page-hidden");
+        githubInfo.querySelector(".github-followers").classList.add("animation-fadein");
+      }
+
+      if (data.following) {
+        githubInfo.querySelector(".github-following .value").innerText = `${data.following} following`;
+        githubInfo.querySelector(".github-following").classList.remove("page-hidden");
+        githubInfo.querySelector(".github-following").classList.add("animation-fadein");
+      }
+
+      githubInfo.classList.remove("animation-fadeout");
+      githubInfo.classList.add("animation-fadein");
+    }
+  });
+</script>
