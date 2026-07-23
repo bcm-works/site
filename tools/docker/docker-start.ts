@@ -16,6 +16,7 @@ const feedTitle: string = process.env.SITE_FEED_TITLE || "";
 const feedDesc: string = process.env.SITE_FEED_DESC || "";
 const feedDefaultTitle: string = process.env.SITE_FEED_DEFAULT_TITLE || "";
 
+const githubId: string = process.env.SITE_GITHUB_ID || "";
 const postHogId: string = process.env.SITE_POSTHOG_ID || "";
 const postHogApiHost: string = process.env.SITE_POSTHOG_API_HOST || "";
 const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
@@ -35,6 +36,7 @@ run(`docker run -d \
   --env "SITE_AUTHOR=${author}" \
   --env "SITE_URL=${url}" \
   --env "SITE_PORT=${port}" \
+  --env "SITE_GITHUB_ID=${githubId}" \
   --env "SITE_POSTHOG_ID=${postHogId}" \
   --env "SITE_POSTHOG_API_HOST=${postHogApiHost}" \
   --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
