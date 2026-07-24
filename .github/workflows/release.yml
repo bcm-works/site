@@ -34,7 +34,7 @@ jobs:
   release-build-test:
     name: Build and Test
     if: ${{ inputs.continue_deployment == true }}
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
     environment:
       name: ci-build
       deployment: false
@@ -67,7 +67,7 @@ jobs:
   release-docker:
     name: Push to GitHub Packages
     needs: [release-build-test]
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
     environment:
       name: ci-build
       deployment: false
@@ -114,7 +114,7 @@ jobs:
         uses: docker/build-push-action@v7
         with:
           context: ${{ github.workspace }}
-          file: ${{ github.workspace }}/Dockerfile
+          file: ${{ github.workspace }}/src/Site.Dockerfile
           platforms: linux/amd64
           provenance: mode=max
           sbom: true
@@ -136,7 +136,7 @@ jobs:
   release-github:
     name: Create Release
     needs: [release-build-test, release-docker]
-    runs-on: ubuntu-26.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     env:
