@@ -18,8 +18,7 @@
     "deps-update": "deno task update && nub update",
     "deps-update-infra": "cd infra && nub update",
     "lint": "tsc --noEmit --project tsconfig.json",
-    "lint-deno": "deno lint && deno fmt",
-    "ai-sync": "aspens doc sync"
+    "lint-deno": "deno lint && deno fmt"
   },
   "imports": {
     "#tools/*": "./tools/*.ts",
@@ -33,7 +32,6 @@
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
-    "aspens": "^0.8.0",
     "typescript": "^7.0.2"
   },
   "packageManager": "nub@0.5.0",

@@ -23,7 +23,6 @@ dist/
 # AI tools
 
 .antigravitycli
-.aspens/sessions/
 .claude/graph.json
 .claude/graph-index.json
 .claude/code-map.md

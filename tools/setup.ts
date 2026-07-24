@@ -39,9 +39,6 @@ info("Installing dependencies");
 
 run("nub run deps-install", { stdio: 'inherit' });
 
-info("Configuring Aspens");
-run("mkdir -p .aspens/sessions");
-
 info("Setup infra");
 
 run("nub run infra-setup", { stdio: 'inherit' });

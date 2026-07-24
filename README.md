@@ -21,7 +21,6 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [src/styles/theme.css](src/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
 - [tools](tools/) - Project specific commands.
-- [.aspens.json](.aspens.json) - Project config for [Aspens](https://github.com/aspenkit/aspens)
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
