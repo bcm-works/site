@@ -21,7 +21,7 @@ import { format } from "date-fns";
 
 // Load Env Vars with suitable defaults
 
-const bcm = new Site("./.env");
+const bcm = new Site();
 
 const buildDir: string = bcm.envVar("SITE_BUILD_DIR", "build");
 const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");

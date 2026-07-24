@@ -86,13 +86,13 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 
         <nav class="header-nav">
           <ul>
-            <li class="nav-link{% if page.url and page.url == '/' %} active{% endif %}">
+            <li class="nav-link{% if url == '/' %} active{% endif %}">
               <a href="/" title="Go to the home page">Home</a>
             </li>
-            <li class="nav-link{% if page.url and '/posts/' in page.url %} active{% endif %}">
+            <li class="nav-link{% if '/posts/' in url %} active{% endif %}">
               <a href="/posts/" title="View all posts">Posts</a>
             </li>
-            <li class="nav-link{% if page.url and '/tags/' in page.url %} active{% endif %}">
+            <li class="nav-link{% if '/tags/' in url %} active{% endif %}">
               <a href="/tags/" title="View all tags">Tags</a>
             </li>
           </ul>

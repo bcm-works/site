@@ -10,6 +10,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
+- [config](config/) - Config and env files.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
 - [docs](docs/) - Documentation and contextual information.

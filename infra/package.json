@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "pull": "railway config pull --force",
-    "plan": "railway config plan",
-    "apply": "railway config apply",
-    "export": "railway status --json > railway.json",
+    "pull": "export RAILWAY_NO_TELEMETRY=1 && railway config pull --force",
+    "plan": "export RAILWAY_NO_TELEMETRY=1 && railway config plan",
+    "apply": "export RAILWAY_NO_TELEMETRY=1 && railway config apply",
+    "export": "export RAILWAY_NO_TELEMETRY=1 && railway status --json > railway.json",
     "start": "tsx index.ts",
     "setup": "cd .. && nub run setup"
   },

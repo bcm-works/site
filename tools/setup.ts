@@ -26,7 +26,7 @@ if (hasCommand("nub")) {
 
 info("Initialising ENV file");
 
-run(`cp -n .env.sample .env`);
+run(`cp -n config/.env.sample config/.env`);
 
 const nodeVersion = read(".node-version", "utf8").trim();
 

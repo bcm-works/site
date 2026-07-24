@@ -12,9 +12,9 @@ Setup required dev tools:
 nub run setup
 ```
 
-Setup GitHub Actions Secrets by following the steps in [.env.github](.env.github).
+Setup GitHub Actions Secrets by following the steps in [../config/.env.github](../config/.env.github).
 
-Setup a new Railway project, with the environment variables detailed in [.env.railway](.env.railway).
+Setup a new Railway project, with the environment variables detailed in [../config/.env.railway](../config/.env.railway).
 
 ## Node Scripts
 
