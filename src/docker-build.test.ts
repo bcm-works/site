@@ -30,9 +30,9 @@ async function inspectImage(tag: string): Promise<Record<string, unknown>> {
 
 Deno.test("docker-build", async (test) => {
   await test.step({
-    name: "check 'bcm-site-local:latest'",
+    name: "check 'bcm-site:latest'",
     fn: async () => {
-      const image = await inspectImage("bcm-site-local:latest");
+      const image = await inspectImage("bcm-site:latest");
 
       assertNotEquals(image.Id, "");
     },
@@ -41,7 +41,7 @@ Deno.test("docker-build", async (test) => {
   await test.step({
     name: "check Docker image starts the Deno server",
     fn: async () => {
-      const image = await inspectImage("bcm-site-local:latest");
+      const image = await inspectImage("bcm-site:latest");
       const config = image.Config as Record<string, unknown>;
 
       assertEquals(config.User, "deno");
@@ -52,7 +52,7 @@ Deno.test("docker-build", async (test) => {
   await test.step({
     name: "check Docker image exposes port 8000",
     fn: async () => {
-      const image = await inspectImage("bcm-site-local:latest");
+      const image = await inspectImage("bcm-site:latest");
       const config = image.Config as Record<string, unknown>;
       const exposedPorts = config.ExposedPorts as Record<string, unknown>;
 

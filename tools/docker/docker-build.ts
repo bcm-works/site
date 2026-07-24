@@ -17,7 +17,7 @@ const postHogId: string = process.env.SITE_POSTHOG_ID || "";
 const postHogApiHost: string = process.env.SITE_POSTHOG_API_HOST || "";
 const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
 
-info("Building 'bcm-site-local' Docker Image");
+info("Building 'bcm-site' Docker Image");
 
 run(`docker buildx build \
   --pull \
