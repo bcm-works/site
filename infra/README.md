@@ -9,8 +9,7 @@ For available options, refer to the [railway package on NPM](https://www.npmjs.c
 Setup required dev tools:
 
 ```bash
-mise run setup-tools
-mise run setup-infra
+nub run setup
 ```
 
 Setup GitHub Actions Secrets by following the steps in [.env.github](.env.github).

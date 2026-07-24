@@ -7,7 +7,8 @@
     "plan": "railway config plan",
     "apply": "railway config apply",
     "export": "railway status --json > railway.json",
-    "start": "tsx index.ts"
+    "start": "tsx index.ts",
+    "setup": "cd .. && nub run setup"
   },
   "dependencies": {
     "railway": "^3.6.0"

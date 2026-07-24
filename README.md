@@ -40,6 +40,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 The following tools are required and need to be manually installed:
 
+- [Node](https://nodejs.org/en/download) - Must match the version from [.node-version](.node-version)
 - [Nub](https://nubjs.com/)
 - [Homebrew](https://brew.sh/)
 - [Docker](https://docs.docker.com/desktop/)
