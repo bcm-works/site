@@ -20,11 +20,11 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
 - [src/styles/theme.css](src/styles/theme.css) - Frontend design colour scheme and theme setup.
+- [src/Site.Dockerfile](src/Site.Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 - [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
 - [tools](tools/) - Project specific commands.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
-- [Dockerfile](Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 - [package.json](package.json) - [Nub](https://nubjs.com/) imports, tasks and configuration.
 
 ## Tech Stack

@@ -92,6 +92,7 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository }}
+          annotation-levels: index,manifest
           tags: |
             latest
             branch-${{ github.ref_name }}

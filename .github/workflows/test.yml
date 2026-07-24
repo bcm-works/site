@@ -16,13 +16,14 @@ on:
     branches:
       - main
     paths:
-      - src/
+      - src/*.ts
+      - src/**/*.ts
+      - src/Site.Dockerfile
+      - src/Site.Dockerfile.dockerignore
       - tools/
       - deno.jsonc
       - nub.lock
       - package.json
-      - .dockerignore
-      - Dockerfile
 
 defaults:
   run:

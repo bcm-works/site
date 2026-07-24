@@ -25,10 +25,10 @@ const postHogId: string = process.env.SITE_POSTHOG_ID || "";
 const postHogApiHost: string = process.env.SITE_POSTHOG_API_HOST || "";
 const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
 
-info("Starting 'bcm-site-local' container");
+info("Starting 'bcm-site' container");
 
 run(`docker run -d \
-  --name "bcm-site-local" \
+  --name "bcm-site" \
   --publish "${port}:${port}" \
   --env "SITE_BUILD_DATE=${buildDate}" \
   --env "SITE_FEED_TITLE=${feedTitle}" \
@@ -42,4 +42,4 @@ run(`docker run -d \
   --env "SITE_POSTHOG_ID=${postHogId}" \
   --env "SITE_POSTHOG_API_HOST=${postHogApiHost}" \
   --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
-  "bcm-site-local:latest"`, { stdio: 'inherit' });
+  "bcm-site:latest"`, { stdio: 'inherit' });

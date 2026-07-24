@@ -1,6 +1,5 @@
 import { execSync as run } from 'node:child_process';
-import { existsSync as exists } from 'node:fs';
-import { info, success, warn, error } from '#tools/log';
+import { info } from '#tools/log';
 import { loadEnv } from '#tools/env';
 
 loadEnv();
@@ -18,16 +17,13 @@ const postHogId: string = process.env.SITE_POSTHOG_ID || "";
 const postHogApiHost: string = process.env.SITE_POSTHOG_API_HOST || "";
 const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
 
-const gitCommitShortSha: string = run('git rev-parse --short HEAD').toString().trim();
-
 info("Building 'bcm-site-local' Docker Image");
 
 run(`docker buildx build \
   --pull \
   --no-cache \
   --platform linux/amd64 \
-  --tag bcm-site-local:latest \
-  --tag bcm-site-local:commit-${gitCommitShortSha} \
+  --tag bcm-site:latest \
   --build-arg SITE_FEED_TITLE="${feedTitle}" \
   --build-arg SITE_FEED_DESC="${feedDesc}" \
   --build-arg SITE_FEED_DEFAULT_TITLE="${feedDefaultTitle}" \
@@ -38,4 +34,5 @@ run(`docker buildx build \
   --build-arg SITE_POSTHOG_ID="${postHogId}" \
   --build-arg SITE_POSTHOG_API_HOST="${postHogApiHost}" \
   --build-arg SITE_POSTHOG_UI_HOST="${postHogUiHost}" \
+  --file "src/Site.Dockerfile" \
   "."`, { stdio: 'inherit' });
