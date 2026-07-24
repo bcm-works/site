@@ -35,4 +35,4 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - **Strict Command Banishment:** Under no circumstances should the agent ever run `git commit`, `git push`, `rm` or `kill` commands. Doing so is strictly forbidden by the project configuration.
 - **No Destructive Operations:** Never delete system files or run modifying system commands without explaining their purpose and obtaining explicit permission from the user.
 - **Syntax Validation:** Always run syntax validation `bash -n <script>` before proposing modifications to shell scripts.
-- **Sandboxed Validation:** Validate all proposed changes locally within the sandbox before committing.
+- **Sandboxed Validation:** Validate all proposed changes locally within the sandbox.
