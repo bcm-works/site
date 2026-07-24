@@ -18,8 +18,9 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
-- [src](src/) - Frontend [Lume](https://lume.land/) templates and backend [Deno](https://deno.land/) static file server.
-- [src/styles/theme.css](src/styles/theme.css) - Frontend design colour scheme and theme setup.
+- [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
+- [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
+- [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
 - [src/Site.Dockerfile](src/Site.Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 - [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
 - [tools](tools/) - Project specific commands.

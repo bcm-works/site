@@ -1,5 +1,5 @@
 import { serveFile } from "@std/http/file-server";
-import { Site } from "@/site.class.ts";
+import { Site } from "@/common/site.class.ts";
 
 const bcm = new Site();
 const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");

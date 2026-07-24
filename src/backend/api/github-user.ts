@@ -1,5 +1,5 @@
 import { graphql as GithubGraphQL } from "@octokit/graphql";
-import { Site } from "@/site.class.ts";
+import { Site } from "@/common/site.class.ts";
 
 const bcm = new Site();
 const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");

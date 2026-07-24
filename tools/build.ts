@@ -8,7 +8,7 @@ loadEnv();
 
 const buildDir: string = process.env.SITE_BUILD_DIR || "build";
 const publicDir: string = process.env.SITE_PUBLIC_DIR || "public";
-const cssDir: string = "src/styles";
+const cssDir: string = "src/frontend/styles";
 const timezone: string = process.env.SITE_TIMEZONE || "Australia/Sydney";
 
 // Clear out and recreate the Build and Public directories
@@ -18,7 +18,7 @@ warn("Clearing the build directory and recreating subdirectories");
 run(`rm -rf "${buildDir}"`);
 run(`mkdir -p "${buildDir}"`);
 run(`mkdir -p "${buildDir}/_data"`);
-run(`cp -r "src/templates" "${buildDir}/_includes"`);
+run(`cp -r "src/frontend/templates" "${buildDir}/_includes"`);
 
 warn("Clearing the public directory and recreating subdirectories");
 
@@ -33,9 +33,9 @@ run(`nubx -y purgecss@8.0.0 \
   --safelist "blockquote" \
   --safelist "em" \
   --safelist "strong" \
-  --css "./src/styles/site.css" \
-  --content "./src/**/*.njk" \
-  --output "./src/styles/site.css"`);
+  --css "./src/frontend/styles/site.css" \
+  --content "./src/frontend/**/*.njk" \
+  --output "./src/frontend/styles/site.css"`);
 
 info("Running Deno Lint");
 
@@ -72,14 +72,14 @@ run(`deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
 
 info("Copying FontAwesome files to public directory");
 
-run(`cp -r "src/styles/fonts" "${publicDir}/css/fonts"`);
+run(`cp -r "src/frontend/styles/fonts" "${publicDir}/css/fonts"`);
 
 info("Copying static files to public directory");
 
 run(`cp -r "content/images" "${publicDir}/images"`);
 run(`cp "content/favicon.ico" "${publicDir}/favicon.ico"`);
 run(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
-run(`cp "src/pwa-manifest.json" "${publicDir}/manifest.json"`);
+run(`cp "src/frontend/manifest.json" "${publicDir}/manifest.json"`);
 run(`cp "${publicDir}/posts.json" "${publicDir}/brendan/posts.json"`);
 
 info("Build complete");

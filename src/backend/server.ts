@@ -1,5 +1,5 @@
 import { serveFile } from "@std/http/file-server";
-import { Site } from "@/site.class.ts";
+import { Site } from "@/common/site.class.ts";
 
 // Load Env Vars with suitable defaults
 
