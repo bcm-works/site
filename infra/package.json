@@ -8,7 +8,7 @@
     "apply": "export RAILWAY_NO_TELEMETRY=1 && railway config apply",
     "export": "export RAILWAY_NO_TELEMETRY=1 && railway status --json > railway.json",
     "start": "tsx index.ts",
-    "setup": "cd .. && nub run setup"
+    "setup": "cd .. && nub ./tools/infra/infra-setup.ts"
   },
   "dependencies": {
     "railway": "^3.6.0"

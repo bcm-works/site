@@ -39,10 +39,6 @@ info("Installing dependencies");
 
 run("nub run deps-install", { stdio: 'inherit' });
 
-info("Setup infra");
-
-run("nub run infra-setup", { stdio: 'inherit' });
-
 info("Installing AI tools");
 
 if (hasCommand("claude")) {
@@ -54,7 +50,6 @@ if (hasCommand("claude")) {
 
 info("Updating Claude Code CLI");
 run("claude update", { stdio: 'inherit' });
-
 
 warn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
 
