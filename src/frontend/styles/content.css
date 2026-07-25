@@ -277,6 +277,7 @@ ul.listing.posts .post-date {
   position: relative;
   background-color: var(--colour-tertiary);
   color: var(--colour-highlight);
+  box-shadow: 5px 5px 0px var(--colour-secondary);
 }
 
 .content-body blockquote p:last-child {

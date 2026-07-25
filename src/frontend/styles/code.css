@@ -6,6 +6,7 @@ pre code.hljs {
   display: block;
   overflow-x: auto;
   background-color: var(--colour-code-background);
+  box-shadow: 5px 5px 0px var(--colour-secondary);
 }
 
 pre code.hljs .hljs-comment,
