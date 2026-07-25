@@ -137,3 +137,14 @@ article {
 .header-nav li {
   margin: 0;
 }
+
+/* CUSTOM BORDERS */
+
+.theme-border-element {
+  background: var(--colour-secondary);
+}
+
+.theme-border-element:before {
+    box-shadow: .25rem .25rem
+color-mix(in oklch, var(--colour-secondary, var(--colour-tertiary)), transparent 34%);
+}
