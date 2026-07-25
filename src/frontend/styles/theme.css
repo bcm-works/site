@@ -11,8 +11,8 @@
   --colour-highlight: var(--colour-black);
   --colour-background: #15A290;
   --colour-foreground: var(--colour-black);
-  --colour-secondary: #075248;
-  --colour-tertiary: #098c7b;
+  --colour-secondary: #08443C;
+  --colour-tertiary: #0F8172;
 
   /* LINKS */
   --link-decoration-default: underline wavy var(--colour-tertiary) 2px;
