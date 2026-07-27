@@ -92,20 +92,19 @@ a:focus {
 }
 
 .header-title .site-link {
+  color: var(--colour-tertiary);
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  color: var(--colour-black);
   text-decoration: none;
 }
 
 .site-avatar {
-  width: 84px;
-  height: 84px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  border: 1px solid var(--colour-secondary);
-  margin-right: 6px;
+  margin-right: 16px;
 }
 
 .site-name {
@@ -336,6 +335,8 @@ ul.posts-list .post-date {
 .content-body em,
 .content-body strong,
 .content-body p code {
-  color: var(--colour-gray);
+  background-color: var(--colour-tertiary);
+  color: var(--colour-foreground);
+  padding: 2px;
   font-style: normal;
 }

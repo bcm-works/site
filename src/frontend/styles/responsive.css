@@ -10,6 +10,11 @@
     padding: 16px 0 0;
   }
 
+  .layout-container .header .site-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
   .layout-container .main-content {
     padding: 32px 16px 0;
   }

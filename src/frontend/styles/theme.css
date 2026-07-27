@@ -6,7 +6,7 @@
 
   /* COLOUR SCHEME */
   --colour-black: #000000;
-  --colour-gray: #888888;
+  --colour-gray: #999999;
   --colour-white: #FFFFFF;
   --colour-highlight: #23C5B0;
   --colour-background: var(--colour-black);
@@ -15,10 +15,10 @@
   --colour-tertiary: #115F55;
 
   /* LINKS */
-  --link-decoration-default: underline wavy var(--colour-tertiary) 2px;
-  --link-decoration-nav: underline wavy var(--colour-secondary) 2px;
-  --link-decoration-active: underline wavy var(--colour-highlight) 2px;
-  --link-decoration-underline-offset: 6px;
+  --link-decoration-default: underline solid var(--colour-tertiary) 1px;
+  --link-decoration-nav: underline solid var(--colour-secondary) 1px;
+  --link-decoration-active: underline solid var(--colour-highlight) 1px;
+  --link-decoration-underline-offset: 7px;
 
   /* CODE BLOCKS */
   --colour-code-method: var(--colour-highlight);
