@@ -336,8 +336,6 @@ ul.posts-list .post-date {
 .content-body em,
 .content-body strong,
 .content-body p code {
-  background-color: var(--colour-tertiary);
-  color: var(--colour-foreground);
-  padding: 2px 4px;
+  color: var(--colour-gray);
   font-style: normal;
 }
