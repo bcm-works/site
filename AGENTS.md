@@ -10,7 +10,7 @@ This repository contains the website at [bcm.works](https://bcm.works/) and rela
 ## Structure
 
 - [src](src/) - Source code for the main public website at [bcm.works](https://bcm.works).
-- [tools](tools/) - Project specific commands.
+- [tools](tools/) - Project specific commands, which can be run via `nub run (task_name)`. To list all available tasks, use `nub run`.
 
 ## Required Tools
 
@@ -35,5 +35,4 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - **Minimise Comments:** Minimise comments in code to only briefly explain the "why", contextual information and excess spacing is messy.
 - **Strict Command Banishment:** Under no circumstances should the agent ever run `git commit`, `git push`, `rm` or `kill` commands. Doing so is strictly forbidden by the project configuration.
 - **No Destructive Operations:** Never delete system files or run modifying system commands without explaining their purpose and obtaining explicit permission from the user.
-- **Syntax Validation:** Always run syntax validation `bash -n <script>` before proposing modifications to shell scripts.
 - **Sandboxed Validation:** Validate all proposed changes locally within the sandbox.
