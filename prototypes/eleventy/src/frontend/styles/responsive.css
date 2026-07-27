@@ -1,0 +1,24 @@
+/* RESPONSIVE OVERRIDES */
+
+@media only screen and (max-width: 850px) {
+  .layout-container .header {
+    display: block;
+  }
+
+  .layout-container .header .header-nav {
+    margin-left: 0;
+    padding: 16px 0 0;
+  }
+
+  .layout-container .main-content {
+    padding: 32px 16px 0;
+  }
+
+  .layout-container .main-content h2 {
+    font-size: 22px;
+  }
+
+  .social-links-container .social-links li {
+    flex: 0 0 calc(50% - 8px);
+  }
+}

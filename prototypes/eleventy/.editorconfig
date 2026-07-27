@@ -1,0 +1,18 @@
+# EditorConfig - https://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+[*.{bash,json,jsonc,md,sh,svg,toml,yml}]
+insert_final_newline = false
+
+[{Dockerfile,.editorconfig,.gitattributes,.gitignore,.gitmodules,.npmrc,.nvmrc,.node-version}]
+insert_final_newline = false

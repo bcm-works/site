@@ -1,0 +1,30 @@
+{
+  "name": "bcm-site-frontend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nub ../../tools/build.ts",
+    "start": "nub run build && eleventy --config=src/frontend/eleventy.config.js"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@iarna/toml": "^2.2.5"
+  },
+  "devDependencies": {
+    "@nubjs/types": "^0.5.0",
+    "@types/node": "^26.1.1",
+    "typescript": "^7.0.2"
+  },
+  "packageManager": "nub@0.5.0",
+  "engines": {
+    "node": ">=26.5.0",
+    "nub": ">=0.5.0"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "nub",
+      "version": "^0.5.0",
+      "onFail": "warn"
+    }
+  }
+}

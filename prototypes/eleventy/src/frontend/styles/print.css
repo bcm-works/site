@@ -1,0 +1,72 @@
+/* PRINT */
+
+@media print {
+  html {
+    height: auto;
+    background: var(--colour-white) !important;
+    color: var(--colour-black) !important;
+  }
+
+  body {
+    background: transparent !important;
+    color: var(--colour-black) !important;
+    padding: 20px;
+  }
+
+  main,
+  article {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    box-sizing: unset !important;
+    flex-direction: unset !important;
+    flex-grow: unset !important;
+  }
+
+  .hidden,
+  .print-hidden {
+    display: none !important;
+    height: 0 !important;
+  }
+
+  .print-gray,
+  .print-gray * {
+    color: var(--colour-gray) !important;
+  }
+
+  .content-body .print-header {
+    display: block !important;
+    height: auto !important;
+  }
+
+  a {
+    color: var(--colour-black) !important;
+    text-decoration: underline 1px !important;
+    text-decoration-color: var(--colour-gray) !important;
+  }
+
+  blockquote,
+  pre code.hljs * {
+    padding: 20px !important;
+    background-color: transparent !important;
+    color: var(--colour-black) !important;
+  }
+
+  .content-body blockquote::before {
+    display: none !important;
+  }
+
+  .content-body em,
+  .content-body strong,
+  .content-body p code {
+    background-color: var(--colour-gray) !important;
+    color: var(--colour-black) !important;
+  }
+
+  @page {
+    size: auto;
+    margin: 0mm 0mm 0mm 0mm;
+  }
+}
