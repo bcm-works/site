@@ -19,7 +19,10 @@
       "Bash(ls*)",
       "Bash(tail*)",
       "Bash(git status*)",
-      "Bash(git log*)"
+      "Bash(git log*)",
+      "Bash(nub run build)",
+      "Bash(nub run start)",
+      "Bash(nub run test)"
     ],
     "deny": [
       "Read(.env)",

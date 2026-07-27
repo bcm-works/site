@@ -31,7 +31,8 @@ If any of the below CLI commands aren't available, stop processing and explain t
 
 ## Agent Guidelines & Safety Rules
 
-- **Concise Responses:** Keep responses concise and based on factual information
+- **Concise Responses:** Keep responses concise, based on factual information and avoid extra unnecessary detail.
+- **Assume Technical Knowledge:** Skip technical reasoning and comparison unless this is specifically requested.
 - **Minimise Comments:** Minimise comments in code to only briefly explain the "why", contextual information and excess spacing is messy.
 - **Strict Command Banishment:** Under no circumstances should the agent ever run `git commit`, `git push`, `rm` or `kill` commands. Doing so is strictly forbidden by the project configuration.
 - **No Destructive Operations:** Never delete system files or run modifying system commands without explaining their purpose and obtaining explicit permission from the user.
