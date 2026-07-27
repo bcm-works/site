@@ -23,7 +23,7 @@
   /* CODE BLOCKS */
   --colour-code-method: var(--colour-highlight);
   --colour-code-keyword: var(--colour-highlight);
-  --colour-code-comment: var(--colour-secondary);
+  --colour-code-comment: var(--colour-highlight);
   --colour-code-background: var(--colour-tertiary);
 
   /* FONTS */
