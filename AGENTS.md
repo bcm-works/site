@@ -26,7 +26,8 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - **Never run** `git commit`, `git push`, `rm`, or `kill`. These are strictly forbidden by project configuration — even if a workflow seems to require them, stop and ask.
 - Run `bash -n <script>` before proposing changes to shell scripts.
 - If `sudo` is needed, do not invoke it — print the command and explain why instead.
-- See `docs/AI-USE.md`: architectural/design decisions are human-driven; AI builds from a human design.
+- See `docs/AI-USE.md`: architectural and technical design decisions are human-driven, then AI builds from human directions.
+- See `docs/DESIGN.md`: frontend website design and CSS theming rules.
 
 ## Agent Guidelines & Safety Rules
 
