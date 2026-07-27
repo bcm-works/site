@@ -6,13 +6,13 @@
 
   /* COLOUR SCHEME */
   --colour-black: #000000;
-  --colour-gray: #666666;
+  --colour-gray: #888888;
   --colour-white: #FFFFFF;
-  --colour-highlight: var(--colour-black);
-  --colour-background: #15A290;
-  --colour-foreground: var(--colour-black);
-  --colour-secondary: #08443C;
-  --colour-tertiary: #0F8172;
+  --colour-highlight: #23C5B0;
+  --colour-background: var(--colour-black);
+  --colour-foreground: var(--colour-white);
+  --colour-secondary: #0A675B;
+  --colour-tertiary: #115F55;
 
   /* LINKS */
   --link-decoration-default: underline wavy var(--colour-tertiary) 2px;
@@ -32,6 +32,7 @@
   --font-family-code: "MDIO-Regular", monospace;
   --font-family-quote: var(--font-family-code);
   --font-size-body: 20px;
+  --font-size-meta: 16px;
   --line-height-body: 32px;
 }
 

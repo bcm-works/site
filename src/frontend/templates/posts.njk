@@ -4,8 +4,6 @@ layout: page.layout.njk
 body_class: page-posts-list
 ---
 
-<h2>Posts</h2>
-
 <ul class="posts-list">
   {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts %}

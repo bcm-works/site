@@ -116,7 +116,8 @@ article {
 }
 
 .header-container {
-  background-color: var(--colour-tertiary);
+  background-color: var(--colour-highlight);
+  color: var(--colour-black);
 }
 
 .header-nav {

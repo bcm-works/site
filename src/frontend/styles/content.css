@@ -72,21 +72,17 @@ a:focus {
 
 .icon {
   color: var(--colour-foreground);
-}
-
-.icon-post {
-  color: var(--colour-secondary);
-  vertical-align: baseline;
-  margin-right: 5px;
-}
-
-.icon-tag {
-  margin-right: 5px;
   vertical-align: middle;
 }
 
-.page-post .icon-tag {
-  color: var(--colour-secondary);
+.social-links-container .icon,
+#github-info .github-user .icon {
+  color: var(--colour-highlight);
+}
+
+.page-post .icon-tag,
+.page-post .icon-post {
+  color: var(--colour-gray);
 }
 
 /* HEADER */
@@ -100,7 +96,7 @@ a:focus {
   flex-direction: row;
   align-items: center;
   gap: 12px;
-  color: var(--colour-foreground);
+  color: var(--colour-black);
   text-decoration: none;
 }
 
@@ -136,19 +132,20 @@ a:focus {
 
 .header-nav .nav-link:active,
 .header-nav .nav-link:hover {
-  color: var(--colour-foreground);
+  color: var(--colour-black);
   text-decoration: var(--link-decoration-nav);
   text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 .header-nav .nav-link.active,
 .header-nav .nav-link.active a {
-  color: var(--colour-highlight);
+  color: var(--colour-black);
 }
 
 /* SOCIAL LINKS */
 
 .social-links-container {
+  padding: 0;
   margin: 32px 0;
 }
 
@@ -179,22 +176,19 @@ a:focus {
 
 .social-links-container .social-links a:active .label,
 .social-links-container .social-links a:hover .label {
-  color: var(--colour-foreground);
   text-decoration: var(--link-decoration-active);
   text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 /* POSTS */
 
-ul.posts-list,
-ul.listing.posts {
+ul.posts-list {
   list-style: none;
-  margin: 24px 0;
+  margin: 0 0 24px;
   padding: 0;
 }
 
-ul.posts-list li,
-ul.listing.posts li {
+ul.posts-list li {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -203,25 +197,24 @@ ul.listing.posts li {
   line-height: 2.0;
 }
 
-ul.posts-list .post-link,
-ul.listing.posts .post-link {
+ul.posts-list .post-link {
   order: 1;
 }
 
-ul.posts-list .post-date,
-ul.listing.posts .post-date {
+ul.posts-list .post-date {
   order: 2;
   flex-shrink: 0;
   font-family: var(--font-family-code);
-  font-size: 14px;
-  color: var(--colour-secondary);
+  font-size: var(--font-size-meta);
+  color: var(--colour-gray);
   white-space: nowrap;
   text-align: right;
 }
 
 .page-post .post-date {
-  color: var(--colour-secondary);
   margin: 0 0 15px;
+  font-size: var(--font-size-meta);
+  color: var(--colour-gray);
 }
 
 /* TAGS */
@@ -240,44 +233,44 @@ ul.listing.posts .post-date {
 }
 
 .tag-list li a {
+  color: var(--colour-gray);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 0 10px;
+  padding: 0;
+  margin-right: 18px;
   height: 35px;
   line-height: 35px;
-  background-color: var(--colour-tertiary);
   font-size: 16px;
   text-decoration: none;
   transition: all 0.2s ease;
 }
 
 .tag-list li a .icon-tag {
-  color: var(--colour-highlight);
+  color: var(--colour-gray);
+  margin-right: 12px;
 }
 
 .tag-list li a:hover {
-  background-color: var(--colour-highlight);
-  border-color: var(--colour-highlight);
-  color: var(--colour-background);
+  color: var(--colour-highlight);
   text-decoration: none;
 }
 
 .tag-list li a:hover .icon-tag {
-  color: var(--colour-background);
+  color: var(--colour-highlight);
 }
 
 /* QUOTES AND EMPHASIS */
 
-.content-body blockquote,
-.social-links-container,
-#github-info {
+.page-home .intro p {
+  margin: 0;
+}
+
+.content-body blockquote {
   margin: 20px 0;
   padding: 20px 20px 20px 50px;
   position: relative;
   background-color: var(--colour-tertiary);
-  color: var(--colour-highlight);
-  box-shadow: 5px 5px 0px var(--colour-secondary);
+  color: var(--colour-foreground);
 }
 
 .content-body blockquote p:last-child {
@@ -291,20 +284,16 @@ ul.listing.posts .post-date {
   font: var(--fa-font-solid);
   content: "\f10d";
   font-size: 26px;
-  color: var(--colour-secondary);
+  color: var(--colour-foreground);
   position: absolute;
   top: 15px;
   left: 15px;
 }
 
-.social-links-container {
-  padding: 20px;
-}
-
 #github-info {
   float: left;
-  margin-top: 0;
-  padding: 20px;
+  padding: 0;
+  margin: 0 0 32px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -348,7 +337,7 @@ ul.listing.posts .post-date {
 .content-body strong,
 .content-body p code {
   background-color: var(--colour-tertiary);
-  color: var(--colour-highlight);
+  color: var(--colour-foreground);
   padding: 2px 4px;
   font-style: normal;
 }
