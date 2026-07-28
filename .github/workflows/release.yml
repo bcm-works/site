@@ -151,21 +151,14 @@ jobs:
     env:
       DO_NOT_TRACK: 1
       RAILWAY_NO_TELEMETRY: 1
-      RAILWAY_API_TOKEN: ${{ secrets.SITE_RAILWAY_API_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
       - name: Railway setup
         run: bash <(curl -fsSL railway.com/install.sh) -y
-      - name: Railway login
-        run: |
-          ~/.railway/bin/railway link \
-            --project ${{ secrets.SITE_RAILWAY_PROJECT }} \
-            --environment ${{ secrets.SITE_RAILWAY_ENVIRONMENT }} \
-            --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
-            --json
       - name: Railway redeploy
         run: |
+          RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \
           ~/.railway/bin/railway redeploy \
             --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
             --yes \
