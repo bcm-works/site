@@ -36,6 +36,7 @@ permissions:
   contents: read
 
 jobs:
+
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -44,19 +45,19 @@ jobs:
       deployment: false
     env: ${{ secrets }}
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v7
-      - name: Nub setup
+      - name: Nub Setup
         uses: nubjs/setup-nub@v0
-      - name: Deno setup
+      - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
-      - name: Install dependencies
+      - name: Install Dependencies
         run: nub run deps-install
-      - name: Build site
+      - name: Build Site
         run: nub run build
-      - name: Docker build
+      - name: Build Docker
         run: nub run docker-build
-      - name: Run tests
-        run: deno task test
+      - name: Run Tests
+        run: nub run test
