@@ -139,6 +139,7 @@ jobs:
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
   deploy-railway:
     name: Deploy to Railway
     needs: [build, push-docker]
