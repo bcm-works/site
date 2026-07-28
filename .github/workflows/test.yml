@@ -49,11 +49,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
-      - name: Set workflow variables
-        id: vars
-        run: |
-          echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
-          echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
       - name: Nub setup
         uses: nubjs/setup-nub@v0
       - name: Deno setup
