@@ -166,7 +166,7 @@ jobs:
 
   release-github:
     name: Create Release
-    needs: [build, push-docker]
+    needs: [build, push-docker, deploy-railway]
     runs-on: ubuntu-latest
     permissions:
       contents: write
