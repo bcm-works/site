@@ -34,6 +34,8 @@
   --font-size-body: 20px;
   --font-size-meta: 16px;
   --line-height-body: 32px;
+  --font-site-name: normal 500 34px/44px var(--font-family-header);
+  --font-site-name-small: normal 500 28px/34px var(--font-family-header);
 }
 
 /* CUSTOM FONTS */

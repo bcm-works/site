@@ -104,14 +104,11 @@ a:focus {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  margin-right: 16px;
+  margin-right: 12px;
 }
 
 .site-name {
-  font-family: var(--font-family-header);
-  font-size: 28px;
-  line-height: 1.2;
-  font-weight: 500;
+  font: var(--font-site-name);
 }
 
 .header-nav .nav-link {
@@ -319,6 +316,12 @@ ul.posts-list .post-date {
   float: left;
   line-height: 48px;
   margin-right: 8px;
+}
+
+#github-info .github-status .value {
+  margin-left: 32px;
+  height: auto;
+  display: block;
 }
 
 #github-info a {
