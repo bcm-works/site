@@ -2,8 +2,9 @@ import { defineRailway, image, preserve, project, service } from "railway/iac";
 
 export default defineRailway(() => {
   const bcmSite = service("bcm-site", {
-    source: image("ghcr.io/bcm-works/site:latest", { autoUpdates: { schedule: [{ day: 0, endHour: 24, startHour: 0 }, { day: 1, endHour: 24, startHour: 0 }, { day: 2, endHour: 24, startHour: 0 }, { day: 3, endHour: 24, startHour: 0 }, { day: 4, endHour: 24, startHour: 0 }, { day: 5, endHour: 24, startHour: 0 }, { day: 6, endHour: 24, startHour: 0 }], type: "patch" } }),
+    source: image("ghcr.io/bcm-works/site:latest", { autoUpdates: { schedule: [], type: "disabled" } }),
     healthcheck: "/api/health",
+    healthcheckTimeout: 60,
     replicas: { "asia-southeast1-eqsg3a": 1 },
     deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } }, registryCredentials: { password: "*****", username: "*****" } },
     domains: ["bcm.works", "murty.au", "www.bcm.works", "www.murty.au"],

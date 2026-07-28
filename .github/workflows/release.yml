@@ -31,7 +31,7 @@ permissions:
   packages: write
 
 jobs:
-  release-build-test:
+  build:
     name: Build and Test
     if: ${{ inputs.continue_deployment == true }}
     runs-on: ubuntu-latest
@@ -64,9 +64,9 @@ jobs:
         run: nub run docker-build
       - name: Run tests
         run: deno task test
-  release-docker:
+  push-docker:
     name: Push to GitHub Packages
-    needs: [release-build-test]
+    needs: [build]
     runs-on: ubuntu-latest
     environment:
       name: ci-build
@@ -97,8 +97,8 @@ jobs:
           tags: |
             latest
             branch-${{ github.ref_name }}
-            commit-${{ needs.release-build-test.outputs.COMMIT }}
-            release-${{ needs.release-build-test.outputs.TIMESTAMP }}
+            commit-${{ needs.build.outputs.COMMIT }}
+            release-${{ needs.build.outputs.TIMESTAMP }}
           labels: |
             maintainer=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.licenses=MIT
@@ -108,8 +108,8 @@ jobs:
             org.opencontainers.image.vendor=${{ secrets.SITE_AUTHOR }}
             org.opencontainers.image.url=${{ secrets.SITE_REPO }}
             org.opencontainers.image.source=${{ secrets.SITE_REPO }}
-            org.opencontainers.image.version=${{ needs.release-build-test.outputs.TIMESTAMP }}
-            org.opencontainers.image.revision=${{ needs.release-build-test.outputs.COMMIT }}
+            org.opencontainers.image.version=${{ needs.build.outputs.TIMESTAMP }}
+            org.opencontainers.image.revision=${{ needs.build.outputs.COMMIT }}
       - name: Build and push Docker Image
         id: push
         uses: docker/build-push-action@v7
@@ -134,9 +134,39 @@ jobs:
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+  deploy-railway:
+    name: Deploy to Railway
+    needs: [build, push-docker]
+    runs-on: ubuntu-latest
+    container: ghcr.io/railwayapp/cli:latest
+    environment:
+      name: ci-deploy-railway
+      deployment: false
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      DO_NOT_TRACK: 1
+      RAILWAY_NO_TELEMETRY: 1
+      RAILWAY_TOKEN: ${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+      - name: Railway login
+        run: |
+          railway link \
+            --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
+            --json
+      - name: Railway redeploy
+        run: |
+          railway redeploy \
+            --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
+            --yes \
+            --json
+
   release-github:
     name: Create Release
-    needs: [release-build-test, release-docker]
+    needs: [build, push-docker]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -156,12 +186,12 @@ jobs:
         run: |
           git config user.name "bot-release"
           git config user.email "brendan+bot-release@bcm.works"
-          git tag release-${{ needs.release-build-test.outputs.TIMESTAMP }}
+          git tag release-${{ needs.build.outputs.TIMESTAMP }}
           git push --tags --quiet
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ needs.release-build-test.outputs.TIMESTAMP }}
-          tag: release-${{ needs.release-build-test.outputs.TIMESTAMP }}
+          name: ${{ needs.build.outputs.TIMESTAMP }}
+          tag: release-${{ needs.build.outputs.TIMESTAMP }}
           bodyFile: ${{ github.workspace }}/release-notes.log
           makeLatest: true

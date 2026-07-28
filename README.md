@@ -76,4 +76,4 @@ Setup [GitHub Actions](https://github.com/features/actions) and [Railway](https:
 
 Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
 
-This includes building and pushing a new Docker Image to [GitHub Packages](https://github.com/bcm-works/site/pkgs/container/site), which will then automatically trigger a deployment via [Railway](https://railway.com/).
+This includes building and pushing a new Docker Image to [GitHub Packages](https://github.com/bcm-works/site/pkgs/container/site), and then deploying the [Railway](https://railway.com/) service.
