@@ -160,6 +160,7 @@ jobs:
       - name: Railway env updates
         run: |
           RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \
+          echo "::add-mask::$RAILWAY_TOKEN" \
           ~/.railway/bin/railway environment edit \
             --service-config ${{ secrets.SITE_RAILWAY_SERVICE }} \
             variables.SITE_BUILD_ID.value ${{ needs.build.outputs.TIMESTAMP }} \
@@ -167,6 +168,7 @@ jobs:
       - name: Railway redeploy
         run: |
           RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \
+          echo "::add-mask::$RAILWAY_TOKEN" \
           ~/.railway/bin/railway redeploy \
             --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
             --yes \
