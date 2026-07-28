@@ -165,9 +165,9 @@ jobs:
         run: |
           export RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
           echo "::add-mask::$RAILWAY_TOKEN"
-          ~/.railway/bin/railway environment edit \
-            --service-config ${{ secrets.SITE_RAILWAY_SERVICE }} \
-            variables.SITE_BUILD_ID.value ${{ needs.build.outputs.TIMESTAMP }}
+          ~/.railway/bin/railway variables \
+            --set "SITE_BUILD_ID=${{ needs.build.outputs.TIMESTAMP }}" \
+            --service ${{ secrets.SITE_RAILWAY_SERVICE }}
       - name: Railway Redeploy
         run: |
           export RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
