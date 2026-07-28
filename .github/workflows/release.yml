@@ -133,6 +133,7 @@ jobs:
             SITE_FEED_DEFAULT_TITLE=${{ secrets.SITE_FEED_DEFAULT_TITLE }}
             SITE_LANG=${{ secrets.SITE_LANG }}
             SITE_AUTHOR=${{ secrets.SITE_AUTHOR }}
+            SITE_BUILD_ID=${{ needs.build.outputs.TIMESTAMP }}
             SITE_POSTHOG_ID=${{ secrets.SITE_POSTHOG_ID }}
             SITE_POSTHOG_API_HOST=${{ secrets.SITE_POSTHOG_API_HOST }}
             SITE_POSTHOG_UI_HOST=${{ secrets.SITE_POSTHOG_UI_HOST }}
@@ -156,6 +157,12 @@ jobs:
         uses: actions/checkout@v7
       - name: Railway setup
         run: bash <(curl -fsSL railway.com/install.sh) -y
+      - name: Railway env updates
+        run: |
+          RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \
+          ~/.railway/bin/railway environment edit \
+            --service-config ${{ secrets.SITE_RAILWAY_SERVICE }} \
+            variables.SITE_BUILD_ID.value ${{ needs.build.outputs.TIMESTAMP }}
       - name: Railway redeploy
         run: |
           RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \

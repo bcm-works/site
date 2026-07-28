@@ -14,7 +14,7 @@ const lang: string = process.env.SITE_LANG || "en-GB";
 const author: string = process.env.SITE_AUTHOR || "";
 
 const dateNow: Date = new Date();
-const buildDate: string = process.env.SITE_BUILD_DATE || format(dateNow, "yyyyMMddHHmmss");
+const buildDate: string = process.env.SITE_BUILD_ID || format(dateNow, "yyyyMMddHHmmss");
 
 const feedTitle: string = process.env.SITE_FEED_TITLE || "";
 const feedDesc: string = process.env.SITE_FEED_DESC || "";
@@ -30,7 +30,7 @@ info("Starting 'bcm-site' container");
 run(`docker run -d \
   --name "bcm-site" \
   --publish "${port}:${port}" \
-  --env "SITE_BUILD_DATE=${buildDate}" \
+  --env "SITE_BUILD_ID=${buildDate}" \
   --env "SITE_FEED_TITLE=${feedTitle}" \
   --env "SITE_FEED_DESC=${feedDesc}" \
   --env "SITE_FEED_DEFAULT_TITLE=${feedDefaultTitle}" \

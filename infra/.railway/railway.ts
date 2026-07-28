@@ -11,6 +11,7 @@ export default defineRailway(() => {
     env: {
       SITE_AUTHOR: preserve(),
       SITE_BUILD_DIR: preserve(),
+      SITE_BUILD_ID: preserve(),
       SITE_DESC: preserve(),
       SITE_ENV: preserve(),
       SITE_FEED_DEFAULT_TITLE: preserve(),

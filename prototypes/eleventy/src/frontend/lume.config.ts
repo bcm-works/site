@@ -68,7 +68,7 @@ site.data("SITE_FEED_DEFAULT_TITLE", siteFeedDefaultTitle);
 site.data("SITE_POSTHOG_ID", sitePosthogId);
 site.data("SITE_POSTHOG_API_HOST", sitePosthogApiHost);
 site.data("SITE_POSTHOG_UI_HOST", sitePosthogUiHost);
-site.data("SITE_BUILD_DATE", siteBuildDate);
+site.data("SITE_BUILD_ID", siteBuildDate);
 
 // Lume Plugins
 

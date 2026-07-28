@@ -50,10 +50,11 @@ const sitePosthogUiHost: string = bcm.envVar("SITE_POSTHOG_UI_HOST");
 const siteIsLocal: boolean = bcm.isLocal();
 const siteEnv: string = siteIsLocal ? "local" : bcm.envVar("SITE_ENV", "hosted");
 
-// Generate a build date to use for cache refreshes
+// Get the build id or fallback to a timestamp
 
 const dateNow: Date = new Date();
 const siteBuildDate: string = format(dateNow, "yyyyMMddHHmmss");
+const siteBuildId: string = bcm.envVar("SITE_BUILD_ID", siteBuildDate);
 
 // Save env vars as site data variables so templates can use them
 
@@ -68,7 +69,7 @@ site.data("SITE_FEED_DEFAULT_TITLE", siteFeedDefaultTitle);
 site.data("SITE_POSTHOG_ID", sitePosthogId);
 site.data("SITE_POSTHOG_API_HOST", sitePosthogApiHost);
 site.data("SITE_POSTHOG_UI_HOST", sitePosthogUiHost);
-site.data("SITE_BUILD_DATE", siteBuildDate);
+site.data("SITE_BUILD_ID", siteBuildId);
 
 // Lume Plugins
 

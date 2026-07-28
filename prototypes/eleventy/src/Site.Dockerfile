@@ -43,7 +43,7 @@ ARG PORT
 ARG SITE_PORT
 ARG SITE_PUBLIC_DIR
 ARG SITE_BUILD_DIR
-ARG SITE_BUILD_DATE
+ARG SITE_BUILD_ID
 ARG SITE_AUTHOR
 ARG SITE_TITLE
 ARG SITE_DESC
@@ -65,7 +65,7 @@ ENV PORT=${PORT}
 ENV SITE_PORT=${SITE_PORT}
 ENV SITE_PUBLIC_DIR=${SITE_PUBLIC_DIR}
 ENV SITE_BUILD_DIR=${SITE_BUILD_DIR}
-ENV SITE_BUILD_DATE=${SITE_BUILD_DATE}
+ENV SITE_BUILD_ID=${SITE_BUILD_ID}
 ENV SITE_AUTHOR=${SITE_AUTHOR}
 ENV SITE_TITLE=${SITE_TITLE}
 ENV SITE_DESC=${SITE_DESC}
@@ -101,6 +101,9 @@ RUN nub run build
 # This minimises the resulting final Docker Image size, speeding up build and push times.
 FROM denoland/deno:alpine AS serve
 WORKDIR /app
+
+# Copy over the Build Id so the front-end can use it too
+ARG SITE_BUILD_ID
 
 # Apply security updates and install required system packages.
 RUN apk update && \
