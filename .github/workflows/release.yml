@@ -161,21 +161,13 @@ jobs:
         uses: actions/checkout@v7
       - name: Railway Setup
         run: bash <(curl -fsSL railway.com/install.sh) -y
-      - name: Railway Config Updates
+      - name: Railway Redeploy
         run: |
           export RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
           echo "::add-mask::$RAILWAY_TOKEN"
           ~/.railway/bin/railway variables \
             --set "SITE_BUILD_ID=${{ needs.build.outputs.TIMESTAMP }}" \
-            --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
-            --skip-deploys
-      - name: Railway Redeploy
-        run: |
-          export RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
-          echo "::add-mask::$RAILWAY_TOKEN"
-          ~/.railway/bin/railway redeploy \
-            --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
-            --yes
+            --service ${{ secrets.SITE_RAILWAY_SERVICE }}
 
   release-github:
     name: Create Release
