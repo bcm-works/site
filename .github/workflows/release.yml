@@ -7,7 +7,7 @@
 #
 
 name: Release
-run-name: Release by ${{ github.actor }} on ${{ github.ref_name }}
+run-name: Release ${{ github.run_number }} by ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
 
 on:
   # Manual run via GitHub Repo > Actions > Release > Run workflow
@@ -18,6 +18,10 @@ on:
         type: boolean
         required: true
         default: false
+
+concurrency:
+  group: release
+  cancel-in-progress: true
 
 defaults:
   run:
