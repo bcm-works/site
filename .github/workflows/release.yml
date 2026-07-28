@@ -138,7 +138,6 @@ jobs:
     name: Deploy to Railway
     needs: [build, push-docker]
     runs-on: ubuntu-latest
-    container: ghcr.io/railwayapp/cli:latest
     environment:
       name: ci-deploy-railway
       deployment: false
@@ -148,17 +147,20 @@ jobs:
     env:
       DO_NOT_TRACK: 1
       RAILWAY_NO_TELEMETRY: 1
-      RAILWAY_TOKEN: ${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+      - name: Railway setup
+        run: bash <(curl -fsSL railway.com/install.sh) -y
       - name: Railway login
         run: |
+          RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \
           railway link \
             --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
             --json
       - name: Railway redeploy
         run: |
+          RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }} \
           railway redeploy \
             --service ${{ secrets.SITE_RAILWAY_SERVICE }} \
             --yes \
