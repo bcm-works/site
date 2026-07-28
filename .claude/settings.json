@@ -26,6 +26,7 @@
     ],
     "deny": [
       "Read(.env)",
+      "Read(docs/AI-USE.md)",
       "Read(src/infra/.env)",
       "Bash(railway)",
       "Bash(git commit*)",
