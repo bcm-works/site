@@ -43,9 +43,6 @@ jobs:
       name: ci-build
       deployment: false
     env: ${{ secrets }}
-    outputs:
-      TIMESTAMP: ${{ steps.vars.outputs.TIMESTAMP }}
-      COMMIT: ${{ steps.vars.outputs.COMMIT }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
