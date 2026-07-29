@@ -11,11 +11,13 @@
   },
   "env": {
     "CLAUDE_CODE_EFFORT_LEVEL": "auto",
+    "API_TIMEOUT_MS": "30000",
     "BASH_DEFAULT_TIMEOUT_MS": "30000",
-    "CLAUDE_CODE_DISABLE_TELEMETRY": "true"
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
   "permissions": {
-    "defaultMode": "plan",
+    "defaultMode": "acceptEdits",
     "disableBypassPermissionsMode": "disable",
     "disableAutoMode": "disable",
     "allow": [
