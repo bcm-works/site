@@ -8,7 +8,7 @@ type GitHubUserResponse = {
   user: {
     login: string;
     name: string;
-    status: {
+    status?: {
       message: string;
     };
     url: string;
@@ -62,7 +62,7 @@ export async function get(): Promise<Response> {
   const returnString = JSON.stringify({
     username: user?.login,
     name: user?.name,
-    status: user?.status.message,
+    status: user?.status?.message,
     url: user?.url,
     repos: user?.repositories.totalCount,
     followers: user?.followers.totalCount,
