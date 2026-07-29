@@ -50,7 +50,7 @@ jobs:
         with:
           deno-version: latest
       - name: Install Dependencies
-        run: deno task install
+        run: deno ci
       - name: Build Site
         run: deno task build
       - name: Build Docker

@@ -15,7 +15,6 @@ RUN apk update && \
     apk add --no-cache libgcc libstdc++ curl bash
 
 # Copy over config files and scripts.
-COPY .nvmrc /app
 COPY deno.jsonc /app
 COPY deno.lock /app
 COPY src/tools /app/src/tools
@@ -81,7 +80,7 @@ LABEL org.opencontainers.image.source=$SITE_REPO
 LABEL org.opencontainers.image.licenses=MIT
 
 # Install dependencies
-RUN deno task install
+RUN deno ci
 
 # Build the site
 RUN deno task build
@@ -100,11 +99,11 @@ RUN apk update && \
     apk add --no-cache --upgrade openssl busybox ssl_client && \
     apk add --no-cache bash
 
-# Copy over the bare minimum to serve the static files
-COPY --from=build /app/src/backend /app/src/backend
-COPY --from=build /app/src/common /app/src/common
-COPY --from=build /app/public /app/public
-COPY --from=build /app/deno.jsonc /app/deno.jsonc
+# Only over the required files to serve the static site.
+COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
+COPY --from=build --chown=deno:deno /app/src/common /app/src/common
+COPY --from=build --chown=deno:deno /app/public /app/public
+COPY --from=build --chown=deno:deno /app/deno.jsonc /app/deno.lock /app/
 
 # Start the static file server as the non-root user 'deno' on port 8000.
 USER deno

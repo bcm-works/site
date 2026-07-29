@@ -60,7 +60,7 @@ jobs:
         with:
           deno-version: latest
       - name: Install Dependencies
-        run: deno task install
+        run: deno ci
       - name: Build Site
         run: deno task build
       - name: Build Docker
@@ -183,7 +183,7 @@ jobs:
         with:
           deno-version: latest
       - name: Install Dependencies
-        run: deno task install
+        run: deno ci
       - name: Generate Release Notes
         working-directory: ${{ github.workspace }}
         run: deno task release-notes
