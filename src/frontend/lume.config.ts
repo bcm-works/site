@@ -10,6 +10,7 @@ import robots from "lume/plugins/robots.ts";
 import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
+import readingInfo from "lume/plugins/reading_info.ts";
 
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import langJavaScript from "highlight/lib/languages/javascript";
@@ -156,5 +157,9 @@ site.use(minifyHTML({
 // --- Generate sitemap.xml
 
 site.use(sitemap());
+
+// --- Allow page word count and reading minutes data
+
+site.use(readingInfo());
 
 export default site;

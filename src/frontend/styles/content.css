@@ -72,7 +72,7 @@ a:focus {
 
 .icon {
   color: var(--colour-foreground);
-  vertical-align: middle;
+  vertical-align: baseline;
 }
 
 .social-links-container .icon,
@@ -81,7 +81,7 @@ a:focus {
 }
 
 .page-post .icon-tag,
-.page-post .icon-post {
+.page-post .post-info .icon {
   color: var(--colour-gray);
 }
 
@@ -207,10 +207,21 @@ ul.posts-list .post-date {
   text-align: right;
 }
 
-.page-post .post-date {
-  margin: 0 0 15px;
+.page-post ul.post-info {
   font-size: var(--font-size-meta);
   color: var(--colour-gray);
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+.page-post ul.post-info li {
+  box-sizing: border-box;
+  flex: 0 0 calc(33.3333% - 10.6667px);
+  margin: 0;
 }
 
 /* TAGS */
