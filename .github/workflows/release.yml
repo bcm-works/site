@@ -30,10 +30,6 @@ defaults:
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
-permissions:
-  contents: read
-  packages: write
-
 jobs:
 
   build:
@@ -44,6 +40,8 @@ jobs:
       name: ci-build
       deployment: false
     env: ${{ secrets }}
+    permissions:
+      contents: read
     outputs:
       TIMESTAMP: ${{ steps.vars.outputs.TIMESTAMP }}
       COMMIT: ${{ steps.vars.outputs.COMMIT }}
@@ -78,6 +76,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
+      packages: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
@@ -97,7 +96,7 @@ jobs:
         env:
           DOCKER_METADATA_ANNOTATIONS_LEVELS: index,manifest
         with:
-          images: ghcr.io/${{ github.repository }}
+          images: ghcr.io/${{ secrets.PACKAGES_IMAGE_PATH }}
           tags: |
             latest
             branch-${{ github.ref_name }}
