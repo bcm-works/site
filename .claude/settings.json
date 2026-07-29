@@ -4,13 +4,20 @@
   "outputStyle": "Proactive",
   "respectGitignore": true,
   "spinnerTipsEnabled": false,
+  "cleanupPeriodDays": 7,
   "attribution": {
     "commit": "",
     "pr": ""
   },
+  "env": {
+    "CLAUDE_CODE_EFFORT_LEVEL": "auto",
+    "BASH_DEFAULT_TIMEOUT_MS": "30000",
+    "CLAUDE_CODE_DISABLE_TELEMETRY": "true"
+  },
   "permissions": {
     "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable",
+    "disableAutoMode": "disable",
     "allow": [
       "Fetch(https://docs.github.com/*)",
       "Bash(cat*)",
@@ -22,11 +29,13 @@
       "Bash(git status*)",
       "Bash(git log*)",
       "Bash(deno task build)",
+      "Bash(deno task lint)",
       "Bash(deno task start)",
       "Bash(deno task test)"
     ],
     "deny": [
       "Read(.env)",
+      "Read(config/**)",
       "Read(docs/AI-USE.md)",
       "Read(src/infra/.env)",
       "Bash(railway)",
