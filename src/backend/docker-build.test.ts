@@ -28,7 +28,7 @@ async function inspectImage(tag: string): Promise<Record<string, unknown>> {
   return JSON.parse(imageJson);
 }
 
-Deno.test("docker-build", async (test) => {
+Deno.test("DOCKER BUILD", async (test) => {
   await test.step({
     name: "check 'bcm-site:latest'",
     fn: async () => {

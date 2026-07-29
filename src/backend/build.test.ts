@@ -1,6 +1,6 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
 
-Deno.test("build", async (test) => {
+Deno.test("BUILD", async (test) => {
   await test.step({
     name: "check 'public/index.html'",
     fn: async () => {

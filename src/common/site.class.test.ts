@@ -33,7 +33,7 @@ async function withEnv(
   }
 }
 
-Deno.test("Site.envVar", async (test) => {
+Deno.test("COMMON Site.envVar", async (test) => {
   await test.step({
     name: "returns env var value when set",
     fn: async () => {
@@ -65,7 +65,7 @@ Deno.test("Site.envVar", async (test) => {
   });
 });
 
-Deno.test("Site.envVarNumber", async (test) => {
+Deno.test("COMMON Site.envVarNumber", async (test) => {
   await test.step({
     name: "returns numeric value when env var is set",
     fn: async () => {
@@ -97,7 +97,7 @@ Deno.test("Site.envVarNumber", async (test) => {
   });
 });
 
-Deno.test("Site.isLocal", async (test) => {
+Deno.test("COMMON Site.isLocal", async (test) => {
   await test.step({
     name: "returns true when SITE_ENV is 'local'",
     fn: async () => {
@@ -129,7 +129,7 @@ Deno.test("Site.isLocal", async (test) => {
   });
 });
 
-Deno.test("Site.getUrl", async (test) => {
+Deno.test("COMMON Site.getUrl", async (test) => {
   await test.step({
     name: "returns localhost URL with port when local",
     fn: async () => {
@@ -171,7 +171,7 @@ Deno.test("Site.getUrl", async (test) => {
   });
 });
 
-Deno.test("Site.getPort", async (test) => {
+Deno.test("COMMON Site.getPort", async (test) => {
   await test.step({
     name: "returns PORT when it is set to a positive value",
     fn: async () => {
@@ -203,7 +203,7 @@ Deno.test("Site.getPort", async (test) => {
   });
 });
 
-Deno.test("Site.fileExists", async (test) => {
+Deno.test("COMMON Site.fileExists", async (test) => {
   await test.step({
     name: "returns true for a file that exists",
     fn: () => {
@@ -230,7 +230,7 @@ Deno.test("Site.fileExists", async (test) => {
   });
 });
 
-Deno.test("Site.logAlways", async (test) => {
+Deno.test("COMMON Site.logAlways", async (test) => {
   await test.step({
     name: "always calls console.log regardless of environment",
     fn: async () => {
@@ -251,7 +251,7 @@ Deno.test("Site.logAlways", async (test) => {
   });
 });
 
-Deno.test("Site.logDebug", async (test) => {
+Deno.test("COMMON Site.logDebug", async (test) => {
   await test.step({
     name: "logs when SITE_ENV is local",
     fn: async () => {
@@ -290,7 +290,7 @@ Deno.test("Site.logDebug", async (test) => {
   });
 });
 
-Deno.test("Site.logInfo", async (test) => {
+Deno.test("COMMON Site.logInfo", async (test) => {
   await test.step({
     name: "logs when SITE_ENV is local",
     fn: async () => {
@@ -329,7 +329,7 @@ Deno.test("Site.logInfo", async (test) => {
   });
 });
 
-Deno.test("Site.logSuccess", async (test) => {
+Deno.test("COMMON Site.logSuccess", async (test) => {
   await test.step({
     name: "logs when SITE_ENV is local",
     fn: async () => {
@@ -368,7 +368,7 @@ Deno.test("Site.logSuccess", async (test) => {
   });
 });
 
-Deno.test("Site.logError", async (test) => {
+Deno.test("COMMON Site.logError", async (test) => {
   await test.step({
     name: "logs when SITE_ENV is local",
     fn: async () => {
