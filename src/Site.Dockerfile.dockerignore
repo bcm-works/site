@@ -9,6 +9,10 @@ prototypes/
 
 build/
 public/
+node_modules/
+**/node_modules/
+
+**/*.test.ts
 
 .*.env
 .env
