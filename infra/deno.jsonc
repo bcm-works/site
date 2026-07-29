@@ -16,7 +16,7 @@
     "apply": "deno x --yes --no-check npm:@railway/cli@^5.30.1 config apply",
     "export": "deno x --yes --no-check npm:@railway/cli@^5.30.1 status --json > railway.json",
     "start": "tsx index.ts",
-    "setup": "cd .. && deno run --allow-all ./src/tools/infra/infra-setup.ts",
+    "setup": "cd .. && deno run --allow-all ./src/tasks/infra/infra-setup.ts",
     "install": {
       "description": "Install third-party dependencies.",
       "command": "deno install --config ./deno.jsonc"

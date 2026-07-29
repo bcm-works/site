@@ -10,7 +10,7 @@ This repository contains the website at [bcm.works](https://bcm.works/) and rela
 ## Structure
 
 - [src](src/) - Source code for the main public website at [bcm.works](https://bcm.works).
-- [src/tools](src/tools/) - Project specific commands, which can be run via `deno task (task_name)`. To list all available tasks, use `deno task`.
+- [src/tasks](src/tasks/) - Project specific commands, which can be run via `deno task (task_name)`. To list all available tasks, use `deno task`.
 
 ## Required Tools
 

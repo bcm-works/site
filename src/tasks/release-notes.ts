@@ -1,5 +1,5 @@
 import { execSync as run } from "node:child_process";
-import { warn } from "@/tools/log.ts";
+import { warn } from "@/tasks/log.ts";
 
 const outputFile: string = "./release-notes.log";
 const gitLogFormat: string = "- %s";

@@ -1,6 +1,6 @@
 import { execSync as run } from "node:child_process";
-import { info, warn } from "@/tools/log.ts";
-import { loadEnv } from "@/tools/env.ts";
+import { info, warn } from "@/tasks/log.ts";
+import { loadEnv } from "@/tasks/env.ts";
 
 loadEnv();
 

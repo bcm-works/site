@@ -22,7 +22,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
 - [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/frontend/manifest.json](src/frontend/manifest.json) - Progressive Web App configuration.
-- [src/tools](src/tools/) - Project specific helper scripts.
+- [src/tasks](src/tasks/) - Helper scripts.
 - [src/Site.Dockerfile](src/Site.Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
@@ -49,7 +49,7 @@ Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contai
 
 ## Local Tools
 
-Run the [setup tool](src/tools/setup.ts) to setup your local environment:
+Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
 
 ```bash
 deno task setup

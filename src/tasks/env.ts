@@ -1,5 +1,5 @@
 import { existsSync as exists } from "node:fs";
-import { info, warn } from "@/tools/log.ts";
+import { info, warn } from "@/tasks/log.ts";
 
 export function loadEnv() {
   if (exists("config/.env")) {

@@ -1,5 +1,5 @@
 import { execSync as run } from "node:child_process";
-import { info, warn } from "@/tools/log.ts";
+import { info, warn } from "@/tasks/log.ts";
 
 info("Installing infra dependencies");
 

@@ -1,6 +1,6 @@
 import { execSync as run } from "node:child_process";
-import { hasCommand } from "@/tools/has-command.ts";
-import { error, info, success, warn } from "@/tools/log.ts";
+import { hasCommand } from "@/tasks/has-command.ts";
+import { error, info, success, warn } from "@/tasks/log.ts";
 
 if (hasCommand("docker")) {
   success("Found Docker");

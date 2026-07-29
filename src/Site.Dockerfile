@@ -17,7 +17,7 @@ RUN apk update && \
 # Copy over config files and scripts.
 COPY deno.jsonc /app
 COPY deno.lock /app
-COPY src/tools /app/src/tools
+COPY src/tasks /app/src/tasks
 
 # Copy the rest of the repo directory,
 # besides items filtered out by '.dockerignore'.
