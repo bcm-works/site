@@ -1,7 +1,9 @@
 {
   "version": "5",
   "specifiers": {
+    "npm:@railway/cli@^5.30.1": "5.30.1",
     "npm:@types/node@^26.1.1": "26.1.2",
+    "npm:railway@*": "3.6.0",
     "npm:railway@^3.6.0": "3.6.0",
     "npm:tsx@^4.23.1": "4.23.1",
     "npm:typescript@^5.9.3": "5.9.3"
@@ -143,11 +145,30 @@
         "graphql"
       ]
     },
+    "@napi-rs/triples@1.2.0": {
+      "integrity": "sha512-HAPjR3bnCsdXBsATpDIP5WCrw0JcACwhhrwIAQhiR46n+jm+a2F8kBsfseAuWtSyQ+H3Yebt2k43B5dy+04yMA=="
+    },
+    "@railway/cli@5.30.1": {
+      "integrity": "sha512-4l3Kw8b2FeHH5Thsy+Rq8QHd1HdRhQ0KDvavf4z2zSNx2zdLpY6tbYRKiGDuscNQ8b0GuAPiF6tYkbF2sh2LHA==",
+      "dependencies": [
+        "@napi-rs/triples",
+        "node-fetch",
+        "tar"
+      ],
+      "scripts": true,
+      "bin": true
+    },
     "@types/node@26.1.2": {
       "integrity": "sha512-Vu4a5UFA9rIIFJ7rB/Vaafh9lrCQszopTCx6KjFboXTGQbPNasehVR5TEiithSDGyd1DEiUByggTZsg8jukeIg==",
       "dependencies": [
         "undici-types"
       ]
+    },
+    "chownr@2.0.0": {
+      "integrity": "sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ=="
+    },
+    "data-uri-to-buffer@4.0.1": {
+      "integrity": "sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A=="
     },
     "esbuild@0.28.1": {
       "integrity": "sha512-HrJrvZv5ayxBzPfwphOoNzkzOIIlifzk0KJrGK2c8R4+LKpMtpYLQeUdjnwjWv/LZlkH2laZk+4w78pi99D4Vw==",
@@ -182,6 +203,25 @@
       "scripts": true,
       "bin": true
     },
+    "fetch-blob@3.2.0": {
+      "integrity": "sha512-7yAQpD2UMJzLi1Dqv7qFYnPbaPx7ZfFK6PiIxQ4PfkGPyNyl2Ugx+a/umUonmKqjhM4DnfbMvdX6otXq83soQQ==",
+      "dependencies": [
+        "node-domexception",
+        "web-streams-polyfill"
+      ]
+    },
+    "formdata-polyfill@4.0.10": {
+      "integrity": "sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==",
+      "dependencies": [
+        "fetch-blob"
+      ]
+    },
+    "fs-minipass@2.1.0": {
+      "integrity": "sha512-V/JgOLFCS+R6Vcq0slCuaeWEdNC3ouDlJMNIsacH2VtALiu9mV4LPrHc5cDl8k5aw6J8jwgWWpiTo5RYhmIzvg==",
+      "dependencies": [
+        "minipass@3.3.6"
+      ]
+    },
     "fsevents@2.3.3": {
       "integrity": "sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==",
       "os": ["darwin"],
@@ -189,6 +229,38 @@
     },
     "graphql@16.14.2": {
       "integrity": "sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA=="
+    },
+    "minipass@3.3.6": {
+      "integrity": "sha512-DxiNidxSEK+tHG6zOIklvNOwm3hvCrbUrdtzY74U6HKTJxvIDfOUL5W5P2Ghd3DTkhhKPYGqeNUIh5qcM4YBfw==",
+      "dependencies": [
+        "yallist"
+      ]
+    },
+    "minipass@5.0.0": {
+      "integrity": "sha512-3FnjYuehv9k6ovOEbyOswadCDPX1piCfhV8ncmYtHOjuPwylVWsghTLo7rabjC3Rx5xD4HDx8Wm1xnMF7S5qFQ=="
+    },
+    "minizlib@2.1.2": {
+      "integrity": "sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==",
+      "dependencies": [
+        "minipass@3.3.6",
+        "yallist"
+      ]
+    },
+    "mkdirp@1.0.4": {
+      "integrity": "sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==",
+      "bin": true
+    },
+    "node-domexception@1.0.0": {
+      "integrity": "sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==",
+      "deprecated": true
+    },
+    "node-fetch@3.3.2": {
+      "integrity": "sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==",
+      "dependencies": [
+        "data-uri-to-buffer",
+        "fetch-blob",
+        "formdata-polyfill"
+      ]
     },
     "railway@3.6.0": {
       "integrity": "sha512-jgpSoHDY/4JJrTdjXHASeRd41Kd4FyLfaZIDLBUj+Hh41T17fHTzlYcCsimH6aomYyrJC9SskbUE2gmh/QIufQ==",
@@ -198,6 +270,18 @@
         "tsx"
       ],
       "bin": true
+    },
+    "tar@6.2.1": {
+      "integrity": "sha512-DZ4yORTwrbTj/7MZYq2w+/ZFdI6OZ/f9SFHR+71gIVUZhOQPHzVCLpvRnPgyaMpfWxxk/4ONva3GQSyNIKRv6A==",
+      "dependencies": [
+        "chownr",
+        "fs-minipass",
+        "minipass@5.0.0",
+        "minizlib",
+        "mkdirp",
+        "yallist"
+      ],
+      "deprecated": true
     },
     "tsx@4.23.1": {
       "integrity": "sha512-GQHnkIfxyx1wYCOS/wonik5MVRZU9hi1TEZmzGZSCJB1y9YgoZ8H6itNE/u4suE+yLmOzuE4E5S4TZ/ZX2wcWQ==",
@@ -215,10 +299,17 @@
     },
     "undici-types@8.3.0": {
       "integrity": "sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ=="
+    },
+    "web-streams-polyfill@3.3.3": {
+      "integrity": "sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw=="
+    },
+    "yallist@4.0.0": {
+      "integrity": "sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A=="
     }
   },
   "workspace": {
     "dependencies": [
+      "npm:@railway/cli@^5.30.1",
       "npm:@types/node@^26.1.1",
       "npm:railway@^3.6.0",
       "npm:tsx@^4.23.1",
