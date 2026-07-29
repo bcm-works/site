@@ -37,7 +37,7 @@ run(`deno x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
 
 info("Running Deno Lint");
 
-run("deno task lint", { stdio: "inherit" });
+run("deno task lint");
 
 info("Copying over page content files to build directory");
 
@@ -47,7 +47,7 @@ run(`cp -r content/tags "${buildDir}/tags"`);
 
 info("Building the front-end using Lume");
 
-run(`TZ="${timezone}" deno task lume`, { stdio: "inherit" });
+run(`TZ="${timezone}" deno task lume`);
 
 info("Combining CSS files");
 
@@ -68,7 +68,6 @@ run(
   --bundle \
   --targets ">= 0.25%" "${buildDir}/bcm.css" \
   --output-file "${publicDir}/css/bcm.min.css"`,
-  { stdio: "inherit" },
 );
 
 info("Copying FontAwesome files to public directory");

@@ -10,16 +10,12 @@ export class Site {
     this.envFile = envFile;
 
     if (this.fileExists(envFile)) {
-      this.logDebug(`Loading variables from Env File at '${envFile}'`);
-
       // Load variables from ths file, or directly from
       // the build terminal session if they're set there.
       this.env = loadSync({
         envPath: envFile,
         export: true,
       });
-    } else {
-      this.logDebug("Loading variables from Session");
     }
   }
 

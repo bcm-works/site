@@ -41,7 +41,7 @@
     },
     "start": {
       "description": "Start the web server.",
-      "command": "deno run --allow-net --allow-read --allow-env ./src/backend/server.ts"
+      "command": "deno run --quiet --allow-net --allow-read --allow-env ./src/backend/server.ts"
     },
     "test": {
       "description": "Run all Deno Test scripts in the 'src' directory.",
@@ -54,7 +54,7 @@
     "docker-build": "deno run --allow-all ./src/tools/docker/docker-build.ts",
     "docker-start": "deno run --allow-all ./src/tools/docker/docker-start.ts",
     "docker-stop": "deno run --allow-all ./src/tools/docker/docker-stop.ts",
-    "lint": "deno lint && deno fmt",
+    "lint": "deno --quiet lint && deno --quiet fmt",
     "setup-infra": "cd infra && deno task setup",
     "install-infra": "cd infra && deno task install",
     "update-infra": "cd infra && deno task update"
