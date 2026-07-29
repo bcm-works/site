@@ -1,5 +1,5 @@
 {
-  "nodeModulesDir": "auto",
+  "nodeModulesDir": "none",
   "preferPackageJson": false,
   "minimumDependencyAge": 14,
   "lock": true,
