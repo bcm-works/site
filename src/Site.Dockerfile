@@ -1,5 +1,6 @@
-# Node stage
-FROM node:26-alpine AS node
+# Build stage
+FROM denoland/deno:alpine AS build
+WORKDIR /app
 
 LABEL maintainer="Brendan Murty"
 LABEL org.opencontainers.image.authors="Brendan Murty"
@@ -8,27 +9,15 @@ LABEL org.opencontainers.image.url="https://github.com/bcm-works/site"
 LABEL org.opencontainers.image.description="Static web server hosting the public website at bcm.works"
 LABEL org.opencontainers.image.licenses=MIT
 
-# Build stage
-FROM denoland/deno:alpine AS build
-WORKDIR /app
-
 # Apply security updates and install required system packages.
 RUN apk update && \
     apk add --no-cache --upgrade openssl busybox ssl_client && \
     apk add --no-cache libgcc libstdc++ curl bash
 
-# Setup Node and Nub
-COPY --from=node /usr/local /usr/local
-COPY --from=node /opt /opt
-RUN npm install -g @nubjs/nub
-
 # Copy over config files and scripts.
-COPY .npmrc /app
-COPY .node-version /app
 COPY deno.jsonc /app
-COPY package.json /app
-COPY nub.lock /app
-COPY tools /app/tools
+COPY deno.lock /app
+COPY src/tools /app/src/tools
 
 # Copy the rest of the repo directory,
 # besides items filtered out by '.dockerignore'.
@@ -90,11 +79,11 @@ LABEL org.opencontainers.image.url=$SITE_REPO
 LABEL org.opencontainers.image.source=$SITE_REPO
 LABEL org.opencontainers.image.licenses=MIT
 
-# Install dependencies.
-RUN nub run deps-install
+# Install dependencies
+RUN deno ci
 
 # Build the site
-RUN nub run build
+RUN deno task build
 
 # The 'serve' stage is the minimum required files and binaries to run the
 # static files from the 'build' stage.
@@ -110,11 +99,11 @@ RUN apk update && \
     apk add --no-cache --upgrade openssl busybox ssl_client && \
     apk add --no-cache bash
 
-# Copy over the bare minimum to serve the static files
-COPY --from=build /app/src/backend /app/src/backend
-COPY --from=build /app/src/common /app/src/common
-COPY --from=build /app/public /app/public
-COPY --from=build /app/deno.jsonc /app/deno.jsonc
+# Only over the required files to serve the static site.
+COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
+COPY --from=build --chown=deno:deno /app/src/common /app/src/common
+COPY --from=build --chown=deno:deno /app/public /app/public
+COPY --from=build --chown=deno:deno /app/deno.jsonc /app/deno.lock /app/
 
 # Start the static file server as the non-root user 'deno' on port 8000.
 USER deno

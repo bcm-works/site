@@ -18,15 +18,14 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
+- [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
 - [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
-- [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
+- [src/frontend/manifest.json](src/frontend/manifest.json) - Progressive Web App configuration.
+- [src/tools](src/tools/) - Project specific helper scripts.
 - [src/Site.Dockerfile](src/Site.Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
-- [src/pwa-manifest.json](src/pwa-manifest.json) - Progressive Web App configuration.
-- [tools](tools/) - Project specific commands.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
-- [package.json](package.json) - [Nub](https://nubjs.com/) imports, tasks and configuration.
 
 ## Tech Stack
 
@@ -42,9 +41,7 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 
 The following tools are required and need to be manually installed:
 
-- [Node](https://nodejs.org/en/download) - Must match the version from [.node-version](.node-version)
-- [Nub](https://nubjs.com/)
-- [Homebrew](https://brew.sh/)
+- [Deno](https://deno.com/)
 - [Docker](https://docs.docker.com/desktop/)
 - [Railway](https://docs.railway.com/cli)
 
@@ -52,16 +49,10 @@ Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contai
 
 ## Local Tools
 
-Run the [setup tool](tools/setup.ts) to setup your local environment:
+Run the [setup tool](src/tools/setup.ts) to setup your local environment:
 
 ```bash
-nub run setup
-```
-
-List all of the available Nub tasks:
-
-```bash
-nub run
+deno task setup
 ```
 
 List all of the available Deno tasks:

@@ -1,0 +1,29 @@
+{
+  "nodeModulesDir": "none",
+  "preferPackageJson": false,
+  "minimumDependencyAge": 14,
+  "lock": true,
+  "imports": {
+    "railway": "npm:railway@^3.6.0",
+    "@types/node": "npm:@types/node@^26.1.1",
+    "tsx": "npm:tsx@^4.23.1",
+    "typescript": "npm:typescript@^5.9.3"
+  },
+  "tasks": {
+    "pull": "export RAILWAY_NO_TELEMETRY=1 && railway config pull --force",
+    "plan": "export RAILWAY_NO_TELEMETRY=1 && railway config plan",
+    "apply": "export RAILWAY_NO_TELEMETRY=1 && railway config apply",
+    "export": "export RAILWAY_NO_TELEMETRY=1 && railway status --json > railway.json",
+    "start": "tsx index.ts",
+    "setup": "cd .. && deno run --allow-all ./src/tools/infra/infra-setup.ts",
+    "login": "railway login && railway link",
+    "install": {
+      "description": "Install third-party dependencies.",
+      "command": "deno install --config ./deno.jsonc"
+    },
+    "update": {
+      "description": "Update third-party dependencies.",
+      "command": "deno outdated --update --compatible"
+    },
+  }
+}

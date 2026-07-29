@@ -4,14 +4,24 @@
   "outputStyle": "Proactive",
   "respectGitignore": true,
   "spinnerTipsEnabled": false,
+  "cleanupPeriodDays": 7,
   "attribution": {
     "commit": "",
     "pr": ""
   },
+  "env": {
+    "CLAUDE_CODE_EFFORT_LEVEL": "auto",
+    "API_TIMEOUT_MS": "30000",
+    "BASH_DEFAULT_TIMEOUT_MS": "30000",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
+  },
   "permissions": {
-    "defaultMode": "plan",
+    "defaultMode": "acceptEdits",
     "disableBypassPermissionsMode": "disable",
+    "disableAutoMode": "disable",
     "allow": [
+      "Fetch(https://docs.github.com/*)",
       "Bash(cat*)",
       "Bash(grep*)",
       "Bash(head*)",
@@ -20,12 +30,14 @@
       "Bash(tail*)",
       "Bash(git status*)",
       "Bash(git log*)",
-      "Bash(nub run build)",
-      "Bash(nub run start)",
-      "Bash(nub run test)"
+      "Bash(deno task build)",
+      "Bash(deno task lint)",
+      "Bash(deno task start)",
+      "Bash(deno task test)"
     ],
     "deny": [
       "Read(.env)",
+      "Read(config/**)",
       "Read(docs/AI-USE.md)",
       "Read(src/infra/.env)",
       "Bash(railway)",

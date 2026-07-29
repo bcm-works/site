@@ -14,8 +14,8 @@
     },
     "JavaScript": {
       "language_servers": [
-        "typescript-language-server",
         "deno",
+        "!typescript-language-server",
         "!vtsls",
         "!eslint",
       ],
@@ -45,6 +45,15 @@
       ],
       "formatter": "language_server",
     },
+    "YAML": {
+      "format_on_save": "off",
+      "auto_indent_on_paste": false,
+      "auto_indent": "none",
+      "ensure_final_newline_on_save": true,
+      "language_servers": [
+        "!json-language-server"
+      ]
+    },
   },
   "lsp": {
     "deno": {
@@ -56,38 +65,6 @@
           "importMap": "./deno.jsonc",
         },
       },
-    },
-    "json-language-server": {
-      "settings": {
-        "json": {
-          "schemas": [
-            {
-              "fileMatch": ["deno.jsonc", "deno.jsoncc"],
-              "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json",
-            },
-            {
-              "fileMatch": [
-                "package.json"
-              ],
-              "url": "https://www.schemastore.org/package"
-            }
-          ],
-        },
-      },
-    },
-    "yaml-language-server": {
-      "settings": {
-        "yaml": {
-          "schemas": [
-            {
-              "fileMatch": [
-                "docker-compose.yml"
-              ],
-              "url": "https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json",
-            }
-          ]
-        }
-      }
     }
   },
 }

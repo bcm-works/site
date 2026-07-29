@@ -10,7 +10,7 @@ This repository contains the website at [bcm.works](https://bcm.works/) and rela
 ## Structure
 
 - [src](src/) - Source code for the main public website at [bcm.works](https://bcm.works).
-- [tools](tools/) - Project specific commands, which can be run via `nub run (task_name)`. To list all available tasks, use `nub run`.
+- [src/tools](src/tools/) - Project specific commands, which can be run via `deno task (task_name)`. To list all available tasks, use `deno task`.
 
 ## Required Tools
 
@@ -18,8 +18,8 @@ If any of the below CLI commands aren't available, stop processing and explain t
 
 - `bash`
 - `git`
+- `deno`
 - `docker`
-- `nub`
 
 ## Hard Rules
 

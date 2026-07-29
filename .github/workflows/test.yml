@@ -6,7 +6,7 @@
 #
 
 name: Test
-run-name: Test by ${{ github.actor }} on ${{ github.ref_name }}
+run-name: Test from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
 
 on:
   # Manual run via GitHub Repo > Actions > Test > Run workflow
@@ -20,10 +20,8 @@ on:
       - src/**/*.ts
       - src/Site.Dockerfile
       - src/Site.Dockerfile.dockerignore
-      - tools/
       - deno.jsonc
-      - nub.lock
-      - package.json
+      - deno.lock
 
 defaults:
   run:
@@ -47,17 +45,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
-      - name: Nub Setup
-        uses: nubjs/setup-nub@v0
       - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
       - name: Install Dependencies
-        run: nub run deps-install
+        run: deno ci
       - name: Build Site
-        run: nub run build
+        run: deno task build
       - name: Build Docker
-        run: nub run docker-build
+        run: deno task docker-build
       - name: Run Tests
-        run: nub run test
+        run: deno task test
