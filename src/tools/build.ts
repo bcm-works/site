@@ -1,8 +1,6 @@
 import { execSync as run } from 'node:child_process';
-import { readFileSync as read } from 'node:fs';
-import { hasCommand } from '#tools/has-command';
-import { info, success, warn, error } from '#tools/log';
-import { loadEnv } from '#tools/env';
+import { info, warn } from '@/tools/log.ts';
+import { loadEnv } from '@/tools/env.ts';
 
 loadEnv();
 

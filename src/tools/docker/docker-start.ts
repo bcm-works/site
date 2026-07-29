@@ -1,8 +1,7 @@
 import { execSync as run } from 'node:child_process';
-import { existsSync as exists } from 'node:fs';
 import { format } from 'date-fns'
-import { info, success, warn, error } from '#tools/log';
-import { loadEnv } from '#tools/env';
+import { info } from '@/tools/log.ts';
+import { loadEnv } from '@/tools/env.ts';
 
 loadEnv();
 

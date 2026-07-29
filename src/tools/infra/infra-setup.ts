@@ -1,5 +1,5 @@
 import { execSync as run } from 'node:child_process';
-import { info, warn } from '#tools/log';
+import { info, warn } from '@/tools/log.ts';
 
 info("Configuring the Railway CLI");
 
@@ -8,10 +8,10 @@ run('railway telemetry disable', { stdio: 'inherit' });
 
 info("Installing Railway TypeScript SDK");
 
-run("nub install -g railway", { stdio: 'inherit' });
+run("deno install --global npm:railway", { stdio: 'inherit' });
 
-info("Installing dependencies");
+info("Installing infra dependencies");
 
-run("nub run deps-install-infra", { stdio: 'inherit' });
+run("cd infra && deno install", { stdio: 'inherit' });
 
 warn("Please login to Railway: railway login && railway link");

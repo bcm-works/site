@@ -55,20 +55,18 @@ jobs:
         run: |
           echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
           echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
-      - name: Nub Setup
-        uses: nubjs/setup-nub@v0
       - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
       - name: Install Dependencies
-        run: nub run deps-install
+        run: deno task install
       - name: Build Site
-        run: nub run build
+        run: deno task build
       - name: Build Docker
-        run: nub run docker-build
+        run: deno task docker-build
       - name: Test
-        run: nub run test
+        run: deno task test
 
   push-docker:
     name: Push to GitHub Packages
@@ -180,13 +178,15 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
-      - name: Nub Setup
-        uses: nubjs/setup-nub@v0
+      - name: Deno Setup
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: latest
       - name: Install Dependencies
-        run: nub ci
+        run: deno task install
       - name: Generate Release Notes
         working-directory: ${{ github.workspace }}
-        run: nub run release-notes
+        run: deno task release-notes
       - name: Create Release Tag
         run: |
           git config user.name "bot-release"

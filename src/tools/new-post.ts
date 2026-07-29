@@ -1,7 +1,7 @@
 import { execSync as run } from 'node:child_process';
 import { writeFileSync as write } from 'node:fs';
 import { input as prompt } from '@inquirer/prompts';
-import { info, success, warn, error } from '#tools/log';
+import { success, error } from '@/tools/log.ts';
 
 // Figure out the post date values based on the local machine's date
 

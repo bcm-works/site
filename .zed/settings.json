@@ -14,8 +14,8 @@
     },
     "JavaScript": {
       "language_servers": [
-        "typescript-language-server",
         "deno",
+        "!typescript-language-server",
         "!vtsls",
         "!eslint",
       ],
@@ -62,7 +62,7 @@
         "json": {
           "schemas": [
             {
-              "fileMatch": ["deno.jsonc", "deno.jsoncc"],
+              "fileMatch": ["deno.json", "deno.jsonc"],
               "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json",
             },
             {
@@ -74,20 +74,6 @@
           ],
         },
       },
-    },
-    "yaml-language-server": {
-      "settings": {
-        "yaml": {
-          "schemas": [
-            {
-              "fileMatch": [
-                "docker-compose.yml"
-              ],
-              "url": "https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json",
-            }
-          ]
-        }
-      }
     }
   },
 }
