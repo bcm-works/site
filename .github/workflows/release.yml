@@ -14,10 +14,10 @@ on:
   workflow_dispatch:
     inputs:
       continue_deployment:
-        description: 'Are you sure you want to deploy this to production? (yes/no)'
-        type: string
+        description: 'Confirm production deployment'
+        type: boolean
         required: true
-        default: 'no'
+        default: false
 
 concurrency:
   group: release
@@ -34,7 +34,7 @@ jobs:
 
   build:
     name: Build and Test
-    if: ${{ inputs.continue_deployment == "yes" }}
+    if: ${{ inputs.continue_deployment == true }}
     runs-on: ubuntu-latest
     environment:
       name: ci-build
