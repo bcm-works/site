@@ -45,6 +45,15 @@
       ],
       "formatter": "language_server",
     },
+    "YAML": {
+      "format_on_save": "off",
+      "auto_indent_on_paste": false,
+      "auto_indent": "none",
+      "ensure_final_newline_on_save": true,
+      "language_servers": [
+        "!json-language-server"
+      ]
+    },
   },
   "lsp": {
     "deno": {
@@ -54,24 +63,6 @@
           "lint": true,
           "config": "./deno.jsonc",
           "importMap": "./deno.jsonc",
-        },
-      },
-    },
-    "json-language-server": {
-      "settings": {
-        "json": {
-          "schemas": [
-            {
-              "fileMatch": ["deno.json", "deno.jsonc"],
-              "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json",
-            },
-            {
-              "fileMatch": [
-                "package.json"
-              ],
-              "url": "https://www.schemastore.org/package"
-            }
-          ],
         },
       },
     }
