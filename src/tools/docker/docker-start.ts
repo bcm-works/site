@@ -5,7 +5,7 @@ import { loadEnv } from '@/tools/env.ts';
 
 loadEnv();
 
-run('nub run docker-stop', { stdio: 'inherit' });
+run('deno task docker-stop', { stdio: 'inherit' });
 
 const url: string = process.env.SITE_URL || "http://localhost";
 const port: number = Number(process.env.SITE_PORT) || 8000;

@@ -12,8 +12,7 @@ content/** linguist-documentation
 design/** linguist-documentation
 docs/** linguist-documentation
 
-nub.lock linguist-generated
-package-lock.json linguist-generated
+deno.lock linguist-generated
 
 *.js linguist-language=javascript
 *.ts linguist-language=typescript

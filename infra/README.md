@@ -9,7 +9,7 @@ For available options, refer to the [railway package on NPM](https://www.npmjs.c
 Setup required dev tools:
 
 ```bash
-nub run setup
+deno task setup
 ```
 
 Setup GitHub Actions Secrets by following the steps in [../config/.env.github](../config/.env.github).

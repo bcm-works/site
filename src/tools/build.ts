@@ -26,7 +26,7 @@ run(`mkdir -p "${publicDir}/css"`);
 
 info("Applying PurgeCSS updates to site.css");
 
-run(`nubx -y purgecss@8.0.0 \
+run(`deno x --yes --no-check npm:purgecss@8.0.0 \
   --safelist ".content-body" \
   --safelist "blockquote" \
   --safelist "em" \
@@ -37,7 +37,7 @@ run(`nubx -y purgecss@8.0.0 \
 
 info("Running Deno Lint");
 
-run("nub run lint-deno", { stdio: 'inherit' });
+run("deno task lint", { stdio: 'inherit' });
 
 info("Copying over page content files to build directory");
 

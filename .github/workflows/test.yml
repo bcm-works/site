@@ -20,10 +20,8 @@ on:
       - src/**/*.ts
       - src/Site.Dockerfile
       - src/Site.Dockerfile.dockerignore
-      - tools/
       - deno.jsonc
-      - nub.lock
-      - package.json
+      - deno.lock
 
 defaults:
   run:

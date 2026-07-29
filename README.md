@@ -26,7 +26,6 @@ This repository contains the public website at [bcm.works](https://bcm.works/), 
 - [src/Site.Dockerfile](src/Site.Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
-- [package.json](package.json) - [Nub](https://nubjs.com/) imports, tasks and configuration.
 
 ## Tech Stack
 
@@ -50,16 +49,10 @@ Note that my [dotfiles repository](https://github.com/bcm-works/dotfiles) contai
 
 ## Local Tools
 
-Run the [setup tool](tools/setup.ts) to setup your local environment:
+Run the [setup tool](src/tools/setup.ts) to setup your local environment:
 
 ```bash
-nub run setup
-```
-
-List all of the available Nub tasks:
-
-```bash
-nub run
+deno task setup
 ```
 
 List all of the available Deno tasks:
