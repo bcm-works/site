@@ -82,4 +82,8 @@ run(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
 run(`cp "src/frontend/manifest.json" "${publicDir}/manifest.json"`);
 run(`cp "${publicDir}/posts.json" "${publicDir}/brendan/posts.json"`);
 
+warn("Deleting the build directory");
+
+run(`rm -rf "${buildDir}"`);
+
 info("Build complete");
