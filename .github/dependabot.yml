@@ -6,7 +6,6 @@ updates:
       - "/infra"
     schedule:
       interval: "weekly"
-    versioning-strategy: "increase"
     open-pull-requests-limit: 3
     assignees:
       - "bcm-works"
