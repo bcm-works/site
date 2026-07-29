@@ -100,8 +100,8 @@ RUN apk update && \
     apk add --no-cache bash
 
 # Only over the required files to serve the static site.
-COPY --from=build --exclude=**/*.test.ts --chown=deno:deno /app/src/backend /app/src/backend
-COPY --from=build --exclude=**/*.test.ts --chown=deno:deno /app/src/common /app/src/common
+COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
+COPY --from=build --chown=deno:deno /app/src/common /app/src/common
 COPY --from=build --chown=deno:deno /app/public /app/public
 COPY --from=build --chown=deno:deno /app/deno.jsonc /app/deno.lock /app/
 
