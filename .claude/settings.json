@@ -12,6 +12,7 @@
     "defaultMode": "plan",
     "disableBypassPermissionsMode": "disable",
     "allow": [
+      "Fetch(https://docs.github.com/*)",
       "Bash(cat*)",
       "Bash(grep*)",
       "Bash(head*)",
