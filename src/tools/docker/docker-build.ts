@@ -1,6 +1,6 @@
-import { execSync as run } from 'node:child_process';
-import { info } from '@/tools/log.ts';
-import { loadEnv } from '@/tools/env.ts';
+import { execSync as run } from "node:child_process";
+import { info } from "@/tools/log.ts";
+import { loadEnv } from "@/tools/env.ts";
 
 loadEnv();
 
@@ -19,7 +19,8 @@ const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
 
 info("Building 'bcm-site' Docker Image");
 
-run(`docker buildx build \
+run(
+  `docker buildx build \
   --pull \
   --no-cache \
   --platform linux/amd64 \
@@ -35,4 +36,6 @@ run(`docker buildx build \
   --build-arg SITE_POSTHOG_API_HOST="${postHogApiHost}" \
   --build-arg SITE_POSTHOG_UI_HOST="${postHogUiHost}" \
   --file "src/Site.Dockerfile" \
-  "."`, { stdio: 'inherit' });
+  "."`,
+  { stdio: "inherit" },
+);

@@ -1,12 +1,12 @@
-import { execSync as run } from 'node:child_process';
-import { writeFileSync as write } from 'node:fs';
-import { input as prompt } from '@inquirer/prompts';
-import { success, error } from '@/tools/log.ts';
+import { execSync as run } from "node:child_process";
+import { writeFileSync as write } from "node:fs";
+import { input as prompt } from "@inquirer/prompts";
+import { error, success } from "@/tools/log.ts";
 
 // Figure out the post date values based on the local machine's date
 
-const dateSlug: string = run('date +%Y%m%d').toString().trim();
-const dateFrontmatter: string = run('date +%Y-%m-%d').toString().trim();
+const dateSlug: string = run("date +%Y%m%d").toString().trim();
+const dateFrontmatter: string = run("date +%Y-%m-%d").toString().trim();
 
 // Prompt the user for the initial content
 
@@ -20,7 +20,9 @@ if (!postTitle || !postTextSlug) {
 
 const postFile: string = `content/posts/${dateSlug}_${postTextSlug}.md`;
 
-write(postFile, `--- \n\
+write(
+  postFile,
+  `--- \n\
 title: ${postTitle} \n\
 date: ${dateFrontmatter} \n\
 url: /posts/${dateSlug}_${postTextSlug}/ \n\
@@ -28,6 +30,7 @@ tags: \n\
   - Post \n\
   -  \n\
 --- \n\ \n\ \n\
-`);
+`,
+);
 
 success(`Finished, new file created at '${postFile}'`);

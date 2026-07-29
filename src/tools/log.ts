@@ -1,4 +1,4 @@
-import chalk from 'chalk';
+import chalk from "chalk";
 
 const log = console.log;
 
@@ -11,7 +11,7 @@ export function success(message: string) {
 }
 
 export function warn(message: string) {
-  log(chalk.hex('#FFA22E')(message));
+  log(chalk.hex("#FFA22E")(message));
 }
 
 export function error(message: string) {

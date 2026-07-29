@@ -1,11 +1,11 @@
-import { execSync as run } from 'node:child_process';
-import { format } from 'date-fns'
-import { info } from '@/tools/log.ts';
-import { loadEnv } from '@/tools/env.ts';
+import { execSync as run } from "node:child_process";
+import { format } from "date-fns";
+import { info } from "@/tools/log.ts";
+import { loadEnv } from "@/tools/env.ts";
 
 loadEnv();
 
-run('deno task docker-stop', { stdio: 'inherit' });
+run("deno task docker-stop", { stdio: "inherit" });
 
 const url: string = process.env.SITE_URL || "http://localhost";
 const port: number = Number(process.env.SITE_PORT) || 8000;
@@ -26,7 +26,8 @@ const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
 
 info("Starting 'bcm-site' container");
 
-run(`docker run -d \
+run(
+  `docker run -d \
   --name "bcm-site" \
   --publish "${port}:${port}" \
   --env "SITE_BUILD_ID=${buildDate}" \
@@ -41,4 +42,6 @@ run(`docker run -d \
   --env "SITE_POSTHOG_ID=${postHogId}" \
   --env "SITE_POSTHOG_API_HOST=${postHogApiHost}" \
   --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
-  "bcm-site:latest"`, { stdio: 'inherit' });
+  "bcm-site:latest"`,
+  { stdio: "inherit" },
+);

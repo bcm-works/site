@@ -1,6 +1,6 @@
-import { execSync as run } from 'node:child_process';
-import { hasCommand } from '@/tools/has-command.ts';
-import { info, success, warn, error } from '@/tools/log.ts';
+import { execSync as run } from "node:child_process";
+import { hasCommand } from "@/tools/has-command.ts";
+import { error, info, success, warn } from "@/tools/log.ts";
 
 if (hasCommand("docker")) {
   success("Found Docker");
@@ -15,7 +15,7 @@ run("cp -n config/.env.sample config/.env");
 
 info("Installing dependencies");
 
-run("deno task install", { stdio: 'inherit' });
+run("deno task install", { stdio: "inherit" });
 
 info("Installing AI tools");
 
@@ -27,7 +27,7 @@ if (hasCommand("claude")) {
 }
 
 info("Updating Claude Code CLI");
-run("claude update", { stdio: 'inherit' });
+run("claude update", { stdio: "inherit" });
 
 warn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
 

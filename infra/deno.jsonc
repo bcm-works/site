@@ -16,6 +16,7 @@
     "export": "export RAILWAY_NO_TELEMETRY=1 && railway status --json > railway.json",
     "start": "tsx index.ts",
     "setup": "cd .. && deno run --allow-all ./src/tools/infra/infra-setup.ts",
+    "login": "railway login && railway link",
     "install": {
       "description": "Install third-party dependencies.",
       "command": "deno install --config ./deno.jsonc"

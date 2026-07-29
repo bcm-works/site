@@ -57,7 +57,7 @@
     "lint": "deno lint && deno fmt",
     "setup-infra": "cd infra && deno task setup",
     "install-infra": "cd infra && deno task install",
-    "update-infra": "cd infra && deno task update",
+    "update-infra": "cd infra && deno task update"
   },
   "compilerOptions": {
     "types": [
