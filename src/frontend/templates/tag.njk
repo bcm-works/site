@@ -7,23 +7,38 @@ body_class: page-tag
 {% set tag = url | replace("/tags/", "") | replace("/", "") %}
 {% set posts = search.pages(tag + " type=post", "date=desc") %}
 
-<h2 data-pagefind-meta="title">{{ tag }}</h2>
+<h2>{{ tag }}</h2>
 
 <ul class="posts-list">
   {% for post in posts %}
     {% if post.url != '/posts/' %}
-      <li>
-        <span class="post-date">
-          {{ post.date | date('d LLL yyyy') }}
-        </span>
-        <a class="post-link" href="{{ post.url }}">
-          {% if post.title %}
-            {{ post.title }}
-          {% else %}
-            {{ post.url }}
-          {% endif %}
+    <li>
+      <div class="post-name">
+        <a href="{{ post.url }}">
+        {% if post.title %}
+          {{ post.title }}
+        {% else %}
+          {{ post.url }}
+        {% endif %}
         </a>
-      </li>
+      </div>
+      <div class="post-details">
+        <ul class="post-info print-gray">
+          <li class="post-date">
+            <span class="icon fa-fw fa-solid fa-calendar-days"></span>
+            <span class="value">{{ post.date | date('d LLL yyyy') }}</span>
+          </li>
+          <li class="post-time">
+            <span class="icon fa-fw fa-solid fa-hourglass"></span>
+            <span class="value">{{ post.readingInfo.minutes }} minute{% if post.readingInfo.minutes > 1 %}s{% endif %}</span>
+          </li>
+          <li class="post-words">
+            <span class="icon fa-fw fa-solid fa-file-lines"></span>
+            <span class="value">{{ post.readingInfo.words }} words</span>
+          </li>
+        </ul>
+      </div>
+    </li>
     {% endif %}
   {% endfor %}
 </ul>

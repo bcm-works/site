@@ -28,7 +28,7 @@
   }
 
   .social-links-container .social-links li,
-  .page-post ul.post-info li {
+  ul.post-info li {
     flex: 0 0 calc(50% - 8px);
   }
 }
