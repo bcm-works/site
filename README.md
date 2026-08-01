@@ -26,7 +26,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [src/tasks](src/tasks/) - Helper scripts.
 - [src/Site.Dockerfile](src/Site.Dockerfile) - [Docker](https://docker.com/) container image used for deployments.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
-- [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
+- [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
 
 ## Tech Stack
 

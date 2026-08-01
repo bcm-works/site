@@ -37,7 +37,7 @@
     },
     "install": {
       "description": "Install third-party dependencies.",
-      "command": "deno install --config ./deno.jsonc"
+      "command": "deno install --config ./deno.json"
     },
     "update": {
       "description": "Update third-party dependencies.",
@@ -45,7 +45,7 @@
     },
     "deps": {
       "description": "Update all dependencies and commit the results.",
-      "command": "deno task update && deno task infra-update && git add deno.jsonc deno.lock infra/deno.jsonc infra/deno.lock && git commit -m \"Update third-party dependencies\""
+      "command": "deno task update && deno task infra-update && git add deno.json deno.lock infra/deno.json infra/deno.lock && git commit -m \"Update third-party dependencies\""
     },
     "start": {
       "description": "Start the web server.",
@@ -102,7 +102,7 @@
   "fmt": {
     "include": [
       "src/",
-      "deno.jsonc"
+      "deno.json"
     ],
     "lineWidth": 100,
     "useTabs": false,
@@ -112,7 +112,7 @@
   "lint": {
     "include": [
       "src/",
-      "deno.jsonc"
+      "deno.json"
     ],
     "plugins": [
       "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/lint.ts"

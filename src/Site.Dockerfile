@@ -15,7 +15,7 @@ RUN apk update && \
     apk add --no-cache libgcc libstdc++ curl bash
 
 # Copy over config files and scripts.
-COPY deno.jsonc /app
+COPY deno.json /app
 COPY deno.lock /app
 COPY src/tasks /app/src/tasks
 
@@ -103,7 +103,7 @@ RUN apk update && \
 COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
 COPY --from=build --chown=deno:deno /app/src/common /app/src/common
 COPY --from=build --chown=deno:deno /app/public /app/public
-COPY --from=build --chown=deno:deno /app/deno.jsonc /app/deno.lock /app/
+COPY --from=build --chown=deno:deno /app/deno.json /app/deno.lock /app/
 
 # Start the static file server as the non-root user 'deno' on port 8000.
 USER deno

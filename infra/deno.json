@@ -37,12 +37,12 @@
     },
     "install": {
       "description": "Install third-party infra dependencies.",
-      "command": "deno install --config ./deno.jsonc"
+      "command": "deno install --config ./deno.json"
     },
     "update": {
       "description": "Update third-party infra dependencies.",
       "command": "deno outdated --update --compatible"
-    },
+    }
   },
   "allowScripts": {
     "allow": ["npm:@railway/cli@5.30.2"],

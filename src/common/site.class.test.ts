@@ -208,8 +208,7 @@ Deno.test("COMMON Site.fileExists", async (test) => {
     name: "returns true for a file that exists",
     fn: () => {
       const site = new Site(NO_ENV_FILE);
-      // deno.jsonc is always present at the project root relative to test cwd.
-      assertEquals(site.fileExists("deno.jsonc"), true);
+      assertEquals(site.fileExists("deno.json"), true);
     },
   });
 

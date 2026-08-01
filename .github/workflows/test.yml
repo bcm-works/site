@@ -20,7 +20,7 @@ on:
       - src/**/*.ts
       - src/Site.Dockerfile
       - src/Site.Dockerfile.dockerignore
-      - deno.jsonc
+      - deno.json
       - deno.lock
 
 defaults:
