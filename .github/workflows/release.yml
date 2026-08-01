@@ -7,7 +7,7 @@
 #
 
 name: Release
-run-name: Release ${{ github.run_number }} from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
+run-name: Release run ${{ github.run_number }} from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
 
 on:
   # Manual run via GitHub Repo > Actions > Release > Run workflow
