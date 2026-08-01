@@ -1,7 +1,7 @@
 import { execSync, StdioOptions } from "node:child_process";
 
 export function cmd(command: string, output: boolean = false): Buffer | string {
-  const mode: StdioOptions = output ? "inherit" : "ignore";
+  const mode: StdioOptions = output ? "pipe" : "ignore";
   return execSync(command, { stdio: mode });
 }
 
@@ -10,7 +10,9 @@ export function cmdShow(command: string): Buffer | string {
 }
 
 export function cmdResult(command: string): string {
-  return cmd(command, false).toString().trim();
+  const result: string = cmd(command, true).toString().trim();
+
+  return result;
 }
 
 export function cmdExists(command: string): boolean {
