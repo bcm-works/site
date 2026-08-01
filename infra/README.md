@@ -6,15 +6,15 @@ For available options, refer to the [railway package on NPM](https://www.npmjs.c
 
 ## Initial Setup
 
-Setup required dev tools:
+First setup required dev tools:
 
 ```bash
 deno task setup
 ```
 
-Setup GitHub Actions Secrets by following the steps in [../config/.env.github](../config/.env.github).
+Then setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in [/config/.env.github](../config/.env.github).
 
-Setup a new Railway project, with the environment variables detailed in [../config/.env.railway](../config/.env.railway).
+Then setup a new [Railway](https://railway.com/) project, with the environment variables detailed in [/config/.env.railway](../config/.env.railway).
 
 ## Node Scripts
 

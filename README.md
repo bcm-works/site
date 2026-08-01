@@ -40,7 +40,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 ## Local Setup
 
-The following tools will need to be manually installed:
+The following tools need to be manually installed first:
 
 - [Deno](https://deno.com/)
 - [Docker](https://docs.docker.com/desktop/)
