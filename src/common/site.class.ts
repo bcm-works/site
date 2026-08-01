@@ -2,11 +2,15 @@ import { loadSync } from "@std/dotenv";
 import chalk from "chalk";
 import { PostHog } from "posthog";
 
+// TODO: resolve code duplication in here, 'src/tasks/local.ts' and 'src/tasks/log.ts'
+
+const envFileDefault: string = "./config/.env"
+
 export class Site {
   private envFile: string;
   private env: Record<string, string> | undefined;
 
-  constructor(envFile: string = "./config/.env") {
+  constructor(envFile: string = envFileDefault) {
     this.envFile = envFile;
 
     if (this.fileExists(envFile)) {

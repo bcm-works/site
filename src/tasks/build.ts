@@ -1,6 +1,6 @@
 import { cmd } from "@/tasks/cmd.ts";
 import { info, warn } from "@/tasks/log.ts";
-import { loadEnv } from "@/tasks/env.ts";
+import { loadEnv } from "@/tasks/local.ts";
 
 loadEnv();
 
