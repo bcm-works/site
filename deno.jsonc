@@ -27,6 +27,14 @@
     "posthog": "npm:posthog-node@^5.47.3"
   },
   "tasks": {
+    "setup": {
+      "description": "Run the initial setup script.",
+      "command": "deno run --allow-all ./src/tasks/setup.ts"
+    },
+    "build": {
+      "description": "Run the site build script.",
+      "command": "deno run --allow-all ./src/tasks/build.ts"
+    },
     "install": {
       "description": "Install third-party dependencies.",
       "command": "deno install --config ./deno.jsonc"
@@ -35,9 +43,9 @@
       "description": "Update third-party dependencies.",
       "command": "deno outdated --update --compatible"
     },
-    "lume": {
-      "description": "Run a Lume command.",
-      "command": "deno run --quiet -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
+    "deps": {
+      "description": "Update all dependencies and commit the results.",
+      "command": "deno task update && deno task infra-update && git add deno.jsonc deno.lock infra/deno.jsonc infra/deno.lock && git commit -m \"Update third-party dependencies\""
     },
     "start": {
       "description": "Start the web server.",
@@ -47,17 +55,33 @@
       "description": "Run all Deno Test scripts in the 'src' directory.",
       "command": "deno test --quiet --allow-run=deno,docker --allow-env --allow-read --allow-net src"
     },
-    "build": "deno run --allow-all ./src/tasks/build.ts",
-    "setup": "deno run --allow-all ./src/tasks/setup.ts",
-    "new-post": "deno run --allow-all ./src/tasks/new-post.ts",
-    "release-notes": "deno run --allow-all ./src/tasks/release-notes.ts",
-    "docker-build": "deno run --allow-all ./src/tasks/docker/docker-build.ts",
-    "docker-start": "deno run --allow-all ./src/tasks/docker/docker-start.ts",
-    "docker-stop": "deno run --allow-all ./src/tasks/docker/docker-stop.ts",
-    "lint": "deno --quiet lint && deno --quiet fmt",
-    "setup-infra": "cd infra && deno task setup",
-    "install-infra": "cd infra && deno task install",
-    "update-infra": "cd infra && deno task update"
+    "post": {
+      "description": "Create a new post Markdown file.",
+      "command": "deno run --allow-all ./src/tasks/post.ts"
+    },
+    "docker-build": {
+      "description": "Build a local Docker Image",
+      "command": "deno run --allow-all ./src/tasks/docker/docker-build.ts"
+    },
+    "docker-start": {
+      "description": "Start a Docker Container using the local Docker Image",
+      "command": "deno run --allow-all ./src/tasks/docker/docker-start.ts"
+    },
+    "docker-stop": {
+      "description": "Start a Docker Container using the local Docker Image",
+      "command": "deno run --allow-all ./src/tasks/docker/docker-stop.ts"
+    },
+    "lume": {
+      "description": "Run a Lume command.",
+      "command": "deno run --quiet -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
+    },
+    "lint": {
+      "description": "Run Deno lint and fmt tools",
+      "command": "deno --quiet lint && deno --quiet fmt"
+    },
+    "infra-setup": "cd infra && deno task setup",
+    "infra-install": "cd infra && deno task install",
+    "infra-update": "cd infra && deno task update"
   },
   "compilerOptions": {
     "types": [

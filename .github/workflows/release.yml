@@ -198,7 +198,11 @@ jobs:
         run: deno ci
       - name: Generate Release Notes
         working-directory: ${{ github.workspace }}
-        run: deno task release-notes
+        run: |
+          git fetch --tags --force
+          TAG_PREV=$(git tag -l "release-*" --sort=-creatordate | head -n 1)
+          git log "$TAG_PREV..HEAD" --oneline --no-merges --format="- %s" > "${{ github.workspace }}/release-notes.log"
+          cat ${{ github.workspace }}/release-notes.log
       - name: Create Release Tag
         run: |
           git config user.name "bot-release"
