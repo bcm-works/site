@@ -4,25 +4,43 @@
   "minimumDependencyAge": 14,
   "lock": true,
   "imports": {
-    "@railway/cli": "npm:@railway/cli@^5.30.2",
+    "railway-cli": "npm:@railway/cli@^5.30.2",
     "railway": "npm:railway@^3.7.0",
     "@types/node": "npm:@types/node@^26.1.2",
     "tsx": "npm:tsx@^4.23.1",
     "typescript": "npm:typescript@^5.9.3"
   },
   "tasks": {
-    "pull": "deno x --yes --no-check npm:@railway/cli@^5.30.1 config pull --force",
-    "plan": "deno x --yes --no-check npm:@railway/cli@^5.30.1 config plan",
-    "apply": "deno x --yes --no-check npm:@railway/cli@^5.30.1 config apply",
-    "export": "deno x --yes --no-check npm:@railway/cli@^5.30.1 status --json > railway.json",
-    "start": "tsx index.ts",
-    "setup": "cd .. && deno run --allow-all ./src/tasks/infra/infra-setup.ts",
+    "pull": {
+      "description": "Pull down changes from the linked Railway environment.",
+      "command": "deno x --yes --no-check railway-cli config pull --force"
+    },
+    "plan": {
+      "description": "Review differences between local changes and the linked Railway environment.",
+      "command": "deno x --yes --no-check railway-cli config plan"
+    },
+    "apply": {
+      "description": "Apply local changes to the linked Railway environment.",
+      "command": "deno x --yes --no-check railway-cli config apply"
+    },
+    "export": {
+      "description": "Export the infrastructure configuration in JSON format to 'infra/railway.json'",
+      "command": "deno x --yes --no-check railway-cli status --json > railway.json"
+    },
+    "start": {
+      "description": "Start 'infra/index.ts'",
+      "command": "tsx index.ts"
+    },
+    "setup": {
+      "description": "Run the infra setup script.",
+      "command": "cd .. && deno run --allow-all ./src/tasks/infra/infra-setup.ts"
+    },
     "install": {
-      "description": "Install third-party dependencies.",
+      "description": "Install third-party infra dependencies.",
       "command": "deno install --config ./deno.jsonc"
     },
     "update": {
-      "description": "Update third-party dependencies.",
+      "description": "Update third-party infra dependencies.",
       "command": "deno outdated --update --compatible"
     },
   },
