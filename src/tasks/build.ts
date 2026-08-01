@@ -1,28 +1,28 @@
-import { cmd } from "@/tasks/cmd.ts";
-import { info, warn } from "@/tasks/log.ts";
-import { loadEnv } from "@/tasks/local.ts";
+import { cmd } from "@/common/cmd.ts";
+import { logInfo, logWarn } from "@/common/log.ts";
+import { Env } from "@/common/env.ts";
 
-loadEnv();
+const env = new Env();
 
-const buildDir: string = process.env.SITE_BUILD_DIR || "build";
-const publicDir: string = process.env.SITE_PUBLIC_DIR || "public";
+const buildDir: string = env.envVar("SITE_BUILD_DIR", "build");
+const publicDir: string = env.envVar("SITE_PUBLIC_DIR", "public");
 const cssDir: string = "src/frontend/styles";
-const timezone: string = process.env.SITE_TIMEZONE || "Australia/Sydney";
+const timezone: string = env.envVar("SITE_TIMEZONE", "Australia/Sydney");
 
-warn("Clearing the build directory and recreating subdirectories");
+logWarn("Clearing the build directory and recreating subdirectories");
 
 cmd(`rm -rf "${buildDir}"`);
 cmd(`mkdir -p "${buildDir}"`);
 cmd(`mkdir -p "${buildDir}/_data"`);
 cmd(`cp -r "src/frontend/templates" "${buildDir}/_includes"`);
 
-warn("Clearing the public directory and recreating subdirectories");
+logWarn("Clearing the public directory and recreating subdirectories");
 
 cmd(`rm -rf "${publicDir}"`);
 cmd(`mkdir -p "${publicDir}"`);
 cmd(`mkdir -p "${publicDir}/css"`);
 
-info("Applying PurgeCSS updates to site.css");
+logInfo("Applying PurgeCSS updates to site.css");
 
 cmd(`deno x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
   --safelist ".content-body" \
@@ -33,21 +33,21 @@ cmd(`deno x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
   --content "./src/frontend/**/*.njk" \
   --output "./src/frontend/styles/site.css"`);
 
-info("Running Deno code checks");
+logInfo("Running Deno code checks");
 
 cmd("deno task check");
 
-info("Copying over page content files to build directory");
+logInfo("Copying over page content files to build directory");
 
 cmd(`cp content/*.md "${buildDir}"`);
 cmd(`cp -r content/posts "${buildDir}/posts"`);
 cmd(`cp -r content/tags "${buildDir}/tags"`);
 
-info("Building the front-end using Lume");
+logInfo("Building the front-end using Lume");
 
 cmd(`TZ="${timezone}" deno task lume`);
 
-info("Combining CSS files");
+logInfo("Combining CSS files");
 
 cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/theme.css" \
@@ -58,7 +58,7 @@ cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/print.css" \
   > "${buildDir}/bcm.css"`);
 
-info("Minifying combined CSS file");
+logInfo("Minifying combined CSS file");
 
 cmd(
   `deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
@@ -68,11 +68,11 @@ cmd(
   --output-file "${publicDir}/css/bcm.min.css"`,
 );
 
-info("Copying FontAwesome files to public directory");
+logInfo("Copying FontAwesome files to public directory");
 
 cmd(`cp -r "src/frontend/styles/fonts" "${publicDir}/css/fonts"`);
 
-info("Copying static files to public directory");
+logInfo("Copying static files to public directory");
 
 cmd(`cp -r "content/images" "${publicDir}/images"`);
 cmd(`cp "content/favicon.ico" "${publicDir}/favicon.ico"`);
@@ -80,8 +80,8 @@ cmd(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
 cmd(`cp "src/frontend/manifest.json" "${publicDir}/manifest.json"`);
 cmd(`cp "${publicDir}/posts.json" "${publicDir}/brendan/posts.json"`);
 
-warn("Deleting the build directory");
+logWarn("Deleting the build directory");
 
 cmd(`rm -rf "${buildDir}"`);
 
-info("Build complete");
+logInfo("Build complete");

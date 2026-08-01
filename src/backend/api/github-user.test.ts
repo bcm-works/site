@@ -1,8 +1,10 @@
 import { assertEquals, assertObjectMatch } from "@std/assert";
+import { Env } from "@/common/env.ts";
 import { get } from "./github-user.ts";
 
-const hasToken = Deno.env.get("SITE_GITHUB_ID") !== undefined &&
-  Deno.env.get("SITE_GITHUB_ID") !== "";
+const env = new Env();
+
+const hasToken: boolean = env.hasEnvVar("SITE_GITHUB_ID");
 
 Deno.test("API get /api/github-user", async (test) => {
   if (hasToken) {

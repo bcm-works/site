@@ -1,30 +1,35 @@
-import { loadSync } from "@std/dotenv";
-import chalk from "chalk";
+import { loadSync as envLoad } from "@std/dotenv";
+import { fileExists } from "@/common/local.ts";
+import { logError } from "@/common/log.ts";
+import { format as dateInFormat } from "date-fns";
 import { PostHog } from "posthog";
-
-// TODO: resolve code duplication in here, 'src/tasks/local.ts' and 'src/tasks/log.ts'
 
 const envFileDefault: string = "./config/.env"
 
-export class Site {
+export class Env {
   private envFile: string;
+  private buildId: string;
   private env: Record<string, string> | undefined;
 
   constructor(envFile: string = envFileDefault) {
     this.envFile = envFile;
 
-    if (this.fileExists(envFile)) {
-      // Load variables from ths file, or directly from
-      // the build terminal session if they're set there.
-      this.env = loadSync({
+    if (fileExists(this.envFile)) {
+      this.env = envLoad({
         envPath: envFile,
         export: true,
       });
     }
+
+    this.buildId = this.envVar("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMddHHmmss"));
   }
 
   public envVar(varName: string, defaultValue?: string): string {
     return Deno.env.get(varName) || defaultValue || "";
+  }
+
+  public hasEnvVar(varName: string): boolean {
+    return Deno.env.get(varName) !== undefined;
   }
 
   public envVarNumber(varName: string, defaultValue?: number): number {
@@ -45,7 +50,7 @@ export class Site {
 
   public getUrl(): string {
     if (this.isLocal()) {
-      const port = this.envVarNumber("SITE_PORT", 3000);
+      const port = this.getPort();
       return `http://localhost:${port}`;
     }
 
@@ -62,13 +67,8 @@ export class Site {
     return this.envVarNumber("SITE_PORT", 8000);
   }
 
-  public fileExists(localFilePath: string): boolean {
-    try {
-      const localFileCheck = Deno.lstatSync(localFilePath);
-      return localFileCheck.isFile;
-    } catch (_error) {
-      return false;
-    }
+  public getBuildId(): string {
+    return this.buildId;
   }
 
   public postHogAnonBackendEvent(
@@ -81,45 +81,19 @@ export class Site {
     const eventActor: string = `${this.getSiteEnv()}-backend-anon-event`;
     const eventContent: string = `${statusCode} ${eventRequest.url}`;
 
-    if (!postHogId) {
-      return;
+    if (postHogId) {
+      const postHogClient = new PostHog(
+        postHogId,
+        {
+          host: postHogApiHost,
+        },
+      );
+
+      postHogClient.captureException(new Error(eventContent), eventActor, eventData);
+
+      logError(`postHogAnonBackendEvent sent [${eventActor}] ${eventContent}`);
+    } else {
+      logError(`postHogAnonBackendEvent skipped [${eventActor}] ${eventContent}`);
     }
-
-    this.logError(`sending postHogAnonEvent - [${eventActor}] ${eventContent}`);
-
-    const postHogClient = new PostHog(
-      postHogId,
-      {
-        host: postHogApiHost,
-      },
-    );
-
-    postHogClient.captureException(new Error(eventContent), eventActor, eventData);
-  }
-
-  private log(logContent: string | string[]): void {
-    if (this.isLocal()) {
-      console.log(logContent);
-    }
-  }
-
-  public logAlways(textContent: string): void {
-    console.log(chalk.hex("#D2A6FF")(`${textContent}`));
-  }
-
-  public logDebug(textContent: string): void {
-    this.log(chalk.hex("#23C5B0")(`DEBUG ${textContent}`));
-  }
-
-  public logInfo(textContent: string): void {
-    this.log(chalk.blue(textContent));
-  }
-
-  public logSuccess(textContent: string): void {
-    this.log(chalk.green(textContent));
-  }
-
-  public logError(textContent: string): void {
-    this.log(chalk.red(textContent));
   }
 }

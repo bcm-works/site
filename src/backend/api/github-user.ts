@@ -1,8 +1,8 @@
 import { graphql as GithubGraphQL } from "@octokit/graphql";
-import { Site } from "@/common/site.class.ts";
+import { Env } from "@/common/env.ts";
 
-const bcm = new Site();
-const githubToken: string = bcm.envVar("SITE_GITHUB_ID", "");
+const env = new Env();
+const githubToken: string = env.envVar("SITE_GITHUB_ID", "");
 
 type GitHubUserResponse = {
   user: {
