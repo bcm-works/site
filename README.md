@@ -20,6 +20,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
+- [src/common](src/common/) - Common TypeScript helper functions.
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
 - [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/frontend/manifest.json](src/frontend/manifest.json) - Progressive Web App configuration.
