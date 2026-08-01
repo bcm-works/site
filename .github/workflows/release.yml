@@ -32,9 +32,20 @@ env:
 
 jobs:
 
+  check:
+    name: Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirmed
+        if: ${{ inputs.continue_deployment != true }}
+        run: echo "Not confirmed by the user" && exit 1
+      - name: Branch
+        if: ${{ github.ref_name != 'main' }}
+        run: echo "Not on the 'main' branch" && exit 1
+
   build:
     name: Build and Test
-    if: ${{ inputs.continue_deployment == true }}
+    needs: [check]
     runs-on: ubuntu-latest
     environment:
       name: ci-build
@@ -177,6 +188,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
+        with:
+          fetch-tags: true
       - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
