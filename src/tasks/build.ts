@@ -8,6 +8,7 @@ const buildDir: string = env.get("SITE_BUILD_DIR", "build");
 const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
 const cssDir: string = "src/frontend/styles";
 const timezone: string = env.get("SITE_TIMEZONE", "Australia/Sydney");
+const url: string = env.getUrl();
 
 logWarn("Clearing the build directory and recreating subdirectories");
 
@@ -45,7 +46,11 @@ cmd(`cp -r content/tags "${buildDir}/tags"`);
 
 logInfo("Building the front-end using Lume");
 
-cmd(`TZ="${timezone}" deno task lume`);
+cmd(`TZ="${timezone}" \
+  deno task lume \
+    --src=${buildDir} \
+    --dest=${publicDir} \
+    --location=${url}`);
 
 logInfo("Combining CSS files");
 

@@ -1,6 +1,6 @@
 import { assertEquals, assertMatch } from "@std/assert";
 import { spy } from "@std/testing/mock";
-import { logAlways, logDebug, logError, logInfo, logSuccess, logWarn } from "@/common/log.ts";
+import { logDebug, logError, logInfo, logSuccess, logWarn } from "@/common/log.ts";
 
 // Temporarily set/restore env vars around a test fn.
 async function withEnv(
@@ -28,21 +28,6 @@ async function withEnv(
     }
   }
 }
-
-Deno.test("COMMON log logAlways", async (test) => {
-  await test.step("logs the message regardless of SITE_ENV", async () => {
-    await withEnv({ SITE_ENV: "production" }, () => {
-      const consoleSpy = spy(console, "log");
-      try {
-        logAlways("always message");
-        assertEquals(consoleSpy.calls.length, 1);
-        assertMatch(String(consoleSpy.calls[0].args[0]), /always message/);
-      } finally {
-        consoleSpy.restore();
-      }
-    });
-  });
-});
 
 Deno.test("COMMON log logInfo", async (test) => {
   await test.step("logs when SITE_ENV is local", async () => {

@@ -1,6 +1,6 @@
 import { serveFile } from "@std/http/file-server";
 import { fileExists } from "@/common/local.ts";
-import { logAlways } from "@/common/log.ts";
+import { logDebug } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
 
 // Load Env Vars with suitable defaults
@@ -19,7 +19,7 @@ Deno.serve(
   {
     port: appPort,
     onListen() {
-      logAlways(
+      logDebug(
         `[env ${appEnv}] [type ${appEnvType}] [port ${appPort}] Server started at ${siteUrl}`,
       );
     },

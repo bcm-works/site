@@ -62,15 +62,15 @@
     },
     "docker-build": {
       "description": "Build a local Docker Image",
-      "command": "deno run --allow-all ./src/tasks/docker/docker-build.ts"
+      "command": "deno run --allow-all ./src/tasks/docker-build.ts"
     },
     "docker-start": {
       "description": "Start a Docker Container using the local Docker Image",
-      "command": "deno run --allow-all ./src/tasks/docker/docker-start.ts"
+      "command": "deno run --allow-all ./src/tasks/docker-start.ts"
     },
     "docker-stop": {
       "description": "Start a Docker Container using the local Docker Image",
-      "command": "deno run --allow-all ./src/tasks/docker/docker-stop.ts"
+      "command": "deno run --allow-all ./src/tasks/docker-stop.ts"
     },
     "lume": {
       "description": "Run a Lume command.",

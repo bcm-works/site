@@ -1,7 +1,6 @@
 // Lume Configuration - https://lume.land/docs/configuration/config-file/
 
-import { Env } from "@/common/env.ts";
-
+import { Env as bcmEnv } from "@/common/env.ts";
 import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
@@ -11,51 +10,34 @@ import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
-
 import codeHighlight from "lume/plugins/code_highlight.ts";
 import langJavaScript from "highlight/lib/languages/javascript";
 import langBash from "highlight/lib/languages/bash";
 import langPhp from "highlight/lib/languages/php";
 import langTypeScript from "highlight/lib/languages/typescript";
 
-import { format } from "date-fns";
-
-// Load Env Vars with suitable defaults
-
-const env = new Env();
-
-const buildDir: string = env.get("SITE_BUILD_DIR", "build");
-const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
-const siteUrl: string = env.getUrl();
-
 // Build the site using Lume
 
 const site = lume({
-  src: `./${buildDir}`,
-  dest: `./${publicDir}`,
-  location: new URL(siteUrl),
   prettyUrls: true,
   emptyDest: true,
 });
 
 // Load environment variables
 
-const siteFeedTitle: string = env.get("SITE_FEED_TITLE");
-const siteFeedDesc: string = env.get("SITE_FEED_DESC");
-const siteFeedDefaultTitle: string = env.get("SITE_FEED_DEFAULT_TITLE");
-const siteLang: string = env.get("SITE_LANG", "en-GB");
-const siteAuthor: string = env.get("SITE_AUTHOR");
-const sitePosthogId: string = env.get("SITE_POSTHOG_ID");
-const sitePosthogApiHost: string = env.get("SITE_POSTHOG_API_HOST");
-const sitePosthogUiHost: string = env.get("SITE_POSTHOG_UI_HOST");
-const siteIsLocal: boolean = env.isLocal();
-const siteEnv: string = siteIsLocal ? "local" : env.get("SITE_ENV", "hosted");
-
-// Get the build id or fallback to a timestamp
-
-const dateNow: Date = new Date();
-const siteBuildDate: string = format(dateNow, "yyyyMMddHHmmss");
-const siteBuildId: string = env.get("SITE_BUILD_ID", siteBuildDate);
+const bcm = new bcmEnv();
+const siteUrl: string = bcm.getUrl();
+const siteFeedTitle: string = bcm.get("SITE_FEED_TITLE");
+const siteFeedDesc: string = bcm.get("SITE_FEED_DESC");
+const siteFeedDefaultTitle: string = bcm.get("SITE_FEED_DEFAULT_TITLE");
+const siteLang: string = bcm.get("SITE_LANG", "en-GB");
+const siteAuthor: string = bcm.get("SITE_AUTHOR");
+const sitePosthogId: string = bcm.get("SITE_POSTHOG_ID");
+const sitePosthogApiHost: string = bcm.get("SITE_POSTHOG_API_HOST");
+const sitePosthogUiHost: string = bcm.get("SITE_POSTHOG_UI_HOST");
+const siteIsLocal: boolean = bcm.isLocal();
+const siteEnv: string = siteIsLocal ? "local" : bcm.get("SITE_ENV", "hosted");
+const siteBuildId: string = bcm.getBuildId();
 
 // Save env vars as site data variables so templates can use them
 
