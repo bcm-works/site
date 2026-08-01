@@ -1,20 +1,22 @@
 import { execSync, StdioOptions } from "node:child_process";
 
-export function cmd(command: string, output: boolean = false): Buffer | string {
-  const mode: StdioOptions = output ? "pipe" : "ignore";
+// Run a system command, default to hiding the output
+export function cmd(command: string, mode: StdioOptions = "ignore"): Buffer | string {
   return execSync(command, { stdio: mode });
 }
 
+// Run a system command and display the output
 export function cmdShow(command: string): Buffer | string {
-  return cmd(command, true);
+  return cmd(command, "inherit");
 }
 
+// Run a system command and return the output
 export function cmdResult(command: string): string {
-  const result: string = cmd(command, true).toString().trim();
-
+  const result: string = cmd(command, "pipe").toString().trim();
   return result;
 }
 
+// Check if a system command exists
 export function cmdExists(command: string): boolean {
   try {
     const where = process.platform === "win32" ? `where ${command}` : `command -v ${command}`;
