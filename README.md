@@ -9,7 +9,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 ## Structure
 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
-- [.github](.github/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
+- [.github](.github/) - GitHub config and [Actions](https://github.com/features/actions) workflows.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [config](config/) - Config and env files.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
