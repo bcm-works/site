@@ -1,11 +1,11 @@
-import { execSync as run } from "node:child_process";
+import { cmdShow } from "@/tasks/cmd.ts";
 import { format } from "date-fns";
 import { info } from "@/tasks/log.ts";
 import { loadEnv } from "@/tasks/env.ts";
 
 loadEnv();
 
-run("deno task docker-stop", { stdio: "inherit" });
+cmdShow("deno task docker-stop");
 
 const url: string = process.env.SITE_URL || "http://localhost";
 const port: number = Number(process.env.SITE_PORT) || 8000;
@@ -26,7 +26,7 @@ const postHogUiHost: string = process.env.SITE_POSTHOG_UI_HOST || "";
 
 info("Starting 'bcm-site' container");
 
-run(
+cmdShow(
   `docker run -d \
   --name "bcm-site" \
   --publish "${port}:${port}" \
@@ -43,5 +43,4 @@ run(
   --env "SITE_POSTHOG_API_HOST=${postHogApiHost}" \
   --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
   "bcm-site:latest"`,
-  { stdio: "inherit" },
 );

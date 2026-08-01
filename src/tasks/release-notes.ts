@@ -1,20 +1,21 @@
-import { execSync as run } from "node:child_process";
-import { warn } from "@/tasks/log.ts";
+import { cmdResult, cmdShow } from "@/tasks/cmd.ts";
+import { success, warn } from "@/tasks/log.ts";
 
 const outputFile: string = "./release-notes.log";
 const gitLogFormat: string = "- %s";
 
-const prevGitTag: string = run(
+const prevGitTag: string = cmdResult(
   'git fetch --tags --force && git tag -l "release-*" --sort=-creatordate | head -n 1',
-).toString().trim();
+);
 
 if (!prevGitTag) {
   warn("No previous tag found");
-  run(`echo "" > "${outputFile}"`, { stdio: "inherit" });
+  cmdShow(`echo "" > "${outputFile}"`);
   process.exit(0);
 }
 
-run(
+cmdShow(
   `git log "${prevGitTag}..HEAD" --oneline --no-merges --format="${gitLogFormat}" > "${outputFile}"`,
-  { stdio: "inherit" },
 );
+
+success(`Release notes saved to ${outputFile}`);

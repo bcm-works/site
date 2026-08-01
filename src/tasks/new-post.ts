@@ -1,12 +1,13 @@
-import { execSync as run } from "node:child_process";
+import { format } from "date-fns";
 import { writeFileSync as write } from "node:fs";
 import { input as prompt } from "@inquirer/prompts";
 import { error, success } from "@/tasks/log.ts";
 
 // Figure out the post date values based on the local machine's date
 
-const dateSlug: string = run("date +%Y%m%d").toString().trim();
-const dateFrontmatter: string = run("date +%Y-%m-%d").toString().trim();
+const dateNow: Date = new Date();
+const dateSlug: string = format(dateNow, "yyyyMMdd");
+const dateFrontmatter: string = format(dateNow, "yyyy-MM-dd");
 
 // Prompt the user for the initial content
 

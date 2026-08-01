@@ -1,11 +1,11 @@
-import { execSync as run } from "node:child_process";
+import { cmdShow } from "@/tasks/cmd.ts";
 import { info, warn } from "@/tasks/log.ts";
 
 info("Installing infra dependencies");
 
-run("cd infra && deno task install", { stdio: "inherit" });
-run("railway telemetry disable", { stdio: "inherit" });
+cmdShow("cd infra && deno task install");
+cmdShow("railway telemetry disable");
 
 warn("Prompting Railway login");
 
-run("railway login && railway link", { stdio: "inherit" });
+cmdShow("railway login && railway link");
