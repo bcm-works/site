@@ -1,9 +1,10 @@
 import { serveFile } from "@std/http/file-server";
-import { Site } from "@/common/site.class.ts";
+import { fileExists } from "@/common/local.ts";
+import { Env } from "@/common/env.ts";
 
-const bcm = new Site();
-const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
-const siteUrl: string = bcm.getUrl();
+const env = new Env();
+const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
+const siteUrl: string = env.getUrl();
 
 // GET /api/content
 export async function get(request: Request): Promise<Response> {
@@ -18,20 +19,20 @@ export async function get(request: Request): Promise<Response> {
 
   // Page request
   //   - Covers pages like '/tags/' and '/posts/20260616_ai-code-gen/'
-  if (bcm.fileExists(filePage)) {
+  if (fileExists(filePage)) {
     return await serveFile(request, filePage);
   }
 
   // Post request
   //   - Requests like '/20260616_ai-code-gen/' will use the same file as '/posts/20260616_ai-code-gen/'
   //   - Canonical URLs for every page are set in the frontend layout file
-  if (bcm.fileExists(filePost)) {
+  if (fileExists(filePost)) {
     return await serveFile(request, filePost);
   }
 
   // No related file was found
   //   - Log an anonymous PostHog event
   //   - Redirect to the homepage
-  bcm.postHogAnonBackendEvent(404, request);
+  env.postHogAnonBackendEvent(404, request);
   return Response.redirect(new URL("/", siteUrl), 301);
 }

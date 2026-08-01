@@ -4,7 +4,7 @@ import { logError } from "@/common/log.ts";
 import { format as dateInFormat } from "date-fns";
 import { PostHog } from "posthog";
 
-const envFileDefault: string = "./config/.env"
+const envFileDefault: string = "./config/.env";
 
 export class Env {
   private envFile: string;
@@ -21,18 +21,18 @@ export class Env {
       });
     }
 
-    this.buildId = this.envVar("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMddHHmmss"));
+    this.buildId = this.get("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMddHHmmss"));
   }
 
-  public envVar(varName: string, defaultValue?: string): string {
+  public get(varName: string, defaultValue?: string): string {
     return Deno.env.get(varName) || defaultValue || "";
   }
 
-  public hasEnvVar(varName: string): boolean {
+  public has(varName: string): boolean {
     return Deno.env.get(varName) !== undefined;
   }
 
-  public envVarNumber(varName: string, defaultValue?: number): number {
+  public getNumber(varName: string, defaultValue?: number): number {
     if (defaultValue) {
       return Number(Deno.env.get(varName)) || defaultValue;
     }
@@ -41,11 +41,11 @@ export class Env {
   }
 
   public getSiteEnv(): string {
-    return this.envVar("SITE_ENV", "other");
+    return this.get("SITE_ENV", "other");
   }
 
   public isLocal(): boolean {
-    return this.envVar("SITE_ENV", "other") == "local";
+    return this.get("SITE_ENV", "other") == "local";
   }
 
   public getUrl(): string {
@@ -54,17 +54,17 @@ export class Env {
       return `http://localhost:${port}`;
     }
 
-    return this.envVar("SITE_URL", "https://bcm.works");
+    return this.get("SITE_URL", "https://bcm.works");
   }
 
   public getPort(): number {
-    const sysPort = this.envVarNumber("PORT", 0);
+    const sysPort = this.getNumber("PORT", 0);
 
     if (sysPort > 0) {
       return sysPort;
     }
 
-    return this.envVarNumber("SITE_PORT", 8000);
+    return this.getNumber("SITE_PORT", 8000);
   }
 
   public getBuildId(): string {
@@ -76,8 +76,8 @@ export class Env {
     eventRequest: Request,
     eventData: Record<string, string | number | undefined> = { "data": "" },
   ): void {
-    const postHogId: string = this.envVar("SITE_POSTHOG_ID", "");
-    const postHogApiHost: string = this.envVar("SITE_POSTHOG_API_HOST", "");
+    const postHogId: string = this.get("SITE_POSTHOG_ID", "");
+    const postHogApiHost: string = this.get("SITE_POSTHOG_API_HOST", "");
     const eventActor: string = `${this.getSiteEnv()}-backend-anon-event`;
     const eventContent: string = `${statusCode} ${eventRequest.url}`;
 

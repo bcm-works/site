@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { writeFileSync as write } from "node:fs";
 import { input as prompt } from "@inquirer/prompts";
-import { error, success } from "@/tasks/log.ts";
+import { logError, logSuccess } from "@/common/log.ts";
 
 // Figure out the post date values based on the local machine's date
 
@@ -15,7 +15,7 @@ const postTitle: string = await prompt({ message: "Title of the new post:" });
 const postTextSlug: string = await prompt({ message: "URL text slug for the new post:" });
 
 if (!postTitle || !postTextSlug) {
-  error("Cancelled, both fields are required.");
+  logError("Cancelled, both fields are required.");
   process.exit(1);
 }
 
@@ -34,4 +34,4 @@ tags: \n\
 `,
 );
 
-success(`Finished, new file created at '${postFile}'`);
+logSuccess(`Finished, new file created at '${postFile}'`);

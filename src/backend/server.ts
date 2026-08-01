@@ -1,13 +1,15 @@
 import { serveFile } from "@std/http/file-server";
-import { Site } from "@/common/site.class.ts";
+import { fileExists } from "@/common/local.ts";
+import { logAlways } from "@/common/log.ts";
+import { Env } from "@/common/env.ts";
 
 // Load Env Vars with suitable defaults
 
-const bcm = new Site();
+const bcm = new Env();
 const siteUrl: string = bcm.getUrl();
-const publicDir: string = bcm.envVar("SITE_PUBLIC_DIR", "public");
+const publicDir: string = bcm.get("SITE_PUBLIC_DIR", "public");
 const appPort: number = bcm.getPort();
-const appEnv: string = bcm.envVar("SITE_ENV", "other");
+const appEnv: string = bcm.get("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
 
@@ -17,7 +19,7 @@ Deno.serve(
   {
     port: appPort,
     onListen() {
-      bcm.logAlways(
+      logAlways(
         `[env ${appEnv}] [type ${appEnvType}] [port ${appPort}] Server started at ${siteUrl}`,
       );
     },
@@ -30,7 +32,7 @@ Deno.serve(
 
     // Handle static file requests
     const fileStatic: string = `./${publicDir}${path}`;
-    if (bcm.fileExists(fileStatic)) {
+    if (fileExists(fileStatic)) {
       return await serveFile(request, fileStatic);
     }
 

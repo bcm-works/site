@@ -4,7 +4,7 @@ import { get } from "./github-user.ts";
 
 const env = new Env();
 
-const hasToken: boolean = env.hasEnvVar("SITE_GITHUB_ID");
+const hasToken: boolean = env.has("SITE_GITHUB_ID");
 
 Deno.test("API get /api/github-user", async (test) => {
   if (hasToken) {

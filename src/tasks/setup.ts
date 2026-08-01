@@ -1,33 +1,33 @@
-import { cmd, cmdExists } from "@/tasks/cmd.ts";
-import { error, info, success, warn } from "@/tasks/log.ts";
+import { cmd, cmdExists } from "@/common/cmd.ts";
+import { logError, logInfo, logSuccess, logWarn } from "@/common/log.ts";
 
 if (cmdExists("docker")) {
-  success("Found Docker");
+  logSuccess("Found Docker");
 } else {
-  error("Please install Docker from https://www.docker.com/products/docker-desktop/");
+  logError("Please install Docker from https://www.docker.com/products/docker-desktop/");
   process.exit(1);
 }
 
-info("Initialising ENV file");
+logInfo("Initialising ENV file");
 cmd("cp -n config/.env.sample config/.env");
 
-info("Installing dependencies");
+logInfo("Installing dependencies");
 cmd("deno task install");
 
-info("Installing AI tools");
+logInfo("Installing AI tools");
 if (cmdExists("claude")) {
-  success("Found Claude Code CLI");
+  logSuccess("Found Claude Code CLI");
 } else {
-  warn("Installing Claude Code CLI");
+  logWarn("Installing Claude Code CLI");
   cmd("curl -fsSL https://claude.ai/install.sh | bash");
 }
 
-info("Updating Claude Code CLI");
+logInfo("Updating Claude Code CLI");
 cmd("claude update");
 
-warn(
+logWarn(
   "Setup GitHub CLI: https://github.com/bcm-works/dotfiles/blob/main/setup/dev/git/github-setup.sh",
 );
-warn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
+logWarn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
 
-success("Setup completed");
+logSuccess("Setup completed");

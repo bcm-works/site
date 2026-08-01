@@ -8,16 +8,16 @@ const env = new Env();
 
 const url: string = env.getUrl();
 const port: number = env.getPort();
-const lang: string = env.envVar("SITE_LANG", "en-GB");
-const author: string = env.envVar("SITE_AUTHOR");
+const lang: string = env.get("SITE_LANG", "en-GB");
+const author: string = env.get("SITE_AUTHOR");
 const buildId: string = env.getBuildId();
-const feedTitle: string = env.envVar("SITE_FEED_TITLE");
-const feedDesc: string = env.envVar("SITE_FEED_DESC");
-const feedDefaultTitle: string = env.envVar("SITE_FEED_DEFAULT_TITLE");
-const githubId: string = env.envVar("SITE_GITHUB_ID");
-const postHogId: string = env.envVar("SITE_POSTHOG_ID");
-const postHogApiHost: string = env.envVar("SITE_POSTHOG_API_HOST");
-const postHogUiHost: string = env.envVar("SITE_POSTHOG_UI_HOST");
+const feedTitle: string = env.get("SITE_FEED_TITLE");
+const feedDesc: string = env.get("SITE_FEED_DESC");
+const feedDefaultTitle: string = env.get("SITE_FEED_DEFAULT_TITLE");
+const githubId: string = env.get("SITE_GITHUB_ID");
+const postHogId: string = env.get("SITE_POSTHOG_ID");
+const postHogApiHost: string = env.get("SITE_POSTHOG_API_HOST");
+const postHogUiHost: string = env.get("SITE_POSTHOG_UI_HOST");
 
 logInfo("Starting 'bcm-site' container");
 

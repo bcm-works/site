@@ -1,11 +1,11 @@
-import { cmdShow } from "@/tasks/cmd.ts";
-import { info, warn } from "@/tasks/log.ts";
+import { cmdShow } from "@/common/cmd.ts";
+import { logInfo, logWarn } from "@/common/log.ts";
 
-info("Installing infra dependencies");
+logInfo("Installing infra dependencies");
 
 cmdShow("cd infra && deno task install");
 cmdShow("railway telemetry disable");
 
-warn("Prompting Railway login");
+logWarn("Prompting Railway login");
 
 cmdShow("railway login && railway link");

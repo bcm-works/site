@@ -39,7 +39,7 @@ Deno.test("COMMON env envVar", async (test) => {
     fn: async () => {
       await withEnv({ TEST_VAR_EV: "hello" }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.envVar("TEST_VAR_EV"), "hello");
+        assertEquals(site.get("TEST_VAR_EV"), "hello");
       });
     },
   });
@@ -49,7 +49,7 @@ Deno.test("COMMON env envVar", async (test) => {
     fn: async () => {
       await withEnv({ TEST_VAR_EV: undefined }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.envVar("TEST_VAR_EV", "default"), "default");
+        assertEquals(site.get("TEST_VAR_EV", "default"), "default");
       });
     },
   });
@@ -59,7 +59,7 @@ Deno.test("COMMON env envVar", async (test) => {
     fn: async () => {
       await withEnv({ TEST_VAR_EV: undefined }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.envVar("TEST_VAR_EV"), "");
+        assertEquals(site.get("TEST_VAR_EV"), "");
       });
     },
   });
@@ -71,7 +71,7 @@ Deno.test("COMMON env envVarNumber", async (test) => {
     fn: async () => {
       await withEnv({ TEST_VAR_NUM: "42" }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.envVarNumber("TEST_VAR_NUM"), 42);
+        assertEquals(site.getNumber("TEST_VAR_NUM"), 42);
       });
     },
   });
@@ -81,7 +81,7 @@ Deno.test("COMMON env envVarNumber", async (test) => {
     fn: async () => {
       await withEnv({ TEST_VAR_NUM: undefined }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.envVarNumber("TEST_VAR_NUM", 99), 99);
+        assertEquals(site.getNumber("TEST_VAR_NUM", 99), 99);
       });
     },
   });
@@ -91,7 +91,7 @@ Deno.test("COMMON env envVarNumber", async (test) => {
     fn: async () => {
       await withEnv({ TEST_VAR_NUM: undefined }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.envVarNumber("TEST_VAR_NUM"), 0);
+        assertEquals(site.getNumber("TEST_VAR_NUM"), 0);
       });
     },
   });

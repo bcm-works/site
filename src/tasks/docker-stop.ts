@@ -1,6 +1,6 @@
-import { cmd } from "@/tasks/cmd.ts";
-import { warn } from "@/tasks/log.ts";
+import { cmd } from "@/common/cmd.ts";
+import { logWarn } from "@/common/log.ts";
 
-warn("Stopping and removing current 'bcm-site' container");
+logWarn("Stopping and removing current 'bcm-site' container");
 
 cmd(`docker stop bcm-site || true && docker rm bcm-site || true`);

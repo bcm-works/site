@@ -4,10 +4,10 @@ import { Env } from "@/common/env.ts";
 
 const env = new Env();
 
-const buildDir: string = env.envVar("SITE_BUILD_DIR", "build");
-const publicDir: string = env.envVar("SITE_PUBLIC_DIR", "public");
+const buildDir: string = env.get("SITE_BUILD_DIR", "build");
+const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
 const cssDir: string = "src/frontend/styles";
-const timezone: string = env.envVar("SITE_TIMEZONE", "Australia/Sydney");
+const timezone: string = env.get("SITE_TIMEZONE", "Australia/Sydney");
 
 logWarn("Clearing the build directory and recreating subdirectories");
 
