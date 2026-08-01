@@ -3,7 +3,8 @@ import { execSync, StdioOptions } from "node:child_process";
 // Run a system command, default to hiding the output
 export function cmd(command: string, mode: StdioOptions = "ignore"): Buffer | string {
   return execSync(
-    command, { stdio: mode }
+    command,
+    { stdio: mode },
   );
 }
 
@@ -22,9 +23,7 @@ export function cmdResult(command: string): string {
 // Check if a system command exists
 export function cmdExists(command: string): boolean {
   try {
-    const where = process.platform === "win32" ?
-      `where ${command}` :
-      `command -v ${command}`;
+    const where = process.platform === "win32" ? `where ${command}` : `command -v ${command}`;
 
     cmd(where);
 

@@ -141,11 +141,11 @@ Deno.test("COMMON env getUrl", async (test) => {
   });
 
   await test.step({
-    name: "uses default port 3000 when SITE_PORT is absent and local",
+    name: "uses default port 8000 when SITE_PORT is absent and local",
     fn: async () => {
       await withEnv({ SITE_ENV: "local", SITE_PORT: undefined }, () => {
         const site = new Env(NO_ENV_FILE);
-        assertEquals(site.getUrl(), "http://localhost:3000");
+        assertEquals(site.getUrl(), "http://localhost:8000");
       });
     },
   });
