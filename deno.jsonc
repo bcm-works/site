@@ -28,7 +28,7 @@
   },
   "tasks": {
     "setup": {
-      "description": "Run the initial setup script.",
+      "description": "Run the setup script.",
       "command": "deno run --allow-all ./src/tasks/setup.ts"
     },
     "build": {
@@ -79,9 +79,18 @@
       "description": "Run Deno lint and fmt tools",
       "command": "deno --quiet lint && deno --quiet fmt"
     },
-    "infra-setup": "cd infra && deno task setup",
-    "infra-install": "cd infra && deno task install",
-    "infra-update": "cd infra && deno task update"
+    "infra-setup": {
+      "description": "Run the infra setup script.",
+      "command": "cd infra && deno task setup"
+    },
+    "infra-install": {
+      "description": "Run the infra install script.",
+      "command": "cd infra && deno task install"
+    },
+    "infra-update": {
+      "description": "Run the infra update script.",
+      "command": "cd infra && deno task update"
+    }
   },
   "compilerOptions": {
     "types": [
@@ -144,7 +153,6 @@
   "allowScripts": {
     "allow": [],
     "deny": [
-      "npm:esbuild@0.27.3",
       "npm:esbuild@0.28.0",
       "npm:fs-ext@2.0.0",
       "npm:chalk@5.6.2",
