@@ -2,11 +2,16 @@ import { defineRailway, image, preserve, project, service } from "railway/iac";
 
 export default defineRailway(() => {
   const bcmSite = service("bcm-site", {
-    source: image("ghcr.io/bcm-works/bcm-site:latest", { autoUpdates: { schedule: [], type: "disabled" } }),
+    source: image("ghcr.io/bcm-works/bcm-site:latest", {
+      autoUpdates: { schedule: [], type: "disabled" },
+    }),
     healthcheck: "/api/health",
     healthcheckTimeout: 60,
     replicas: { "asia-southeast1-eqsg3a": 1 },
-    deploy: { limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } }, registryCredentials: { password: "*****", username: "*****" } },
+    deploy: {
+      limitOverride: { containers: { cpu: 8, memoryBytes: 8000000000 } },
+      registryCredentials: { password: "*****", username: "*****" },
+    },
     domains: ["bcm.works", "murty.au", "www.bcm.works", "www.murty.au"],
     env: {
       SITE_AUTHOR: preserve(),
