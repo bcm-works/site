@@ -29,6 +29,8 @@ if (hasCommand("claude")) {
 info("Updating Claude Code CLI");
 run("claude update", { stdio: "inherit" });
 
+warn("Setup GitHub CLI: https://github.com/bcm-works/dotfiles/blob/main/setup/dev/git/github-setup.sh");
+
 warn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
 
 success("Setup completed");
