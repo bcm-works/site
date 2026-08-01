@@ -3,11 +3,7 @@ import { execSync, StdioOptions } from "node:child_process";
 // Run a system command, default to hiding the output
 export function cmd(command: string, mode: StdioOptions = "ignore"): Buffer | string {
   return execSync(
-    command,
-    {
-      stdio: mode,
-      shell: "/usr/bin/bash"
-    }
+    command, { stdio: mode }
   );
 }
 
