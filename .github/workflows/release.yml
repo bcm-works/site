@@ -215,7 +215,10 @@ jobs:
         working-directory: ${{ github.workspace }}
         run: |
           TAG_PREV=$(git tag -l "release-*" --sort=-creatordate | head -n 1)
-          git log "$TAG_PREV..HEAD" --oneline --no-merges --format="- %s" > "${{ github.workspace }}/release-notes.log"
+          git log "$TAG_PREV..HEAD" \
+            --oneline --no-merges \
+            --format="- [%h](${{ github.server_url }}/${{ github.repository }}/commit/%H) %s" \
+            > "${{ github.workspace }}/release-notes.log"
           cat ${{ github.workspace }}/release-notes.log
       - name: Create Release Tag
         run: |
