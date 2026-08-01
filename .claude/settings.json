@@ -32,7 +32,7 @@
       "Bash(git log*)",
       "Bash(deno task)",
       "Bash(deno task build)",
-      "Bash(deno task lint)",
+      "Bash(deno task check)",
       "Bash(deno task start)",
       "Bash(deno task test)",
       "Bash(deno test *)"

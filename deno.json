@@ -75,8 +75,8 @@
       "description": "Run a Lume command.",
       "command": "deno run --quiet -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
     },
-    "lint": {
-      "description": "Run Deno code check tools",
+    "check": {
+      "description": "Run Deno code checks.",
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     },
     "infra-setup": {
@@ -160,5 +160,9 @@
       "npm:lightningcss-cli@1.32.0",
       "npm:date-fns@4.4.0"
     ]
-  }
+  },
+  "exclude": [
+    "infra/",
+    "node_modules/"
+  ]
 }

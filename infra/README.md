@@ -2,7 +2,8 @@
 
 This directory contains Infra as Code for [Railway](https://railway.com/).
 
-For more documentation, refer to the [railway package on NPM](https://www.npmjs.com/package/railway).
+For more documentation, refer to the
+[railway package on NPM](https://www.npmjs.com/package/railway).
 
 **All commands below need to be run from the `infra` directory.**
 
@@ -14,9 +15,11 @@ First setup required dev tools:
 deno task setup
 ```
 
-Then setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in [/config/.env.github](../config/.env.github).
+Then setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in
+[/config/.env.github](../config/.env.github).
 
-Then setup a new [Railway](https://railway.com/) project, with the environment variables detailed in [/config/.env.railway](../config/.env.railway).
+Then setup a new [Railway](https://railway.com/) project, with the environment variables detailed in
+[/config/.env.railway](../config/.env.railway).
 
 ## Manual Configuration
 

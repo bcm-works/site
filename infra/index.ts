@@ -4,7 +4,7 @@ import { Sandbox } from "railway";
 try {
   process.loadEnvFile();
 } catch {
-  console.log('Env file not found');
+  console.log("Env file not found");
 }
 
 await using sandbox = await Sandbox.create();

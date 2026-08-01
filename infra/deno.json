@@ -42,6 +42,10 @@
     "update": {
       "description": "Update third-party infra dependencies.",
       "command": "deno outdated --update --compatible"
+    },
+    "check": {
+      "description": "Run Deno code checks for the infra code.",
+      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     }
   },
   "allowScripts": {
