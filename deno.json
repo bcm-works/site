@@ -46,7 +46,7 @@
     },
     "deps": {
       "description": "Update all dependencies and commit the results.",
-      "command": "deno task update && deno task infra-update && git add deno.json deno.lock infra/deno.json infra/deno.lock && git commit -m \"Update third-party dependencies\""
+      "command": "deno task update && deno task infra-update && git add deno.json deno.lock infra/deno.json infra/deno.lock && git commit -m \"Update third-party dependencies\" || true"
     },
     "start": {
       "description": "Start the web server.",
