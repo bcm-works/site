@@ -4,7 +4,7 @@
     "npm:@railway/cli@^5.30.3": "5.30.3",
     "npm:@types/node@^26.1.2": "26.1.2",
     "npm:railway@^3.7.0": "3.7.0",
-    "npm:tsx@^4.23.1": "4.23.1",
+    "npm:tsx@^4.23.5": "4.23.5",
     "npm:typescript@^5.9.3": "5.9.3"
   },
   "npm": {
@@ -282,8 +282,8 @@
       ],
       "deprecated": true
     },
-    "tsx@4.23.1": {
-      "integrity": "sha512-GQHnkIfxyx1wYCOS/wonik5MVRZU9hi1TEZmzGZSCJB1y9YgoZ8H6itNE/u4suE+yLmOzuE4E5S4TZ/ZX2wcWQ==",
+    "tsx@4.23.5": {
+      "integrity": "sha512-rw55FUaqOoI7RvlQwLbhO4nSDApnQ4/CykPuiQ/EPvtrX3WA9Ig55jIt9VvbBJbzJuj12ueRu4PMZ2SxPVbihg==",
       "dependencies": [
         "esbuild"
       ],
@@ -311,7 +311,7 @@
       "npm:@railway/cli@^5.30.3",
       "npm:@types/node@^26.1.2",
       "npm:railway@^3.7.0",
-      "npm:tsx@^4.23.1",
+      "npm:tsx@^4.23.5",
       "npm:typescript@^5.9.3"
     ]
   }

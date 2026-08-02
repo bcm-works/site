@@ -7,7 +7,7 @@
     "railway-cli": "npm:@railway/cli@^5.30.3",
     "railway": "npm:railway@^3.7.0",
     "@types/node": "npm:@types/node@^26.1.2",
-    "tsx": "npm:tsx@^4.23.1",
+    "tsx": "npm:tsx@^4.23.5",
     "typescript": "npm:typescript@^5.9.3"
   },
   "tasks": {
