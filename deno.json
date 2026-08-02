@@ -108,7 +108,12 @@
     "lineWidth": 100,
     "useTabs": false,
     "indentWidth": 2,
-    "semiColons": true
+    "singleQuote": false,
+    "semiColons": true,
+    "bracePosition": "sameLine",
+    "operatorPosition": "sameLine",
+    "trailingCommas": "never",
+    "useBraces": "whenNotSingleLine"
   },
   "lint": {
     "include": [
