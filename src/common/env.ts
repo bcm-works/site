@@ -17,7 +17,7 @@ export class Env {
     if (fileExists(this.envFile)) {
       this.env = envLoad({
         envPath: envFile,
-        export: true,
+        export: true
       });
     }
 
@@ -74,7 +74,7 @@ export class Env {
   public postHogAnonBackendEvent(
     statusCode: number,
     eventRequest: Request,
-    eventData: Record<string, string | number | undefined> = { "data": "" },
+    eventData: Record<string, string | number | undefined> = { "data": "" }
   ): void {
     const postHogId: string = this.get("SITE_POSTHOG_ID", "");
     const postHogApiHost: string = this.get("SITE_POSTHOG_API_HOST", "");
@@ -85,8 +85,8 @@ export class Env {
       const postHogClient = new PostHog(
         postHogId,
         {
-          host: postHogApiHost,
-        },
+          host: postHogApiHost
+        }
       );
 
       postHogClient.captureException(new Error(eventContent), eventActor, eventData);

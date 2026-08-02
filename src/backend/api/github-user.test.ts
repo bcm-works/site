@@ -23,7 +23,7 @@ Deno.test("API get /api/github-user", async (test) => {
       const body = await response.json();
       assertObjectMatch(body, {
         username: "bcm-works",
-        url: "https://github.com/bcm-works",
+        url: "https://github.com/bcm-works"
       });
     });
   } else {

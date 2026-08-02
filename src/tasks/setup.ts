@@ -26,7 +26,7 @@ logInfo("Updating Claude Code CLI");
 cmd("claude update");
 
 logWarn(
-  "Setup GitHub CLI: https://github.com/bcm-works/dotfiles/blob/main/setup/dev/git/github-setup.sh",
+  "Setup GitHub CLI: https://github.com/bcm-works/dotfiles/blob/main/setup/dev/git/github-setup.sh"
 );
 logWarn("Setup other AI tools: https://github.com/bcm-works/dotfiles/tree/main/ai");
 

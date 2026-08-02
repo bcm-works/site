@@ -33,8 +33,8 @@ export async function get(): Promise<Response> {
   const githubQuery = GithubGraphQL.defaults({
     headers: {
       authorization: `token ${githubToken}`,
-      userAgent: "bcm-works",
-    },
+      userAgent: "bcm-works"
+    }
   });
 
   const { user }: GitHubUserResponse = await githubQuery(
@@ -56,7 +56,7 @@ export async function get(): Promise<Response> {
           message
         }
       }
-    }`,
+    }`
   );
 
   const returnString = JSON.stringify({
@@ -66,11 +66,11 @@ export async function get(): Promise<Response> {
     url: user?.url,
     repos: user?.repositories.totalCount,
     followers: user?.followers.totalCount,
-    following: user?.following.totalCount,
+    following: user?.following.totalCount
   });
 
   return new Response(
     returnString,
-    { headers: { "content-type": "application/json" } },
+    { headers: { "content-type": "application/json" } }
   );
 }

@@ -4,7 +4,7 @@ async function commandOutput(command: string, args: string[]): Promise<string> {
   const output = await new Deno.Command(command, {
     args,
     stderr: "piped",
-    stdout: "piped",
+    stdout: "piped"
   }).output();
 
   if (!output.success) {
@@ -20,7 +20,7 @@ async function inspectImage(tag: string): Promise<Record<string, unknown>> {
     "image",
     "inspect",
     tag,
-    "--format={{json .}}",
+    "--format={{json .}}"
   ]);
 
   assertNotEquals(imageJson, "");
@@ -35,7 +35,7 @@ Deno.test("DOCKER BUILD", async (test) => {
       const image = await inspectImage("bcm-site:latest");
 
       assertNotEquals(image.Id, "");
-    },
+    }
   });
 
   await test.step({
@@ -46,7 +46,7 @@ Deno.test("DOCKER BUILD", async (test) => {
 
       assertEquals(config.User, "deno");
       assertEquals(config.Cmd, ["deno", "task", "start"]);
-    },
+    }
   });
 
   await test.step({
@@ -57,6 +57,6 @@ Deno.test("DOCKER BUILD", async (test) => {
       const exposedPorts = config.ExposedPorts as Record<string, unknown>;
 
       assertNotEquals(exposedPorts["8000/tcp"], undefined);
-    },
+    }
   });
 });

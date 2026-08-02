@@ -20,9 +20,9 @@ Deno.serve(
     port: appPort,
     onListen() {
       logDebug(
-        `[env ${appEnv}] [type ${appEnvType}] [port ${appPort}] Server started at ${siteUrl}`,
+        `[env ${appEnv}] [type ${appEnvType}] [port ${appPort}] Server started at ${siteUrl}`
       );
-    },
+    }
   },
   async (request: Request) => {
     // Extract the request details
@@ -56,5 +56,5 @@ Deno.serve(
     // Fallback to the content API
     const content = await import(`./api/content.ts`);
     return await content["get"](request);
-  },
+  }
 );

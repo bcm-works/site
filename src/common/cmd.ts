@@ -4,7 +4,7 @@ import { execSync, StdioOptions } from "node:child_process";
 export function cmd(command: string, mode: StdioOptions = "ignore"): Buffer | string {
   return execSync(
     command,
-    { stdio: mode },
+    { stdio: mode }
   );
 }
 

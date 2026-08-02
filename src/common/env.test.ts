@@ -7,7 +7,7 @@ const NO_ENV_FILE = ".env.test.nonexistent";
 // Helper: temporarily set env vars, run fn, then restore.
 async function withEnv(
   vars: Record<string, string | undefined>,
-  fn: () => void | Promise<void>,
+  fn: () => void | Promise<void>
 ): Promise<void> {
   const original: Record<string, string | undefined> = {};
 
@@ -41,7 +41,7 @@ Deno.test("COMMON env envVar", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.get("TEST_VAR_EV"), "hello");
       });
-    },
+    }
   });
 
   await test.step({
@@ -51,7 +51,7 @@ Deno.test("COMMON env envVar", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.get("TEST_VAR_EV", "default"), "default");
       });
-    },
+    }
   });
 
   await test.step({
@@ -61,7 +61,7 @@ Deno.test("COMMON env envVar", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.get("TEST_VAR_EV"), "");
       });
-    },
+    }
   });
 });
 
@@ -73,7 +73,7 @@ Deno.test("COMMON env envVarNumber", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getNumber("TEST_VAR_NUM"), 42);
       });
-    },
+    }
   });
 
   await test.step({
@@ -83,7 +83,7 @@ Deno.test("COMMON env envVarNumber", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getNumber("TEST_VAR_NUM", 99), 99);
       });
-    },
+    }
   });
 
   await test.step({
@@ -93,7 +93,7 @@ Deno.test("COMMON env envVarNumber", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getNumber("TEST_VAR_NUM"), 0);
       });
-    },
+    }
   });
 });
 
@@ -105,7 +105,7 @@ Deno.test("COMMON env isLocal", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.isLocal(), true);
       });
-    },
+    }
   });
 
   await test.step({
@@ -115,7 +115,7 @@ Deno.test("COMMON env isLocal", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.isLocal(), false);
       });
-    },
+    }
   });
 
   await test.step({
@@ -125,7 +125,7 @@ Deno.test("COMMON env isLocal", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.isLocal(), false);
       });
-    },
+    }
   });
 });
 
@@ -137,7 +137,7 @@ Deno.test("COMMON env getUrl", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getUrl(), "http://localhost:4000");
       });
-    },
+    }
   });
 
   await test.step({
@@ -147,7 +147,7 @@ Deno.test("COMMON env getUrl", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getUrl(), "http://localhost:8000");
       });
-    },
+    }
   });
 
   await test.step({
@@ -157,7 +157,7 @@ Deno.test("COMMON env getUrl", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getUrl(), "https://example.com");
       });
-    },
+    }
   });
 
   await test.step({
@@ -167,7 +167,7 @@ Deno.test("COMMON env getUrl", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getUrl(), "https://bcm.works");
       });
-    },
+    }
   });
 });
 
@@ -179,7 +179,7 @@ Deno.test("COMMON env getPort", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getPort(), 9000);
       });
-    },
+    }
   });
 
   await test.step({
@@ -189,7 +189,7 @@ Deno.test("COMMON env getPort", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getPort(), 5500);
       });
-    },
+    }
   });
 
   await test.step({
@@ -199,6 +199,6 @@ Deno.test("COMMON env getPort", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getPort(), 8000);
       });
-    },
+    }
   });
 });

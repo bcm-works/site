@@ -70,7 +70,7 @@ cmd(
   --minify \
   --bundle \
   --targets ">= 0.25%" "${buildDir}/bcm.css" \
-  --output-file "${publicDir}/css/bcm.min.css"`,
+  --output-file "${publicDir}/css/bcm.min.css"`
 );
 
 logInfo("Copying FontAwesome files to public directory");

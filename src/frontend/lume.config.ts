@@ -20,7 +20,7 @@ import langTypeScript from "highlight/lib/languages/typescript";
 
 const site = lume({
   prettyUrls: true,
-  emptyDest: true,
+  emptyDest: true
 });
 
 // Load environment variables
@@ -67,8 +67,8 @@ site.use(codeHighlight({
     javascript: langJavaScript,
     bash: langBash,
     php: langPhp,
-    typescript: langTypeScript,
-  },
+    typescript: langTypeScript
+  }
 }));
 
 // --- Generate RSS and JSON feeds of recent posts
@@ -86,7 +86,7 @@ site.use(feed({
     lang: siteLang,
     generator: false,
     authorName: siteAuthor,
-    authorUrl: siteUrl,
+    authorUrl: siteUrl
   },
   items: {
     title: "=title",
@@ -96,8 +96,8 @@ site.use(feed({
     updated: undefined,
     lang: siteLang,
     authorName: siteAuthor,
-    authorUrl: siteUrl,
-  },
+    authorUrl: siteUrl
+  }
 }));
 
 // --- Generate a custom robots.txt
@@ -125,15 +125,15 @@ site.use(robots({
     "PerplexityBot",
     "YouBot",
     "PerplexityBot",
-    "YouBot",
-  ],
+    "YouBot"
+  ]
 }));
 
 // --- Minify generated HTML files
 
 site.use(minifyHTML({
   // @ts-ignore: this is a valid option
-  keep_closing_tags: true,
+  keep_closing_tags: true
 }));
 
 // --- Generate sitemap.xml

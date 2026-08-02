@@ -31,7 +31,7 @@ tags: \n\
   - Post \n\
   -  \n\
 --- \n\ \n\ \n\
-`,
+`
 );
 
 logSuccess(`Finished, new file created at '${postFile}'`);

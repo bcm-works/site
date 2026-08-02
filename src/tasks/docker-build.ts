@@ -34,5 +34,5 @@ cmdShow(
   --build-arg SITE_POSTHOG_API_HOST="${postHogApiHost}" \
   --build-arg SITE_POSTHOG_UI_HOST="${postHogUiHost}" \
   --file "src/Site.Dockerfile" \
-  "."`,
+  "."`
 );

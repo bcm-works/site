@@ -37,5 +37,5 @@ cmdShow(
   --env "SITE_POSTHOG_ID=${postHogId}" \
   --env "SITE_POSTHOG_API_HOST=${postHogApiHost}" \
   --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
-  "bcm-site:latest"`,
+  "bcm-site:latest"`
 );
