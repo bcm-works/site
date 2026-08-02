@@ -96,9 +96,9 @@
       "description": "Run the infra check script.",
       "command": "cd infra && deno task check"
     },
-    "build-task": {
-      "description": "Create a binary from 'src/task.cmd.ts'.",
-      "command": "deno compile --allow-all --output task src/tasks/task.cmd.ts"
+    "build-cli": {
+      "description": "Create the './tasks' binary from '/src/tasks/cli/task.cli.ts'.",
+      "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/cli/task.cli.ts"
     },
     "list": {
       "description": "List all available commands.",
