@@ -80,7 +80,6 @@ a:focus {
   color: var(--colour-highlight);
 }
 
-.page-post .icon-tag,
 .page-post .post-info .icon {
   color: var(--colour-gray);
 }
@@ -217,7 +216,7 @@ ul.post-info li {
 .tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 18px;
   margin: 15px 0 25px;
   padding: 0;
   list-style: none;
@@ -228,30 +227,22 @@ ul.post-info li {
 }
 
 .tag-list li a {
-  color: var(--colour-gray);
-  display: inline-flex;
+  color: var(--colour-white);
+  background-color: var(--colour-gray-dark);
+  border-radius: 6px;
+  padding: 2px 12px;
   align-items: center;
-  padding: 0;
-  margin-right: 18px;
   height: 35px;
-  line-height: 35px;
   font-size: 16px;
+  line-height: 35px;
   text-decoration: none;
-  transition: all 0.2s ease;
-}
-
-.tag-list li a .icon-tag {
-  color: var(--colour-gray);
-  margin-right: 12px;
+  transition: all .2s;
+  display: inline-flex;
 }
 
 .tag-list li a:hover {
   color: var(--colour-highlight);
   text-decoration: none;
-}
-
-.tag-list li a:hover .icon-tag {
-  color: var(--colour-highlight);
 }
 
 /* QUOTES AND EMPHASIS */

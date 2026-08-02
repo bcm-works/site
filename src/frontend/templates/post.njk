@@ -26,7 +26,7 @@ body_class: page-post
     {% if tag != "Post" %}
       <li>
         <a href="/tags/{{ tag }}/" title="View posts tagged with {{ tag }}">
-          <span class="icon icon-tag fa-fw fa-solid fa-tag"></span>{{ tag }}
+          {{ tag }}
         </a>
       </li>
     {% endif %}
