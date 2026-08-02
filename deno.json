@@ -92,6 +92,10 @@
       "description": "Run the infra update script.",
       "command": "cd infra && deno task update"
     },
+    "infra-check": {
+      "description": "Run the infra check script.",
+      "command": "cd infra && deno task check"
+    },
     "build-task": {
       "description": "Create a binary from 'src/task.cmd.ts'.",
       "command": "deno compile --allow-all --output task src/tasks/task.cmd.ts"
@@ -113,7 +117,7 @@
       "src/",
       "deno.json"
     ],
-    "lineWidth": 100,
+    "lineWidth": 120,
     "useTabs": false,
     "indentWidth": 2,
     "singleQuote": false,

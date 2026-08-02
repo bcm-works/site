@@ -44,8 +44,34 @@
       "command": "deno outdated --update --compatible"
     },
     "check": {
-      "description": "Run Deno code checks for the infra code.",
+      "description": "Run Deno code checks on infra code.",
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
+    }
+  },
+  "fmt": {
+    "include": [
+      "index.ts",
+      "deno.json"
+    ],
+    "lineWidth": 120,
+    "useTabs": false,
+    "indentWidth": 2,
+    "singleQuote": false,
+    "semiColons": true,
+    "bracePosition": "sameLine",
+    "operatorPosition": "sameLine",
+    "trailingCommas": "never",
+    "useBraces": "whenNotSingleLine"
+  },
+  "lint": {
+    "include": [
+      "index.ts",
+      "deno.json"
+    ],
+    "rules": {
+      "exclude": [
+        "no-import-prefix"
+      ]
     }
   },
   "allowScripts": {
