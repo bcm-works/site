@@ -1,7 +1,7 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@railway/cli@^5.30.2": "5.30.2",
+    "npm:@railway/cli@^5.30.3": "5.30.3",
     "npm:@types/node@^26.1.2": "26.1.2",
     "npm:railway@^3.7.0": "3.7.0",
     "npm:tsx@^4.23.1": "4.23.1",
@@ -147,8 +147,8 @@
     "@napi-rs/triples@1.2.0": {
       "integrity": "sha512-HAPjR3bnCsdXBsATpDIP5WCrw0JcACwhhrwIAQhiR46n+jm+a2F8kBsfseAuWtSyQ+H3Yebt2k43B5dy+04yMA=="
     },
-    "@railway/cli@5.30.2": {
-      "integrity": "sha512-Sf8QBYMcxkqdndWXtCjwFPLJNpC5r45jAZfcj+kJULmte/lABrt8CTmcBmi2EcCAlSKF3o/KKt5i7B9VCl9mUg==",
+    "@railway/cli@5.30.3": {
+      "integrity": "sha512-PgPBBGkL3Bmzgbb5t1umXGRr+r9NEnY9UL0Jqqgs9UfKEkg7mDwX0bxz/8p4bWqnat9mKuJMZpalTZvbGTh/GQ==",
       "dependencies": [
         "@napi-rs/triples",
         "node-fetch",
@@ -308,7 +308,7 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:@railway/cli@^5.30.2",
+      "npm:@railway/cli@^5.30.3",
       "npm:@types/node@^26.1.2",
       "npm:railway@^3.7.0",
       "npm:tsx@^4.23.1",
