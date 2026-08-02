@@ -51,13 +51,13 @@ The following tools need to be manually installed first:
 Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
 
 ```bash
-deno task setup
+./task setup
 ```
 
 List all of the available Deno tasks:
 
 ```bash
-deno task
+./task list
 ```
 
 ## Deployment

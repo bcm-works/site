@@ -91,6 +91,14 @@
     "infra-update": {
       "description": "Run the infra update script.",
       "command": "cd infra && deno task update"
+    },
+    "build-task": {
+      "description": "Create a binary from 'src/task.cmd.ts'.",
+      "command": "deno compile --allow-all --output task src/tasks/task.cmd.ts"
+    },
+    "list": {
+      "description": "List all available commands.",
+      "command": "deno task"
     }
   },
   "compilerOptions": {
