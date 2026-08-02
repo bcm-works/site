@@ -33,7 +33,7 @@
     },
     "setup": {
       "description": "Run the infra setup script.",
-      "command": "cd .. && deno run --allow-all ./src/tasks/infra/infra-setup.ts"
+      "command": "cd .. && deno run --allow-all ./src/tasks/infra-setup.ts"
     },
     "install": {
       "description": "Install third-party infra dependencies.",
