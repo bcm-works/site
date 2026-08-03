@@ -27,7 +27,7 @@ As for the engineering part of the role, I also keep in mind that:
 - Clear and concise high-level technical requirements must be included in each task
 - Let the assigned Software Engineer demonstrate their skills and stay out of their way
 - Encourage each team member to document as much as possible, making it easy for any other team member to work on the area
-- That fixing software bugs [doesn't have to be stressful](/posts/20191116_fixing-software-bugs-without-losing-your-mind/)
+- That fixing software bugs [doesn't have to be stressful](/posts/20191116_fixing-bugs/)
 
 When hiring, I aim to always:
 
