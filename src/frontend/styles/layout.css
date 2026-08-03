@@ -51,7 +51,8 @@ main {
   max-width: 100%;
 }
 
-header {
+header,
+footer {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -63,16 +64,13 @@ header {
   box-sizing: border-box;
 }
 
-.header-container {
-  background-color: var(--colour-highlight);
-  color: var(--colour-black);
-}
-
-.header-nav {
+header nav,
+footer nav {
   margin-left: auto;
 }
 
-.header-nav ul {
+header nav ul,
+footer nav ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -83,6 +81,7 @@ header {
   list-style: none;
 }
 
-.header-nav li {
+header nav li,
+footer nav li {
   margin: 0;
 }

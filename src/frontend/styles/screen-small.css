@@ -5,7 +5,7 @@
     display: block;
   }
 
-  .layout-container header .header-nav {
+  .layout-container header nav {
     margin-left: 0;
     padding: 16px 0 0;
   }
@@ -30,5 +30,9 @@
   .social-links-container .social-links li,
   ul.post-info li {
     flex: 0 0 calc(50% - 8px);
+  }
+
+  footer {
+    font: var(--font-footer-small);
   }
 }
