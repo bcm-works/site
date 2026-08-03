@@ -1,5 +1,5 @@
 ---
-title: My goals as an Engineering Manager
+title: Goals as an Engineering Manager
 date: 2024-06-30
 url: /posts/20240630_manager-goals/
 oldUrl: /brendan/posts/20240630_manager-goals/
