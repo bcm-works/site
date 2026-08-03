@@ -1,8 +1,8 @@
 ---
-title: Fixing software bugs without losing your mind
+title: Fixing bugs without losing your mind
 date: 2019-11-16
-url: /posts/20191116_fixing-software-bugs-without-losing-your-mind/
-oldUrl: /brendan/posts/20191116_fixing-software-bugs-without-losing-your-mind/
+url: /posts/20191116_fixing-bugs/
+oldUrl: /posts/20191116_fixing-software-bugs-without-losing-your-mind/
 tags:
   - Post
   - Development
