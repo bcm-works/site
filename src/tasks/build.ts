@@ -83,6 +83,7 @@ logInfo("Copying static files to public directory");
 cmd(`cp -r "content/images" "${publicDir}/images"`);
 cmd(`cp "content/favicon.ico" "${publicDir}/favicon.ico"`);
 cmd(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
+cmd(`cp -r "src/frontend/scripts" "${publicDir}/scripts"`);
 cmd(`cp "src/frontend/manifest.json" "${publicDir}/manifest.json"`);
 
 logWarn("Deleting the build directory");
