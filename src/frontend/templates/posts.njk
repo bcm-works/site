@@ -9,15 +9,15 @@ body_class: page-posts-list
 <ul class="posts-list">
   {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts %}
-    {% if post.url != '/posts/' %}
-    <li>
-      <div class="post-name">
-        {{ link.post(post.title, post.url) }}
-      </div>
-      <div class="post-details">
-        {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
-      </div>
-    </li>
-    {% endif %}
+  {% if post.url != '/posts/' %}
+  <li>
+    <div class="post-name">
+      {{ link.post(post.title, post.url) }}
+    </div>
+    <div class="post-details">
+      {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
+    </div>
+  </li>
+  {% endif %}
   {% endfor %}
 </ul>

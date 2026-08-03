@@ -3,6 +3,8 @@ layout: page.layout.njk
 body_class: page-home
 ---
 
+{% import "components/info.njk" as info %}
+{% import "components/link.njk" as link %}
 <div class="intro">
   <p>
     I specialise in building and actively leading efficient software teams to architect scalable,
@@ -51,11 +53,12 @@ body_class: page-home
   </ul>
 </div>
 
+<h2>GitHub</h2>
 <div id="github-info" class="print-hidden">
   <ul>
     <li class="github-user">
       <span class="icon fa-fw fa-brands fa-github"></span>
-      <a href="https://github.com/bcm-works" class="value" title="View my profile on GitHub">Github > bcm-works</a>
+      <a href="https://github.com/bcm-works" class="value" title="View my profile on GitHub"> bcm-works</a>
     </li>
     <li class="github-status page-hidden">
       <span class="icon fa-fw fa-solid fa-comment"></span>
@@ -75,6 +78,24 @@ body_class: page-home
     </li>
   </ul>
 </div>
+
+<h2>Recent Posts</h2>
+<ul class="posts-list posts-list-recent">
+  {% set posts = search.pages("type=post", "date=desc") %}
+  {% for post in posts.slice(0, 6) %}
+  {% if post.url != '/posts/' %}
+  <li>
+    <div class="post-name">
+      {{ link.post(post.title, post.url) }}
+    </div>
+    <div class="post-details">
+      {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
+    </div>
+  </li>
+  {% endif %}
+  {% endfor %}
+  <li><a href="/posts/">View all posts</a></li>
+</ul>
 
 <script>
 const githubUsername = "bcm-works";
