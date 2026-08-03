@@ -1,7 +1,8 @@
 ---
-title: UpcomingTasks on Basecamp Website
+title: UpcomingTasks on Basecamp 2 Extras page
 date: 2012-10-16
-url: /posts/20121016_upcomingtasks-on-basecamp-website/
+url: /posts/20121016_upcomingtasks-basecamp/
+oldUrl: /posts/20121016_upcomingtasks-on-basecamp-website/
 tags:
   - Post
   - UpcomingTasks

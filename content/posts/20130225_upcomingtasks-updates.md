@@ -1,13 +1,14 @@
 ---
-title: UpcomingTasks interface updates
+title: UpcomingTasks design updates
 date: 2013-02-25
-url: /posts/20130225_upcomingtasks-interface-updates/
+url: /posts/20130225_upcomingtasks-updates/
+oldUrl: /posts/20130225_upcomingtasks-interface-updates/
 tags:
   - Post
   - UpcomingTasks
 ---
 
-[UpcomingTasks](/posts/20161014_farewell-upcomingtasks) has received some interface updates today, the most obvious of which is the new menu, which uses vertical space more effectively than the previous design. Just press on the page title to toggle the menu.
+[UpcomingTasks](/posts/20161014_farewell-upcomingtasks) has received some design updates today, the most obvious of which is the new menu, which uses vertical space more effectively than the previous design. Just press on the page title to toggle the menu.
 
 ![Open menu](/images/brendan/interface-menu.png)
 _The new menu in it's open state_
