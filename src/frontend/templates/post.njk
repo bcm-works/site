@@ -1,25 +1,13 @@
 ---
-title: Posts
+title: Post
 layout: page.layout.njk
 body_class: page-post
 ---
 
 <h2>{{ title }}</h2>
 
-<ul class="post-info print-gray">
-  <li class="post-date">
-    <span class="icon fa-fw fa-solid fa-calendar-days"></span>
-    <span class="value">{{ date | date('d LLL yyyy') }}</span>
-  </li>
-  <li class="post-time">
-    <span class="icon fa-fw fa-solid fa-hourglass"></span>
-    <span class="value">{{ readingInfo.minutes }} minute{% if readingInfo.minutes > 1 %}s{% endif %}</span>
-  </li>
-  <li class="post-words">
-    <span class="icon fa-fw fa-solid fa-file-lines"></span>
-    <span class="value">{{ readingInfo.words }} words</span>
-  </li>
-</ul>
+{% import "components/post-info.njk" as info %}
+{{ info.postInfo(date, readingInfo.minutes, readingInfo.words) }}
 
 <ul class="tag-list print-hidden">
   {% for tag in tags|sort %}
