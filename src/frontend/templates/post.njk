@@ -6,7 +6,7 @@ body_class: page-post
 
 {% import "components/info.njk" as info %}
 {% import "components/link.njk" as link %}
-<h2>{{ title }}</h2>
+<h2>{{ link.post(title, url) }}</h2>
 
 {{ info.post(date, readingInfo.minutes, readingInfo.words) }}
 

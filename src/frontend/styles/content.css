@@ -211,6 +211,20 @@ ul.post-info li {
   margin: 0;
 }
 
+.page-post .link-post,
+.page-post .link-post:visited,
+.page-post .link-post:focus {
+  color: var(--color-foreground);
+  text-decoration: none;
+}
+
+.page-post .link-post:active,
+.page-post .link-post:hover {
+  color: var(--colour-highlight);
+  text-decoration: var(--link-decoration-default);
+  text-underline-offset: var(--link-decoration-underline-offset);
+}
+
 /* TAGS */
 
 .tag-list {

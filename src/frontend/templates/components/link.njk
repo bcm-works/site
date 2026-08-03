@@ -1,5 +1,11 @@
 {% macro tag(tagName) %}
-<a href="/tags/{{ tagName }}/" title="View posts tagged with {{ tagName }}">
+<a href="/tags/{{ tagName }}/" title="View posts tagged with {{ tagName }}" class="link-tag">
   {{ tagName }}
+</a>
+{% endmacro %}
+
+{% macro post(postTitle, postLink) %}
+<a href="{{ postLink }}" class="link-post">
+  {{ postTitle }}
 </a>
 {% endmacro %}
