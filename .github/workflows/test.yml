@@ -45,6 +45,11 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
+        with:
+          ref: 'main'
+          lfs: true
+          fetch-depth: 1
+          show-progress: false
       - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
