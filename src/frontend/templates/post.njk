@@ -6,8 +6,8 @@ body_class: page-post
 
 <h2>{{ title }}</h2>
 
-{% import "components/post-info.njk" as info %}
-{{ info.postInfo(date, readingInfo.minutes, readingInfo.words) }}
+{% import "components/info.njk" as info %}
+{{ info.post(date, readingInfo.minutes, readingInfo.words) }}
 
 <ul class="tag-list print-hidden">
   {% for tag in tags|sort %}

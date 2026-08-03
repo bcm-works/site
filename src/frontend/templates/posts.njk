@@ -5,7 +5,7 @@ body_class: page-posts-list
 ---
 
 <ul class="posts-list">
-  {% import "components/post-info.njk" as info %}
+  {% import "components/info.njk" as info %}
   {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts %}
     {% if post.url != '/posts/' %}
@@ -20,7 +20,7 @@ body_class: page-posts-list
         </a>
       </div>
       <div class="post-details">
-        {{ info.postInfo(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
+        {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
       </div>
     </li>
     {% endif %}
