@@ -1,29 +1,29 @@
 /* SMALLER SCREENS */
 
 @media only screen and (max-width: 850px) {
-  .layout-container .header {
+  .layout-container header {
     display: block;
   }
 
-  .layout-container .header .header-nav {
+  .layout-container header .header-nav {
     margin-left: 0;
     padding: 16px 0 0;
   }
 
-  .layout-container .header .site-avatar {
+  .layout-container header .site-avatar {
     width: 80px;
     height: 80px;
   }
 
-  .layout-container .header .site-name {
+  .layout-container header .site-name {
     font: var(--font-site-name-small);
   }
 
-  .layout-container .main-content {
+  .layout-container main {
     padding: 32px 16px 0;
   }
 
-  .layout-container .main-content h2 {
+  .layout-container main h2 {
     font-size: 22px;
   }
 

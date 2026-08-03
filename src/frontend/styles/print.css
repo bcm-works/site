@@ -26,7 +26,8 @@
   }
 
   .hidden,
-  .print-hidden {
+  .print-hidden,
+  header {
     display: none !important;
     height: 0 !important;
   }
@@ -41,7 +42,8 @@
     height: auto !important;
   }
 
-  a {
+  .page-home .content-container a,
+  .post-content a {
     color: var(--colour-black) !important;
     text-decoration: underline 1px !important;
     text-decoration-color: var(--colour-gray) !important;
