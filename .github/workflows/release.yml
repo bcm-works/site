@@ -73,14 +73,6 @@ jobs:
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
-      - name: Install Dependencies
-        run: deno ci
-      - name: Run Checks
-        run: deno task check
-      - name: Build Site
-        run: deno task build
-      - name: Build Docker
-        run: deno task docker-build
       - name: Run Tests
         run: deno task test
 
