@@ -97,8 +97,7 @@ ARG SITE_BUILD_ID
 
 # Apply security updates and install required system packages.
 RUN apk update && \
-    apk add --no-cache --upgrade openssl busybox ssl_client && \
-    apk add --no-cache bash
+    apk add --no-cache --upgrade openssl busybox ssl_client
 
 # Only over the required files to serve the static site.
 COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
@@ -106,7 +105,7 @@ COPY --from=build --chown=deno:deno /app/src/common /app/src/common
 COPY --from=build --chown=deno:deno /app/public /app/public
 COPY --from=build --chown=deno:deno /app/deno.json /app/deno.lock /app/
 
-# Start the static file server as the non-root user 'deno' on port 8000.
+# Start the static file server as the non-root user 'deno'.
 USER deno
 EXPOSE 8000
-CMD ["deno", "task", "start"]
+CMD ["deno", "task", "docker-entrypoint"]

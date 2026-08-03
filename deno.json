@@ -63,17 +63,21 @@
       "command": "deno run --allow-all ./src/tasks/post.ts"
     },
     "docker-build": {
-      "description": "Build a local Docker Image",
+      "description": "Build a local Docker Image.",
       "command": "deno run --allow-all ./src/tasks/docker-build.ts"
     },
     "docker-start": {
-      "description": "Start a Docker Container using the local Docker Image",
+      "description": "Start a Docker Container using the local Docker Image.",
       "command": "deno run --allow-all ./src/tasks/docker-start.ts",
-      "dependencies": ["docker-build"]
+      "dependencies": ["docker-build", "docker-stop"]
     },
     "docker-stop": {
-      "description": "Start a Docker Container using the local Docker Image",
+      "description": "Start a Docker Container using the local Docker Image.",
       "command": "deno run --allow-all ./src/tasks/docker-stop.ts"
+    },
+    "docker-entrypoint": {
+      "description": "The command to run in the Docker Container to start the app.",
+      "command": "deno run --quiet --allow-net --allow-read --allow-env ./src/backend/server.ts"
     },
     "lume": {
       "description": "Run a Lume command.",

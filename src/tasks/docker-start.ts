@@ -2,8 +2,6 @@ import { cmdShow } from "@/common/cmd.ts";
 import { logInfo } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
 
-cmdShow("deno task docker-stop");
-
 const env = new Env();
 
 const url: string = env.getUrl();
