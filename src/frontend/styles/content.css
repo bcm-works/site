@@ -227,7 +227,7 @@ ul.post-info li {
 }
 
 .tag-list li a {
-  color: var(--colour-white);
+  color: var(--colour-gray);
   background-color: var(--colour-gray-dark);
   border-radius: 6px;
   padding: 2px 12px;
