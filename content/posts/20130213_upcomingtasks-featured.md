@@ -2,7 +2,6 @@
 title: UpcomingTasks featured on InformationWeek
 date: 2013-02-13
 url: /posts/20130213_upcomingtasks-featured/
-oldUrl: /brendan/posts/20130213_upcomingtasks-featured-on-informationweek/
 tags:
   - Post
   - UpcomingTasks

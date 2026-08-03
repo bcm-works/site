@@ -2,7 +2,6 @@
 title: Cache an online file
 date: 2013-02-11
 url: /posts/20130211_cache-an-online-file/
-oldUrl: /brendan/posts/20130211_cache-an-online-file/
 tags:
   - Post
   - PHP

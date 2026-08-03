@@ -2,7 +2,6 @@
 title: Mobile device detection
 date: 2012-11-05
 url: /posts/20121105_mobile-device-detection/
-oldUrl: /brendan/posts/20121105_mobile-device-detection/
 tags:
   - Post
   - PHP

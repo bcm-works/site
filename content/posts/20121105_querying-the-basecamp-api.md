@@ -2,7 +2,6 @@
 title: Querying the Basecamp 2 API
 date: 2012-11-05
 url: /posts/20121105_querying-the-basecamp-api/
-oldUrl: /brendan/posts/20121105_querying-the-basecamp-api/
 tags:
   - Post
   - PHP

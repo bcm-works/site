@@ -2,7 +2,6 @@
 title: Announcing UpcomingTasks Pro
 date: 2015-10-07
 url: /posts/20151007_announcing-upcomingtasks-pro/
-oldUrl: /brendan/posts/20151007_announcing-upcomingtasks-pro/
 tags:
   - Post
   - UpcomingTasks

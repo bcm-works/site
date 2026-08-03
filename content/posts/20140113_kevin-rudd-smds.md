@@ -2,7 +2,6 @@
 title: Kevin Rudd offers his thoughts on schnitzels
 date: 2014-01-13
 url: /posts/20140113_kevin-rudd-smds/
-oldUrl: /brendan/posts/20140113_kevin-rudd-smds/
 tags:
   - Post
   - Social

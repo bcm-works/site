@@ -2,7 +2,6 @@
 title: More Than Writing Code
 date: 2013-12-17
 url: /posts/20131217_more-than-writing-code/
-oldUrl: /brendan/posts/20131217_more-than-writing-code/
 tags:
   - Post
   - Development

@@ -2,7 +2,6 @@
 title: Add some character to your website with themes
 date: 2013-01-31
 url: /posts/20130131_website-themes/
-oldUrl: /brendan/posts/20130131_add-some-character-to-your-website-with-themes/
 tags:
   - Post
   - PHP

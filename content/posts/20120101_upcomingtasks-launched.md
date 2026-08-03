@@ -2,7 +2,6 @@
 title: UpcomingTasks launched
 date: 2012-01-01
 url: /posts/20120101_upcomingtasks-launched/
-oldUrl: /brendan/posts/20120101_upcomingtasks-launched/
 tags:
   - Post
   - UpcomingTasks

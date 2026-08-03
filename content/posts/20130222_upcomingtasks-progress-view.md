@@ -2,7 +2,6 @@
 title: UpcomingTasks progress view
 date: 2013-02-22
 url: /posts/20130222_upcomingtasks-progress-view/
-oldUrl: /brendan/posts/20130222_upcomingtasks-progress-view/
 tags:
   - Post
   - UpcomingTasks

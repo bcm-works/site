@@ -2,7 +2,6 @@
 title: Custom error handler
 date: 2013-02-04
 url: /posts/20130204_custom-error-handler/
-oldUrl: /brendan/posts/20130204_custom-error-handler/
 tags:
   - Post
   - PHP
