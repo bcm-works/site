@@ -98,7 +98,6 @@ body_class: page-home
 </ul>
 
 <script>
-const githubUsername = "bcm-works";
 const githubInfo = document.getElementById("github-info");
 
 fetch("/api/github-user/")
@@ -137,6 +136,11 @@ fetch("/api/github-user/")
         githubInfo.querySelector(".github-following").classList.add("animation-fadein");
       }
 
+      githubInfo.classList.remove("animation-fadeout");
+      githubInfo.classList.add("animation-fadein");
+    } else {
+      githubInfo.classList.add("animation-fadeout");
+      githubInfo.classList.add("height-auto");
       githubInfo.classList.remove("animation-fadeout");
       githubInfo.classList.add("animation-fadein");
     }
