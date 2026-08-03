@@ -6,7 +6,7 @@
 #
 
 name: Test
-run-name: Test from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
+run-name: Test ${{ github.run_number }} from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
 
 on:
   # Manual run via GitHub Repo > Actions > Test > Run workflow
