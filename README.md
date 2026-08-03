@@ -48,6 +48,8 @@ The following tools need to be manually installed first:
 
 ## Local Tools
 
+A `task` binary is included to make it easier to run Deno Tasks. The source code for the binary is in [src/tasks/cli/task.cli.ts](src/tasks/cli/task.cli.ts).
+
 Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
 
 ```bash
