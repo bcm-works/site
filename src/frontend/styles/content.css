@@ -89,6 +89,10 @@ a:focus {
   color: var(--colour-gray);
 }
 
+footer .icon {
+  color: var(--colour-gray-dark);
+}
+
 /* HEADER */
 
 .header-container {
@@ -150,8 +154,9 @@ header nav li.active a {
 /* FOOTER */
 
 .footer-container {
-  background-color: var(--colour-gray-dark);
-  color: var(--colour-gray);
+  background: url("/images/footer.webp") no-repeat center / cover var(--colour-white);
+  color: var(--colour-gray-dark);
+  height: 700px;
 }
 
 footer aside {
@@ -159,22 +164,18 @@ footer aside {
   margin: 0;
 }
 
-footer nav li {
+footer a,
+footer a:visited,
+footer a:hover,
+footer a:focus {
+  color: var(--colour-gray-dark);
   text-decoration: none;
 }
 
-footer nav li a,
-footer nav li a:visited,
-footer nav li a:hover,
-footer nav li a:focus {
-  color: var(--colour-gray);
-  text-decoration: var(--link-decoration-nav-footer);
+footer a:hover {
+  color: var(--colour-black);
+  text-decoration: var(--link-decoration-footer);
   text-underline-offset: var(--link-decoration-underline-offset);
-}
-
-footer nav li a:hover {
-  color: var(--colour-white);
-  text-decoration-color: var(--colour-white);
 }
 
 /* SOCIAL LINKS */

@@ -19,8 +19,10 @@
     font: var(--font-site-name-small);
   }
 
+  .layout-container header,
+  .layout-container footer,
   .layout-container main {
-    padding: 32px 16px 0;
+    padding: 16px;
   }
 
   .layout-container main h2 {
@@ -32,7 +34,11 @@
     flex: 0 0 calc(50% - 8px);
   }
 
-  footer {
+  .footer-container {
+    height: 500px;
+  }
+
+  footer aside {
     font: var(--font-footer-small);
   }
 }

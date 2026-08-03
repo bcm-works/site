@@ -51,8 +51,7 @@ main {
   max-width: 100%;
 }
 
-header,
-footer {
+header {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -64,13 +63,11 @@ footer {
   box-sizing: border-box;
 }
 
-header nav,
-footer nav {
+header nav {
   margin-left: auto;
 }
 
-header nav ul,
-footer nav ul {
+header nav ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -81,7 +78,20 @@ footer nav ul {
   list-style: none;
 }
 
-header nav li,
-footer nav li {
+header nav li {
   margin: 0;
+}
+
+footer {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+footer nav ul {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
 }

@@ -112,12 +112,23 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 
     <div class="footer-container">
       <footer>
-        <aside>Brendan Murty</aside>
+        <aside>
+          <a href="/" class="site-link" title="Go to the home page">Brendan Murty</a>
+        </aside>
 
         <nav>
           <ul>
-            <li class="nav-link">
-              <a href="https://github.com/bcm-works/site">View source</a>
+            <li>
+              <span class="icon fa-fw fa-brands fa-github"></span>
+              <a href="https://github.com/bcm-works" title="View my GitHub profile">GitHub</a>
+            </li>
+            <li>
+              <span class="icon fa-fw fa-brands fa-linkedin"></span>
+              <a href="https://www.linkedin.com/in/bcm-works" title="View my LinkedIn profile">LinkedIn</a>
+            </li>
+            <li>
+              <span class="icon fa-fw fa-solid fa-address-card"></span>
+              <a href="/resume.pdf" download="Resume - Brendan Murty.pdf" title="Download my resume">Resume</a>
             </li>
           </ul>
         </nav>

@@ -19,7 +19,7 @@
   --link-decoration-default: underline solid var(--colour-tertiary) 1px;
   --link-decoration-active: underline solid var(--colour-highlight) 1px;
   --link-decoration-nav-header: underline solid var(--colour-secondary) 1px;
-  --link-decoration-nav-footer: underline solid var(--colour-gray) 1px;
+  --link-decoration-footer: underline solid var(--colour-black) 1px;
   --link-decoration-underline-offset: 7px;
 
   /* CODE BLOCKS */
@@ -38,8 +38,8 @@
   --line-height-body: 32px;
   --font-site-name: normal 500 34px/44px var(--font-family-header);
   --font-site-name-small: normal 500 28px/34px var(--font-family-header);
-  --font-footer: normal 500 24px/34px var(--font-family-header);
-  --font-footer-small: normal 500 18px/24px var(--font-family-header);
+  --font-footer: normal 500 26px/32px var(--font-family-header);
+  --font-footer-small: normal 500 24px/32px var(--font-family-header);
 }
 
 /* CUSTOM FONTS */
@@ -68,6 +68,6 @@
 /* SCROLLBARS */
 
 body {
-  scrollbar-color: var(--colour-secondary) var(--colour-background);
-  scrollbar-width: thin;
+  scrollbar-color: var(--colour-gray) var(--colour-black);
+  scrollbar-width: auto;
 }
