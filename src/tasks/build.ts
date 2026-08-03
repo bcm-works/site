@@ -1,4 +1,4 @@
-import { cmd } from "@/common/cmd.ts";
+import { cmd, cmdShow } from "@/common/cmd.ts";
 import { logInfo, logWarn } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
 
@@ -46,8 +46,9 @@ cmd(`cp -r content/tags "${buildDir}/tags"`);
 
 logInfo("Building the front-end using Lume");
 
-cmd(`TZ="${timezone}" \
-  deno task lume \
+cmdShow(`TZ="${timezone}" \
+  LUME_LOGS=error \
+  deno --quiet task lume \
     --src=${buildDir} \
     --dest=${publicDir} \
     --location=${url}`);
@@ -65,7 +66,7 @@ cmd(`cat "${cssDir}/reset.css" \
 
 logInfo("Minifying combined CSS file");
 
-cmd(
+cmdShow(
   `deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
   --minify \
   --bundle \
@@ -83,7 +84,6 @@ cmd(`cp -r "content/images" "${publicDir}/images"`);
 cmd(`cp "content/favicon.ico" "${publicDir}/favicon.ico"`);
 cmd(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
 cmd(`cp "src/frontend/manifest.json" "${publicDir}/manifest.json"`);
-cmd(`cp "${publicDir}/posts.json" "${publicDir}/brendan/posts.json"`);
 
 logWarn("Deleting the build directory");
 
