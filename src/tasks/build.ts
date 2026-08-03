@@ -57,10 +57,11 @@ logInfo("Combining CSS files");
 
 cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/theme.css" \
-  "${cssDir}/app.css" \
+  "${cssDir}/animations.css" \
+  "${cssDir}/layout.css" \
   "${cssDir}/content.css" \
   "${cssDir}/code.css" \
-  "${cssDir}/responsive.css" \
+  "${cssDir}/screen-small.css" \
   "${cssDir}/print.css" \
   > "${buildDir}/bcm.css"`);
 

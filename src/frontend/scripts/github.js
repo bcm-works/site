@@ -10,8 +10,6 @@ fetch("/api/github-user/")
   })
   .then((data) => {
     if (data != "{}") {
-      githubInfo.classList.add("animation-fadeout");
-
       if (data.status) {
         githubInfo.querySelector(".github-status .value").innerText = data.status;
         githubInfo.querySelector(".github-status").classList.remove("page-hidden");
@@ -35,9 +33,6 @@ fetch("/api/github-user/")
         githubInfo.querySelector(".github-following").classList.remove("page-hidden");
         githubInfo.querySelector(".github-following").classList.add("animation-fadein");
       }
-
-      githubInfo.classList.remove("animation-fadeout");
-      githubInfo.classList.add("animation-fadein");
     } else {
       githubInfo.classList.add("animation-fadeout");
       githubInfo.classList.add("height-auto");

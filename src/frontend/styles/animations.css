@@ -1,0 +1,51 @@
+/* ANIMATIONS */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-new(root) {
+  animation: fadein 0.5s ease-in-out;
+}
+
+::view-transition-old(root) {
+  animation: fadeout 0.5s ease-in-out;
+}
+
+.animation-fadein {
+  animation: fadein 1.0s ease-in-out;
+}
+
+.animation-fadeout {
+  animation: fadeout 1.0s ease-in-out;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion) {
+  @view-transition {
+    navigation: none;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

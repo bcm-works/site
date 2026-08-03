@@ -61,3 +61,10 @@
     local("MDIO-Regular"),
     url("/css/fonts/MDIO-Regular.woff") format("woff");
 }
+
+/* SCROLLBARS */
+
+body {
+  scrollbar-color: var(--colour-secondary) var(--colour-background);
+  scrollbar-width: thin;
+}
