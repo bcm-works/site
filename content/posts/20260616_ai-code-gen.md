@@ -1,5 +1,5 @@
 ---
-title: Thoughts about AI Code Generation tools
+title: Reflections on AI Code Generation
 date: 2026-06-16
 url: /posts/20260616_ai-code-gen/
 tags:
