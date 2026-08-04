@@ -21,6 +21,7 @@ cmdShow(
   `docker buildx build \
   --pull \
   --no-cache \
+  --quiet \
   --platform linux/amd64 \
   --tag bcm-site:latest \
   --build-arg SITE_FEED_TITLE="${feedTitle}" \

@@ -38,7 +38,7 @@
     },
     "install": {
       "description": "Install third-party dependencies.",
-      "command": "deno install --config ./deno.json"
+      "command": "deno install --quiet"
     },
     "update": {
       "description": "Update third-party dependencies.",

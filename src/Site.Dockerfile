@@ -2,13 +2,6 @@
 FROM denoland/deno:alpine AS build
 WORKDIR /app
 
-LABEL maintainer="Brendan Murty"
-LABEL org.opencontainers.image.authors="Brendan Murty"
-LABEL org.opencontainers.image.source="https://github.com/bcm-works/site"
-LABEL org.opencontainers.image.url="https://github.com/bcm-works/site"
-LABEL org.opencontainers.image.description="Static web server hosting the public website at bcm.works"
-LABEL org.opencontainers.image.licenses=MIT
-
 # Apply security updates and install required system packages.
 RUN apk update && \
     apk add --no-cache --upgrade openssl busybox ssl_client && \
@@ -69,19 +62,8 @@ ENV SITE_POSTHOG_API_HOST=${SITE_POSTHOG_API_HOST}
 ENV SITE_POSTHOG_UI_HOST=${SITE_POSTHOG_UI_HOST}
 ENV SITE_GITHUB_ID=${SITE_GITHUB_ID}
 
-# Set Docker Image properties
-# From: https://github.com/opencontainers/image-spec/blob/main/annotations.md
-LABEL maintainer=$SITE_AUTHOR
-LABEL org.opencontainers.image.title=$SITE_TITLE
-LABEL org.opencontainers.image.description=$SITE_DESC
-LABEL org.opencontainers.image.authors=$SITE_AUTHOR
-LABEL org.opencontainers.image.vendor=$SITE_AUTHOR
-LABEL org.opencontainers.image.url=$SITE_REPO
-LABEL org.opencontainers.image.source=$SITE_REPO
-LABEL org.opencontainers.image.licenses=MIT
-
 # Install dependencies
-RUN deno ci
+RUN deno task install
 
 # Build the site
 RUN deno task build
@@ -92,8 +74,14 @@ RUN deno task build
 FROM denoland/deno:alpine AS serve
 WORKDIR /app
 
-# Copy over the Build Id so the front-end can use it too
+# Copy over some variables so the front-end can use them
 ARG SITE_BUILD_ID
+ARG SITE_URL
+ARG SITE_ENV
+ARG SITE_AUTHOR
+ARG SITE_TITLE
+ARG SITE_DESC
+ARG SITE_REPO
 
 # Apply security updates and install required system packages.
 RUN apk update && \
@@ -104,6 +92,17 @@ COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
 COPY --from=build --chown=deno:deno /app/src/common /app/src/common
 COPY --from=build --chown=deno:deno /app/public /app/public
 COPY --from=build --chown=deno:deno /app/deno.json /app/deno.lock /app/
+
+# Set Docker Image labels
+# From: https://github.com/opencontainers/image-spec/blob/main/annotations.md
+LABEL maintainer="Brendan Murty"
+LABEL org.opencontainers.image.title="bcm-site"
+LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.version=$SITE_BUILD_ID
+LABEL org.opencontainers.image.authors=$SITE_AUTHOR
+LABEL org.opencontainers.image.source=$SITE_REPO
+LABEL org.opencontainers.image.url=$SITE_REPO
+LABEL org.opencontainers.image.description=$SITE_DESC
 
 # Start the static file server as the non-root user 'deno'.
 USER deno

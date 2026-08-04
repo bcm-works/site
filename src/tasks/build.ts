@@ -25,7 +25,7 @@ cmd(`mkdir -p "${publicDir}/css"`);
 
 logInfo("Applying PurgeCSS updates to site.css");
 
-cmd(`deno x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
+cmd(`deno --quiet x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
   --safelist ".content-body" \
   --safelist "blockquote" \
   --safelist "em" \
@@ -68,7 +68,7 @@ cmd(`cat "${cssDir}/reset.css" \
 logInfo("Minifying combined CSS file");
 
 cmdShow(
-  `deno x --yes --no-check npm:lightningcss-cli@1.32.0 \
+  `deno --quiet x --yes --no-check npm:lightningcss-cli@1.32.0 \
   --minify \
   --bundle \
   --targets ">= 0.25%" "${buildDir}/bcm.css" \

@@ -20,7 +20,9 @@ const postHogUiHost: string = env.get("SITE_POSTHOG_UI_HOST");
 logInfo("Starting 'bcm-site' container");
 
 cmdShow(
-  `docker run -d \
+  `docker run \
+  --detach \
+  --quiet \
   --name "bcm-site" \
   --publish "${port}:${port}" \
   --env "SITE_BUILD_ID=${buildId}" \
@@ -37,3 +39,5 @@ cmdShow(
   --env "SITE_POSTHOG_UI_HOST=${postHogUiHost}" \
   "bcm-site:latest"`
 );
+
+logInfo(`Container started, server will soon be available at ${url}`);
