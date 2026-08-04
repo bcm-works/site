@@ -1,27 +1,15 @@
 import { serveFile } from "@std/http/file-server";
 import { fileExists } from "@/common/local.ts";
-import { logDebug } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
 
 // Load Env Vars with suitable defaults
 
 const bcm = new Env();
-const siteUrl: string = bcm.getUrl();
 const publicDir: string = bcm.get("SITE_PUBLIC_DIR", "public");
-const appEnv: string = bcm.get("SITE_ENV", "other");
-const isLocal: boolean = bcm.isLocal();
-const appEnvType: string = isLocal ? "local" : "hosted";
 
 // Start the static web server
 
 Deno.serve(
-  {
-    onListen() {
-      logDebug(
-        `[env ${appEnv}] [type ${appEnvType}] Server started at ${siteUrl}`
-      );
-    }
-  },
   async (request: Request) => {
     // Extract the request details
     const url: URL = new URL(request.url);
