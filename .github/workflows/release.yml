@@ -182,7 +182,7 @@ jobs:
         run: |
           export RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
           echo "::add-mask::$RAILWAY_TOKEN"
-          ~/.railway/bin/railway variables \
+          ~/.railway/bin/railway variable \
             --set "SITE_BUILD_ID=${{ needs.build.outputs.TIMESTAMP }}" \
             --service ${{ secrets.SITE_RAILWAY_SERVICE }}
 

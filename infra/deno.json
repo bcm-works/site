@@ -74,8 +74,5 @@
       ]
     }
   },
-  "allowScripts": {
-    "allow": ["npm:@railway/cli@5.30.3"],
-    "deny": []
-  }
+  "allowScripts": ["npm:@railway/cli@5.30.4", "npm:esbuild@0.28.1"]
 }
