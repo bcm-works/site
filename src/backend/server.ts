@@ -31,7 +31,7 @@ Deno.serve(
     path = path.endsWith("/") ? path.slice(0, -1) : path;
 
     // If the request came from another source, redirect to the correct URL
-    if (url.origin !== siteUrl) {
+    if (path != "/api/health" && url.origin != siteUrl) {
       bcm.postHogAnonBackendEvent(301, request);
       return Response.redirect(new URL(siteUrl), 301);
     }
