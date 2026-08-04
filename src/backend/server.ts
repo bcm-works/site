@@ -8,7 +8,6 @@ import { Env } from "@/common/env.ts";
 const bcm = new Env();
 const siteUrl: string = bcm.getUrl();
 const publicDir: string = bcm.get("SITE_PUBLIC_DIR", "public");
-const appPort: number = bcm.getPort();
 const appEnv: string = bcm.get("SITE_ENV", "other");
 const isLocal: boolean = bcm.isLocal();
 const appEnvType: string = isLocal ? "local" : "hosted";
@@ -17,10 +16,9 @@ const appEnvType: string = isLocal ? "local" : "hosted";
 
 Deno.serve(
   {
-    port: appPort,
     onListen() {
       logDebug(
-        `[env ${appEnv}] [type ${appEnvType}] [port ${appPort}] Server started at ${siteUrl}`
+        `[env ${appEnv}] [type ${appEnvType}] Server started at ${siteUrl}`
       );
     }
   },
