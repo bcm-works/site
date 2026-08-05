@@ -2,7 +2,7 @@ import { Env } from "@/common/env.ts";
 import { RequestInfoResponse } from "@/backend/types/request.types.ts";
 
 const env = new Env();
-const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
+const publicDir: string = env.getPublicDir();
 
 export function requestInfo(request: Request): RequestInfoResponse {
   const url: URL = new URL(request.url);

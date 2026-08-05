@@ -67,6 +67,18 @@ export class Env {
     return this.getNumber("SITE_PORT", 8000);
   }
 
+  public getBuildDir(): string {
+    return this.get("SITE_BUILD_DIR", "build");
+  }
+
+  public getPublicDir(): string {
+    if (this.getSiteEnv() == "production-deno") {
+      return this.get("SITE_PUBLIC_DIR", "_site");
+    }
+
+    return this.get("SITE_PUBLIC_DIR", "public");
+  }
+
   public getBuildId(): string {
     return this.buildId;
   }

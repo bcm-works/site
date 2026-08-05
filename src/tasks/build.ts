@@ -4,20 +4,18 @@ import { Env } from "@/common/env.ts";
 
 const env = new Env();
 
-const buildDir: string = env.get("SITE_BUILD_DIR", "build");
-const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
+const buildDir: string = env.getBuildDir();
+const publicDir: string = env.getPublicDir();
 const cssDir: string = "src/frontend/styles";
 const timezone: string = env.get("SITE_TIMEZONE", "Australia/Sydney");
 const url: string = env.getUrl();
 
-logWarn("Clearing the build directory and recreating subdirectories");
+logWarn(`Clearing the build (./${buildDir}) and public (./${publicDir}) directories`);
 
 cmd(`rm -rf "${buildDir}"`);
 cmd(`mkdir -p "${buildDir}"`);
 cmd(`mkdir -p "${buildDir}/_data"`);
 cmd(`cp -r "src/frontend/templates" "${buildDir}/_includes"`);
-
-logWarn("Clearing the public directory and recreating subdirectories");
 
 cmd(`rm -rf "${publicDir}"`);
 cmd(`mkdir -p "${publicDir}"`);
@@ -53,7 +51,7 @@ cmdShow(`TZ="${timezone}" \
     --dest=${publicDir} \
     --location=${url}`);
 
-logInfo("Combining CSS files");
+logInfo("Combining and minifying CSS");
 
 cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/theme.css" \
@@ -65,8 +63,6 @@ cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/print.css" \
   > "${buildDir}/bcm.css"`);
 
-logInfo("Minifying combined CSS file");
-
 cmdShow(
   `deno --quiet x --yes --no-check npm:lightningcss-cli@1.32.0 \
   --minify \
@@ -75,12 +71,9 @@ cmdShow(
   --output-file "${publicDir}/css/bcm.min.css"`
 );
 
-logInfo("Copying FontAwesome files to public directory");
+logInfo("Copying static files to the public directory");
 
 cmd(`cp -r "src/frontend/styles/fonts" "${publicDir}/css/fonts"`);
-
-logInfo("Copying static files to public directory");
-
 cmd(`cp -r "content/images" "${publicDir}/images"`);
 cmd(`cp "content/favicon.ico" "${publicDir}/favicon.ico"`);
 cmd(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
