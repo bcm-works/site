@@ -197,7 +197,7 @@ jobs:
 
   release-github:
     name: Release
-    needs: [build, push-docker, deploy-railway]
+    needs: [build, push-docker, deploy-deno]
     runs-on: ubuntu-latest
     permissions:
       contents: write
