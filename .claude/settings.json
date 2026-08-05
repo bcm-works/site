@@ -41,7 +41,7 @@
       "Read(.env)",
       "Read(config/**)",
       "Read(docs/AI-USE.md)",
-      "Bash(railway)",
+      "Bash(deno deploy*)",
       "Bash(git commit*)",
       "Bash(git push*)"
     ]
