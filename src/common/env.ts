@@ -72,10 +72,6 @@ export class Env {
   }
 
   public getPublicDir(): string {
-    if (this.getSiteEnv() == "production-deno") {
-      return this.get("SITE_PUBLIC_DIR", "_site");
-    }
-
     return this.get("SITE_PUBLIC_DIR", "public");
   }
 
