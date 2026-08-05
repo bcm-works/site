@@ -50,16 +50,16 @@
       "dependencies": ["install", "build"]
     },
     "serve": {
-      "description": "Start the server.",
+      "description": "Start the web server.",
       "command": "deno serve --allow-read --allow-env --allow-net ./src/backend/server.ts"
     },
     "test": {
-      "description": "Run all Deno Test scripts in the 'src' directory.",
+      "description": "Run all test scripts in the 'src' directory.",
       "command": "deno test --quiet --allow-run=deno --allow-env --allow-read --allow-net src",
       "dependencies": ["install", "build"]
     },
     "post": {
-      "description": "Create a new post Markdown file.",
+      "description": "Create a Markdown file for a new post.",
       "command": "deno run --allow-all ./src/tasks/post.ts"
     },
     "lume": {
@@ -71,7 +71,7 @@
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     },
     "build-cli": {
-      "description": "Create the './tasks' binary from '/src/tasks/cli/task.cli.ts'.",
+      "description": "Build the './tasks' binary from '/src/tasks/cli/task.cli.ts'.",
       "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/cli/task.cli.ts"
     },
     "list": {
