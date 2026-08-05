@@ -1,5 +1,6 @@
 import { serveFile } from "@std/http/file-server";
 import { fileExists } from "@/common/local.ts";
+import { logSuccess } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
 import { getGithubUser } from "@/backend/api/github-user.ts";
 import { GitHubUserResponse } from "@/backend/types/github.ts";
@@ -84,5 +85,8 @@ export default {
     //   - Redirect to the homepage
     env.postHogAnonBackendEvent(404, request);
     return Response.redirect(new URL("/", siteUrl), 301);
+  },
+  onListen: () => {
+    logSuccess(`Server started at ${siteUrl}`);
   }
 } satisfies Deno.ServeDefaultExport;
