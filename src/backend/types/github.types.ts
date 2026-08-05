@@ -1,4 +1,4 @@
-export type GitHubUserQuery = {
+export interface GitHubUserQuery {
   user: {
     login: string;
     name: string;
@@ -15,10 +15,10 @@ export type GitHubUserQuery = {
     following: {
       totalCount: number;
     };
-  } | null;
-};
+  };
+}
 
-export type GitHubUserResponse = {
+export interface GitHubUserResponse {
   username: string | undefined;
   name: string | undefined;
   status: string | undefined;
@@ -26,4 +26,4 @@ export type GitHubUserResponse = {
   repos: number | undefined;
   followers: number | undefined;
   following: number | undefined;
-} | "{}";
+}

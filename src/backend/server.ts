@@ -2,42 +2,25 @@ import { serveFile } from "@std/http/file-server";
 import { fileExists } from "@/common/local.ts";
 import { logSuccess } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
+import { cors } from "@/backend/headers.ts";
+import { requestInfo } from "@/backend/request.ts";
+import { responseHandler } from "@/backend/response.ts";
 import { getGithubUser } from "@/backend/api/github-user.ts";
-import { GitHubUserResponse } from "@/backend/types/github.ts";
+import { GitHubUserResponse } from "@/backend/types/github.types.ts";
+import { RequestInfoResponse } from "@/backend/types/request.types.ts";
 
 // Load Env Vars with suitable defaults
 
 const env = new Env();
-const publicDir: string = env.get("SITE_PUBLIC_DIR", "public");
 const siteUrl: string = env.getUrl();
-
-const allowedOrigins = new Set([
-  siteUrl,
-  "https://bcm-site.murty.deno.net/"
-]);
-
-function corsHeaders(req: Request): Headers {
-  const headers = new Headers();
-  const origin = req.headers.get("origin");
-
-  if (origin && allowedOrigins.has(origin)) {
-    headers.set("access-control-allow-origin", origin);
-    headers.set("vary", "origin");
-  }
-
-  return headers;
-}
 
 export default {
   async fetch(request: Request) {
-    const url: URL = new URL(request.url);
-    const path: string = url.pathname;
-    let req: string = path.endsWith("/") ? path : `${path}/`;
-    req = req.startsWith("/") ? req : `/${path}`;
+    const { path, fileStatic, filePage, filePost }: RequestInfoResponse = requestInfo(request);
 
-    const headers = corsHeaders(request);
-
+    // CORS options request
     if (request.method === "OPTIONS") {
+      const headers = cors(request);
       headers.set("access-control-allow-methods", "GET");
       headers.set("access-control-allow-headers", "content-type, authorization");
       headers.set("access-control-max-age", "86400");
@@ -48,19 +31,16 @@ export default {
       });
     }
 
+    // API - Health
     if (path === "/api/health" || path === "/api/health/") {
-      return new Response("OK", { status: 201, headers });
+      return responseHandler(request, 200, "OK");
     }
 
+    // API - GitHub User Info
     if (path === "/api/github-user/") {
-      const apiResponse: GitHubUserResponse = await getGithubUser();
-      return Response.json(apiResponse, { status: 200, headers });
+      const apiResponse: GitHubUserResponse | "{}" = await getGithubUser();
+      return responseHandler(request, 200, apiResponse);
     }
-
-    // Construct possible file paths
-    const fileStatic: string = `./${publicDir}${path}`;
-    const filePage: string = `./${publicDir}${req}index.html`;
-    const filePost: string = `./${publicDir}/posts${req}index.html`;
 
     // Handle static file requests
     if (fileExists(fileStatic)) {
@@ -81,10 +61,7 @@ export default {
     }
 
     // No related file was found
-    //   - Log an anonymous PostHog event
-    //   - Redirect to the homepage
-    env.postHogAnonBackendEvent(404, request);
-    return Response.redirect(new URL("/", siteUrl), 301);
+    return responseHandler(request, 404);
   },
   onListen: () => {
     logSuccess(`Server started at ${siteUrl}`);

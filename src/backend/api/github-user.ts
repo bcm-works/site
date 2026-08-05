@@ -1,12 +1,12 @@
 import { graphql as GithubGraphQL } from "@octokit/graphql";
 import { Env } from "@/common/env.ts";
-import { GitHubUserQuery, GitHubUserResponse } from "@/backend/types/github.ts";
+import { GitHubUserQuery, GitHubUserResponse } from "@/backend/types/github.types.ts";
 
 const env = new Env();
 const githubToken: string = env.get("SITE_GITHUB_ID", "");
 
 // GET /api/github-user
-export async function getGithubUser(): Promise<GitHubUserResponse> {
+export async function getGithubUser(): Promise<GitHubUserResponse | "{}"> {
   if (githubToken == "") {
     return "{}";
   }
