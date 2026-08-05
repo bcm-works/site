@@ -2,9 +2,8 @@ import { serveFile } from "@std/http/file-server";
 import { fileExists } from "@/common/local.ts";
 import { logSuccess } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
-import { cors } from "@/backend/headers.ts";
 import { requestInfo } from "@/backend/request.ts";
-import { responseHandler } from "@/backend/response.ts";
+import { corsHandler, responseHandler } from "@/backend/response.ts";
 import { getGithubUser } from "@/backend/api/github-user.ts";
 import { GitHubUserResponse } from "@/backend/types/github.types.ts";
 import { RequestInfoResponse } from "@/backend/types/request.types.ts";
@@ -21,15 +20,7 @@ export default {
 
     // CORS options request
     if (request.method === "OPTIONS") {
-      const headers = cors(request);
-      headers.set("access-control-allow-methods", "GET");
-      headers.set("access-control-allow-headers", "content-type, authorization");
-      headers.set("access-control-max-age", "86400");
-
-      return new Response(null, {
-        status: 204,
-        headers
-      });
+      return corsHandler(request);
     }
 
     // API - Health
