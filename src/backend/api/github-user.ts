@@ -1,33 +1,14 @@
 import { graphql as GithubGraphQL } from "@octokit/graphql";
 import { Env } from "@/common/env.ts";
+import { GitHubUserQuery, GitHubUserResponse } from "@/backend/types/github.ts";
 
 const env = new Env();
 const githubToken: string = env.get("SITE_GITHUB_ID", "");
 
-type GitHubUserResponse = {
-  user: {
-    login: string;
-    name: string;
-    status?: {
-      message: string;
-    };
-    url: string;
-    repositories: {
-      totalCount: number;
-    };
-    followers: {
-      totalCount: number;
-    };
-    following: {
-      totalCount: number;
-    };
-  } | null;
-};
-
 // GET /api/github-user
-export async function get(): Promise<Response> {
+export async function getGithubUser(): Promise<GitHubUserResponse> {
   if (githubToken == "") {
-    return new Response("{}", { status: 424 });
+    return "{}";
   }
 
   const githubQuery = GithubGraphQL.defaults({
@@ -37,7 +18,7 @@ export async function get(): Promise<Response> {
     }
   });
 
-  const { user }: GitHubUserResponse = await githubQuery(
+  const { user }: GitHubUserQuery = await githubQuery(
     `{
       user(login: "bcm-works") {
         login
@@ -59,7 +40,7 @@ export async function get(): Promise<Response> {
     }`
   );
 
-  const returnString = JSON.stringify({
+  const returnString: GitHubUserResponse = {
     username: user?.login,
     name: user?.name,
     status: user?.status?.message,
@@ -67,10 +48,7 @@ export async function get(): Promise<Response> {
     repos: user?.repositories.totalCount,
     followers: user?.followers.totalCount,
     following: user?.following.totalCount
-  });
+  };
 
-  return new Response(
-    returnString,
-    { headers: { "content-type": "application/json" } }
-  );
+  return returnString;
 }

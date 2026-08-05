@@ -45,7 +45,7 @@ Deno.test("DOCKER BUILD", async (test) => {
       const config = image.Config as Record<string, unknown>;
 
       assertEquals(config.User, "deno");
-      assertEquals(config.Cmd, ["deno", "task", "docker-entrypoint"]);
+      assertEquals(config.Cmd, ["deno", "task", "serve"]);
     }
   });
 

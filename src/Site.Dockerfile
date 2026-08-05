@@ -107,4 +107,4 @@ LABEL org.opencontainers.image.description=$SITE_DESC
 # Start the static file server as the non-root user 'deno'.
 USER deno
 EXPOSE 8000
-CMD ["deno", "task", "docker-entrypoint"]
+CMD ["deno", "task", "serve"]
