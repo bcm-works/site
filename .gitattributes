@@ -7,7 +7,6 @@ task filter=lfs diff=lfs merge=lfs -text
 .claude/** -linguist-detectable
 .github/** -linguist-detectable
 .zed/** -linguist-detectable
-infra/** -linguist-detectable
 prototypes/** -linguist-detectable
 .* -linguist-detectable
 .*.* -linguist-detectable

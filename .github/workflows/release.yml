@@ -77,7 +77,7 @@ jobs:
         run: deno task test
 
   push-docker:
-    name: Push to GitHub Packages
+    name: GitHub Packages
     needs: [build]
     runs-on: ubuntu-latest
     environment:
@@ -155,19 +155,16 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           annotations: ${{ steps.meta.outputs.annotations }}
 
-  deploy-railway:
-    name: Deploy to Railway
+  deploy-deno:
+    name: Deploy
     needs: [build, push-docker]
     runs-on: ubuntu-latest
     environment:
-      name: ci-deploy-railway
+      name: ci-deploy-deno
       deployment: false
     permissions:
       contents: read
       id-token: write
-    env:
-      DO_NOT_TRACK: 1
-      RAILWAY_NO_TELEMETRY: 1
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
@@ -176,18 +173,30 @@ jobs:
           lfs: true
           fetch-depth: 1
           show-progress: false
-      - name: Railway Setup
-        run: bash <(curl -fsSL railway.com/install.sh) -y
-      - name: Railway Redeploy
+      - name: Deno Setup
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: latest
+      - name: Deploy
         run: |
-          export RAILWAY_TOKEN=${{ secrets.SITE_RAILWAY_PROJECT_TOKEN }}
-          echo "::add-mask::$RAILWAY_TOKEN"
-          ~/.railway/bin/railway variable \
-            --set "SITE_BUILD_ID=${{ needs.build.outputs.TIMESTAMP }}" \
-            --service ${{ secrets.SITE_RAILWAY_SERVICE }}
+          deno deploy \
+            env update-value \
+            SITE_BUILD_ID ${{ needs.build.outputs.TIMESTAMP }} \
+            --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
+            --non-interactive \
+            --quiet
+          deno deploy \
+            --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
+            --source github \
+            --owner bcm-works \
+            --repo site \
+            --config deno.json \
+            --prod \
+            --non-interactive \
+            --quiet
 
   release-github:
-    name: Create Release
+    name: Release
     needs: [build, push-docker, deploy-railway]
     runs-on: ubuntu-latest
     permissions:

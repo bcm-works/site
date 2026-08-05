@@ -42,7 +42,7 @@
     },
     "deps": {
       "description": "Update all dependencies and commit the results.",
-      "command": "deno task update && deno task infra-update && git add deno.json deno.lock infra/deno.json infra/deno.lock && git commit -m \"Update third-party dependencies\" || true"
+      "command": "deno task update && git add deno.json deno.lock && git commit -m \"Update third-party dependencies\" || true"
     },
     "start": {
       "description": "Start the web server after installing and building.",
@@ -83,22 +83,6 @@
       "description": "Run Deno code checks.",
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     },
-    "infra-setup": {
-      "description": "Run the infra setup script.",
-      "command": "cd infra && deno task setup"
-    },
-    "infra-install": {
-      "description": "Run the infra install script.",
-      "command": "cd infra && deno task install"
-    },
-    "infra-update": {
-      "description": "Run the infra update script.",
-      "command": "cd infra && deno task update"
-    },
-    "infra-check": {
-      "description": "Run the infra check script.",
-      "command": "cd infra && deno task check"
-    },
     "build-cli": {
       "description": "Create the './tasks' binary from '/src/tasks/cli/task.cli.ts'.",
       "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/cli/task.cli.ts"
@@ -106,10 +90,6 @@
     "list": {
       "description": "List all available commands.",
       "command": "deno task"
-    },
-    "deploy-deno": {
-      "description": "Trigger a deployment to Deno Deploy.",
-      "command": "deno deploy --config deno.json"
     }
   },
   "compilerOptions": {
@@ -123,7 +103,7 @@
     "org": "murty",
     "app": "bcm-site",
     "install": "deno task install",
-    "build": "SITE_PUBLIC_DIR=_site deno task build",
+    "build": "deno task build",
     "runtime": {
       "mode": "dynamic",
       "entrypoint": "src/backend/server.ts"

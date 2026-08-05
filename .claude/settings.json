@@ -41,7 +41,6 @@
       "Read(.env)",
       "Read(config/**)",
       "Read(docs/AI-USE.md)",
-      "Read(src/infra/.env)",
       "Bash(railway)",
       "Bash(git commit*)",
       "Bash(git push*)"

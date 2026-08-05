@@ -17,7 +17,6 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [docs](docs/) - Documentation and contextual information.
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
-- [infra](infra/) - Infrastructure as Code for [Railway](https://railway.com/).
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
 - [src/common](src/common/) - Common TypeScript helper functions.
@@ -31,7 +30,8 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 ## Tech Stack
 
-- [Railway](https://railway.com/) - Infrastructure host, managed as code in [infra](infra/).
+- [Deno Deploy](https://deno.com/deploy) - Infrastructure host.
+- [GitHub Actions](https://github.com/features/actions) - Deployment and testing workflows.
 - [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
 - [Docker](https://docker.com/) - Local and deployed containers.
 - [Deno](https://deno.land/) - TypeScript, Deno Tests, Deno Tasks.
@@ -64,8 +64,11 @@ List all of the available Deno tasks:
 
 ## Deployment
 
-Setup [GitHub Actions](https://github.com/features/actions) and [Railway](https://railway.com/) by completing the `Initial Setup` section from [infra/README.md](infra/README.md).
+First setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in
+[config/.env.github](config/.env.github).
+
+Then setup a new [Deno Deploy](https://deno.com/deploy) project, following the steps in [config/.env.railway](config/.env.deno-deploy).
 
 Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml).
 
-This includes building and pushing a new Docker Image to [GitHub Packages](https://github.com/bcm-works/site/pkgs/container/bcm-site), and then deploying the [Railway](https://railway.com/) service.
+This includes building and pushing a new Docker Image to [GitHub Packages](https://github.com/bcm-works/site/pkgs/container/bcm-site), and then deploying to [Deno Deploy](https://deno.com/deploy).

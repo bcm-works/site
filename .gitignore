@@ -13,8 +13,8 @@ dist/
 .env.*
 *.env
 !.env.github
+!.env.deno-deploy
 !.env.railway
-!.env.sample
 !.env.sample
 !.envrc
 
