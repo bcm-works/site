@@ -59,9 +59,8 @@ List all of the available Deno tasks:
 
 ## Deployment
 
-First setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in
-[config/.env.github](config/.env.github).
+First setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in [config/.env.github](config/.env.github).
 
 Then setup a new [Deno Deploy](https://deno.com/deploy) project, following the steps in [config/.env.deno-deploy](config/.env.deno-deploy).
 
-Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml), which will run tests, then deploy to [Deno Deploy](https://deno.com/deploy).
+Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml). This workflow will build and run tests remotely, then deploy to [Deno Deploy](https://deno.com/deploy).
