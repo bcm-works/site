@@ -156,7 +156,7 @@ jobs:
           annotations: ${{ steps.meta.outputs.annotations }}
 
   deploy-deno:
-    name: Deploy
+    name: Deno Deploy
     needs: [build, push-docker]
     runs-on: ubuntu-latest
     environment:
