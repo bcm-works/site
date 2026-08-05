@@ -1,6 +1,4 @@
 import { cors } from "@/backend/headers.ts";
-import { requestInfo } from "@/backend/request.ts";
-import { logDebug } from "@/common/log.ts";
 import { Env } from "@/common/env.ts";
 import { GitHubUserResponse } from "@/backend/types/github.types.ts";
 
@@ -13,9 +11,6 @@ export function responseHandler(
   content: string | GitHubUserResponse | BodyInit | null | undefined = undefined
 ): Response {
   const headers = cors(request);
-  const { url, path, req } = requestInfo(request);
-
-  logDebug(`response code=${responseCode} url=${url} path=${path} req=${req}`);
 
   if (responseCode === 404) {
     env.postHogAnonBackendEvent(404, request);
