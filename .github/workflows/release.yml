@@ -187,7 +187,6 @@ jobs:
             --quiet
           deno deploy \
             --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
-            --source local \
             --config deno.json \
             --prod \
             --non-interactive \
