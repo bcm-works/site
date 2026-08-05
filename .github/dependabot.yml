@@ -1,19 +1,23 @@
 version: 2
 updates:
   - package-ecosystem: "deno"
-    directories:
-      - "/"
-      - "/infra"
+    directory: "/"
     schedule:
       interval: "weekly"
-    open-pull-requests-limit: 3
+    open-pull-requests-limit: 1
     assignees:
       - "bcm-works"
+    groups:
+      deps-deno:
+        patterns:
+          - "*"
     allow:
       - dependency-name: "*"
+        dependency-type: "production"
         update-types:
           - "version-update:semver-minor"
           - "version-update:semver-patch"
+    target-branch: "main"
     pull-request-branch-name:
       separator: "-"
       prefix: "fix-deps-deno-"
