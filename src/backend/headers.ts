@@ -6,8 +6,11 @@ const siteUrl: string = env.getUrl();
 // Define the request origin domains that will be allowed by CORS
 const allowedOrigins = new Set([
   siteUrl,
+  "https://www.bcm.works",
   "https://murty.au",
-  "https://bcm.id.au"
+  "https://www.murty.au",
+  "https://bcm.id.au",
+  "https://www.bcm.id.au"
 ]);
 
 // Setup headers for CORS (Cross-Origin Resource Sharing)
