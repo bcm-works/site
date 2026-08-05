@@ -124,7 +124,10 @@
     "app": "bcm-site",
     "install": "deno task install",
     "build": "SITE_PUBLIC_DIR=_site deno task build",
-    "framework": "lume"
+    "runtime": {
+      "mode": "dynamic",
+      "entrypoint": "src/backend/server.ts"
+    }
   },
   "fmt": {
     "include": [
