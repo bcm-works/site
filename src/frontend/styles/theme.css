@@ -69,5 +69,5 @@
 
 body {
   scrollbar-color: var(--colour-gray) var(--colour-black);
-  scrollbar-width: auto;
+  scrollbar-width: thin;
 }
