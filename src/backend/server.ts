@@ -13,6 +13,7 @@ import { RequestInfoResponse } from "@/backend/types/request.types.ts";
 
 const env = new Env();
 const siteUrl: string = env.getUrl();
+const buildId: string = env.getBuildId();
 
 export default {
   async fetch(request: Request) {
@@ -34,6 +35,11 @@ export default {
     // API - Health
     if (path === "/api/health" || path === "/api/health/") {
       return responseHandler(request, 200, "OK");
+    }
+
+    // API - Version
+    if (path === "/api/version" || path === "/api/version/") {
+      return responseHandler(request, 200, buildId);
     }
 
     // API - GitHub User Info
