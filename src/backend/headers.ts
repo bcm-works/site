@@ -7,7 +7,7 @@ const siteUrl: string = env.getUrl();
 const allowedOrigins = new Set([
   siteUrl,
   "https://murty.au",
-  "https://bcm.id.au",
+  "https://bcm.id.au"
 ]);
 
 // Setup headers for CORS (Cross-Origin Resource Sharing)

@@ -55,25 +55,12 @@
     },
     "test": {
       "description": "Run all Deno Test scripts in the 'src' directory.",
-      "command": "deno test --quiet --allow-run=deno,docker --allow-env --allow-read --allow-net src",
-      "dependencies": ["install", "build", "docker-build"]
+      "command": "deno test --quiet --allow-run=deno --allow-env --allow-read --allow-net src",
+      "dependencies": ["install", "build"]
     },
     "post": {
       "description": "Create a new post Markdown file.",
       "command": "deno run --allow-all ./src/tasks/post.ts"
-    },
-    "docker-build": {
-      "description": "Build a local Docker Image.",
-      "command": "deno run --allow-all ./src/tasks/docker-build.ts"
-    },
-    "docker-start": {
-      "description": "Start a Docker Container using the local Docker Image.",
-      "command": "deno run --allow-all ./src/tasks/docker-start.ts",
-      "dependencies": ["docker-build", "docker-stop"]
-    },
-    "docker-stop": {
-      "description": "Start a Docker Container using the local Docker Image.",
-      "command": "deno run --allow-all ./src/tasks/docker-stop.ts"
     },
     "lume": {
       "description": "Run a Lume command.",

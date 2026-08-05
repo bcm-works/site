@@ -4,8 +4,7 @@ This repository contains the website at [bcm.works](https://bcm.works/) and rela
 
 ## Tech Stack
 
-- **Code:** TypeScript, Eleventy, Express (TypeScript)
-- **Containerization:** Docker (`docker`)
+- **Code:** Deno, TypeScript
 
 ## Structure
 
@@ -19,7 +18,6 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - `bash`
 - `git`
 - `deno`
-- `docker`
 
 ## Hard Rules
 

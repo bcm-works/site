@@ -14,5 +14,5 @@ max_line_length = 120
 [*.{bash,json,jsonc,md,sh,svg,toml,yml}]
 insert_final_newline = false
 
-[{Dockerfile,.editorconfig,.gitattributes,.gitignore,.gitmodules}]
+[{.editorconfig,.gitattributes,.gitignore,.gitmodules}]
 insert_final_newline = false

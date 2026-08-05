@@ -1,12 +1,5 @@
 import { cmd, cmdExists } from "@/common/cmd.ts";
-import { logError, logInfo, logSuccess, logWarn } from "@/common/log.ts";
-
-if (cmdExists("docker")) {
-  logSuccess("Found Docker");
-} else {
-  logError("Please install Docker from https://www.docker.com/products/docker-desktop/");
-  process.exit(1);
-}
+import { logInfo, logSuccess, logWarn } from "@/common/log.ts";
 
 logInfo("Initialising ENV file");
 cmd("cp -n config/.env.sample config/.env");

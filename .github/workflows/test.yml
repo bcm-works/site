@@ -18,8 +18,6 @@ on:
     paths:
       - src/*.ts
       - src/**/*.ts
-      - src/Site.Dockerfile
-      - src/Site.Dockerfile.dockerignore
       - deno.json
       - deno.lock
 
