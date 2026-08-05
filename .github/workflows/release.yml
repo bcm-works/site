@@ -187,9 +187,7 @@ jobs:
             --quiet
           deno deploy \
             --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
-            --source github \
-            --owner bcm-works \
-            --repo site \
+            --source local \
             --config deno.json \
             --prod \
             --non-interactive \
