@@ -86,16 +86,6 @@
     "jsx": "react-jsx",
     "jsxImportSource": "lume"
   },
-  "deploy": {
-    "org": "murty",
-    "app": "bcm-site",
-    "install": "deno task install",
-    "build": "deno task build",
-    "runtime": {
-      "mode": "dynamic",
-      "entrypoint": "src/backend/server.ts"
-    }
-  },
   "fmt": {
     "include": [
       "src/",

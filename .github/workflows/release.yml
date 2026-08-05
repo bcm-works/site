@@ -104,11 +104,14 @@ jobs:
             env update-value \
             SITE_BUILD_ID ${{ needs.build.outputs.TIMESTAMP }} \
             --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
+            --org ${{ secrets.DENO_DEPLOY_ORG }} \
+            --app ${{ secrets.DENO_DEPLOY_APP }} \
             --non-interactive \
             --quiet
           deno deploy \
             --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
-            --config deno.json \
+            --org ${{ secrets.DENO_DEPLOY_ORG }} \
+            --app ${{ secrets.DENO_DEPLOY_APP }} \
             --prod \
             --non-interactive \
             --quiet
