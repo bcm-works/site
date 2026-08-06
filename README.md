@@ -23,7 +23,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
 - [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/frontend/manifest.json](src/frontend/manifest.json) - Progressive Web App configuration.
-- [src/tasks](src/tasks/) - Helper scripts.
+- [src/tasks](src/tasks/) - Helper scripts and CLI tools.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
 
