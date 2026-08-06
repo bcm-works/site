@@ -1,10 +1,10 @@
 //
 //
-// Task Runner
+// Deno Task Runner
 //   - This is the source code of the './task' binary
-//   - Rebuild this binary: deno task build-cli
-//   - The binary will then pass over the first argument to Deno Tasks
-//   - Running './task build' is the same as running 'deno task build'
+//   - Passes over the first argument sent to it to Deno Tasks
+//   - For example, running './task build' is the same as running 'deno task build'
+//   - Rebuild the './task' binary: deno task build-cli
 //
 //
 
