@@ -13,7 +13,7 @@ Deno.test("COMMON log", async (test) => {
 
   for (const [name, fn] of fns) {
     await test.step({
-      name: `${name} does not throw`,
+      name: `${name} shows a message`,
       fn: () => {
         const original = console.log;
         const captured: unknown[] = [];
