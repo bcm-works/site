@@ -9,21 +9,21 @@ export function logHighlight(message: string): void {
 }
 
 export function logInfo(message: string): void {
-  log(chalk.blue(message));
+  log(chalk.blue(`i ${message}`));
 }
 
 export function logSuccess(message: string): void {
-  log(chalk.green(message));
+  log(chalk.green(`✔ ${message}`));
 }
 
 export function logWarn(message: string): void {
-  log(chalk.hex("#FFA22E")(message));
+  log(chalk.hex("#FFA22E")(`! ${message}`));
 }
 
 export function logError(message: string): void {
-  log(chalk.red(message));
+  log(chalk.red(`✗ ${message}`));
 }
 
 export function logDebug(message: string): void {
-  log(chalk.hex("#23C5B0")(message));
+  log(chalk.hex("#23C5B0")(`> ${message}`));
 }
