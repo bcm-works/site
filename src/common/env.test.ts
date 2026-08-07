@@ -171,6 +171,56 @@ Deno.test("COMMON env getUrl", async (test) => {
   });
 });
 
+Deno.test("COMMON env file loading", async (test) => {
+  // Write a temp env file for each step that needs one.
+  const tempEnvFile = await Deno.makeTempFile({ prefix: "env_test_", suffix: ".env" });
+
+  await test.step({
+    name: "loads value from env file",
+    fn: async () => {
+      await Deno.writeTextFile(tempEnvFile, "TEST_FILE_VAR=from_file\n");
+      const site = new Env(tempEnvFile);
+      assertEquals(site.get("TEST_FILE_VAR"), "from_file");
+    }
+  });
+
+  await test.step({
+    name: "loads multiple values from env file",
+    fn: async () => {
+      await Deno.writeTextFile(tempEnvFile, "SITE_ENV=local\nSITE_PORT=3333\n");
+      const site = new Env(tempEnvFile);
+      assertEquals(site.isLocal(), true);
+      assertEquals(site.getPort(), 3333);
+    }
+  });
+
+  await test.step({
+    name: "env file takes precedence over session env vars",
+    fn: async () => {
+      await Deno.writeTextFile(tempEnvFile, "TEST_FILE_VAR=from_file\n");
+      await withEnv({ TEST_FILE_VAR: "from_session" }, () => {
+        const site = new Env(tempEnvFile);
+        // File load replaces session entirely; file value wins.
+        assertEquals(site.get("TEST_FILE_VAR"), "from_file");
+      });
+    }
+  });
+
+  await test.step({
+    name: "session env var is not visible when env file is loaded",
+    fn: async () => {
+      await Deno.writeTextFile(tempEnvFile, "OTHER_VAR=x\n");
+      await withEnv({ SESSION_ONLY_VAR: "session_value" }, () => {
+        const site = new Env(tempEnvFile);
+        // File-only env; session vars are not merged in.
+        assertEquals(site.get("SESSION_ONLY_VAR"), "");
+      });
+    }
+  });
+
+  await Deno.remove(tempEnvFile);
+});
+
 Deno.test("COMMON env getPort", async (test) => {
   await test.step({
     name: "returns PORT when it is set to a positive value",
