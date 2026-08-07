@@ -1,7 +1,8 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
 import { getGithubUser } from "@/backend/api/github-user.ts";
+import { Env } from "@/common/env.ts";
 
-const hasToken = !!Deno.env.get("SITE_GITHUB_ID");
+const hasToken = !!(new Env()).get("SITE_GITHUB_ID");
 
 Deno.test("GITHUB USER", async (test) => {
   await test.step({
