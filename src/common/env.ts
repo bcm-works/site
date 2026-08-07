@@ -1,43 +1,38 @@
-import { loadSync as envLoad } from "@std/dotenv";
-import { fileExists } from "@/common/local.ts";
+import { parse as envParse } from "@std/dotenv";
 import { logError } from "@/common/log.ts";
 import { format as dateInFormat } from "date-fns";
 import { PostHog } from "posthog";
 
-const envFileDefault: string = "./config/.env";
-
 export class Env {
-  private envFile: string;
   private buildId: string;
-  private env: Record<string, string> | undefined;
+  private env: Record<string, string> = {};
+  private envFileDefault: string = "./config/.env";
 
-  constructor(envFile: string = envFileDefault) {
-    this.envFile = envFile;
-
-    if (fileExists(this.envFile)) {
-      this.env = envLoad({
-        envPath: envFile,
-        export: true
-      });
+  constructor(envFile: string = this.envFileDefault) {
+    // Attempt to load the env file, fall back to using the system env vars
+    try {
+      this.env = envParse(Deno.readTextFileSync(envFile));
+    } catch (_error: unknown) {
+      this.env = Deno.env.toObject();
     }
 
     this.buildId = this.get("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMddHHmmss"));
   }
 
   public get(varName: string, defaultValue?: string): string {
-    return Deno.env.get(varName) || defaultValue || "";
+    return this.env[varName] || defaultValue || "";
   }
 
   public has(varName: string): boolean {
-    return Deno.env.get(varName) !== undefined;
+    return this.get(varName) !== undefined;
   }
 
   public getNumber(varName: string, defaultValue?: number): number {
     if (defaultValue) {
-      return Number(Deno.env.get(varName)) || defaultValue;
+      return Number(this.get(varName)) || defaultValue;
     }
 
-    return Number(Deno.env.get(varName)) || 0;
+    return Number(this.get(varName)) || 0;
   }
 
   public getSiteEnv(): string {
