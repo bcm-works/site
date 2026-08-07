@@ -54,6 +54,16 @@ posthog.init('{{ SITE_POSTHOG_ID }}', {
 </script>{% endif %}
 <script type="speculationrules">
 {
+  "prefetch": [
+    {
+      "source": "list",
+      "requires": ["anonymous-client-ip-when-cross-origin"],
+      "urls": [
+        "posts/index.html",
+        "tags/index.html"
+      ]
+    }
+  ],
   "prerender": [
     {
       "source": "document",

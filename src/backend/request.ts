@@ -1,5 +1,5 @@
 import { Env } from "@/common/env.ts";
-import { RequestInfoResponse } from "@/backend/types/request.types.ts";
+import { RequestInfoResponse } from "@/backend/server.types.ts";
 
 const env = new Env();
 const publicDir: string = env.getPublicDir();

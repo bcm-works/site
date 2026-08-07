@@ -5,8 +5,7 @@ import { Env } from "@/common/env.ts";
 import { requestInfo } from "@/backend/request.ts";
 import { corsHandler, responseHandler } from "@/backend/response.ts";
 import { getGithubUser } from "@/backend/api/github-user.ts";
-import { GitHubUserResponse } from "@/backend/types/github.types.ts";
-import { RequestInfoResponse } from "@/backend/types/request.types.ts";
+import { GitHubUserResponse, PrefetchProxyResponse, RequestInfoResponse } from "@/backend/server.types.ts";
 
 // Load Env Vars with suitable defaults
 
@@ -16,25 +15,40 @@ const buildId: string = env.getBuildId();
 
 export default {
   async fetch(request: Request) {
-    const { path, fileStatic, filePage, filePost }: RequestInfoResponse = requestInfo(request);
+    const { req, fileStatic, filePage, filePost }: RequestInfoResponse = requestInfo(request);
 
     // CORS options request
     if (request.method === "OPTIONS") {
       return corsHandler(request);
     }
 
+    // Allow prefetching pages in Chrome
+    if (req === "/.well-known/traffic-advice/") {
+      const prefetchResponse: PrefetchProxyResponse = {
+        "user_agent": "prefetch-proxy",
+        "fraction": 1.0
+      };
+
+      return responseHandler(
+        request,
+        200,
+        prefetchResponse,
+        "application/trafficadvice+json"
+      );
+    }
+
     // API - Health
-    if (path === "/api/health" || path === "/api/health/") {
+    if (req === "/api/health/") {
       return responseHandler(request, 200, "OK");
     }
 
     // API - Version
-    if (path === "/api/version" || path === "/api/version/") {
+    if (req === "/api/version/") {
       return responseHandler(request, 200, buildId);
     }
 
     // API - GitHub User Info
-    if (path === "/api/github-user/") {
+    if (req === "/api/github-user/") {
       const apiResponse: GitHubUserResponse | "{}" = await getGithubUser();
       return responseHandler(request, 200, apiResponse);
     }
