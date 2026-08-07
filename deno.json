@@ -84,7 +84,13 @@
       "lume/types.ts"
     ],
     "jsx": "react-jsx",
-    "jsxImportSource": "lume"
+    "jsxImportSource": "lume",
+    "allowUnreachableCode": false,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true
   },
   "fmt": {
     "include": [
@@ -154,7 +160,6 @@
     ]
   },
   "exclude": [
-    "infra/",
     "node_modules/"
   ]
 }
