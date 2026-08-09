@@ -55,7 +55,7 @@
     },
     "test": {
       "description": "Run all test scripts in the 'src' directory.",
-      "command": "deno test --quiet --allow-run=deno --allow-write --allow-env --allow-read --allow-net --coverage=.coverage src",
+      "command": "deno test --quiet --allow-run=deno --allow-write --allow-env --allow-read --allow-net --clean --coverage=.coverage src",
       "dependencies": ["install", "build"]
     },
     "test-coverage": {
