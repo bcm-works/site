@@ -1,8 +1,5 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
 import server from "@/backend/server.ts";
-import { Env } from "@/common/env.ts";
-
-const hasGithubToken = !!(new Env()).get("SITE_GITHUB_ID");
 
 Deno.test("SERVER", async (test) => {
   await test.step({
@@ -65,11 +62,6 @@ Deno.test("SERVER", async (test) => {
   await test.step({
     name: "GET /api/github-user/ returns 200",
     fn: async () => {
-      if (hasGithubToken) {
-        console.log("Skipping: SITE_GITHUB_ID is set");
-        return;
-      }
-
       const req = new Request("https://bcm.works/api/github-user/");
       const res = await server.fetch(req);
 

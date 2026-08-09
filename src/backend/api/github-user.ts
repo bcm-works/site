@@ -6,14 +6,14 @@ const env = new Env();
 const githubToken: string = env.get("SITE_GITHUB_ID", "");
 
 // GET /api/github-user
-export async function getGithubUser(): Promise<GitHubUserResponse | "{}"> {
-  if (githubToken == "") {
+export async function getGithubUser(token: string = githubToken): Promise<GitHubUserResponse | "{}"> {
+  if (token == "") {
     return "{}";
   }
 
   const githubQuery = GithubGraphQL.defaults({
     headers: {
-      authorization: `token ${githubToken}`,
+      authorization: `token ${token}`,
       userAgent: "bcm-works"
     }
   });

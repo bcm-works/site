@@ -8,12 +8,8 @@ Deno.test("GITHUB USER", async (test) => {
   await test.step({
     name: "returns '{}' when no token is set",
     fn: async () => {
-      if (hasToken) {
-        console.log("Skipping: SITE_GITHUB_ID is set");
-        return;
-      }
-
-      const result = await getGithubUser();
+      // Pass an empty token directly so this path is always exercised.
+      const result = await getGithubUser("");
       assertEquals(result, "{}");
     }
   });
