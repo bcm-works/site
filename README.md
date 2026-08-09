@@ -43,7 +43,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 ## Local Tools
 
-A `task` binary is included to make it easier to run Deno Tasks. The source code for the binary is in [src/tasks/cli/task.cli.ts](src/tasks/cli/task.cli.ts).
+A `task` binary is included to make it easier to run Deno Tasks. The source code for the binary is in [src/tasks/cli.ts](src/tasks/cli.ts).
 
 Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
 

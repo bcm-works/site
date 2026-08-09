@@ -76,8 +76,8 @@
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     },
     "build-cli": {
-      "description": "Build the './tasks' binary from '/src/tasks/cli/task.cli.ts'.",
-      "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/cli/task.cli.ts"
+      "description": "Build the './tasks' binary from '/src/cli.ts'.",
+      "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/task.cli.ts"
     },
     "list": {
       "description": "List all available commands.",
