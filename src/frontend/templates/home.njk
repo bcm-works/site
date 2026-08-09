@@ -8,8 +8,7 @@ body_class: page-home
 {% import "components/github.njk" as github %}
 <div class="intro">
   <p>
-    I specialise in building and actively leading efficient software teams to architect scalable,
-    well-defined technical solutions for organisations.
+    I specialise in actively leading software teams to build scalable, well-defined technical solutions.
   </p>
 </div>
 
@@ -22,7 +21,7 @@ body_class: page-home
       </a>
     </li>
     <li>
-      <a href="/resume.pdf" download="Resume - Brendan Murty.pdf" title="Download my resume">
+      <a href="/resume.pdf?v={{ SITE_BUILD_ID }}" download="Resume - Brendan Murty.pdf" title="Download my resume">
         <span class="icon fa-fw fa-solid fa-address-card"></span>
         <span class="label">Resume</span>
       </a>
