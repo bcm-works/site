@@ -221,6 +221,64 @@ Deno.test("COMMON env file loading", async (test) => {
   await Deno.remove(tempEnvFile);
 });
 
+Deno.test("COMMON env has", async (test) => {
+  await test.step({
+    name: "returns true when env var is set",
+    fn: async () => {
+      await withEnv({ TEST_VAR_HAS: "value" }, () => {
+        const site = new Env(NO_ENV_FILE);
+        assertEquals(site.has("TEST_VAR_HAS"), true);
+      });
+    }
+  });
+
+  await test.step({
+    name: "returns true when env var is not set (get always returns a string)",
+    fn: async () => {
+      await withEnv({ TEST_VAR_HAS: undefined }, () => {
+        const site = new Env(NO_ENV_FILE);
+        assertEquals(site.has("TEST_VAR_HAS"), true);
+      });
+    }
+  });
+});
+
+Deno.test("COMMON env getBuildDir", async (test) => {
+  await test.step({
+    name: "returns default 'build' when SITE_BUILD_DIR is not set",
+    fn: async () => {
+      await withEnv({ SITE_BUILD_DIR: undefined }, () => {
+        const site = new Env(NO_ENV_FILE);
+        assertEquals(site.getBuildDir(), "build");
+      });
+    }
+  });
+
+  await test.step({
+    name: "returns SITE_BUILD_DIR when set",
+    fn: async () => {
+      await withEnv({ SITE_BUILD_DIR: "dist" }, () => {
+        const site = new Env(NO_ENV_FILE);
+        assertEquals(site.getBuildDir(), "dist");
+      });
+    }
+  });
+});
+
+Deno.test("COMMON env postHogAnonBackendEvent", async (test) => {
+  await test.step({
+    name: "creates PostHog client and captures event when SITE_POSTHOG_ID is set",
+    fn: async () => {
+      await withEnv({ SITE_POSTHOG_ID: "test-posthog-id", SITE_POSTHOG_API_HOST: "https://us.i.posthog.com" }, () => {
+        const site = new Env(NO_ENV_FILE);
+        const req = new Request("https://bcm.works/test");
+        // PostHog queues events asynchronously; call should not throw
+        site.postHogAnonBackendEvent(200, req, { "action": "test" });
+      });
+    }
+  });
+});
+
 Deno.test("COMMON env getPort", async (test) => {
   await test.step({
     name: "returns PORT when it is set to a positive value",

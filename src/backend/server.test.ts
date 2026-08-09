@@ -1,5 +1,8 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
 import server from "@/backend/server.ts";
+import { Env } from "@/common/env.ts";
+
+const hasGithubToken = !!(new Env()).get("SITE_GITHUB_ID");
 
 Deno.test("SERVER", async (test) => {
   await test.step({
@@ -44,6 +47,92 @@ Deno.test("SERVER", async (test) => {
 
       // 404s are redirected to the site root via a 301
       assertEquals(res.status, 301);
+    }
+  });
+
+  await test.step({
+    name: "GET /.well-known/traffic-advice/ returns 200 with traffic-advice content type",
+    fn: async () => {
+      const req = new Request("https://bcm.works/.well-known/traffic-advice/");
+      const res = await server.fetch(req);
+
+      assertEquals(res.status, 200);
+      assertEquals(res.headers.get("content-type"), "application/trafficadvice+json");
+      await res.body?.cancel();
+    }
+  });
+
+  await test.step({
+    name: "GET /api/github-user/ returns 200",
+    fn: async () => {
+      if (hasGithubToken) {
+        console.log("Skipping: SITE_GITHUB_ID is set");
+        return;
+      }
+
+      const req = new Request("https://bcm.works/api/github-user/");
+      const res = await server.fetch(req);
+
+      assertEquals(res.status, 200);
+      await res.body?.cancel();
+    }
+  });
+
+  await test.step({
+    name: "GET for an existing static file returns 200",
+    fn: async () => {
+      await Deno.mkdir("./public/test-coverage", { recursive: true });
+      await Deno.writeTextFile("./public/test-coverage/test.html", "<html></html>");
+      try {
+        const req = new Request("https://bcm.works/test-coverage/test.html");
+        const res = await server.fetch(req);
+
+        assertEquals(res.status, 200);
+        await res.body?.cancel();
+      } finally {
+        await Deno.remove("./public/test-coverage", { recursive: true });
+      }
+    }
+  });
+
+  await test.step({
+    name: "GET for an existing page index.html returns 200",
+    fn: async () => {
+      await Deno.mkdir("./public/test-coverage-page", { recursive: true });
+      await Deno.writeTextFile("./public/test-coverage-page/index.html", "<html></html>");
+      try {
+        const req = new Request("https://bcm.works/test-coverage-page/");
+        const res = await server.fetch(req);
+
+        assertEquals(res.status, 200);
+        await res.body?.cancel();
+      } finally {
+        await Deno.remove("./public/test-coverage-page", { recursive: true });
+      }
+    }
+  });
+
+  await test.step({
+    name: "GET for a post path resolves via posts directory and returns 200",
+    fn: async () => {
+      await Deno.mkdir("./public/posts/test-coverage-post", { recursive: true });
+      await Deno.writeTextFile("./public/posts/test-coverage-post/index.html", "<html></html>");
+      try {
+        const req = new Request("https://bcm.works/test-coverage-post/");
+        const res = await server.fetch(req);
+
+        assertEquals(res.status, 200);
+        await res.body?.cancel();
+      } finally {
+        await Deno.remove("./public/posts/test-coverage-post", { recursive: true });
+      }
+    }
+  });
+
+  await test.step({
+    name: "onListen callback executes without throwing",
+    fn: () => {
+      server.onListen();
     }
   });
 });
