@@ -55,8 +55,13 @@
     },
     "test": {
       "description": "Run all test scripts in the 'src' directory.",
-      "command": "deno test --quiet --allow-run=deno --allow-write --allow-env --allow-read --allow-net src",
+      "command": "deno test --quiet --allow-run=deno --allow-write --allow-env --allow-read --allow-net --coverage=.coverage src",
       "dependencies": ["install", "build"]
+    },
+    "test-coverage": {
+      "description": "Run all test scripts in the 'src' directory.",
+      "command": "deno coverage .coverage --detailed",
+      "dependencies": ["test"]
     },
     "post": {
       "description": "Create a Markdown file for a new post.",
