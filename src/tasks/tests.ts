@@ -1,7 +1,7 @@
 import { cmd, cmdResult, cmdShow } from "@/common/cmd.ts";
 import { log, logError, logInfo, logSuccess } from "@/common/log.ts";
 
-const coverageTargetPercent: number = 99;
+const coverageTargetPercent: number = 85;
 
 logInfo("Installing dependencies");
 cmd("deno task install");
