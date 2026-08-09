@@ -1,10 +1,7 @@
 import { cmd, cmdResult, cmdShow } from "@/common/cmd.ts";
-import { log, logError, logInfo, logSuccess } from "@/common/log.ts";
+import { log, logError, logInfo, logSuccess, logWarn } from "@/common/log.ts";
 
 const coverageTargetPercent: number = 85;
-
-logInfo("Installing dependencies");
-cmd("deno task install");
 
 logInfo("Building the site");
 cmd("deno task build");
@@ -12,7 +9,7 @@ cmd("deno task build");
 logInfo("Running tests");
 cmdShow("deno test --quiet --allow-all --clean --coverage=coverage src");
 
-logInfo("Checking test coverage");
+logWarn("Checking test coverage");
 
 const coverageResult = cmdResult(`deno coverage --detailed --threshold=${coverageTargetPercent} coverage`);
 const coverageOutput = JSON.parse(coverageResult);
