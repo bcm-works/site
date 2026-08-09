@@ -54,14 +54,8 @@
       "command": "deno serve --allow-read --allow-env --allow-net ./src/backend/server.ts"
     },
     "test": {
-      "description": "Run all test scripts in the 'src' directory.",
-      "command": "deno test --quiet --allow-run=deno --allow-write --allow-env --allow-read --allow-net --clean --coverage=.coverage src",
-      "dependencies": ["install", "build"]
-    },
-    "test-coverage": {
-      "description": "Run all test scripts in the 'src' directory.",
-      "command": "deno coverage .coverage --detailed",
-      "dependencies": ["test"]
+      "description": "Run the unit test suite.",
+      "command": "deno run --allow-all ./src/tasks/tests.ts"
     },
     "post": {
       "description": "Create a Markdown file for a new post.",
@@ -76,7 +70,7 @@
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     },
     "build-cli": {
-      "description": "Build the './tasks' binary from '/src/cli.ts'.",
+      "description": "Build the './tasks' binary from '/src/tasks/task.cli.ts'.",
       "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/task.cli.ts"
     },
     "list": {

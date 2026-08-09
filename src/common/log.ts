@@ -1,7 +1,7 @@
 import chalk from "chalk";
 
-function log(logContent: string): void {
-  // If there was a third-party logging service,
+export function log(logContent: string): void {
+  // If a third-party logging service was used,
   // this would be point to hook in that integration.
   console.log(logContent);
 }

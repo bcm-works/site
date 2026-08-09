@@ -19,7 +19,10 @@ dist/
 
 *.log
 
-.coverage/
+# Test output
+
+coverage/
+coverage.lcov
 
 # AI tools
 

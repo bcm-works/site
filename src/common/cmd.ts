@@ -1,12 +1,23 @@
 import { execSync, StdioOptions } from "node:child_process";
 
 // Run a system command, default to hiding the output
-export function cmd(command: string, mode: StdioOptions = "ignore"): Buffer | string {
-  return execSync(
-    command,
-    { stdio: mode }
-  );
+// deno-coverage-ignore-start
+export function cmd(command: string, mode: StdioOptions = "ignore"): string {
+  try {
+    const result = execSync(
+      command,
+      {
+        encoding: "utf-8",
+        stdio: mode
+      }
+    );
+
+    return JSON.stringify(result);
+  } catch (error: unknown) {
+    return JSON.stringify({ result: error, status: "error" });
+  }
 }
+// deno-coverage-ignore-stop
 
 // Run a system command and display the output
 export function cmdShow(command: string): Buffer | string {
@@ -25,7 +36,13 @@ export function cmdExists(command: string): boolean {
   try {
     const where = process.platform === "win32" ? `where ${command}` : `command -v ${command}`;
 
-    cmd(where);
+    execSync(
+      where,
+      {
+        encoding: "utf-8",
+        stdio: "ignore"
+      }
+    );
 
     return true;
   } catch (_error) {
