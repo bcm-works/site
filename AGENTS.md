@@ -23,7 +23,7 @@ If any of the below CLI commands aren't available, stop processing and explain t
 
 - **Never run** `git commit`, `git push`, `rm`, or `kill`. These are strictly forbidden by project configuration — even if a workflow seems to require them, stop and ask.
 - Run `bash -n <script>` before proposing changes to shell scripts.
-- If `sudo` is needed, do not invoke it — print the command and explain why instead.
+- If `sudo` is needed, do not invoke it, print the command and explain why instead.
 - See `docs/DESIGN.md`: frontend website design and CSS theming rules.
 
 ## Agent Guidelines & Safety Rules

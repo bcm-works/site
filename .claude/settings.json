@@ -30,7 +30,7 @@
       "Bash(tail*)",
       "Bash(git status*)",
       "Bash(git log*)",
-      "Bash(deno task)",
+      "Bash(deno task list)",
       "Bash(deno task build)",
       "Bash(deno task check)",
       "Bash(deno task start)",
