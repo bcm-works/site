@@ -21,10 +21,9 @@ If any of the below CLI commands aren't available, stop processing and explain t
 
 ## Hard Rules
 
-- **Never run** `git commit`, `git push`, `rm`, or `kill`. These are strictly forbidden by project configuration — even if a workflow seems to require them, stop and ask.
-- Run `bash -n <script>` before proposing changes to shell scripts.
 - If `sudo` is needed, do not invoke it, print the command and explain why instead.
 - See `docs/DESIGN.md`: frontend website design and CSS theming rules.
+- Always check Deno code changes using the custom `deno task check` command, which includes Deno lint, check and fmt.
 - Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
 - If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
 

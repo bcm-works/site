@@ -35,14 +35,11 @@
       "Bash(tail*)",
       "Bash(git status*)",
       "Bash(git log*)",
-      "Bash(deno task list)",
-      "Bash(deno task build)",
-      "Bash(deno task check)",
-      "Bash(deno task start)",
-      "Bash(deno task test)",
-			"Bash(deno task test *)",
+      "Bash(deno task*)",
 			"Bash(deno test *)",
-			"Bash(deno info *)"
+			"Bash(deno info *)",
+			"Bash(deno install *)",
+			"Bash(deno cache *)"
     ],
     "deny": [
       "Read(.env)",
