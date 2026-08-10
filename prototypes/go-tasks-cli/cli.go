@@ -19,14 +19,25 @@ func cmd(command string) string {
 }
 
 func main() {
-	// Get the arguments sent to this, but ignore the first argument,
-	// which is this file's name.
+	// Get all arguments sent to this, ignoring the first
+	// argument, which is this file's name.
 	args := os.Args[1:]
 
-	fmt.Println("all args", args)
+	if len(args) == 0 {
+		fmt.Println("no args provided")
+		os.Exit(1)
+	}
 
-	if len(args) > 0 {
-		arg := args[0]
-		fmt.Println("arg 1", arg)
+	// Get the first argument's text value.
+	arg := args[0]
+
+	// Handle the request by calling the functions in the
+	// other Go files directly.
+	switch arg {
+	case "build":
+		build()
+	default:
+		fmt.Println("unknown command", arg)
+		os.Exit(1)
 	}
 }
