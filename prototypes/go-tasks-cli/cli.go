@@ -31,7 +31,7 @@ func logWarning(message string) {
 
 // Load a variable from the env file, with an optional default value
 func envGet(var_name string, default_value ...string) string {
-	env, err := godotenv.Read("config/.env")
+	env, err := godotenv.Read("../../config/.env")
 
 	if err != nil {
 		logError("failed to load .env file")
