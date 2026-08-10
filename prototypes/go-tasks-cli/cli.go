@@ -75,8 +75,8 @@ func cmdResult(command string) string {
 }
 
 func main() {
-	// Get all arguments sent to this, ignoring the first
-	// argument, which is this file's name.
+	// Get all arguments sent to this script, ignoring
+	// the first argument, which is this file's name.
 	args := os.Args[1:]
 
 	if len(args) == 0 {
@@ -84,11 +84,11 @@ func main() {
 		os.Exit(1)
 	}
 
-	// Get the first argument's text value.
+	// Get the value of the first argument.
 	arg := args[0]
 
-	// Handle the request by calling the functions in the
-	// other Go files directly.
+	// Call the relevant function from the other Go
+	// files in this dir based on the argument.
 	switch arg {
 	case "build":
 		build()
