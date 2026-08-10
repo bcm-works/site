@@ -4,7 +4,29 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+
+	"github.com/fatih/color"
 )
+
+func log(message string) {
+	fmt.Println(message)
+}
+
+func logInfo(message string) {
+	color.Blue("i %s", message)
+}
+
+func logSuccess(message string) {
+	color.Green("✓ %s", message)
+}
+
+func logError(message string) {
+	color.Red("✗ %s", message)
+}
+
+func logWarning(message string) {
+	color.Yellow("! %s", message)
+}
 
 // Run a system command and return the output
 func cmd(command string) string {
