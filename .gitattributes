@@ -1,6 +1,7 @@
 # Git LFS configuration
 
 task filter=lfs diff=lfs merge=lfs -text
+prototypes/go-tasks-cli/task filter=lfs diff=lfs merge=lfs -text
 
 # GitHub repo linguist configuration
 
