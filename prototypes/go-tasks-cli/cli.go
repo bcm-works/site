@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-
-	"github.com/urfave/cli"
 )
 
 // Run a system command and return the output
@@ -21,26 +19,14 @@ func cmd(command string) string {
 }
 
 func main() {
-	app := cli.NewApp()
-	app.Name = "tasks-cli"
-	app.UsageText = "tasks [arg]"
-	app.Author = "Brendan Murty"
-	app.Email = "brendan@bcm.works"
+	// Get the arguments sent to this, but ignore the first argument,
+	// which is this file's name.
+	args := os.Args[1:]
 
-	app.Action = func(c *cli.Context) error {
-		arg := c.Args().Get(0)
+	fmt.Println("all args", args)
 
-		// if arg == "" {
-		// TODO: show usage output, then return nil
-		// }
-
-		fmt.Println("arg: " + arg)
-
-		pwd := cmd("pwd")
-		fmt.Println("pwd: " + pwd)
-
-		return nil
+	if len(args) > 0 {
+		arg := args[0]
+		fmt.Println("arg 1", arg)
 	}
-
-	app.Run(os.Args)
 }
