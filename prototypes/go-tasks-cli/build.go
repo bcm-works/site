@@ -2,20 +2,20 @@ package main
 
 import "fmt"
 
-var buildDir = envGet("SITE_BUILD_DIR", "build")
-var publicDir = envGet("SITE_PUBLIC_DIR", "public")
+var buildDir = EnvGet("SITE_BUILD_DIR", "build")
+var publicDir = EnvGet("SITE_PUBLIC_DIR", "public")
 var cssDir = "src/frontend/styles"
-var timezone = envGet("SITE_TIMEZONE", "Australia/Sydney")
-var url = envGet("SITE_URL", "")
+var timezone = EnvGet("SITE_TIMEZONE", "Australia/Sydney")
+var url = EnvGet("SITE_URL", "")
 
-func build() {
-	logInfo("starting build")
+func RunBuild() {
+	LogInfo("starting build")
 
-	logInfo("buildDir: " + buildDir)
-	logInfo("publicDir: " + publicDir)
-	logInfo("cssDir: " + cssDir)
-	logInfo("timezone: " + timezone)
-	logInfo("url: " + url)
+	LogInfo("buildDir: " + buildDir)
+	LogInfo("publicDir: " + publicDir)
+	LogInfo("cssDir: " + cssDir)
+	LogInfo("timezone: " + timezone)
+	LogInfo("url: " + url)
 
-	fmt.Println("pwd:", cmdResult("pwd"))
+	fmt.Println("pwd:", CmdResult("pwd"))
 }
