@@ -22,7 +22,11 @@
     "disableAutoMode": "disable",
     "allow": [
       "Fetch(https://docs.github.com/*)",
-      "Fetch(https://docs.deno.com/*)",
+			"Fetch(https://docs.deno.com/*)",
+			"Fetch(https://lume.land/docs/*)",
+			"Fetch(https://raw.githubusercontent.com/*)",
+			"Fetch(https://www.npmjs.com/*)",
+			"Fetch(https://jsr.io/*)",
       "Bash(cat*)",
       "Bash(grep*)",
       "Bash(head*)",
@@ -44,6 +48,7 @@
       "Read(.env)",
       "Read(config/**)",
       "Read(docs/AI-USE.md)",
+      "Bash(deno deploy)",
       "Bash(deno deploy*)",
       "Bash(git commit*)",
       "Bash(git push*)"

@@ -25,6 +25,8 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - Run `bash -n <script>` before proposing changes to shell scripts.
 - If `sudo` is needed, do not invoke it, print the command and explain why instead.
 - See `docs/DESIGN.md`: frontend website design and CSS theming rules.
+- Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
+- If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
 
 ## Agent Guidelines & Safety Rules
 
@@ -34,3 +36,14 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - **Strict Command Banishment:** Under no circumstances should the agent ever run `git commit`, `git push`, `rm` or `kill` commands. Doing so is strictly forbidden by the project configuration.
 - **No Destructive Operations:** Never delete system files or run modifying system commands without explaining their purpose and obtaining explicit permission from the user.
 - **Sandboxed Validation:** Validate all proposed changes locally within the sandbox.
+
+## Technical Reference
+
+Fetching information from any page on any of these websites is allowed and encouraged:
+
+- Deno documentation: https://docs.deno.com/
+- Deno Lume documentation: https://lume.land/docs/
+- GitHub public code: https://raw.githubusercontent.com/
+- GitHub documentation: https://docs.github.com/
+- Deno packages (JSR): https://jsr.io/
+- Node packages (NPM): https://www.npmjs.com/
