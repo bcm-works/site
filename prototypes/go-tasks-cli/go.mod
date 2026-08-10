@@ -1,5 +1,6 @@
 // build this module: go build
-module bcm.works/site/src/task
+
+module bcm.works/site/src/task/v2
 
 go 1.26.5
 
