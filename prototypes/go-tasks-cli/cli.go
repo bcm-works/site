@@ -6,6 +6,7 @@ import (
 	"os/exec"
 
 	"github.com/fatih/color"
+	"github.com/joho/godotenv"
 )
 
 func log(message string) {
@@ -26,6 +27,27 @@ func logError(message string) {
 
 func logWarning(message string) {
 	color.Yellow("! %s", message)
+}
+
+// Load a variable from the env file, with an optional default value
+func envGet(var_name string, default_value ...string) string {
+	env, err := godotenv.Read("config/.env")
+
+	if err != nil {
+		logError("failed to load .env file")
+	}
+
+	env_value := env[var_name]
+
+	if env_value == "" {
+		if len(default_value) > 0 {
+			env_value = default_value[0]
+		} else {
+			env_value = ""
+		}
+	}
+
+	return env_value
 }
 
 // Run a system command, ignore output, but show
