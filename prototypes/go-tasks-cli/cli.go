@@ -28,8 +28,20 @@ func logWarning(message string) {
 	color.Yellow("! %s", message)
 }
 
+// Run a system command, ignore output, but show
+// error message if it fails.
+func cmd(command string) {
+	cmd := exec.Command("sh", "-c", command)
+	_, err := cmd.Output()
+
+	if err != nil {
+		logError(err.Error())
+		return
+	}
+}
+
 // Run a system command and return the output
-func cmd(command string) string {
+func cmdResult(command string) string {
 	cmd := exec.Command("sh", "-c", command)
 	out, err := cmd.Output()
 

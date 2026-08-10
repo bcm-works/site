@@ -5,5 +5,5 @@ import "fmt"
 func build() {
 	logInfo("starting build")
 
-	fmt.Println("pwd:", cmd("pwd"))
+	fmt.Println("pwd:", cmdResult("pwd"))
 }
