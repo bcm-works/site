@@ -36,7 +36,8 @@
       "Bash(deno task check)",
       "Bash(deno task start)",
       "Bash(deno task test)",
-      "Bash(deno test *)",
+			"Bash(deno task test *)",
+			"Bash(deno test *)",
 			"Bash(deno info *)"
     ],
     "deny": [
