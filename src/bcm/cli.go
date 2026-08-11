@@ -31,8 +31,8 @@ func EnvGet(varName string, defaultValue ...string) string {
 	// Get the system env var value for this var name
 	envValue := os.Getenv(varName)
 
-	// Load the env vars from the file "./.env"
-	env, err := godotenv.Read(".env")
+	// Load the env vars from the file "/config/.env"
+	env, err := godotenv.Read("../../config/.env")
 
 	// If the env file was loaded successfully, use that variable's value
 	if err == nil {
@@ -87,7 +87,7 @@ func ShowHelp() {
 
 	LogInfo("\nUsage \n")
 
-	Log(fmt.Sprintf(`- %[1]s - Show this message.
+	Log(fmt.Sprintf(`- %[1]s help - Show this message.
 - %[1]s build - Run the site build script.
 - bash %[2]s/cli.build.sh - Rebuild the '%[1]s' binary using Go Build.`,
 		"./bcm",
@@ -118,6 +118,8 @@ func main() {
 	switch arg {
 	case "build":
 		RunBuild()
+	case "help":
+		ShowHelp()
 	default:
 		ShowHelp()
 	}

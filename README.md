@@ -55,10 +55,10 @@ Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
 ./bcm setup
 ```
 
-List all of the available tasks:
+Show the available tasks:
 
 ```bash
-./bcm list
+./bcm help
 ```
 
 ## Deployment

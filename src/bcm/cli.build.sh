@@ -12,11 +12,8 @@ BIN="bcm"
 ENV="$REPO/config/.env"
 
 if [ ! -f "$ENV" ]; then
-  echo "No .env file found at $ENV"
-  exit 1
+  echo "Warning: No file found at $ENV, system environment variables will be used instead."
 fi
-
-ln -sf "$ENV" "$DIR/.env"
 
 cd "$DIR"
 
