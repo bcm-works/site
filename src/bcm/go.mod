@@ -1,5 +1,3 @@
-// build this module: go build
-
 module github.com/bcm-works/site/tree/main/src/bcm/v2
 
 go 1.26.5
