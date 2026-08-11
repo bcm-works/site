@@ -47,18 +47,18 @@ Required tools to manually install first:
 
 ## Local Tools
 
-A `task` binary is included to make it easier to run Deno Tasks. The source code for the binary is in [src/tasks/cli.ts](src/tasks/cli.ts).
+A `bcm` binary is included to make it easier to run local dev tasks. The source code for the binary is in [src/bcm/cli.go](src/bcm/cli.go).
 
 Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
 
 ```bash
-./task setup
+./bcm setup
 ```
 
-List all of the available Deno tasks:
+List all of the available tasks:
 
 ```bash
-./task list
+./bcm list
 ```
 
 ## Deployment

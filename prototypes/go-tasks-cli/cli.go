@@ -1,7 +1,6 @@
 package main
 
 import (
-	_ "embed"
 	"fmt"
 	"os"
 	"os/exec"
@@ -9,54 +8,73 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// Use go:embed to compile the file contents directly into the binary
-//
-//go:embed .env
-var envFileBytes []byte
-
-// Load a variable from the env file, with an optional default value
-func EnvGet(varName string, defaultValue ...string) string {
-	env, err := godotenv.Unmarshal(string(envFileBytes))
+// Get the full path to the current directory,
+// with an optional subdirectory to add to the output.
+func DirGet(subDir ...string) string {
+	dir, err := os.Getwd()
 
 	if err != nil {
-		LogError(fmt.Sprintf("Failed to load .env file: %v", err))
+		LogError(fmt.Sprintf("DirGet error: %s", err.Error()))
+		return ""
 	}
 
-	envValue := env[varName]
+	if len(subDir) > 0 {
+		dir = fmt.Sprintf("%s/%s", dir, subDir[0])
+	}
 
+	return dir
+}
+
+// Get an environment variable value, or return
+// an optional default value.
+func EnvGet(varName string, defaultValue ...string) string {
+	// Get the system env var value for this var name
+	envValue := os.Getenv(varName)
+
+	// Load the env vars from the file "./.env"
+	env, err := godotenv.Read(".env")
+
+	// If the env file was loaded successfully, use that variable's value
+	if err == nil {
+		envValue = env[varName]
+	}
+
+	// If the env var is still empty, use the default value if provided
 	if envValue == "" {
 		if len(defaultValue) > 0 {
-			envValue = defaultValue[0]
+			return defaultValue[0]
 		} else {
-			envValue = ""
+			return ""
 		}
 	}
 
 	return envValue
 }
 
-// Run a system command, and return both the output,
-// and the error message if it fails.
-func Cmd(command string) (string, string) {
+// Run a system command and display the output or error.
+func Cmd(command string) {
 	cmd := exec.Command("bash", "-c", command)
-	out, err := cmd.Output()
 
-	if err != nil {
-		LogError(err.Error())
+	// Start the process asynchronously exactly once
+	if errStart := cmd.Start(); errStart != nil {
+		LogError(fmt.Sprintf("Cmd Run Error: %s", errStart.Error()))
+		os.Exit(1)
 	}
 
-	return string(out), err.Error()
-}
-
-// Run a system command and display the output
-func CmdShow(command string) {
-	out, error := Cmd(command)
-
-	if error != "" {
-		LogError(error)
+	// Wait for it to complete exactly once
+	if errFinish := cmd.Wait(); errFinish != nil {
+		LogError(fmt.Sprintf("Cmd Finish Error: %s", errFinish.Error()))
+		os.Exit(1)
 	}
 
-	Log(string(out))
+	output, errOutput := cmd.Output()
+
+	if errOutput != nil {
+		LogError(fmt.Sprintf("Cmd Output Error: %s", errOutput.Error()))
+		os.Exit(1)
+	}
+
+	Log(string(output))
 }
 
 func ShowHelp() {
@@ -96,10 +114,6 @@ func main() {
 	switch arg {
 	case "build":
 		RunBuild()
-	case "help":
-	case "h":
-	case "list":
-	case "ls":
 	default:
 		ShowHelp()
 	}

@@ -2,14 +2,14 @@ package main
 
 import "fmt"
 
-var buildDir = EnvGet("SITE_BUILD_DIR", "build")
-var publicDir = EnvGet("SITE_PUBLIC_DIR", "public")
-var cssDir = "src/frontend/styles"
+var buildDir = DirGet(EnvGet("SITE_BUILD_DIR", "build"))
+var publicDir = DirGet(EnvGet("SITE_PUBLIC_DIR", "public"))
+var cssDir = DirGet("src/frontend/styles")
 var timezone = EnvGet("SITE_TIMEZONE", "Australia/Sydney")
 var url = EnvGet("SITE_URL", "")
 
 func RunBuild() {
-	LogWarn(fmt.Sprintf("Clearing the build (./%[1]s) and public (./%[2]s) directories", buildDir, publicDir))
+	LogWarn(fmt.Sprintf("Clearing the build (%[1]s) and public (%[2]s) directories", buildDir, publicDir))
 
 	Cmd(fmt.Sprintf("rm -rf %s", buildDir))
 	Cmd(fmt.Sprintf("mkdir -p %s", buildDir))
@@ -33,7 +33,7 @@ func RunBuild() {
 
 	LogInfo("Running Deno code checks")
 
-	CmdShow("deno task check")
+	Cmd("deno task check")
 
 	LogInfo("Copying over page content files to build directory")
 
@@ -43,7 +43,7 @@ func RunBuild() {
 
 	LogInfo("Building the front-end using Lume")
 
-	CmdShow(`TZ="${timezone}"
+	Cmd(`TZ="${timezone}"
     LUME_LOGS=error
     deno --quiet task lume
       --src=${buildDir}
@@ -62,7 +62,7 @@ func RunBuild() {
     "%[1]s/print.css"
   > "%[2]s/bcm.css"`, cssDir, buildDir))
 
-	CmdShow(fmt.Sprintf(`deno --quiet x --yes --no-check npm:lightningcss-cli@1.32.0
+	Cmd(fmt.Sprintf(`deno --quiet x --yes --no-check npm:lightningcss-cli@1.32.0
   --minify
   --bundle
   --targets ">= 0.25%%"  "%[1]s/bcm.css"
