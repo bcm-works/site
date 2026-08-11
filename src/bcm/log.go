@@ -11,7 +11,7 @@ func Log(message string) {
 }
 
 func LogInfo(message string) {
-	color.Blue("%s", message)
+	color.Blue("i %s", message)
 }
 
 func LogHighlight(message string) {
@@ -19,13 +19,13 @@ func LogHighlight(message string) {
 }
 
 func LogSuccess(message string) {
-	color.Green("Success: %s", message)
+	color.Green("SUCCESS %s", message)
 }
 
 func LogError(message string) {
-	color.Red("Error: %s", message)
+	color.Red("✗ %s", message)
 }
 
 func LogWarn(message string) {
-	color.Yellow("Warning: %s", message)
+	color.Yellow("! %s", message)
 }

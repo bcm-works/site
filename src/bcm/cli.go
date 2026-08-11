@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 
 	"github.com/joho/godotenv"
 )
@@ -19,7 +20,7 @@ func DirGet(subDir ...string) string {
 	}
 
 	if len(subDir) > 0 {
-		dir = fmt.Sprintf("%s/%s", dir, subDir[0])
+		dir = fmt.Sprintf("%[1]s/%[2]s", dir, subDir[0])
 	}
 
 	return dir
@@ -53,28 +54,20 @@ func EnvGet(varName string, defaultValue ...string) string {
 
 // Run a system command and display the output or error.
 func Cmd(command string) {
+	// LogInfo(fmt.Sprintf("Cmd starting - %s", command))
+
 	cmd := exec.Command("bash", "-c", command)
+	output, err := cmd.CombinedOutput()
 
-	// Start the process asynchronously exactly once
-	if errStart := cmd.Start(); errStart != nil {
-		LogError(fmt.Sprintf("Cmd Run Error: %s", errStart.Error()))
+	if err != nil {
+		LogError(fmt.Sprintf("Cmd Error: %s", err.Error()))
 		os.Exit(1)
 	}
 
-	// Wait for it to complete exactly once
-	if errFinish := cmd.Wait(); errFinish != nil {
-		LogError(fmt.Sprintf("Cmd Finish Error: %s", errFinish.Error()))
-		os.Exit(1)
+	out := strings.TrimSpace(string(output))
+	if out != "" {
+		Log(out)
 	}
-
-	output, errOutput := cmd.Output()
-
-	if errOutput != nil {
-		LogError(fmt.Sprintf("Cmd Output Error: %s", errOutput.Error()))
-		os.Exit(1)
-	}
-
-	Log(string(output))
 }
 
 func ShowHelp() {
