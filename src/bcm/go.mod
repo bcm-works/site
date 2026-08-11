@@ -1,6 +1,6 @@
 // build this module: go build
 
-module bcm.works/site/src/bcm/v2
+module github.com/bcm-works/site/tree/main/src/bcm/v2
 
 go 1.26.5
 
