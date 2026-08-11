@@ -14,6 +14,10 @@ func LogInfo(message string) {
 	color.Blue("i %s", message)
 }
 
+func LogDebug(message string) {
+	color.Cyan("> %s", message)
+}
+
 func LogHighlight(message string) {
 	color.Magenta("%s", message)
 }
