@@ -17,14 +17,13 @@ var url = EnvGet("SITE_URL", "http://localhost")
 func RunBuild() {
 	LogWarn(fmt.Sprintf("Clearing the build (%[1]s) and public (%[2]s) directories", buildDir, publicDir))
 
-	Cmd(fmt.Sprintf("rm -rf %s", buildDir))
-	Cmd(fmt.Sprintf("mkdir -p %s", buildDir))
-	Cmd(fmt.Sprintf("mkdir -p %s/_data", buildDir))
-	Cmd(fmt.Sprintf("cp -r %[1]s/templates %[2]s/_includes", frontendDir, buildDir))
+	FsSoftDelete(buildDir)
+	FsMakeDir(buildDir)
+	FsMakeDir(fmt.Sprintf("%s/_data", buildDir))
 
-	Cmd(fmt.Sprintf("rm -rf %s", publicDir))
-	Cmd(fmt.Sprintf("mkdir -p %s", publicDir))
-	Cmd(fmt.Sprintf("mkdir -p %s/css", publicDir))
+	FsSoftDelete(publicDir)
+	FsMakeDir(publicDir)
+	FsMakeDir(fmt.Sprintf("%s/css", publicDir))
 
 	LogInfo("Applying PurgeCSS updates to site.css")
 
@@ -41,11 +40,10 @@ func RunBuild() {
 
 	Cmd("deno task check")
 
-	LogInfo("Copying over page content files to build directory")
+	LogInfo("Copying over page content and templates to the build directory")
 
-	Cmd(fmt.Sprintf("cp %[1]s/*.md %[2]s", contentDir, buildDir))
-	Cmd(fmt.Sprintf("cp -r %[1]s/posts %[2]s/posts", contentDir, buildDir))
-	Cmd(fmt.Sprintf("cp -r %[1]s/tags %[2]s/tags", contentDir, buildDir))
+	FsCopy(contentDir, buildDir)
+	FsCopy(fmt.Sprintf("%s/templates", frontendDir), fmt.Sprintf("%s/_includes", buildDir))
 
 	LogInfo("Building the front-end using Lume")
 
@@ -74,16 +72,14 @@ func RunBuild() {
 
 	LogInfo("Copying static files to the public directory")
 
-	Cmd(fmt.Sprintf("cp -r %[1]s/fonts %[2]s/css/fonts", cssDir, publicDir))
-	Cmd(fmt.Sprintf("cp -r %[1]s/images %[2]s/images", contentDir, publicDir))
-	Cmd(fmt.Sprintf("cp %[1]s/favicon.ico %[2]s/favicon.ico", contentDir, publicDir))
-	Cmd(fmt.Sprintf("cp %[1]s/resume.pdf %[2]s/resume.pdf", contentDir, publicDir))
-	Cmd(fmt.Sprintf("cp -r %[1]s/scripts %[2]s/scripts", frontendDir, publicDir))
-	Cmd(fmt.Sprintf("cp %[1]s/manifest.json %[2]s/manifest.json", frontendDir, publicDir))
+	FsCopy(fmt.Sprintf("%s/fonts", cssDir), fmt.Sprintf("%s/css/fonts", publicDir))
+
+	FsCopy(fmt.Sprintf("%s/scripts", frontendDir), fmt.Sprintf("%s/scripts", publicDir))
+	FsCopy(fmt.Sprintf("%s/manifest.json", frontendDir), fmt.Sprintf("%s/manifest.json", publicDir))
 
 	LogWarn("Deleting the build directory")
 
-	Cmd(fmt.Sprintf("rm -rf %s", buildDir))
+	FsSoftDelete(buildDir)
 
-	LogInfo(fmt.Sprintf("Public files ready in %s", publicDir))
+	LogSuccess(fmt.Sprintf("Public files ready in %s", publicDir))
 }
