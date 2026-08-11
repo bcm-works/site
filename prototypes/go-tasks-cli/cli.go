@@ -78,6 +78,8 @@ func Cmd(command string) {
 }
 
 func ShowHelp() {
+	Log(" ")
+
 	LogHighlight("bcm-site CLI \n")
 
 	Log("Command line interface for dev tools in the bcm-site project.")
@@ -90,6 +92,8 @@ func ShowHelp() {
 - bash %[2]s/cli.build.sh - Rebuild the '%[1]s' binary using Go Build.`,
 		"./bcm",
 		"./src/bcm"))
+
+	Log(" ")
 
 	os.Exit(1)
 }
