@@ -19,11 +19,11 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
+- [src/bcm](src/bcm/) - Helper scripts and CLI tools written in [Go](https://go.dev/).
 - [src/common](src/common/) - Common TypeScript helper functions.
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
 - [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [src/frontend/manifest.json](src/frontend/manifest.json) - Progressive Web App configuration.
-- [src/tasks](src/tasks/) - Helper scripts and CLI tools.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
 
@@ -32,14 +32,18 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [Deno Deploy](https://deno.com/deploy) - Infrastructure host.
 - [GitHub Actions](https://github.com/features/actions) - Deployment and testing workflows.
 - [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
-- [Deno](https://deno.land/) - TypeScript, Deno Tests, Deno Tasks.
+- [Go](https://go.dev/) - Tasks CLI.
+- [Deno](https://deno.land/) - Backend, Frontend, Deno Tests.
 - [Lume](https://lume.land/) - Static site generator for Deno.
 - [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
 - [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.
 
 ## Local Setup
 
-[Deno](https://deno.com/) will need to be manually installed first.
+Required tools to manually install first:
+
+- [Deno](https://deno.com/) - Latest stable version
+- [Go](https://go.dev/) - Version `1.26.5`
 
 ## Local Tools
 

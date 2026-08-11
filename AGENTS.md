@@ -18,6 +18,7 @@ If any of the below CLI commands aren't available, stop processing and explain t
 - `bash`
 - `git`
 - `deno`
+- `go`
 
 ## Hard Rules
 
