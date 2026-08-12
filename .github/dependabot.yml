@@ -22,3 +22,26 @@ updates:
       separator: "-"
       prefix: "fix-deps-deno-"
       branch-name-case: "lowercase"
+
+  - package-ecosystem: "gomod"
+    directory: "/src/cli"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 1
+    assignees:
+      - "bcm-works"
+    groups:
+      deps-gomod:
+        patterns:
+          - "*"
+    allow:
+      - dependency-name: "*"
+        dependency-type: "production"
+        update-types:
+          - "version-update:semver-minor"
+          - "version-update:semver-patch"
+    target-branch: "main"
+    pull-request-branch-name:
+      separator: "-"
+      prefix: "fix-deps-gomod-"
+      branch-name-case: "lowercase"
