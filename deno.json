@@ -63,11 +63,11 @@
     },
     "lume": {
       "description": "Run a Lume command.",
-      "command": "deno run --quiet -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
+      "command": "deno run -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
     },
     "check": {
       "description": "Run Deno code checks.",
-      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
+      "command": "deno lint && deno fmt && deno check"
     },
     "build-cli": {
       "description": "Build the './tasks' binary from '/src/tasks/cli.ts'.",

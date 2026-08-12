@@ -27,8 +27,6 @@ func RunBuild() {
 	FsMakeDir(publicDir)
 	FsMakeDir(publicDir + "/css")
 
-	// os.Exit(1)
-
 	LogInfo("Applying PurgeCSS updates to site.css")
 
 	Cmd(fmt.Sprintf(`deno --quiet x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
@@ -51,7 +49,7 @@ func RunBuild() {
 
 	LogInfo("Building the front-end using Lume")
 
-	Cmd(fmt.Sprintf(`TZ="%[1]s" LUME_LOGS=error deno --quiet task lume \
+	Cmd(fmt.Sprintf(`TZ="%[1]s" LUME_LOGS=error deno task lume \
   --src=%[2]s \
   --dest=%[3]s \
   --location="%[4]s"`, timezone, build, public, url))

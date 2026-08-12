@@ -86,11 +86,14 @@ func FsCopyDir(src string, dst string) {
 		LogError(err.Error())
 	}
 
+	FsMakeDir(dst)
+
 	for _, entry := range entries {
 		srcPath := fmt.Sprintf("%s/%s", src, entry.Name())
 		dstPath := fmt.Sprintf("%s/%s", dst, entry.Name())
 
 		if entry.IsDir() {
+			FsMakeDir(dstPath)
 			FsCopyDir(srcPath, dstPath)
 		} else {
 			FsCopyFile(srcPath, dstPath)

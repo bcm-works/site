@@ -9,8 +9,6 @@ import (
 
 // Run a system command and display the output or error.
 func Cmd(command string) {
-	// LogDebug(fmt.Sprintf("Cmd starting - %s", command))
-
 	cmd := exec.Command("bash", "-c", command)
 	output, err := cmd.CombinedOutput()
 
