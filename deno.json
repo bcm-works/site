@@ -17,7 +17,7 @@
     "@std/yaml": "jsr:@std/yaml@^1.2.0",
     "date-fns": "npm:date-fns@^4.4.0",
     "chalk": "npm:chalk@^6.0.0",
-    "highlight": "npm:highlight.js@^11.11.1",
+    "highlight": "npm:highlight.js@^11.12.0",
     "is_json/": "https://deno.land/x/is_json@v1.0.2/",
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
@@ -26,11 +26,11 @@
   "tasks": {
     "setup": {
       "description": "Run the setup script.",
-      "command": "deno run --allow-all ./src/tasks/setup.ts"
+      "command": "./task setup"
     },
     "build": {
-      "description": "Run the site build script.",
-      "command": "deno run --allow-all ./src/tasks/build.ts"
+      "description": "Run the site build process.",
+      "command": "./task build"
     },
     "install": {
       "description": "Install third-party dependencies.",
@@ -41,13 +41,12 @@
       "command": "deno outdated --update --compatible"
     },
     "deps": {
-      "description": "Update all dependencies and commit the results.",
-      "command": "deno task update && git add deno.json deno.lock && git commit -m \"Update third-party dependencies\" || true"
+      "description": "Update Deno dependencies and commit the results.",
+      "command": "./task deps"
     },
     "start": {
       "description": "Start the web server after installing and building.",
-      "command": "deno task serve",
-      "dependencies": ["install", "build"]
+      "command": "./task start"
     },
     "serve": {
       "description": "Start the web server.",
@@ -55,11 +54,7 @@
     },
     "test": {
       "description": "Run the unit test suite.",
-      "command": "deno run --allow-all ./src/tasks/tests.ts"
-    },
-    "post": {
-      "description": "Create a Markdown file for a new post.",
-      "command": "deno run --allow-all ./src/tasks/post.ts"
+      "command": "deno test --allow-all --clean --coverage=coverage --coverage-threshold=85 src"
     },
     "lume": {
       "description": "Run the Lume site build process.",
@@ -68,14 +63,6 @@
     "check": {
       "description": "Run Deno code checks.",
       "command": "deno lint && deno fmt && deno check"
-    },
-    "build-cli": {
-      "description": "Build the './tasks' binary from '/src/tasks/cli.ts'.",
-      "command": "rm -rf ./task && deno compile --allow-all --output ./task src/tasks/cli.ts"
-    },
-    "list": {
-      "description": "List all available commands.",
-      "command": "deno task"
     }
   },
   "compilerOptions": {
