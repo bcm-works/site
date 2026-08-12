@@ -22,8 +22,6 @@ func Cmd(command string) {
 
 	binDir := filepath.Dir(binPath)
 
-	// LogDebug("Cmd: " + binDir + " > " + command)
-
 	cmd := exec.Command("bash", "-c", command)
 	cmd.Dir = binDir
 	output, err := cmd.CombinedOutput()
