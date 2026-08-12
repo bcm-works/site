@@ -6,77 +6,135 @@ import (
 	"io"
 	"io/fs"
 	"os"
-	"time"
+
+	"github.com/joho/godotenv"
 )
 
-// Copy a file or directory on the local file system
-// to another location.
-func FsCopy(src string, dst string) {
-	LogDebug(fmt.Sprintf("FsCopy %s > %s", src, dst))
+// Get the value of an environment variable value,
+// return an optional default value, or return an empty string.
+func EnvGet(varName string, defaultValue ...string) string {
+	// Get the system env var value for this var name
+	envValue := os.Getenv(varName)
 
-	srcFileOrDir, err := os.Open(src)
+	// Load the env vars from the file "/config/.env"
+	env, err := godotenv.Read("../../config/.env")
+
+	// If the env file was loaded successfully, use that variable's value
+	if err == nil {
+		envValue = env[varName]
+	}
+
+	// If the env var is still empty, use the default value if provided
+	if envValue == "" {
+		if len(defaultValue) > 0 {
+			return defaultValue[0]
+		} else {
+			return ""
+		}
+	}
+
+	return envValue
+}
+
+// Get the full path to the current directory,
+// with an optional subdirectory to add to the output.
+func DirGet(subDir ...string) string {
+	dir, err := os.Getwd()
+
+	if err != nil {
+		LogError(fmt.Sprintf("DirGet error: %s", err.Error()))
+		return ""
+	}
+
+	if len(subDir) > 0 {
+		dir = fmt.Sprintf("%[1]s/%[2]s", dir, subDir[0])
+	}
+
+	return dir
+}
+
+// Copy a file to another location.
+func FsCopyFile(src string, dst string) {
+	srcFile, err := os.Open(src)
+
 	if err != nil {
 		LogError(err.Error())
 	}
-	defer srcFileOrDir.Close()
 
-	dstFileOrDir, err := os.Create(dst)
+	defer srcFile.Close()
+
+	dstFile, err := os.Create(dst)
+
 	if err != nil {
 		LogError(err.Error())
 	}
-	defer dstFileOrDir.Close()
 
-	_, err = io.Copy(dstFileOrDir, srcFileOrDir)
+	defer dstFile.Close()
+
+	_, err = io.Copy(dstFile, srcFile)
 
 	if err != nil {
 		LogError(err.Error())
 	}
 }
 
+// Copy a directory to another location.
+func FsCopyDir(src string, dst string) {
+	entries, err := os.ReadDir(src)
+
+	if err != nil {
+		LogError(err.Error())
+	}
+
+	for _, entry := range entries {
+		srcPath := fmt.Sprintf("%s/%s", src, entry.Name())
+		dstPath := fmt.Sprintf("%s/%s", dst, entry.Name())
+
+		if entry.IsDir() {
+			FsCopyDir(srcPath, dstPath)
+		} else {
+			FsCopyFile(srcPath, dstPath)
+		}
+	}
+}
+
+// Check if a directory exists or not.
 func FsDirExists(path string) bool {
 	_, err := os.Stat(path)
+
 	if err == nil {
-		// Path exists
 		return true
 	}
 
-	// Use errors.Is to explicitly catch "not found" errors
 	if errors.Is(err, fs.ErrNotExist) {
 		return false
 	}
 
-	// Path might exist, but we encountered another issue (e.g., permission denied)
 	return false
 }
 
+// Make a new directory if it doesn't already exist.
 func FsMakeDir(path string) {
-	LogDebug(fmt.Sprintf("FsMakeDir %s", path))
-
-	// Check if this dir already exists
 	exists := FsDirExists(path)
 
 	if !exists {
-		// Create the directory as it doesn't exist yet
 		err := os.Mkdir(path, 0755)
+
 		if err != nil {
 			LogError(err.Error())
 		}
 	}
 }
 
-func FsSoftDelete(path string) {
-	now := time.Now()
-	timestamp := now.Format("20060102-150405.0000")
+// Delete a directory and all its contents.
+func FsDeleteDir(path string) {
+	exists := FsDirExists(path)
 
-	trash := DirGet(".trash")
-	FsMakeDir(trash)
+	if exists {
+		err := os.RemoveAll(path)
 
-	trashpath := fmt.Sprintf("%s/%s", trash, timestamp)
-
-	LogDebug(fmt.Sprintf("FsSoftDelete %s > %s", path, trashpath))
-
-	err := os.Rename(path, trashpath)
-	if err != nil {
-		LogError(err.Error())
+		if err != nil {
+			LogError(err.Error())
+		}
 	}
 }

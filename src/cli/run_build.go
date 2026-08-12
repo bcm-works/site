@@ -17,11 +17,11 @@ var url = EnvGet("SITE_URL", "http://localhost")
 func RunBuild() {
 	LogWarn(fmt.Sprintf("Clearing the build (%[1]s) and public (%[2]s) directories", buildDir, publicDir))
 
-	FsSoftDelete(buildDir)
+	FsDeleteDir(buildDir)
 	FsMakeDir(buildDir)
 	FsMakeDir(fmt.Sprintf("%s/_data", buildDir))
 
-	FsSoftDelete(publicDir)
+	FsDeleteDir(publicDir)
 	FsMakeDir(publicDir)
 	FsMakeDir(fmt.Sprintf("%s/css", publicDir))
 
@@ -42,8 +42,8 @@ func RunBuild() {
 
 	LogInfo("Copying over page content and templates to the build directory")
 
-	FsCopy(contentDir, buildDir)
-	FsCopy(fmt.Sprintf("%s/templates", frontendDir), fmt.Sprintf("%s/_includes", buildDir))
+	FsCopyDir(contentDir, buildDir)
+	FsCopyDir(fmt.Sprintf("%s/templates", frontendDir), fmt.Sprintf("%s/_includes", buildDir))
 
 	LogInfo("Building the front-end using Lume")
 
@@ -72,14 +72,14 @@ func RunBuild() {
 
 	LogInfo("Copying static files to the public directory")
 
-	FsCopy(fmt.Sprintf("%s/fonts", cssDir), fmt.Sprintf("%s/css/fonts", publicDir))
+	FsCopyDir(fmt.Sprintf("%s/fonts", cssDir), fmt.Sprintf("%s/css/fonts", publicDir))
 
-	FsCopy(fmt.Sprintf("%s/scripts", frontendDir), fmt.Sprintf("%s/scripts", publicDir))
-	FsCopy(fmt.Sprintf("%s/manifest.json", frontendDir), fmt.Sprintf("%s/manifest.json", publicDir))
+	FsCopyDir(fmt.Sprintf("%s/scripts", frontendDir), fmt.Sprintf("%s/scripts", publicDir))
+	FsCopyFile(fmt.Sprintf("%s/manifest.json", frontendDir), fmt.Sprintf("%s/manifest.json", publicDir))
 
 	LogWarn("Deleting the build directory")
 
-	FsSoftDelete(buildDir)
+	FsDeleteDir(buildDir)
 
 	LogSuccess(fmt.Sprintf("Public files ready in %s", publicDir))
 }

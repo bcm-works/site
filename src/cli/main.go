@@ -5,52 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
-
-	"github.com/joho/godotenv"
 )
-
-// Get the full path to the current directory,
-// with an optional subdirectory to add to the output.
-func DirGet(subDir ...string) string {
-	dir, err := os.Getwd()
-
-	if err != nil {
-		LogError(fmt.Sprintf("DirGet error: %s", err.Error()))
-		return ""
-	}
-
-	if len(subDir) > 0 {
-		dir = fmt.Sprintf("%[1]s/%[2]s", dir, subDir[0])
-	}
-
-	return dir
-}
-
-// Get an environment variable value, or return
-// an optional default value.
-func EnvGet(varName string, defaultValue ...string) string {
-	// Get the system env var value for this var name
-	envValue := os.Getenv(varName)
-
-	// Load the env vars from the file "/config/.env"
-	env, err := godotenv.Read("../../config/.env")
-
-	// If the env file was loaded successfully, use that variable's value
-	if err == nil {
-		envValue = env[varName]
-	}
-
-	// If the env var is still empty, use the default value if provided
-	if envValue == "" {
-		if len(defaultValue) > 0 {
-			return defaultValue[0]
-		} else {
-			return ""
-		}
-	}
-
-	return envValue
-}
 
 // Run a system command and display the output or error.
 func Cmd(command string) {
