@@ -19,7 +19,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server and API.
-- [src/bcm](src/bcm/) - Helper scripts and CLI tools written in [Go](https://go.dev/).
+- [src/cli](src/cli/) - CLI tool written in [Go](https://go.dev/).
 - [src/common](src/common/) - Common TypeScript helper functions.
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
 - [src/frontend/styles/theme.css](src/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
@@ -47,18 +47,12 @@ Required tools to manually install first:
 
 ## Local Tools
 
-A `bcm` binary is included to make it easier to run local dev tasks. The source code for the binary is in [src/bcm/cli.go](src/bcm/cli.go).
-
-Run the [setup tool](src/tasks/setup.ts) to setup your local environment:
-
-```bash
-./bcm setup
-```
+A `task` binary is included to make it easier to run local dev tasks. The source code for the binary is in [src/cli/cli.go](src/cli/cli.go).
 
 Show the available tasks:
 
 ```bash
-./bcm help
+./task list
 ```
 
 ## Deployment

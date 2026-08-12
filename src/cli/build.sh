@@ -8,7 +8,6 @@
 DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 
-BIN="bcm"
 ENV="$REPO/config/.env"
 
 if [ ! -f "$ENV" ]; then
@@ -17,9 +16,9 @@ fi
 
 cd "$DIR"
 
-rm -rf "$DIR/$BIN"
-rm -rf "$REPO/$BIN"
+rm -rf "$DIR/cli"
+rm -rf "$REPO/task"
 
 go build .
 
-mv "$DIR/$BIN" "$REPO/$BIN"
+mv "$DIR/cli" "$REPO/task"

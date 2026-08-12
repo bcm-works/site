@@ -76,16 +76,22 @@ func ShowHelp() {
 	LogHighlight("bcm-site CLI \n")
 
 	Log("Command line interface for dev tools in the bcm-site project.")
-	Log("View the public repository on GitHub at https://github.com/bcm-works/site")
+	Log("View the public repository on GitHub at https://github.com/bcm-works/site \n")
 
-	LogInfo("\nUsage \n")
+	LogHighlight("Usage \n")
 
-	Log(fmt.Sprintf(`- %[1]s help - Show this message.
-- %[1]s build - Run the site build script.
-- bash %[2]s/cli.build.sh - Rebuild the '%[1]s' binary using Go Build.`,
-		"./bcm",
-		"./src/bcm"))
+	LogInfo("Show this help message.")
+	Log("./task help")
+	Log("./task list")
+	Log("./task")
+	Log(" ")
 
+	LogInfo("Build the site.")
+	Log("./task build")
+	Log(" ")
+
+	LogInfo("Build the 'task' binary using Go Build.")
+	Log("bash ./src/cli/build.sh")
 	Log(" ")
 
 	os.Exit(1)
@@ -112,6 +118,8 @@ func main() {
 	case "build":
 		RunBuild()
 	case "help":
+		ShowHelp()
+	case "list":
 		ShowHelp()
 	default:
 		ShowHelp()
