@@ -49,10 +49,7 @@ func RunBuild() {
 
 	LogInfo("Building the front-end using Lume")
 
-	Cmd(fmt.Sprintf(`TZ="%[1]s" LUME_LOGS=error deno task lume \
-  --src=%[2]s \
-  --dest=%[3]s \
-  --location="%[4]s"`, timezone, build, public, url))
+	Cmd("deno task lume-build")
 
 	LogInfo("Combining and minifying CSS")
 
@@ -79,9 +76,8 @@ func RunBuild() {
 	FsCopyDir(frontendDir+"/scripts", publicDir+"/scripts")
 	FsCopyFile(frontendDir+"/manifest.json", publicDir+"/manifest.json")
 
-	LogWarn("Deleting the build directory")
-
-	FsDeleteDir(buildDir)
+	// LogWarn("Deleting the build directory")
+	// FsDeleteDir(buildDir)
 
 	LogSuccess("Public files ready in " + publicDir)
 }

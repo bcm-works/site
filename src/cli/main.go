@@ -4,12 +4,21 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"strings"
 )
 
 // Run a system command and display the output or error.
 func Cmd(command string) {
+	binPath, err := os.Executable()
+	if err != nil {
+		LogError(fmt.Sprintf("Cmd Error: Failed to find executable path - %v", err))
+	}
+
+	binDir := filepath.Dir(binPath)
+
 	cmd := exec.Command("bash", "-c", command)
+	cmd.Dir = binDir
 	output, err := cmd.CombinedOutput()
 
 	if err != nil {
