@@ -98,8 +98,6 @@ jobs:
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
-      - name: Build Site
-        run: ./task build
       - name: Deploy
         run: |
           deno deploy \

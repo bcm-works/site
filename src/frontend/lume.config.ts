@@ -16,15 +16,6 @@ import langBash from "highlight/lib/languages/bash";
 import langPhp from "highlight/lib/languages/php";
 import langTypeScript from "highlight/lib/languages/typescript";
 
-// Build the site using Lume
-
-const site = lume({
-  prettyUrls: true,
-  emptyDest: false,
-  src: "./build",
-  dest: "./public"
-});
-
 // Load environment variables
 
 const bcm = new bcmEnv();
@@ -40,6 +31,16 @@ const sitePosthogUiHost: string = bcm.get("SITE_POSTHOG_UI_HOST");
 const siteIsLocal: boolean = bcm.isLocal();
 const siteEnv: string = siteIsLocal ? "local" : bcm.get("SITE_ENV", "hosted");
 const siteBuildId: string = bcm.getBuildId();
+
+// Build the site using Lume
+
+const site = lume({
+  prettyUrls: true,
+  emptyDest: false,
+  src: "./build",
+  dest: "./public",
+  location: new URL(siteUrl)
+});
 
 // Save env vars as site data variables so templates can use them
 

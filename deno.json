@@ -30,7 +30,7 @@
     },
     "build": {
       "description": "Run the site build process.",
-      "command": "./task build"
+      "command": "deno run --allow-all ./src/backend/build.ts"
     },
     "install": {
       "description": "Install Deno dependencies.",
