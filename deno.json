@@ -62,12 +62,8 @@
       "command": "deno run --allow-all ./src/tasks/post.ts"
     },
     "lume": {
-      "description": "Run a Lume command.",
-      "command": "deno run -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
-    },
-    "lume-build": {
-      "description": "Run the Lume build command.",
-      "command": "TZ=Australia/Sydney LUME_LOGS=error deno run -P=lume lume/cli.ts --config=src/frontend/lume.config.ts --src=build --dest=public"
+      "description": "Run the Lume site build process.",
+      "command": "TZ=Australia/Sydney LUME_LOGS=error deno run -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
     },
     "check": {
       "description": "Run Deno code checks.",

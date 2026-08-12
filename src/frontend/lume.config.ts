@@ -20,7 +20,9 @@ import langTypeScript from "highlight/lib/languages/typescript";
 
 const site = lume({
   prettyUrls: true,
-  emptyDest: true
+  emptyDest: false,
+  src: "./build",
+  dest: "./public"
 });
 
 // Load environment variables

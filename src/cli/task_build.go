@@ -49,7 +49,7 @@ func TaskBuild() {
 
 	LogInfo("Building the front-end using Lume")
 
-	Cmd("deno task lume-build")
+	Cmd("deno task lume")
 
 	LogInfo("Combining and minifying CSS")
 

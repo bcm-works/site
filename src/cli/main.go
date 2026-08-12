@@ -4,9 +4,9 @@ import (
 	"os"
 )
 
-// The main entrypoint to the cli, this is the function
-// that is triggered when an argument is sent to
-// the binary version of this package.
+// The main entrypoint to the cli, this function
+// is called first and arguments sent to it will
+// be available here directly.
 func main() {
 	args := os.Args
 
@@ -20,7 +20,7 @@ func main() {
 	arg := args[1]
 
 	// Call the relevant function from the other Go
-	// files in this dir based on the argument.
+	// files in this dir based on the argument value.
 	switch arg {
 	case "build":
 		TaskBuild()
