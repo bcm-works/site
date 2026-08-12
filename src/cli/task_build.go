@@ -72,6 +72,7 @@ func TaskBuild() {
 	FsCopyDir(frontendDir+"/scripts", publicDir+"/scripts")
 	FsCopyDir(cssDir+"/fonts", publicDir+"/css/fonts")
 	FsCopyFile(content+"/resume.pdf", publicDir+"/resume.pdf")
+	FsCopyFile(contentDir+"/images/logos/favicon.ico", publicDir+"/favicon.ico")
 	FsCopyFile(frontendDir+"/manifest.json", publicDir+"/manifest.json")
 
 	LogWarn("Deleting the build directory")
