@@ -16,7 +16,7 @@ var cssDir = DirGet("src/frontend/styles")
 var timezone = EnvGet("SITE_TIMEZONE", "Australia/Sydney")
 var url = EnvGet("SITE_URL", "http://localhost")
 
-func RunBuild() {
+func TaskBuild() {
 	LogWarn(fmt.Sprintf("Clearing the build (./%[1]s) and public (./%[2]s) directories", build, public))
 
 	FsDeleteDir(buildDir)

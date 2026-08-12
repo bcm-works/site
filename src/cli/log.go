@@ -23,7 +23,7 @@ func LogHighlight(message string) {
 }
 
 func LogSuccess(message string) {
-	color.Green("SUCCESS %s", message)
+	color.Green("✔ %s", message)
 }
 
 func LogError(message string) {

@@ -1,37 +1,39 @@
 package main
 
 import (
-	"fmt"
 	"os"
-	"os/exec"
-	"path/filepath"
-	"strings"
 )
 
-// Run a system command and display the output or error.
-func Cmd(command string) {
-	binPath, err := os.Executable()
-	if err != nil {
-		LogError(fmt.Sprintf("Cmd Error: Failed to find executable path - %v", err))
+// The main entrypoint to the cli, this is the function
+// that is triggered when an argument is sent to
+// the binary version of this package.
+func main() {
+	args := os.Args
+
+	if len(args) == 1 {
+		// The first argument is this file's name, so having
+		// only one argument means no other arguments were included.
+		ShowHelp()
 	}
 
-	binDir := filepath.Dir(binPath)
+	// Get the value of the first argument.
+	arg := args[1]
 
-	cmd := exec.Command("bash", "-c", command)
-	cmd.Dir = binDir
-	output, err := cmd.CombinedOutput()
-
-	if err != nil {
-		LogError(fmt.Sprintf("Cmd Error: %s", err.Error()))
-		os.Exit(1)
-	}
-
-	out := strings.TrimSpace(string(output))
-	if out != "" {
-		Log(out)
+	// Call the relevant function from the other Go
+	// files in this dir based on the argument.
+	switch arg {
+	case "build":
+		TaskBuild()
+	case "help":
+		ShowHelp()
+	case "list":
+		ShowHelp()
+	default:
+		ShowHelp()
 	}
 }
 
+// Displays content describing the tool and the available commands.
 func ShowHelp() {
 	Log(" ")
 
@@ -57,33 +59,4 @@ func ShowHelp() {
 	Log(" ")
 
 	os.Exit(1)
-}
-
-// The main entrypoint to the cli, this is the
-// function that is triggered when an arg is sent to
-// the built version of this package.
-func main() {
-	args := os.Args
-
-	if len(args) == 1 {
-		// The first argument is this file's name, so having
-		// only one argument means no other arguments were included.
-		ShowHelp()
-	}
-
-	// Get the value of the first argument.
-	arg := args[1]
-
-	// Call the relevant function from the other Go
-	// files in this dir based on the argument.
-	switch arg {
-	case "build":
-		RunBuild()
-	case "help":
-		ShowHelp()
-	case "list":
-		ShowHelp()
-	default:
-		ShowHelp()
-	}
 }
