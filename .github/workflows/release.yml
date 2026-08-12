@@ -73,10 +73,8 @@ jobs:
         uses: denoland/setup-deno@v2
         with:
           deno-version: latest
-      - name: Install Dependencies
-        run: deno task install
       - name: Run Tests
-        run: deno task test
+        run: ./task test
 
   deploy-deno:
     name: Deno Deploy
