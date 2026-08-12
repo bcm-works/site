@@ -26,6 +26,14 @@ func main() {
 		TaskBuild()
 	case "setup":
 		TaskSetup()
+	case "start":
+		TaskStart()
+	case "test":
+		TaskTests()
+	case "tests":
+		TaskTests()
+	case "deps":
+		TaskDeps()
 	case "help":
 		ShowHelp()
 	case "list":
@@ -46,12 +54,6 @@ func ShowHelp() {
 
 	LogHighlight("Usage \n")
 
-	LogInfo("Show this help message.")
-	Log("./task help")
-	Log("./task list")
-	Log("./task")
-	Log(" ")
-
 	LogInfo("Initial environment setup.")
 	Log("./task setup")
 	Log(" ")
@@ -60,8 +62,27 @@ func ShowHelp() {
 	Log("./task build")
 	Log(" ")
 
+	LogInfo("Run tests.")
+	Log("./task test")
+	Log("./task tests")
+	Log(" ")
+
+	LogInfo("Start the web server.")
+	Log("./task start")
+	Log(" ")
+
+	LogInfo("Update Deno dependencies and commit the results.")
+	Log("./task deps")
+	Log(" ")
+
 	LogInfo("Build the 'task' binary using Go Build.")
 	Log("bash ./src/cli/build.sh")
+	Log(" ")
+
+	LogInfo("Show this help message.")
+	Log("./task help")
+	Log("./task list")
+	Log("./task")
 	Log(" ")
 
 	os.Exit(1)

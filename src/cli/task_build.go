@@ -14,7 +14,7 @@ func TaskBuild() {
 	var frontendDir = DirGet("src/frontend")
 	var cssDir = DirGet("src/frontend/styles")
 
-	LogWarn(fmt.Sprintf("Clearing the build (./%[1]s) and public (./%[2]s) directories", build, public))
+	LogInfo(fmt.Sprintf("Clearing the build (./%[1]s) and public (./%[2]s) directories", build, public))
 
 	FsDeleteDir(buildDir)
 	FsMakeDir(buildDir)
@@ -76,5 +76,5 @@ func TaskBuild() {
 	LogWarn("Deleting the build directory")
 	FsDeleteDir(buildDir)
 
-	LogSuccess("Public files ready in " + publicDir)
+	LogSuccess("Build completed.")
 }
