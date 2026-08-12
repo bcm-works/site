@@ -81,7 +81,6 @@
   "fmt": {
     "include": [
       "src/backend/",
-      "src/common/",
       "src/frontend/",
       "deno.json"
     ],
@@ -98,7 +97,6 @@
   "lint": {
     "include": [
       "src/backend/",
-      "src/common/",
       "src/frontend/",
       "deno.json"
     ],
@@ -150,6 +148,7 @@
     ]
   },
   "exclude": [
-    "node_modules/"
+    "node_modules/",
+    "src/cli/"
   ]
 }
