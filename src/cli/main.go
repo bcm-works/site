@@ -24,6 +24,8 @@ func main() {
 	switch arg {
 	case "build":
 		TaskBuild()
+	case "setup":
+		TaskSetup()
 	case "help":
 		ShowHelp()
 	case "list":
@@ -48,6 +50,10 @@ func ShowHelp() {
 	Log("./task help")
 	Log("./task list")
 	Log("./task")
+	Log(" ")
+
+	LogInfo("Initial environment setup.")
+	Log("./task setup")
 	Log(" ")
 
 	LogInfo("Build the site.")

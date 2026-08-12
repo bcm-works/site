@@ -130,8 +130,8 @@ func FsCopyDir(src string, dst string) {
 	}
 }
 
-// Check if a directory exists or not.
-func FsDirExists(path string) bool {
+// Check if a file or directory exists.
+func FsExists(path string) bool {
 	_, err := os.Stat(path)
 
 	if err == nil {
@@ -147,7 +147,7 @@ func FsDirExists(path string) bool {
 
 // Make a new directory if it doesn't already exist.
 func FsMakeDir(path string) {
-	exists := FsDirExists(path)
+	exists := FsExists(path)
 
 	if !exists {
 		// Create directories recursively as needed
@@ -160,7 +160,7 @@ func FsMakeDir(path string) {
 
 // Delete a directory and all its contents.
 func FsDeleteDir(path string) {
-	exists := FsDirExists(path)
+	exists := FsExists(path)
 
 	if exists {
 		err := os.RemoveAll(path)

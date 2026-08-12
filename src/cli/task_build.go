@@ -4,19 +4,16 @@ import (
 	"fmt"
 )
 
-var build = EnvGet("SITE_BUILD_DIR", "build")
-var buildDir = DirGet(build)
-var public = EnvGet("SITE_PUBLIC_DIR", "public")
-var publicDir = DirGet(public)
-var content = "content"
-var contentDir = DirGet(content)
-var frontendDir = DirGet("src/frontend")
-var cssDir = DirGet("src/frontend/styles")
-
-var timezone = EnvGet("SITE_TIMEZONE", "Australia/Sydney")
-var url = EnvGet("SITE_URL", "http://localhost")
-
 func TaskBuild() {
+	var build = EnvGet("SITE_BUILD_DIR", "build")
+	var buildDir = DirGet(build)
+	var public = EnvGet("SITE_PUBLIC_DIR", "public")
+	var publicDir = DirGet(public)
+	var content = "content"
+	var contentDir = DirGet(content)
+	var frontendDir = DirGet("src/frontend")
+	var cssDir = DirGet("src/frontend/styles")
+
 	LogWarn(fmt.Sprintf("Clearing the build (./%[1]s) and public (./%[2]s) directories", build, public))
 
 	FsDeleteDir(buildDir)
@@ -71,13 +68,13 @@ func TaskBuild() {
 
 	LogInfo("Copying static files to the public directory")
 
-	FsCopyDir(cssDir+"/fonts", publicDir+"/css/fonts")
-
+	FsCopyDir(contentDir+"/images", publicDir+"/images")
 	FsCopyDir(frontendDir+"/scripts", publicDir+"/scripts")
+	FsCopyDir(cssDir+"/fonts", publicDir+"/css/fonts")
 	FsCopyFile(frontendDir+"/manifest.json", publicDir+"/manifest.json")
 
-	// LogWarn("Deleting the build directory")
-	// FsDeleteDir(buildDir)
+	LogWarn("Deleting the build directory")
+	FsDeleteDir(buildDir)
 
 	LogSuccess("Public files ready in " + publicDir)
 }

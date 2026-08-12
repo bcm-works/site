@@ -47,9 +47,15 @@ Required tools to manually install first:
 
 ## Local Tools
 
-A `task` binary is included to make it easier to run local dev tasks. The source code for the binary is in [src/cli/cli.go](src/cli/cli.go).
+A `task` binary is included to make it easier to run local dev tasks. The source code for this is in [src/cli](src/cli/).
 
-Show the available tasks:
+Run the `setup` task to setup your local environment:
+
+```bash
+./task setup
+```
+
+To list all of the available tasks:
 
 ```bash
 ./task list
