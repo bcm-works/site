@@ -33,15 +33,15 @@
       "command": "./task build"
     },
     "install": {
-      "description": "Install third-party dependencies.",
+      "description": "Install Deno dependencies.",
       "command": "deno install --quiet"
     },
     "update": {
-      "description": "Update third-party dependencies.",
+      "description": "Update Deno dependencies.",
       "command": "deno outdated --update --compatible"
     },
     "deps": {
-      "description": "Update Deno dependencies and commit the results.",
+      "description": "Update Deno and Go dependencies.",
       "command": "./task deps"
     },
     "start": {
