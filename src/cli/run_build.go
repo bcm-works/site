@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var build = EnvGet("SITE_BUILD_DIR", "build")
 var buildDir = DirGet(build)
@@ -15,15 +17,17 @@ var timezone = EnvGet("SITE_TIMEZONE", "Australia/Sydney")
 var url = EnvGet("SITE_URL", "http://localhost")
 
 func RunBuild() {
-	LogWarn(fmt.Sprintf("Clearing the build (%[1]s) and public (%[2]s) directories", buildDir, publicDir))
+	LogWarn(fmt.Sprintf("Clearing the build (./%[1]s) and public (./%[2]s) directories", build, public))
 
 	FsDeleteDir(buildDir)
 	FsMakeDir(buildDir)
-	FsMakeDir(fmt.Sprintf("%s/_data", buildDir))
+	FsMakeDir(buildDir + "/_data")
 
 	FsDeleteDir(publicDir)
 	FsMakeDir(publicDir)
-	FsMakeDir(fmt.Sprintf("%s/css", publicDir))
+	FsMakeDir(publicDir + "/css")
+
+	// os.Exit(1)
 
 	LogInfo("Applying PurgeCSS updates to site.css")
 
@@ -72,14 +76,14 @@ func RunBuild() {
 
 	LogInfo("Copying static files to the public directory")
 
-	FsCopyDir(fmt.Sprintf("%s/fonts", cssDir), fmt.Sprintf("%s/css/fonts", publicDir))
+	FsCopyDir(cssDir+"/fonts", publicDir+"/css/fonts")
 
-	FsCopyDir(fmt.Sprintf("%s/scripts", frontendDir), fmt.Sprintf("%s/scripts", publicDir))
-	FsCopyFile(fmt.Sprintf("%s/manifest.json", frontendDir), fmt.Sprintf("%s/manifest.json", publicDir))
+	FsCopyDir(frontendDir+"/scripts", publicDir+"/scripts")
+	FsCopyFile(frontendDir+"/manifest.json", publicDir+"/manifest.json")
 
 	LogWarn("Deleting the build directory")
 
 	FsDeleteDir(buildDir)
 
-	LogSuccess(fmt.Sprintf("Public files ready in %s", publicDir))
+	LogSuccess("Public files ready in " + publicDir)
 }

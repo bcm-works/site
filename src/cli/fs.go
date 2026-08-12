@@ -118,8 +118,8 @@ func FsMakeDir(path string) {
 	exists := FsDirExists(path)
 
 	if !exists {
-		err := os.Mkdir(path, 0755)
-
+		// Create directories recursively as needed
+		err := os.MkdirAll(path, 0755)
 		if err != nil {
 			LogError(err.Error())
 		}
