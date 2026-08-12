@@ -1,5 +1,5 @@
 import { parse as envParse } from "@std/dotenv";
-import { logError } from "@/common/log.ts";
+import { logError } from "@/backend/log.ts";
 import { format as dateInFormat } from "date-fns";
 import { PostHog } from "posthog";
 

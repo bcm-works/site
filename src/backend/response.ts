@@ -1,5 +1,5 @@
 import { cors } from "@/backend/headers.ts";
-import { Env } from "@/common/env.ts";
+import { Env } from "@/backend/env.ts";
 import { ResponseHandlerResponse } from "@/backend/server.types.ts";
 
 const env = new Env();

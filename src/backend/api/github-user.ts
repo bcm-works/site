@@ -1,5 +1,5 @@
 import { graphql as GithubGraphQL } from "@octokit/graphql";
-import { Env } from "@/common/env.ts";
+import { Env } from "@/backend/env.ts";
 import { GitHubUserQuery, GitHubUserResponse } from "@/backend/server.types.ts";
 
 const env = new Env();

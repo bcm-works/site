@@ -1,6 +1,6 @@
 // Lume Configuration - https://lume.land/docs/configuration/config-file/
 
-import { Env as bcmEnv } from "@/common/env.ts";
+import { Env as bcmEnv } from "@/backend/env.ts";
 import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";

@@ -1,7 +1,7 @@
 import { serveFile } from "@std/http/file-server";
-import { fileExists } from "@/common/local.ts";
-import { logSuccess } from "@/common/log.ts";
-import { Env } from "@/common/env.ts";
+import { fileExists } from "@/backend/local.ts";
+import { logSuccess } from "@/backend/log.ts";
+import { Env } from "@/backend/env.ts";
 import { requestInfo } from "@/backend/request.ts";
 import { corsHandler, responseHandler } from "@/backend/response.ts";
 import { getGithubUser } from "@/backend/api/github-user.ts";

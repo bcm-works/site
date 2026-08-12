@@ -56,6 +56,7 @@
     "npm:date-fns@4.3.0": "4.3.0",
     "npm:date-fns@^4.4.0": "4.4.0",
     "npm:esbuild@0.28.0": "0.28.0",
+    "npm:highlight.js@11.11.1": "11.11.1",
     "npm:highlight.js@^11.12.0": "11.12.0",
     "npm:lightningcss-wasm@1.32.0": "1.32.0",
     "npm:markdown-it-attrs@4.5.0": "4.5.0_markdown-it@14.1.1",
@@ -638,6 +639,9 @@
       "dependencies": [
         "fast-string-width"
       ]
+    },
+    "highlight.js@11.11.1": {
+      "integrity": "sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w=="
     },
     "highlight.js@11.12.0": {
       "integrity": "sha512-nbfWpyRMcMrPMmDwJB+dhX/eiaPKtc2RB+0QZskqJ3WjRA/FDS0e9hZrx8EC/lbEv8gXy98FcDbNa/dspAaJMg=="

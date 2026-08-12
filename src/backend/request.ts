@@ -1,4 +1,4 @@
-import { Env } from "@/common/env.ts";
+import { Env } from "@/backend/env.ts";
 import { RequestInfoResponse } from "@/backend/server.types.ts";
 
 const env = new Env();
