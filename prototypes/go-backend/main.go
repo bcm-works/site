@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	// Initialise the router
 	r := chi.NewRouter()
 
 	// Setup the logger
@@ -28,15 +29,17 @@ func main() {
 		MaxAge:           300,
 	}))
 
+	// Add health check endpoints
 	r.Get("/", ApiHealth)
 	r.Get("/health", ApiHealth)
 
-	// Example of a dynamic route
-	// r.Get("/articles/{date}-{slug}", getArticle)
-	// getArticle(w http.ResponseWriter, r *http.Request) {
-	// dateParam := chi.URLParam(r, "date")
-	// slugParam := chi.URLParam(r, "slug")
+	// Example dynamic route
+	r.Get("/posts/{slug}", func(w http.ResponseWriter, r *http.Request) {
+		slugParam := chi.URLParam(r, "slug")
+		w.Write([]byte("Post slug request: " + slugParam))
+	})
 
+	// Start the web server
 	fmt.Println("Server starting at http://localhost:3000")
 	http.ListenAndServe(":3000", r)
 }
