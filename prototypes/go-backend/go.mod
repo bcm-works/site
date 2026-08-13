@@ -2,4 +2,7 @@ module github.com/bcm-works/site/backend/v2
 
 go 1.26.5
 
-require github.com/go-chi/chi/v5 v5.3.1 // indirect
+require (
+	github.com/go-chi/chi/v5 v5.3.1 // direct
+	github.com/go-chi/cors v1.2.2 // direct
+)
