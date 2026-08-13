@@ -27,7 +27,7 @@ func TestLog(t *testing.T) {
 	io.Copy(&received, r)
 
 	// Fail the test if the output is incorrect.
-	if TestConfirmWithBuffer(received, expected) {
+	if !BufferEqualsString(received, expected) {
 		t.Errorf("Expecting '%[1]s', got '%[2]q'", expected, received.String())
 	}
 }

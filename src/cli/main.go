@@ -93,7 +93,8 @@ func ShowHelp() {
 	os.Exit(1)
 }
 
-func TestConfirmWithBuffer(received bytes.Buffer, expected string) bool {
+// Check if the trimmed value from a buffer matches a string value.
+func BufferEqualsString(received bytes.Buffer, expected string) bool {
 	receivedStr := strings.Trim(received.String(), "\n")
 
 	return strings.Compare(expected, receivedStr) == 0
