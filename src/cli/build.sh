@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 #
-# bcm CLI - Rebuild the binary using Go Build
+# Task CLI - Rebuild the binary at "../../task"
 #
 #
 
