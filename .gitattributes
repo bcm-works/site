@@ -16,6 +16,7 @@ content/** linguist-documentation
 design/** linguist-documentation
 docs/** linguist-documentation
 deno.lock linguist-generated
+src/cli/go.sum linguist-generated
 *.js linguist-language=javascript
 *.ts linguist-language=typescript
 *.tsx linguist-language=typescript
