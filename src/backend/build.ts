@@ -32,10 +32,6 @@ cmd(`deno --quiet x --yes --no-check --unstable-detect-cjs npm:purgecss@8.0.0 \
   --content "./src/frontend/**/*.njk" \
   --output "./src/frontend/styles/site.css"`);
 
-logInfo("Running Deno code checks");
-
-cmd("deno task check");
-
 logInfo("Copying over page content files to build directory");
 
 cmd(`cp content/*.md "${buildDir}"`);

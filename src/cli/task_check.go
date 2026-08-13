@@ -7,6 +7,9 @@ func TaskCheck() {
 	LogInfo("Installing Deno dependencies")
 	Cmd("deno task install")
 
+	LogInfo("Running Deno code checks")
+	Cmd("deno task check")
+
 	LogInfo("Building the site")
 	TaskBuild()
 

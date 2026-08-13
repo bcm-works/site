@@ -53,7 +53,7 @@
       "command": "deno serve --allow-read --allow-env --allow-net ./src/backend/server.ts"
     },
     "test": {
-      "description": "Run the unit test suite.",
+      "description": "Run the Deno test suite.",
       "command": "deno test --allow-all --clean --coverage=coverage --coverage-threshold=85 src"
     },
     "lume": {
@@ -62,7 +62,7 @@
     },
     "check": {
       "description": "Run Deno code checks.",
-      "command": "deno lint && deno fmt && deno check"
+      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
     }
   },
   "compilerOptions": {
