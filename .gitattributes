@@ -16,7 +16,7 @@ prototypes/** -linguist-detectable
 .* -linguist-detectable
 .*.* -linguist-detectable
 deno.lock linguist-generated
-src/cli/go.sum linguist-generated
+**/go.sum linguist-generated
 
 content/** linguist-documentation
 design/** linguist-documentation
