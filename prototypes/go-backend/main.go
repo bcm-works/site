@@ -29,11 +29,13 @@ func main() {
 		MaxAge:           300,
 	}))
 
-	// Add health check endpoints
-	r.Get("/", ApiHealth)
-	r.Get("/health", ApiHealth)
+	// Endpoint: /api/health - Health check
+	r.Get("/api/health", ApiHealth)
 
-	// Example dynamic route
+	// Endpoint: /api/github-user - GitHub user info
+	r.Get("/api/github-user", ApiGitHubUser)
+
+	// Example of a route with a dynamic section
 	r.Get("/posts/{slug}", func(w http.ResponseWriter, r *http.Request) {
 		slugParam := chi.URLParam(r, "slug")
 		w.Write([]byte("Post slug request: " + slugParam))
