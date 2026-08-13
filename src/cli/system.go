@@ -13,17 +13,21 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// Run a system command and display the output or error.
-func Cmd(command string) {
-	binPath, err := os.Executable()
-	if err != nil {
-		LogError(fmt.Sprintf("Cmd Error: Failed to find executable path - %v", err))
+// Run a system command and display the output or error,
+// using the current working directory or the optional
+// 'workingDir' path string.
+func Cmd(command string, workingDir ...string) {
+	var cmdDir string
+
+	if len(workingDir) > 0 {
+		cmdDir = workingDir[0]
+	} else {
+		cmdDir = DirGet()
 	}
 
-	binDir := filepath.Dir(binPath)
-
 	cmd := exec.Command("bash", "-c", command)
-	cmd.Dir = binDir
+	cmd.Dir = cmdDir
+
 	output, err := cmd.CombinedOutput()
 
 	if err != nil {
@@ -66,13 +70,23 @@ func EnvGet(varName string, defaultValue ...string) string {
 // Get the full path to the current directory,
 // with an optional subdirectory to add to the output.
 func DirGet(subDir ...string) string {
+	// Attempt to get the working dir.
 	dir, err := os.Getwd()
 
 	if err != nil {
-		LogError(fmt.Sprintf("DirGet error: %s", err.Error()))
-		return ""
+		// Attempt to get the binary dir.
+		cmdPath, err := os.Executable()
+
+		// Fallback to using the current dir.
+		if err != nil {
+			dir = "."
+		}
+
+		// Use the binary dir.
+		dir = filepath.Dir(cmdPath)
 	}
 
+	// Append the sub dir to the path if needed.
 	if len(subDir) > 0 {
 		dir = fmt.Sprintf("%[1]s/%[2]s", dir, subDir[0])
 	}

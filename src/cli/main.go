@@ -1,7 +1,9 @@
 package main
 
 import (
+	"bytes"
 	"os"
+	"strings"
 )
 
 // The main entrypoint to the cli, this function
@@ -28,10 +30,12 @@ func main() {
 		TaskSetup()
 	case "start":
 		TaskStart()
+	case "check":
+		TaskCheck()
 	case "test":
-		TaskTests()
+		TaskCheck()
 	case "tests":
-		TaskTests()
+		TaskCheck()
 	case "deps":
 		TaskDeps()
 	case "help":
@@ -63,6 +67,7 @@ func ShowHelp() {
 	Log(" ")
 
 	LogInfo("Run tests.")
+	Log("./task check")
 	Log("./task test")
 	Log("./task tests")
 	Log(" ")
@@ -86,4 +91,10 @@ func ShowHelp() {
 	Log(" ")
 
 	os.Exit(1)
+}
+
+func TestConfirmWithBuffer(received bytes.Buffer, expected string) bool {
+	receivedStr := strings.Trim(received.String(), "\n")
+
+	return strings.Compare(expected, receivedStr) == 0
 }
