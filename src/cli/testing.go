@@ -6,6 +6,8 @@ import (
 	"os"
 	"strings"
 	"testing"
+
+	"github.com/fatih/color"
 )
 
 // Check if the trimmed value from a buffer matches a string value.
@@ -40,4 +42,24 @@ func readCaptured(w, r *os.File) bytes.Buffer {
 	var buf bytes.Buffer
 	io.Copy(&buf, r)
 	return buf
+}
+
+// disableColor disables ANSI colour codes and redirects color.Output to a pipe.
+// Returns the pipe read/write ends; call readCaptured(w, r) to get the output.
+func captureColorOutput(t *testing.T) (r, w *os.File) {
+	t.Helper()
+	var err error
+	r, w, err = os.Pipe()
+	if err != nil {
+		t.Fatalf("captureColorOutput: %v", err)
+	}
+	oldColor := color.NoColor
+	oldOutput := color.Output
+	color.NoColor = true
+	color.Output = w
+	t.Cleanup(func() {
+		color.NoColor = oldColor
+		color.Output = oldOutput
+	})
+	return r, w
 }
