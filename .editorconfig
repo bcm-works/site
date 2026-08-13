@@ -11,7 +11,7 @@ indent_style = space
 indent_size = 2
 max_line_length = 120
 
-[*.{bash,json,jsonc,md,sh,svg,toml,yml}]
+[*.{bash,json,jsonc,md,sh,svg,toml,yml,env}]
 insert_final_newline = false
 
 [{.editorconfig,.gitattributes,.gitignore,.gitmodules}]
