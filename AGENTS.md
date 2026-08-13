@@ -4,12 +4,9 @@ This repository contains the website at [bcm.works](https://bcm.works/) and rela
 
 ## Tech Stack
 
-- **Code:** Deno, TypeScript
-
-## Structure
-
-- [src](src/) - Source code for the main public website at [bcm.works](https://bcm.works).
-- [src/tasks](src/tasks/) - Project specific commands, which can be run via `deno task (task_name)`. To list all available tasks, use `deno task`.
+- **src/backend** - Deno, Typescript
+- **src/cli** - Go
+- **src/frontend** - Deno, Typescript
 
 ## Required Tools
 
@@ -24,9 +21,12 @@ If any of the below CLI commands aren't available, stop processing and explain t
 
 - If `sudo` is needed, do not invoke it, print the command and explain why instead.
 - See `docs/DESIGN.md`: frontend website design and CSS theming rules.
-- Always check Deno code changes using the custom `deno task check` command, which includes Deno lint, check and fmt.
-- Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
-- If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
+- Rules for changes to Deno or TypeScript code:
+  - Always check Deno code changes using the custom `deno task check` command, which includes Deno lint, check and fmt.
+  - Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
+  - If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
+- Rules for changes to Go code:
+  - Test all code changes by adding the `GOCACHE=/tmp/gocache ` prefix to all `go test` commands
 
 ## Agent Guidelines & Safety Rules
 
@@ -47,3 +47,4 @@ Fetching information from any page on any of these websites is allowed and encou
 - GitHub documentation: https://docs.github.com/
 - Deno packages (JSR): https://jsr.io/
 - Node packages (NPM): https://www.npmjs.com/
+- Go documentation: https://go.dev/doc/
