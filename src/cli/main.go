@@ -1,9 +1,7 @@
 package main
 
 import (
-	"bytes"
 	"os"
-	"strings"
 )
 
 // The main entrypoint to the cli, this function
@@ -91,11 +89,4 @@ func ShowHelp() {
 	Log(" ")
 
 	os.Exit(1)
-}
-
-// Check if the trimmed value from a buffer matches a string value.
-func BufferEqualsString(received bytes.Buffer, expected string) bool {
-	receivedStr := strings.Trim(received.String(), "\n")
-
-	return strings.Compare(expected, receivedStr) == 0
 }
