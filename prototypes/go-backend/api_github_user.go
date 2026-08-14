@@ -8,34 +8,29 @@ import (
 	"golang.org/x/oauth2"
 )
 
-// GitHubGraphQLResponse mirrors the top-level JSON envelope
-type GitHubGraphQLResponse struct {
-	Data struct {
-		User *GitHubUser `json:"user"`
-	} `json:"data"`
-}
-
-// GitHubUser represents the inner user payload
+// GitHub API GraphQL query - User details and other public info
 type GitHubUser struct {
-	User struct {
-		Login  string `graphql:"login"`
-		Name   string `graphql:"name"`
-		Status struct {
+	GitHubUser struct {
+		Username string `graphql:"login"`
+		Name     string `graphql:"name"`
+		Status   struct {
 			Message string `graphql:"message"`
 		}
-		HTMLURL      string `graphql:"url"`
-		Repositories struct {
-			TotalCount int `graphql:"totalCount"`
+		Url   string `graphql:"url"`
+		Repos struct {
+			Count int `graphql:"totalCount"`
 		} `graphql:"repositories(privacy: PUBLIC)"`
 		Followers struct {
-			TotalCount int `graphql:"totalCount"`
+			Count int `graphql:"totalCount"`
 		}
 		Following struct {
-			TotalCount int `graphql:"totalCount"`
+			Count int `graphql:"totalCount"`
 		}
 	} `graphql:"user(login: \"bcm-works\")"`
 }
 
+// Use the GitHub API v4 and a GraphQL query to get public
+// information about my GitHub user.
 func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	githubToken := EnvGet("GITHUB_TOKEN", "")
 
@@ -63,7 +58,14 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	result := query.GitHubUser
+
+	// DEBUG
+	// fmt.Printf("Query result: %+v \n", result)
+
 	w.WriteHeader(200)
 
-	w.Write([]byte("User's name: " + query.User.Name))
+	// TODO: return as JSON and account for empty fields like result.Status.Message
+
+	w.Write([]byte("User's name: " + result.Name))
 }
