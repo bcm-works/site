@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/go-chi/render"
 	"github.com/shurcooL/githubv4"
 	"golang.org/x/oauth2"
 )
 
 // GitHub API GraphQL query - User details and other public info
-type GitHubUser struct {
+type GitHubUserInfo struct {
 	GitHubUser struct {
 		Username string `graphql:"login"`
 		Name     string `graphql:"name"`
@@ -46,7 +47,7 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	httpClient := oauth2.NewClient(r.Context(), src)
 	client := githubv4.NewClient(httpClient)
 
-	query := GitHubUser{}
+	query := GitHubUserInfo{}
 
 	err := client.Query(r.Context(), &query, nil)
 
@@ -63,9 +64,8 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	// DEBUG
 	// fmt.Printf("Query result: %+v \n", result)
 
+	// Return query result as JSON
+
 	w.WriteHeader(200)
-
-	// TODO: return as JSON and account for empty fields like result.Status.Message
-
-	w.Write([]byte("User's name: " + result.Name))
+	render.JSON(w, r, result)
 }

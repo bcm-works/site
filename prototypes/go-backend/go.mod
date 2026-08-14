@@ -8,9 +8,12 @@ require (
 )
 
 require (
+	github.com/go-chi/render v1.0.3
 	github.com/shurcooL/githubv4 v0.0.0-20260209031235-2402fdf4a9ed
 	golang.org/x/oauth2 v0.36.0
 )
+
+require github.com/ajg/form v1.5.1 // indirect
 
 require (
 	github.com/joho/godotenv v1.5.1 // direct
