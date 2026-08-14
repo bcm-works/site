@@ -8,26 +8,6 @@ import (
 	"golang.org/x/oauth2"
 )
 
-var queryUser struct {
-	user struct {
-		login  githubv4.String
-		name   githubv4.String
-		status struct {
-			message githubv4.String
-		}
-		url          githubv4.String
-		repositories struct {
-			totalCount githubv4.Int
-		}
-		followers struct {
-			totalCount githubv4.Int
-		}
-		following struct {
-			totalCount githubv4.Int
-		}
-	} `graphql:"user(login: \"bcm-works\")"`
-}
-
 func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	githubToken := EnvGet("GITHUB_TOKEN", "")
 
@@ -44,10 +24,29 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	)
 
 	httpClient := oauth2.NewClient(r.Context(), src)
-
 	client := githubv4.NewClient(httpClient)
 
-	err := client.Query(r.Context(), &queryUser, nil)
+	queryUser := `{
+user(login: "bcm-works") {
+  login
+  name
+  url
+  repositories(privacy: PUBLIC) {
+    totalCount
+  }
+  followers {
+    totalCount
+  }
+  following {
+    totalCount
+  }
+  status {
+    message
+  }
+}
+	}`
+
+	err := client.Query(r.Context(), queryUser, nil)
 	if err != nil {
 		fmt.Println("Error - API query failed - " + err.Error())
 
@@ -58,5 +57,5 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(200)
 
-	w.Write([]byte("User name: " + queryUser.user.name))
+	w.Write([]byte("Result: " + queryUser))
 }
