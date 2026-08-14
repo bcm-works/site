@@ -13,6 +13,6 @@ require (
 )
 
 require (
-	github.com/joho/godotenv v1.5.1 // indirect
+	github.com/joho/godotenv v1.5.1 // direct
 	github.com/shurcooL/graphql v0.0.0-20240915155400-7ee5256398cf // indirect
 )
