@@ -19,34 +19,32 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	src := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: githubToken},
-	)
-
+	src := oauth2.StaticTokenSource(&oauth2.Token{AccessToken: githubToken})
 	httpClient := oauth2.NewClient(r.Context(), src)
 	client := githubv4.NewClient(httpClient)
 
-	queryUser := `{
-user(login: "bcm-works") {
-  login
-  name
-  url
-  repositories(privacy: PUBLIC) {
-    totalCount
-  }
-  followers {
-    totalCount
-  }
-  following {
-    totalCount
-  }
-  status {
-    message
-  }
-}
-	}`
+	var query struct {
+		user struct {
+			login  string
+			name   string
+			status struct {
+				message string
+			}
+			url          string
+			repositories struct {
+				totalCount int
+			}
+			followers struct {
+				totalCount int
+			}
+			following struct {
+				totalCount int
+			}
+		} `graphql:"user(login: \"bcm-works\"), repositories(privacy: \"PUBLIC\")"`
+	}
 
-	err := client.Query(r.Context(), queryUser, nil)
+	err := client.Query(r.Context(), &query, nil)
+
 	if err != nil {
 		fmt.Println("Error - API query failed - " + err.Error())
 
@@ -55,7 +53,9 @@ user(login: "bcm-works") {
 		return
 	}
 
+	fmt.Println(query)
+
 	w.WriteHeader(200)
 
-	w.Write([]byte("Result: " + queryUser))
+	// w.Write([]byte("User's name: " + query.user.name))
 }
