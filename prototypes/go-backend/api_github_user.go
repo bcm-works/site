@@ -9,6 +9,26 @@ import (
 	"golang.org/x/oauth2"
 )
 
+type queryUser struct {
+	user struct {
+		login  githubv4.String
+		name   githubv4.String
+		status struct {
+			message githubv4.String
+		}
+		url          githubv4.String
+		repositories struct {
+			totalCount githubv4.Int
+		}
+		followers struct {
+			totalCount githubv4.Int
+		}
+		following struct {
+			totalCount githubv4.Int
+		}
+	}
+}
+
 func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 
@@ -24,12 +44,7 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 
 	httpClient := oauth2.NewClient(r.Context(), src)
 
-	var query struct {
-		Viewer struct {
-			Login     githubv4.String
-			CreatedAt githubv4.DateTime
-		}
-	}
+	query := queryUser{}
 
 	client := githubv4.NewClient(httpClient)
 
@@ -40,8 +55,8 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println("    Login:", query.Viewer.Login)
-	fmt.Println("CreatedAt:", query.Viewer.CreatedAt)
+	fmt.Println("User login: ", query.user.login)
+	fmt.Println("User name: ", query.user.name)
 
 	w.WriteHeader(200)
 	w.Write([]byte("OK"))
