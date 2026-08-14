@@ -3,13 +3,12 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"os"
 
 	"github.com/shurcooL/githubv4"
 	"golang.org/x/oauth2"
 )
 
-type queryUser struct {
+var queryUser struct {
 	user struct {
 		login  githubv4.String
 		name   githubv4.String
@@ -26,13 +25,15 @@ type queryUser struct {
 		following struct {
 			totalCount githubv4.Int
 		}
-	}
+	} `graphql:"user(login: \"bcm-works\")"`
 }
 
 func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
-	githubToken := os.Getenv("GITHUB_TOKEN")
+	githubToken := EnvGet("GITHUB_TOKEN", "")
 
 	if githubToken == "" {
+		fmt.Println("Error - GitHub token not found")
+
 		w.WriteHeader(500)
 		w.Write([]byte("SERVER ERROR"))
 		return
@@ -44,20 +45,18 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 
 	httpClient := oauth2.NewClient(r.Context(), src)
 
-	query := queryUser{}
-
 	client := githubv4.NewClient(httpClient)
 
-	err := client.Query(r.Context(), &query, nil)
+	err := client.Query(r.Context(), &queryUser, nil)
 	if err != nil {
+		fmt.Println("Error - API query failed - " + err.Error())
+
 		w.WriteHeader(500)
 		w.Write([]byte("SERVER ERROR"))
 		return
 	}
 
-	fmt.Println("User login: ", query.user.login)
-	fmt.Println("User name: ", query.user.name)
-
 	w.WriteHeader(200)
-	w.Write([]byte("OK"))
+
+	w.Write([]byte("User name: " + queryUser.user.name))
 }
