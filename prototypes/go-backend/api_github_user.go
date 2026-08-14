@@ -10,12 +10,19 @@ import (
 )
 
 func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
-	context := r.Context()
+	githubToken := os.Getenv("GITHUB_TOKEN")
+
+	if githubToken == "" {
+		w.WriteHeader(500)
+		w.Write([]byte("SERVER ERROR"))
+		return
+	}
 
 	src := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: os.Getenv("GITHUB_TOKEN")},
+		&oauth2.Token{AccessToken: githubToken},
 	)
-	httpClient := oauth2.NewClient(context, src)
+
+	httpClient := oauth2.NewClient(r.Context(), src)
 
 	var query struct {
 		Viewer struct {
@@ -26,9 +33,11 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 
 	client := githubv4.NewClient(httpClient)
 
-	err := client.Query(context, &query, nil)
+	err := client.Query(r.Context(), &query, nil)
 	if err != nil {
-		// Handle error.
+		w.WriteHeader(500)
+		w.Write([]byte("SERVER ERROR"))
+		return
 	}
 
 	fmt.Println("    Login:", query.Viewer.Login)
