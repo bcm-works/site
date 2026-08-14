@@ -8,6 +8,34 @@ import (
 	"golang.org/x/oauth2"
 )
 
+// GitHubGraphQLResponse mirrors the top-level JSON envelope
+type GitHubGraphQLResponse struct {
+	Data struct {
+		User *GitHubUser `json:"user"`
+	} `json:"data"`
+}
+
+// GitHubUser represents the inner user payload
+type GitHubUser struct {
+	User struct {
+		Login  string `graphql:"login"`
+		Name   string `graphql:"name"`
+		Status struct {
+			Message string `graphql:"message"`
+		}
+		HTMLURL      string `graphql:"url"`
+		Repositories struct {
+			TotalCount int `graphql:"totalCount"`
+		} `graphql:"repositories(privacy: PUBLIC)"`
+		Followers struct {
+			TotalCount int `graphql:"totalCount"`
+		}
+		Following struct {
+			TotalCount int `graphql:"totalCount"`
+		}
+	} `graphql:"user(login: \"bcm-works\")"`
+}
+
 func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	githubToken := EnvGet("GITHUB_TOKEN", "")
 
@@ -23,25 +51,7 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 	httpClient := oauth2.NewClient(r.Context(), src)
 	client := githubv4.NewClient(httpClient)
 
-	var query struct {
-		user struct {
-			login  string
-			name   string
-			status struct {
-				message string
-			}
-			url          string
-			repositories struct {
-				totalCount int
-			}
-			followers struct {
-				totalCount int
-			}
-			following struct {
-				totalCount int
-			}
-		} `graphql:"user(login: \"bcm-works\"), repositories(privacy: \"PUBLIC\")"`
-	}
+	query := GitHubUser{}
 
 	err := client.Query(r.Context(), &query, nil)
 
@@ -53,9 +63,7 @@ func ApiGitHubUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(query)
-
 	w.WriteHeader(200)
 
-	// w.Write([]byte("User's name: " + query.user.name))
+	w.Write([]byte("User's name: " + query.User.Name))
 }
