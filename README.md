@@ -41,8 +41,8 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 Required tools to manually install first:
 
-- [Deno](https://deno.com/) - Latest stable version
-- [Go](https://go.dev/) - Version `1.26.5`
+- [Deno](https://deno.com/) (latest stable) - Could use my [dotfiles deno-setup script](https://github.com/bcm-works/dotfiles/blob/main/setup/dev/deno/deno-setup.sh).
+- [Go](https://go.dev/) (`1.26.6`) - Could use my [dotfiles go-setup script](https://github.com/bcm-works/dotfiles/blob/main/setup/dev/go/go-setup.sh).
 
 ## Local Tools
 
