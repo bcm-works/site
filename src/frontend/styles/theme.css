@@ -3,6 +3,7 @@
 :root {
   /* LAYOUT */
   --content-max-width: 900px;
+  --content-min-height: 500px;
 
   /* COLOUR SCHEME */
   --colour-black: #000000;
