@@ -36,6 +36,12 @@ export async function getGithubUser(token: string = githubToken): Promise<GitHub
         status {
           message
         }
+        starredRepositories {
+          totalCount
+        }
+        pullRequests {
+          totalCount
+        }
       }
     }`
   );
@@ -47,7 +53,9 @@ export async function getGithubUser(token: string = githubToken): Promise<GitHub
     url: user?.url,
     repos: user?.repositories.totalCount,
     followers: user?.followers.totalCount,
-    following: user?.following.totalCount
+    following: user?.following.totalCount,
+    starred: user?.starredRepositories?.totalCount,
+    prs: user?.pullRequests?.totalCount,
   };
 
   return returnString;

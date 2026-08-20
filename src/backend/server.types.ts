@@ -16,9 +16,6 @@ export interface GitHubUserQuery {
   user: {
     login: string;
     name: string;
-    status?: {
-      message: string;
-    };
     url: string;
     repositories: {
       totalCount: number;
@@ -27,6 +24,15 @@ export interface GitHubUserQuery {
       totalCount: number;
     };
     following: {
+      totalCount: number;
+    };
+    status?: {
+      message: string;
+    };
+    starredRepositories?: {
+      totalCount: number;
+    };
+    pullRequests?: {
       totalCount: number;
     };
   };
@@ -40,6 +46,8 @@ export interface GitHubUserResponse {
   repos: number | undefined;
   followers: number | undefined;
   following: number | undefined;
+  starred: number | undefined;
+  prs: number | undefined;
 }
 
 export type ResponseHandlerResponse =
