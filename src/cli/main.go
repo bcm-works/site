@@ -74,7 +74,7 @@ func ShowHelp() {
 	Log("./task start")
 	Log(" ")
 
-	LogInfo("Update Deno dependencies and commit the results.")
+	LogInfo("Update Deno and Go dependencies.")
 	Log("./task deps")
 	Log(" ")
 
