@@ -5,7 +5,7 @@
   "lock": true,
   "imports": {
     "@/": "./src/",
-    "@inquirer/prompts": "npm:@inquirer/prompts@^8.5.2",
+    "@inquirer/prompts": "npm:@inquirer/prompts@^8.6.0",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.4",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
@@ -21,7 +21,7 @@
     "is_json/": "https://deno.land/x/is_json@v1.0.2/",
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
-    "posthog": "npm:posthog-node@^5.48.2"
+    "posthog": "npm:posthog-node@^5.49.1"
   },
   "tasks": {
     "setup": {
