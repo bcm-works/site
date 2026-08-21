@@ -350,7 +350,7 @@ ul.post-info li {
 
 #github-info li {
   float: left;
-  width: 100%;
+  width: 50%;
   min-height: 48px;
   line-height: 48px;
   vertical-align: middle;

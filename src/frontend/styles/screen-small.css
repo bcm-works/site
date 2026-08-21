@@ -34,6 +34,10 @@
     flex: 0 0 calc(50% - 8px);
   }
 
+  #github-info li {
+    width: 100%;
+  }
+
   .footer-container {
     height: 500px;
   }
