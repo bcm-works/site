@@ -11,7 +11,6 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
 - [.github](.github/) - GitHub config and [Actions](https://github.com/features/actions) workflows.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
-- [config](config/) - Config and env files.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
 - [docs](docs/) - Documentation and contextual information.
@@ -62,8 +61,8 @@ To list all of the available tasks:
 
 ## Deployment
 
-First setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in [config/.env.github](config/.env.github).
+First setup [GitHub Actions](https://github.com/features/actions) secrets by following the steps in [.env.github](.env.github).
 
-Then setup a new [Deno Deploy](https://deno.com/deploy) project, following the steps in [config/.env.deno-deploy](config/.env.deno-deploy).
+Then setup a new [Deno Deploy](https://deno.com/deploy) project, following the steps in [.env.deno-deploy](.env.deno-deploy).
 
 Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml). This workflow will build and run tests remotely, then deploy to [Deno Deploy](https://deno.com/deploy).

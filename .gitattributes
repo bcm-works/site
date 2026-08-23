@@ -7,7 +7,7 @@
 .claude/** -linguist-detectable
 .github/** -linguist-detectable
 .zed/** -linguist-detectable
-config/** -linguist-detectable
+.env.* -linguist-detectable
 prototypes/** -linguist-detectable
 .* -linguist-detectable
 .*.* -linguist-detectable

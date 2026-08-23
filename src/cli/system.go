@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/joho/godotenv"
@@ -47,8 +48,8 @@ func EnvGet(varName string, defaultValue ...string) string {
 	// Get the system env var value for this var name
 	envValue := os.Getenv(varName)
 
-	// Load the env vars from the file "/config/.env"
-	env, err := godotenv.Read("../../config/.env")
+	// Load the env vars from the file "/.env"
+	env, err := godotenv.Read(".env")
 
 	// If the env file was loaded successfully, use that variable's value
 	if err == nil {
@@ -65,6 +66,42 @@ func EnvGet(varName string, defaultValue ...string) string {
 	}
 
 	return envValue
+}
+
+// Check if this environment is local or not
+func EnvIsLocal() bool {
+	return EnvGet("SITE_ENV", "other") == "local"
+}
+
+// Get the URL for this environment
+func EnvGetUrl() string {
+	if EnvIsLocal() {
+		port := strconv.Itoa(EnvGetPort())
+		return "http://localhost:" + port
+	}
+
+	return EnvGet("SITE_URL", "https://bcm.works")
+}
+
+// Get the port for this environment, using appropriate
+// fallback values that support both local and hosted
+// environments like Deno Deploy.
+func EnvGetPort() int {
+	// First check for the system-level 'PORT' env var
+	envPort := EnvGet("PORT", "0")
+	port, err := strconv.Atoi(envPort)
+
+	if port > 80 && err == nil {
+		return port
+	}
+
+	// Now check for the 'SITE_PORT' env var from the env file
+	envSitePort, err := strconv.Atoi(EnvGet("SITE_PORT", "8000"))
+	if err != nil {
+		return 8000
+	}
+
+	return envSitePort
 }
 
 // Get the full path to the current directory,

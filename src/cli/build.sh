@@ -8,7 +8,7 @@
 DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO="$(cd "$(dirname "$0")/../.." && pwd)"
 
-ENV="$REPO/config/.env"
+ENV="$REPO/.env"
 
 if [ ! -f "$ENV" ]; then
   echo "Warning: No file found at $ENV, system environment variables will be used instead."

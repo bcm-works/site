@@ -6,7 +6,7 @@ import { PostHog } from "posthog";
 export class Env {
   private buildId: string;
   private env: Record<string, string> = {};
-  private envFileDefault: string = "./config/.env";
+  private envFileDefault: string = "./.env";
 
   constructor(envFile: string = this.envFileDefault) {
     // Attempt to load the env file, fall back to using the system env vars

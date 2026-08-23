@@ -7,6 +7,6 @@ func TaskStart() {
 	LogInfo("Building the site")
 	TaskBuild()
 
-	LogInfo("Starting the webserver")
+	LogInfo("Starting the webserver at " + EnvGetUrl())
 	Cmd("deno task serve")
 }

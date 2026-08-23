@@ -3,8 +3,8 @@ package main
 func TaskSetup() {
 	LogInfo("Initialising ENV file")
 
-	if !FsExists("config/.env") {
-		FsCopyFile("config/.env.example", "config/.env")
+	if !FsExists(".env") {
+		FsCopyFile(".env.example", ".env")
 	}
 
 	LogInfo("Installing dependencies")
