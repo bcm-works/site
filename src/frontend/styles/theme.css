@@ -2,7 +2,7 @@
 
 :root {
   /* LAYOUT */
-  --content-max-width: 900px;
+  --content-max-width: 950px;
   --content-min-height: 500px;
 
   /* COLOUR SCHEME */
@@ -16,6 +16,9 @@
   --colour-secondary: #0A675B;
   --colour-tertiary: #115F55;
 
+  /* DIVIDERS AND LINES */
+  --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
+
   /* LINKS */
   --link-decoration-default: underline solid var(--colour-tertiary) 1px;
   --link-decoration-active: underline solid var(--colour-highlight) 1px;
@@ -25,9 +28,8 @@
 
   /* CODE BLOCKS */
   --colour-code-method: var(--colour-highlight);
-  --colour-code-keyword: var(--colour-highlight);
-  --colour-code-comment: var(--colour-highlight);
-  --colour-code-background: var(--colour-tertiary);
+  --colour-code-keyword: var(--colour-white);
+  --colour-code-comment: var(--colour-gray);
 
   /* FONTS */
   --font-family-header: "MDIO-Black", var(--font-family-code);

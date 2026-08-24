@@ -5,16 +5,16 @@ pre code.hljs {
   margin: 0 0 20px;
   display: block;
   overflow-x: auto;
-  background-color: var(--colour-code-background);
+  background-color: var(--colour-gray-dark);
 }
 
-pre code.hljs .hljs-comment,
-pre code.hljs .hljs-variable {
+pre code.hljs .hljs-comment {
   color: var(--colour-code-comment);
 }
 
 pre code.hljs .hljs-keyword,
 pre code.hljs .hljs-number,
+pre code.hljs .hljs-variable,
 pre code.hljs .hljs-string {
   color: var(--colour-code-keyword);
 }
