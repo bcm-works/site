@@ -55,7 +55,7 @@ export async function getGithubUser(token: string = githubToken): Promise<GitHub
     followers: user?.followers.totalCount,
     following: user?.following.totalCount,
     starred: user?.starredRepositories?.totalCount,
-    prs: user?.pullRequests?.totalCount,
+    prs: user?.pullRequests?.totalCount
   };
 
   return returnString;
