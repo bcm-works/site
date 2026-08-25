@@ -10,6 +10,12 @@ func TaskCheck() {
 	LogInfo("Running Deno code checks")
 	Cmd("deno task check")
 
+	LogInfo("Installing Go dependencies")
+	Cmd("cd src/cli && go get -u -t ./...")
+
+	LogInfo("Checking Go dependencies")
+	Cmd("cd src/cli && go mod tidy")
+
 	LogInfo("Building the site")
 	TaskBuild()
 
