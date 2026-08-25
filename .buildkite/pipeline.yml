@@ -13,11 +13,6 @@ steps:
 
   - label: "Test"
     key: "test"
-    if_changed:
-      - "src/*.ts"
-      - "src/**/*.ts"
-      - "deno.json"
-      - "deno.lock"
     # agents:
     #   queue: "linux"
     plugins:
