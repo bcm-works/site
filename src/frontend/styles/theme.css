@@ -23,7 +23,7 @@
   --link-decoration-default: underline solid var(--colour-tertiary) 1px;
   --link-decoration-active: underline solid var(--colour-highlight) 1px;
   --link-decoration-nav-header: underline solid var(--colour-secondary) 1px;
-  --link-decoration-footer: underline solid var(--colour-black) 1px;
+  --link-decoration-footer: underline solid var(--colour-white) 1px;
   --link-decoration-underline-offset: 7px;
 
   /* CODE BLOCKS */

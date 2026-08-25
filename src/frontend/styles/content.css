@@ -166,21 +166,44 @@ header nav li.active a {
   padding-top: 12px;
 }
 
-footer aside {
-  font: var(--font-footer);
-  margin: 0;
-}
-
 footer .icon,
 footer a,
-footer a:visited,
-footer a:hover,
-footer a:focus {
+footer a:visited {
   color: var(--colour-white);
   text-decoration: none;
 }
 
-footer a:hover {
+footer aside {
+  float: left;
+  margin: 0 0 20px;
+  width: 100%;
+}
+
+footer aside a.site-link {
+  font: var(--font-footer);
+  float: left;
+}
+
+footer aside a.release-link {
+  float: right;
+  color: var(--colour-black);
+  font-size: 20px;
+  line-height: 32px;
+}
+
+footer aside a.release-link:visited {
+  color: var(--color-black);
+}
+
+footer a:active,
+footer a:focus,
+footer a:hover,
+footer aside a.site-link:active,
+footer aside a.site-link:focus,
+footer aside a.site-link:hover,
+footer aside a.release-link:active,
+footer aside a.release-link:focus,
+footer aside a.release-link:hover {
   color: var(--colour-white);
   text-decoration: var(--link-decoration-footer);
   text-underline-offset: var(--link-decoration-underline-offset);

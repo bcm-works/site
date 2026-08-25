@@ -38,7 +38,7 @@
     width: 100%;
   }
 
-  footer aside {
+  footer aside a.site-link {
     font: var(--font-footer-small);
   }
 }
