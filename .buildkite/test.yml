@@ -1,0 +1,17 @@
+steps:
+  - label: "Test"
+    key: "test"
+    plugins:
+      - docker:
+          image: "denoland/deno:latest"
+          propagate-environment: true
+    command: |
+      TIMESTAMP=$$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)
+      COMMIT=$$(git rev-parse --short $$BUILDKITE_COMMIT)
+
+      echo "TIMESTAMP: $$TIMESTAMP"
+      echo "COMMIT: $$COMMIT"
+      buildkite-agent meta-data set "TIMESTAMP" "$$TIMESTAMP"
+      buildkite-agent meta-data set "COMMIT" "$$COMMIT"
+
+      ./task test
