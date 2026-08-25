@@ -12,6 +12,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 # Apply security updates and install required packages.
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+    bash \
     curl \
     git \
     ca-certificates \
@@ -40,7 +41,9 @@ ARG DENO_TASK_NAME
 ENV DENO_TASK_NAME=${DENO_TASK_NAME:-serve}
 
 # Apply security updates and install required packages.
-RUN apt-get update && apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
+    bash ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copy over some files and folders from the 'build' stage
 COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
