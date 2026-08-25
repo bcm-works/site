@@ -186,24 +186,13 @@ footer aside a.site-link {
 
 footer aside a.release-link {
   float: right;
-  color: var(--colour-black);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 32px;
-}
-
-footer aside a.release-link:visited {
-  color: var(--color-black);
 }
 
 footer a:active,
 footer a:focus,
-footer a:hover,
-footer aside a.site-link:active,
-footer aside a.site-link:focus,
-footer aside a.site-link:hover,
-footer aside a.release-link:active,
-footer aside a.release-link:focus,
-footer aside a.release-link:hover {
+footer a:hover {
   color: var(--colour-white);
   text-decoration: var(--link-decoration-footer);
   text-underline-offset: var(--link-decoration-underline-offset);
