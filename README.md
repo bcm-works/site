@@ -38,10 +38,15 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 ## Local Setup
 
-Required tools to manually install first:
+Required:
 
 - [Deno](https://deno.com/) (`latest stable`) - Install via my [dotfiles deno-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/deno-setup.sh).
 - [Go](https://go.dev/) (`1.26.6`) - Install via my [dotfiles go-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/go-setup.sh).
+
+Optional:
+
+- [GitHub CLI](https://cli.github.com/) - Install via my [dotfiles github-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/git/github-setup.sh).
+- AI tools - Install via my [dotfiles AI script](https://github.com/bcm-works/dotfiles/tree/main/ai).
 
 ## Local Tools
 
