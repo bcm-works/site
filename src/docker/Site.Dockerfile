@@ -12,11 +12,7 @@ LABEL org.opencontainers.image.licenses=MIT
 
 # Apply security updates and install required packages.
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    bash \
-    curl \
-    git \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    bash git ca-certificates curl
 
 # Download and setup Go
 ARG GO_VERSION=1.26.6
@@ -40,26 +36,23 @@ WORKDIR /app
 ARG DENO_TASK_NAME
 ENV DENO_TASK_NAME=${DENO_TASK_NAME:-serve}
 
-# Apply security updates and install required packages.
-RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    bash ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+# Apply security updates.
+RUN apt-get update && apt-get upgrade -y
 
 # Copy over some files and folders from the 'build' stage
-COPY --from=build --chown=deno:deno /app/src/backend /app/src/backend
-COPY --from=build --chown=deno:deno /app/src/frontend /app/src/frontend
-COPY --from=build --chown=deno:deno /app/public /app/public
-COPY --from=build --chown=deno:deno /app/deno.json /app/deno.json
-COPY --from=build --chown=deno:deno /app/deno.lock /app/deno.lock
+COPY --from=build /app/src/backend /app/src/backend
+COPY --from=build /app/src/frontend /app/src/frontend
+COPY --from=build /app/public /app/public
+COPY --from=build /app/deno.json /app/deno.json
+COPY --from=build /app/deno.lock /app/deno.lock
 
 # Go setup
-COPY --from=build --chown=deno:deno /app/task /app/task
-COPY --from=build --chown=deno:deno /usr/local/go /usr/local/go
+COPY --from=build /app/task /app/task
+COPY --from=build /usr/local/go /usr/local/go
 ENV PATH="/usr/local/go/bin:${PATH}"
 
-RUN mkdir /app/coverage && chown -R deno:deno /app/coverage
+RUN mkdir /app/coverage
 
-# Run the specified Deno Task as the non-root user 'deno' on port 8000.
-USER deno
+# Run the specified Deno Task, and allow access via port 8000.
 EXPOSE 8000
 CMD ["bash", "-c", "deno task ${DENO_TASK_NAME}"]

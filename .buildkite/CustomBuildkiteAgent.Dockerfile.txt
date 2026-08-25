@@ -1,8 +1,4 @@
 # Buildkite - Agent Image Dockerfile
 # Apply security updates and install required packages.
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    bash \
-    curl \
-    git \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+    bash git ca-certificates

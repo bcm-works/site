@@ -1,3 +1,7 @@
+agents:
+  queue: "linux-small"
+  image: "CustomBuildkiteAgent"
+
 steps:
   - label: "Test"
     key: "test"
@@ -5,5 +9,5 @@ steps:
       DOCKER_HOST: tcp://localhost:2375
     image: alpine/docker-with-buildx:latest
     command: |
-      ./src/docker/docker-build.sh
-      DENO_TASK_NAME=test ./src/docker/docker-start.sh
+      bash src/docker/docker-build.sh
+      DENO_TASK_NAME=test bash src/docker/docker-start.sh
