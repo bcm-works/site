@@ -1,10 +1,9 @@
 steps:
   - label: "Test"
     key: "test"
-    plugins:
-      - docker:
-          image: "denoland/deno:latest"
-          propagate-environment: true
+    env:
+      DOCKER_HOST: tcp://localhost:2375
+    image: alpine/docker-with-buildx:latest
     command: |
       ./src/docker/docker-build.sh
       DENO_TASK_NAME=test ./src/docker/docker-start.sh
