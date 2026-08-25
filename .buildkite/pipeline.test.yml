@@ -1,0 +1,57 @@
+# ============================================================================
+# Translated from: Test
+# Original run-name: Test ${{ github.run_number }} from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
+# ============================================================================
+#
+# TRIGGERS:
+#   - workflow_dispatch: Configure via Buildkite UI "New Build" button
+#   - pull_request (branches: main): Automatic via GitHub integration
+#   - Path filtering: Handled by if_changed attribute below
+#
+# PERMISSIONS:
+#   - contents: read (automatic via Git checkout)
+#
+# AGENT CONFIGURATION REQUIRED:
+#   Job                  | runs-on
+#   ---------------------|----------------
+#   test                 | ubuntu-latest
+#
+#   You must configure Buildkite agents to handle these workloads. Add an
+#   `agents` block to each step once your queues are set up. Example:
+#
+#     agents:
+#       queue: "linux"
+#
+#   Required tools on agents: Deno (latest)
+#   Alternatively, use the Docker plugin with denoland/deno:latest image.
+#
+# ENVIRONMENT PROTECTION:
+#   The original workflow used environment "ci-build" with deployment: false.
+#   This was likely for secret management. Configure secrets as environment
+#   variables on your Buildkite agents or use a secrets management plugin.
+#
+# ============================================================================
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+steps:
+  - label: ":test_tube: Test"
+    key: "test"
+    # Assumes Deno (latest) is installed on the agent.
+    # If not available, use the Docker plugin:
+    #   plugins:
+    #     - docker:
+    #         image: "denoland/deno:latest"
+    #         propagate-environment: true
+    command: |
+      git checkout main
+      git fetch --depth=1
+      ./task test
+    if_changed:
+      - "src/*.ts"
+      - "src/**/*.ts"
+      - "deno.json"
+      - "deno.lock"
+    # agents:
+    #   queue: "linux"
