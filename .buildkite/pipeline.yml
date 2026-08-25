@@ -1,0 +1,85 @@
+steps:
+  - label: "Setup"
+    key: "setup"
+    command: |
+      TIMESTAMP=$$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)
+      COMMIT=$$(git rev-parse --short $$BUILDKITE_COMMIT)
+
+      echo "TIMESTAMP: $$TIMESTAMP"
+      echo "COMMIT: $$COMMIT"
+
+      buildkite-agent meta-data set "TIMESTAMP" "$$TIMESTAMP"
+      buildkite-agent meta-data set "COMMIT" "$$COMMIT"
+
+  - label: "Test"
+    key: "test"
+    if_changed:
+      - "src/*.ts"
+      - "src/**/*.ts"
+      - "deno.json"
+      - "deno.lock"
+    # agents:
+    #   queue: "linux"
+    plugins:
+      - docker:
+          image: "denoland/deno:latest"
+          propagate-environment: true
+    command: ./task test
+
+# - wait
+# - label: "Deno Deploy (not production status)"
+#   key: "deploy-deno"
+#   depends_on: "build"
+#   # Assumes Deno is installed on the agent.
+#   # If not available, use the Docker plugin:
+#   #   plugins:
+#   #     - docker:
+#   #         image: "denoland/deno:latest"
+#   command: |
+#     TIMESTAMP=$$(buildkite-agent meta-data get "TIMESTAMP")
+#     echo "--- :gear: Update environment variable"
+#     deno deploy \
+#       env update-value \
+#       SITE_BUILD_ID "$$TIMESTAMP" \
+#       --token "$$DENO_DEPLOY_TOKEN" \
+#       --json \
+#       --non-interactive \
+#       --org "$$DENO_DEPLOY_ORG" \
+#       --app "$$DENO_DEPLOY_APP"
+#     echo "--- :rocket: Deploy to production"
+#     deno deploy \
+#       --token "$$DENO_DEPLOY_TOKEN" \
+#       --json \
+#       --non-interactive \
+#       --org "$$DENO_DEPLOY_ORG" \
+#       --app "$$DENO_DEPLOY_APP"
+# - wait
+# - label: ":github: Create GitHub Release"
+#   key: "release-github"
+#   depends_on:
+#     - "build"
+#     - "deploy-deno"
+#   # Assumes Deno and GitHub CLI (gh) are installed on the agent.
+#   # If not available, use the Docker plugin with an image containing both tools.
+#   command: |
+#     TIMESTAMP=$$(buildkite-agent meta-data get "TIMESTAMP")
+#     echo "--- :package: Install dependencies"
+#     deno ci
+#     echo "--- :memo: Generate release notes"
+#     TAG_PREV=$$(git tag -l "release-*" --sort=-creatordate | head -n 1)
+#     git log "$$TAG_PREV..HEAD" \
+#       --oneline --no-merges \
+#       --format="- [%h](https://github.com/$$BUILDKITE_REPO/commit/%H) %s" \
+#       > release-notes.log
+#     echo "Release notes:"
+#     cat release-notes.log
+#     echo "--- :label: Create release tag"
+#     git config user.name "bot-release"
+#     git config user.email "brendan+bot-release@bcm.works"
+#     git tag "release-$$TIMESTAMP"
+#     git push --tags --quiet
+#     echo "--- :github: Create GitHub release"
+#     gh release create "release-$$TIMESTAMP" \
+#       --title "$$TIMESTAMP" \
+#       --notes-file release-notes.log \
+#       --latest
