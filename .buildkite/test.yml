@@ -6,12 +6,5 @@ steps:
           image: "denoland/deno:latest"
           propagate-environment: true
     command: |
-      TIMESTAMP=$$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)
-      COMMIT=$$(git rev-parse --short $$BUILDKITE_COMMIT)
-
-      echo "TIMESTAMP: $$TIMESTAMP"
-      echo "COMMIT: $$COMMIT"
-      buildkite-agent meta-data set "TIMESTAMP" "$$TIMESTAMP"
-      buildkite-agent meta-data set "COMMIT" "$$COMMIT"
-
-      ./task test
+      ./src/docker/docker-build.sh
+      DENO_TASK_NAME=test ./src/docker/docker-start.sh
