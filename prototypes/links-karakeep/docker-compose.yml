@@ -3,12 +3,15 @@ name: bcm-links
 services:
 
   bcm-links-web:
+    container_name: bcm-links-web
     image: ghcr.io/karakeep-app/karakeep:${KARAKEEP_VERSION:-release}
     restart: unless-stopped
     volumes:
       - ${VOLUME_LINKS:-./volume-links}:/data
     ports:
       - ${LINKS_PORT:-3333}:3000
+    networks:
+      - bcm-links-network
     env_file:
       - .env
     environment:
@@ -17,9 +20,12 @@ services:
       DATA_DIR: /data
 
   bcm-links-browser:
+    container_name: bcm-links-browser
     image: ghcr.io/karakeep-app/karakeep-chrome:release
     restart: unless-stopped
     init: true
+    networks:
+      - bcm-links-network
     command:
       - --disable-gpu
       - --disable-dev-shm-usage
@@ -28,11 +34,19 @@ services:
       - --window-size=1440,900
 
   bcm-links-search:
+    container_name: bcm-links-search
     image: getmeili/meilisearch:v1.41.0
     restart: unless-stopped
+    networks:
+      - bcm-links-network
     env_file:
       - .env
     environment:
       MEILI_NO_ANALYTICS: "true"
     volumes:
       - ${VOLUME_SEARCH:-./volume-search}:/meili_data
+
+networks:
+
+  bcm-links-network:
+    name: bcm-links-network
