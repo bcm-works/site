@@ -1,45 +1,31 @@
 # AI Agent Instructions
 
-This repository contains the website at [bcm.works](https://bcm.works/) and related assets and documentation.
+## Rules
 
-## Tech Stack
-
-- **src/backend** - Deno, Typescript
-- **src/cli** - Go
-- **src/frontend** - Deno, Typescript
-
-## Required Tools
-
-If any of the below CLI commands aren't available, stop processing and explain the missing tool to the user.
-
-- `bash`
-- `git`
-- `deno`
-- `go`
-
-## Hard Rules
-
+- This repository contains a static website, backend API and a CLI tool.
+- For the repository structure and tech stack, read [/README.md](README.md).
 - If `sudo` is needed, do not invoke it, print the command and explain why instead.
-- See `docs/DESIGN.md`: frontend website design and CSS theming rules.
-- Rules for Deno or TypeScript code (`*.ts`):
-  - Always check Deno code changes using the custom `deno task check` command, which includes Deno lint, check and fmt.
-  - Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
-  - If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
-- Rules for Go code (`*.go` and `go.mod`):
-  - Test all code changes by adding the `GOCACHE=/tmp/gocache ` prefix to all `go test` commands
+- Prefer simple, direct solutions over additional abstractions or speculative flexibility.
+- Keep changes focused on the requested outcome; avoid unrelated cleanup.
+- Follow existing project patterns and reuse established sources of truth.
+- State consequential assumptions and tradeoffs clearly. Ask one focused question when ambiguity would materially change the result.
+- Validate changes using the checks closest to real usage, and report what was verified.
+- Communicate the outcome first, followed by concise supporting detail.
 
-## Agent Guidelines & Safety Rules
+### Deno or TypeScript code (`*.ts`)
 
-- **Concise Responses:** Keep responses concise, based on factual information and avoid extra unnecessary detail.
-- **Assume Technical Knowledge:** Skip technical reasoning and comparison unless this is specifically requested.
-- **Minimise Comments:** Minimise comments in code to only briefly explain the "why", contextual information and excess spacing is messy.
-- **Strict Command Banishment:** Under no circumstances should the agent ever run `git commit`, `git push`, `rm` or `kill` commands. Doing so is strictly forbidden by the project configuration.
-- **No Destructive Operations:** Never delete system files or run modifying system commands without explaining their purpose and obtaining explicit permission from the user.
-- **Sandboxed Validation:** Validate all proposed changes locally within the sandbox.
+- Always check Deno code changes using the custom `deno task check` command, which includes Deno lint, check and fmt.
+- Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
+- If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
+
+### Go code (`*.go` and `go.mod`)
+
+- Stick to the Go version specified in the relevant `go.mod` file
+- Test all code changes by adding the `GOCACHE=/tmp/gocache ` prefix to all `go test` commands
 
 ## Technical Reference
 
-Fetching information from any page on any of these websites is allowed and encouraged:
+Fetch information from the following websites to clarify suggested changes:
 
 - Deno documentation: https://docs.deno.com/
 - Deno Lume documentation: https://lume.land/docs/

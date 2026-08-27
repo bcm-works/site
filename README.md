@@ -16,6 +16,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [docs](docs/) - Documentation and contextual information.
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
+- [docs/DESIGN.md](docs/DESIGN.md) - Frontend website design and CSS theming rules.
 - [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server, API and utilities.
 - [src/cli](src/cli/) - CLI tool written in [Go](https://go.dev/).
@@ -36,19 +37,17 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
 - [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.
 
-## Local Setup
+## Required Tools
 
-Required:
+- [Deno](https://deno.com/) (`latest stable`) - Consider installing via my [dotfiles deno-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/deno-setup.sh).
+- [Go](https://go.dev/) (`1.26.6`) - Consider installing via my [dotfiles go-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/go-setup.sh).
 
-- [Deno](https://deno.com/) (`latest stable`) - Install via my [dotfiles deno-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/deno-setup.sh).
-- [Go](https://go.dev/) (`1.26.6`) - Install via my [dotfiles go-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/go-setup.sh).
+## Optional Tools
 
-Optional:
+- [GitHub CLI](https://cli.github.com/) - Consider installing via my [dotfiles github-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/git/github-setup.sh).
+- AI tools - Consider installing via my [dotfiles AI script](https://github.com/bcm-works/dotfiles/tree/main/ai).
 
-- [GitHub CLI](https://cli.github.com/) - Install via my [dotfiles github-setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/git/github-setup.sh).
-- AI tools - Install via my [dotfiles AI script](https://github.com/bcm-works/dotfiles/tree/main/ai).
-
-## Local Tools
+## Helper Commands
 
 A `task` binary is included to make it easier to run local dev tasks. The source code for this is in [src/cli](src/cli/).
 
