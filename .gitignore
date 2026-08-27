@@ -34,3 +34,4 @@ src/cli/temp/
 .claude/code-map.md
 .claude/settings.local.json
 .claude/tsc-cache
+.delta
