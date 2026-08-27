@@ -5,10 +5,11 @@
 #
 #
 
-REPO="$(cd "$(dirname "$0")/../.." && pwd)"
-cd "$REPO"
+set -euo pipefail
 
-docker stop bcm-site > /dev/null 2>&1 || true
-docker rm bcm-site > /dev/null 2>&1 || true
+if docker container inspect bcm-site > /dev/null 2>&1; then
+  docker stop bcm-site > /dev/null
+  docker rm bcm-site > /dev/null
+fi
 
 echo "Docker container stopped."
