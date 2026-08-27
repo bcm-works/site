@@ -5,7 +5,7 @@
   "lock": true,
   "imports": {
     "@/": "./src/",
-    "@inquirer/prompts": "npm:@inquirer/prompts@^8.6.0",
+    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.0",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.4",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
