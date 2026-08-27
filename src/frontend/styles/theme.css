@@ -43,6 +43,10 @@
   --font-site-name-small: normal 500 28px/34px var(--font-family-header);
   --font-footer: normal 500 26px/32px var(--font-family-header);
   --font-footer-small: normal 500 24px/32px var(--font-family-header);
+
+  /* RELEASE */
+  --release-font: normal 500 16px/32px var(--font-family-code);
+  --release-colour: #4b4b4b;
 }
 
 /* CUSTOM FONTS */
