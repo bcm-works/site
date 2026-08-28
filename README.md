@@ -28,11 +28,11 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 ## Tech Stack
 
-- [Deno Deploy](https://deno.com/deploy) - Infrastructure host.
-- [GitHub Actions](https://github.com/features/actions) - Deployment and testing workflows.
+- [Deno Deploy](https://deno.com/deploy) - Infrastructure and deployment.
+- [GitHub Actions](https://github.com/features/actions) - Test workflow, PR template and Dependabot config.
 - [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
 - [Go](https://go.dev/) - Tasks CLI.
-- [Deno](https://deno.land/) - Backend, Frontend, Deno Tests.
+- [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Backend, Frontend, and Unit Tests.
 - [Lume](https://lume.land/) - Static site generator for Deno.
 - [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
 - [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.
