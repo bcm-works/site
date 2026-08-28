@@ -58,7 +58,7 @@
     },
     "lume": {
       "description": "Run the Lume site build process.",
-      "command": "TZ=Australia/Sydney LUME_LOGS=error deno run -P=lume lume/cli.ts --config=src/frontend/lume.config.ts"
+      "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=src/frontend/lume.config.ts"
     },
     "check": {
       "description": "Run Deno code checks.",
@@ -109,39 +109,11 @@
       ]
     }
   },
-  "permissions": {
-    "lume": {
-      "read": true,
-      "write": [
-        "./"
-      ],
-      "import": [
-        "cdn.jsdelivr.net:443",
-        "jsr.io:443",
-        "deno.land:443",
-        "esm.sh:443"
-      ],
-      "net": [
-        "0.0.0.0",
-        "cdn.jsdelivr.net:443",
-        "data.jsdelivr.com:443",
-        "jsr.io:443",
-        "deno.land:443",
-        "esm.sh:443",
-        "registry.npmjs.org:443"
-      ],
-      "env": true,
-      "run": true,
-      "ffi": true,
-      "sys": true
-    }
-  },
   "allowScripts": {
     "allow": [],
     "deny": [
-      "npm:esbuild@0.28.0",
-      "npm:fs-ext@2.0.0",
-      "npm:chalk@5.6.2",
+      "npm:esbuild@0.28.2",
+      "npm:chalk@6.0.0",
       "npm:purgecss@8.0.0",
       "npm:lightningcss-cli@1.32.0",
       "npm:date-fns@4.4.0"
