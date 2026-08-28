@@ -76,7 +76,7 @@
     },
     "hooks:pre-push": {
       "description": "Git Hook - Pre push.",
-      "command": "deno task test"
+      "command": "deno task test > git-hook-pre-push.log"
     }
   },
   "compilerOptions": {
