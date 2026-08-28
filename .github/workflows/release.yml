@@ -28,6 +28,7 @@ defaults:
     shell: bash
 
 env:
+  BUILD_TAG_PREFIX: "release-"
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -54,8 +55,8 @@ jobs:
     permissions:
       contents: read
     outputs:
-      TIMESTAMP: ${{ steps.vars.outputs.TIMESTAMP }}
-      COMMIT: ${{ steps.vars.outputs.COMMIT }}
+      BUILD_ID: ${{ steps.vars.outputs.BUILD_ID }}
+      BUILD_COMMIT: ${{ steps.vars.outputs.BUILD_COMMIT }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v7
@@ -66,8 +67,8 @@ jobs:
       - name: Set Variables
         id: vars
         run: |
-          echo "TIMESTAMP=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
-          echo "COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
+          echo "BUILD_ID=$(TZ='Australia/Sydney' date +%Y%m%d.%H%M)" >> $GITHUB_OUTPUT
+          echo "BUILD_COMMIT=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
       - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
@@ -99,8 +100,7 @@ jobs:
       - name: Deploy
         run: |
           deno deploy \
-            env update-value \
-            SITE_BUILD_ID ${{ needs.build.outputs.TIMESTAMP }} \
+            env update-value SITE_BUILD_ID "${{ needs.build.outputs.BUILD_ID }}" \
             --token ${{ secrets.DENO_DEPLOY_TOKEN }} \
             --json \
             --non-interactive \
@@ -139,7 +139,7 @@ jobs:
       - name: Generate Release Notes
         working-directory: ${{ github.workspace }}
         run: |
-          TAG_PREV=$(git tag -l "release-*" --sort=-creatordate | head -n 1)
+          TAG_PREV=$(git tag -l "${{ env.BUILD_TAG_PREFIX }}*" --sort=-creatordate | head -n 1)
           git log "$TAG_PREV..HEAD" \
             --oneline --no-merges \
             --format="- [%h](${{ github.server_url }}/${{ github.repository }}/commit/%H) %s" \
@@ -149,12 +149,12 @@ jobs:
         run: |
           git config user.name "bot-release"
           git config user.email "brendan+bot-release@bcm.works"
-          git tag release-${{ needs.build.outputs.TIMESTAMP }}
+          git tag ${{ env.BUILD_TAG_PREFIX }}${{ needs.build.outputs.BUILD_ID }}
           git push --tags --quiet
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
-          name: ${{ needs.build.outputs.TIMESTAMP }}
-          tag: release-${{ needs.build.outputs.TIMESTAMP }}
+          name: ${{ needs.build.outputs.BUILD_ID }}
+          tag: ${{ env.BUILD_TAG_PREFIX }}${{ needs.build.outputs.BUILD_ID }}
           bodyFile: ${{ github.workspace }}/release-notes.log
           makeLatest: true
