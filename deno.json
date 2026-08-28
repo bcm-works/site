@@ -6,6 +6,7 @@
   "imports": {
     "$be/": "./src/backend/",
     "$fe/": "./src/frontend/",
+    "@hongminhee/deno-task-hooks": "jsr:@hongminhee/deno-task-hooks@^0.1.2",
     "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.0",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.4",
     "@std/assert": "jsr:@std/assert@^1.0.19",
@@ -61,9 +62,21 @@
       "description": "Run the Lume site build process.",
       "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=src/frontend/lume.config.ts"
     },
+    "build-cli": {
+      "description": "Run the CLI build process.",
+      "command": "bash ./src/cli/build.sh"
+    },
     "check": {
       "description": "Run Deno code checks.",
       "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check"
+    },
+    "hooks:install": {
+      "description": "Git Hook - Initial setup.",
+      "command": "deno run --allow-read=deno.json,.git/hooks/ --allow-write=.git/hooks/ jsr:@hongminhee/deno-task-hooks"
+    },
+    "hooks:pre-push": {
+      "description": "Git Hook - Pre push.",
+      "command": "deno task test"
     }
   },
   "compilerOptions": {
