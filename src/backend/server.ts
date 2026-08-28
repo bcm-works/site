@@ -7,6 +7,9 @@ import { corsHandler, responseHandler } from "@/backend/response.ts";
 import { getGithubUser } from "@/backend/api/github-user.ts";
 import { GitHubUserResponse, PrefetchProxyResponse, RequestInfoResponse } from "@/backend/server.types.ts";
 
+// Import the Crons list, Deno Deploy will import them automatically
+import "@/backend/tasks/crons.ts";
+
 // Load Env Vars with suitable defaults
 
 const env = new Env();
