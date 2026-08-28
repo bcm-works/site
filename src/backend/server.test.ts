@@ -1,5 +1,5 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
-import server from "@/backend/server.ts";
+import server from "$be/server.ts";
 
 Deno.test("SERVER", async (test) => {
   await test.step({

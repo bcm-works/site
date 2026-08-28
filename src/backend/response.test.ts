@@ -1,5 +1,5 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
-import { responseHandler } from "@/backend/response.ts";
+import { responseHandler } from "$be/response.ts";
 
 Deno.test("RESPONSE", async (test) => {
   await test.step({

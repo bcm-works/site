@@ -1,4 +1,4 @@
-import { Env } from "@/backend/env.ts";
+import { Env } from "$be/env.ts";
 
 const env = new Env();
 const siteUrl: string = env.getUrl();

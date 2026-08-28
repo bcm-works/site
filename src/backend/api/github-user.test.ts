@@ -1,6 +1,6 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
-import { getGithubUser } from "@/backend/api/github-user.ts";
-import { Env } from "@/backend/env.ts";
+import { getGithubUser } from "$be/api/github-user.ts";
+import { Env } from "$be/env.ts";
 
 const hasToken = !!(new Env()).get("SITE_GITHUB_ID");
 

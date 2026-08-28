@@ -1,6 +1,6 @@
-import { cmd, cmdShow } from "@/backend/cmd.ts";
-import { logInfo, logWarn } from "@/backend/log.ts";
-import { Env } from "@/backend/env.ts";
+import { cmd, cmdShow } from "$be/cmd.ts";
+import { logInfo, logWarn } from "$be/log.ts";
+import { Env } from "$be/env.ts";
 
 const env = new Env();
 

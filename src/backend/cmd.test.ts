@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { cmdExists, cmdResult, cmdShow } from "@/backend/cmd.ts";
+import { cmdExists, cmdResult, cmdShow } from "$be/cmd.ts";
 
 // Note: execSync spawns via 'sh', which is not covered by --allow-run=deno.
 // Steps that require successful execution are skipped gracefully when permissions

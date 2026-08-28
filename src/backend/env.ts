@@ -1,5 +1,5 @@
 import { parse as envParse } from "@std/dotenv";
-import { logError } from "@/backend/log.ts";
+import { logError } from "$be/log.ts";
 import { PostHog } from "posthog";
 
 export class Env {

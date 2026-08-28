@@ -1,14 +1,14 @@
 import { serveFile } from "@std/http/file-server";
-import { fileExists } from "@/backend/local.ts";
-import { logSuccess } from "@/backend/log.ts";
-import { Env } from "@/backend/env.ts";
-import { requestInfo } from "@/backend/request.ts";
-import { corsHandler, responseHandler } from "@/backend/response.ts";
-import { getGithubUser } from "@/backend/api/github-user.ts";
-import { GitHubUserResponse, PrefetchProxyResponse, RequestInfoResponse } from "@/backend/server.types.ts";
+import { fileExists } from "$be/local.ts";
+import { logSuccess } from "$be/log.ts";
+import { Env } from "$be/env.ts";
+import { requestInfo } from "$be/request.ts";
+import { corsHandler, responseHandler } from "$be/response.ts";
+import { getGithubUser } from "$be/api/github-user.ts";
+import { GitHubUserResponse, PrefetchProxyResponse, RequestInfoResponse } from "$be/types.ts";
 
 // Import the Crons list, Deno Deploy will import them automatically
-import "@/backend/tasks/crons.ts";
+import "$be/tasks/crons.ts";
 
 // Load Env Vars with suitable defaults
 

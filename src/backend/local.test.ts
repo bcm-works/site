@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { dirExists, fileExists } from "@/backend/local.ts";
+import { dirExists, fileExists } from "$be/local.ts";
 
 Deno.test("COMMON local", async (test) => {
   await test.step({

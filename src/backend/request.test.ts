@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { requestInfo } from "@/backend/request.ts";
+import { requestInfo } from "$be/request.ts";
 
 Deno.test("REQUEST", async (test) => {
   await test.step({

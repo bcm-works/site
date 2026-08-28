@@ -1,6 +1,6 @@
-import { cors } from "@/backend/headers.ts";
-import { Env } from "@/backend/env.ts";
-import { ResponseHandlerResponse } from "@/backend/server.types.ts";
+import { cors } from "$be/headers.ts";
+import { Env } from "$be/env.ts";
+import { ResponseHandlerResponse } from "$be/types.ts";
 
 const env = new Env();
 const siteUrl: string = env.getUrl();

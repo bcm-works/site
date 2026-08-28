@@ -1,5 +1,5 @@
 import { assertEquals, assertNotEquals } from "@std/assert";
-import { cors } from "@/backend/headers.ts";
+import { cors } from "$be/headers.ts";
 
 Deno.test("HEADERS", async (test) => {
   await test.step({
