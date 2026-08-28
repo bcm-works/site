@@ -1,10 +1,11 @@
 module github.com/bcm-works/site/cli/v2
 
-go 1.26
+go 1.27
 
-require github.com/fatih/color v1.19.0 // direct
-
-require github.com/joho/godotenv v1.5.1 // direct
+require (
+	github.com/fatih/color v1.19.0 // direct
+	github.com/joho/godotenv v1.5.1 // direct
+)
 
 require (
 	github.com/mattn/go-colorable v0.1.15 // indirect
