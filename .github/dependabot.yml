@@ -1,5 +1,21 @@
 version: 2
 updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 1
+    assignees:
+      - "bcm-works"
+    groups:
+      deps-ghactions:
+        patterns:
+          - "*"
+    target-branch: "main"
+    pull-request-branch-name:
+      separator: "-"
+      prefix: "fix-deps-ghactions-"
+      branch-name-case: "lowercase"
   - package-ecosystem: "deno"
     directory: "/"
     schedule:
