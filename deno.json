@@ -19,7 +19,7 @@
     "chalk": "npm:chalk@^6.0.0",
     "highlight": "npm:highlight.js@^11.12.0",
     "is_json/": "https://deno.land/x/is_json@v1.0.2/",
-    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/",
+    "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.3.1/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
     "posthog": "npm:posthog-node@^5.51.4"
   },
