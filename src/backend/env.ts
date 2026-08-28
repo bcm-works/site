@@ -16,7 +16,7 @@ export class Env {
       this.env = Deno.env.toObject();
     }
 
-    this.buildId = this.get("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMddHHmmss"));
+    this.buildId = this.get("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMdd.HHmm"));
   }
 
   public get(varName: string, defaultValue?: string): string {
