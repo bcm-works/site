@@ -184,18 +184,9 @@ footer aside a.site-link {
   float: left;
 }
 
-footer aside a.release-link {
-  float: right;
-  font: var(--release-font);
-  color: var(--release-colour);
-}
-
 footer a:active,
 footer a:focus,
-footer a:hover,
-footer aside a.release-link:active,
-footer aside a.release-link:focus,
-footer aside a.release-link:hover {
+footer a:hover {
   color: var(--colour-white);
   text-decoration: var(--link-decoration-footer);
   text-underline-offset: var(--link-decoration-underline-offset);

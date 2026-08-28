@@ -16,7 +16,7 @@ it creates a temporary build secret from the current process environment. Site
 metadata is needed at build time because Lume embeds it in the generated static
 pages. The build secret is not stored in the resulting image.
 
-`SITE_BUILD_ID`, `SITE_BUILD_DIR`, and `SITE_PUBLIC_DIR` can also be set in the
+`SITE_BUILD_DIR`, and `SITE_PUBLIC_DIR` can also be set in the
 environment before running the helper.
 
 ## Run locally

@@ -15,6 +15,7 @@ import langJavaScript from "highlight/lib/languages/javascript";
 import langBash from "highlight/lib/languages/bash";
 import langPhp from "highlight/lib/languages/php";
 import langTypeScript from "highlight/lib/languages/typescript";
+import { format as dateInFormat } from "date-fns";
 
 // Load environment variables
 
@@ -30,7 +31,7 @@ const sitePosthogApiHost: string = bcm.get("SITE_POSTHOG_API_HOST");
 const sitePosthogUiHost: string = bcm.get("SITE_POSTHOG_UI_HOST");
 const siteIsLocal: boolean = bcm.isLocal();
 const siteEnv: string = siteIsLocal ? "local" : bcm.get("SITE_ENV", "hosted");
-const siteBuildId: string = bcm.getBuildId();
+const siteBuildId: string =  dateInFormat(new Date(), "yyyyMMdd.HHmm");
 
 // Build the site using Lume
 

@@ -13,9 +13,6 @@ cd "$REPO"
 
 bash "${DIR}/docker-stop.sh"
 
-NOW_DATE=$(date -u +"%Y%m%d.%H%M")
-BUILD_ID=${SITE_BUILD_ID:-$NOW_DATE}
-
 ENVFILE="$REPO/.env"
 if [ -f "$ENVFILE" ]; then
   echo "Env file found, loading vars from it."
@@ -28,7 +25,6 @@ if [ -f "$ENVFILE" ]; then
   CONTAINER_ID=$(docker run -d \
     --name "bcm-site" \
     --publish "${CONTAINER_PORT}:${CONTAINER_PORT}" \
-    --env "SITE_BUILD_ID=${BUILD_ID}" \
     --env-file "${ENVFILE}" \
     "bcm-site:latest")
 else
@@ -65,7 +61,6 @@ else
   CONTAINER_ID=$(docker run -d \
     --name "bcm-site" \
     --publish "${CONTAINER_PORT}:${CONTAINER_PORT}" \
-    --env "SITE_BUILD_ID=${BUILD_ID}" \
     "${RUN_ENV_ARGS[@]}" \
     "bcm-site:latest")
 fi

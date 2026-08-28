@@ -11,7 +11,6 @@ import { GitHubUserResponse, PrefetchProxyResponse, RequestInfoResponse } from "
 
 const env = new Env();
 const siteUrl: string = env.getUrl();
-const buildId: string = env.getBuildId();
 
 export default {
   async fetch(request: Request) {
@@ -40,11 +39,6 @@ export default {
     // API - Health
     if (req === "/api/health/") {
       return responseHandler(request, 200, "OK");
-    }
-
-    // API - Version
-    if (req === "/api/version/") {
-      return responseHandler(request, 200, buildId);
     }
 
     // API - GitHub User Info

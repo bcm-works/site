@@ -4,7 +4,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 ## Status
 
-[![GitHub Workflow](https://img.shields.io/github/actions/workflow/status/bcm-works/site/release.yml?style=flat-square&logo=github&label=Release%20Status&labelColor=444444)](https://github.com/bcm-works/site/actions/workflows/release.yml) [![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Website%20Uptime&labelColor=444444)](https://github.com/bcm-works/status)
+[![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Website%20Uptime&labelColor=444444)](https://github.com/bcm-works/status)
 
 ## Structure
 
@@ -69,4 +69,4 @@ First setup [GitHub Actions](https://github.com/features/actions) secrets by fol
 
 Then setup a new [Deno Deploy](https://deno.com/deploy) project, following the steps in [.env.deno-deploy](.env.deno-deploy).
 
-Following this, new releases can be manually triggered from GitHub Actions via [release.yml](.github/workflows/release.yml). This workflow will build and run tests remotely, then deploy to [Deno Deploy](https://deno.com/deploy).
+Following this, new releases will be automatically triggered from [Deno Deploy](https://deno.com/deploy) when new commits are pushed to the `main` branch.

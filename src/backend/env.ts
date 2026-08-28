@@ -1,22 +1,18 @@
 import { parse as envParse } from "@std/dotenv";
 import { logError } from "@/backend/log.ts";
-import { format as dateInFormat } from "date-fns";
 import { PostHog } from "posthog";
 
 export class Env {
-  private buildId: string;
   private env: Record<string, string> = {};
   private envFileDefault: string = "./.env";
 
   constructor(envFile: string = this.envFileDefault) {
-    // Attempt to load the env file, fall back to using the system env vars
+    // Attempt to load the env file, or fallback to using the system env vars
     try {
       this.env = envParse(Deno.readTextFileSync(envFile));
     } catch (_error: unknown) {
       this.env = Deno.env.toObject();
     }
-
-    this.buildId = this.get("SITE_BUILD_ID", dateInFormat(new Date(), "yyyyMMdd.HHmm"));
   }
 
   public get(varName: string, defaultValue?: string): string {
@@ -68,10 +64,6 @@ export class Env {
 
   public getPublicDir(): string {
     return this.get("SITE_PUBLIC_DIR", "public");
-  }
-
-  public getBuildId(): string {
-    return this.buildId;
   }
 
   public postHogAnonBackendEvent(

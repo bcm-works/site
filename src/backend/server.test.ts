@@ -24,19 +24,6 @@ Deno.test("SERVER", async (test) => {
   });
 
   await test.step({
-    name: "GET /api/version returns 200 with a non-empty body",
-    fn: async () => {
-      const req = new Request("https://bcm.works/api/version");
-      const res = await server.fetch(req);
-
-      assertEquals(res.status, 200);
-
-      const body = await res.text();
-      assertNotEquals(body, "");
-    }
-  });
-
-  await test.step({
     name: "unknown path returns a redirect",
     fn: async () => {
       const req = new Request("https://bcm.works/this-page-does-not-exist/");
