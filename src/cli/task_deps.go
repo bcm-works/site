@@ -7,5 +7,5 @@ func TaskDeps() {
 	LogInfo("Updating Go dependencies")
 	Cmd("cd src/cli && go get -u -t ./... && go mod tidy")
 
-	LogWarn("If there are Git diffs now, a CLI build then a test run must be run locally before committing and pushing changes")
+	LogWarn("Dependency updates completed, check updated files")
 }
