@@ -18,6 +18,8 @@ updates:
       branch-name-case: "lowercase"
   - package-ecosystem: "deno"
     directory: "/"
+    exclude-paths:
+      - ".prototypes/**"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 1
@@ -38,7 +40,6 @@ updates:
       separator: "-"
       prefix: "fix-deps-deno-"
       branch-name-case: "lowercase"
-
   - package-ecosystem: "gomod"
     directory: "/src/cli"
     schedule:

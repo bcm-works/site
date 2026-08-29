@@ -8,7 +8,7 @@ backend API. The image intentionally supports `linux/amd64` only.
 From the repository root:
 
 ```bash
-bash prototypes/docker/docker-build.sh
+bash .prototypes/docker/docker-build.sh
 ```
 
 The build helper reads site configuration from `.env`. If that file is absent,
@@ -22,7 +22,7 @@ environment before running the helper.
 ## Run locally
 
 ```bash
-bash prototypes/docker/docker-start.sh
+bash .prototypes/docker/docker-start.sh
 ```
 
 The helper starts `bcm-site:latest` and publishes it at
@@ -39,7 +39,7 @@ The service:
 Stop it with:
 
 ```bash
-bash prototypes/docker/docker-stop.sh
+bash .prototypes/docker/docker-stop.sh
 ```
 
 ## Hosted environments

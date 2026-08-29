@@ -6,7 +6,7 @@
 
 design/
 docs/
-prototypes/
+.prototypes/
 
 coverage/
 build/

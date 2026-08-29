@@ -8,7 +8,7 @@
 .github/** -linguist-detectable
 .zed/** -linguist-detectable
 .env.* -linguist-detectable
-prototypes/** -linguist-detectable
+.prototypes/** -linguist-detectable
 .* -linguist-detectable
 .*.* -linguist-detectable
 deno.lock linguist-generated

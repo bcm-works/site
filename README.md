@@ -10,6 +10,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 - [.claude](.claude/) - Project specific config for [Claude Code](https://claude.com/product/claude-code).
 - [.github](.github/) - GitHub config and [Actions](https://github.com/features/actions) workflows.
+- [.prototypes](.prototypes/) - Ideas and half-built prototypes.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [design](design/) - Page layout and icon design files.
@@ -17,7 +18,6 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [docs/DESIGN.md](docs/DESIGN.md) - Frontend website design and CSS theming rules.
-- [prototypes](prototypes/) - Ideas and half-built prototypes.
 - [src/backend](src/backend/) - Backend [Deno](https://deno.land/) file server, API and utilities.
 - [src/cli](src/cli/) - CLI tool written in [Go](https://go.dev/).
 - [src/frontend](src/frontend/) - Frontend [Lume](https://lume.land/) templates and styles.
