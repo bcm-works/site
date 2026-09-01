@@ -31,7 +31,7 @@ const sitePosthogApiHost: string = bcm.get("SITE_POSTHOG_API_HOST");
 const sitePosthogUiHost: string = bcm.get("SITE_POSTHOG_UI_HOST");
 const siteIsLocal: boolean = bcm.isLocal();
 const siteEnv: string = siteIsLocal ? "local" : bcm.get("SITE_ENV", "hosted");
-const siteBuildId: string =  dateInFormat(new Date(), "yyyyMMdd.HHmm");
+const siteBuildId: string = dateInFormat(new Date(), "yyyyMMdd.HHmm");
 
 // Build the site using Lume
 
