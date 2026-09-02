@@ -7,7 +7,7 @@
     "$be/": "./src/backend/",
     "$fe/": "./src/frontend/",
     "@hongminhee/deno-task-hooks": "jsr:@hongminhee/deno-task-hooks@^0.1.2",
-    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.0",
+    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.1",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.5",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
@@ -90,7 +90,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "skipLibCheck": true
   },
   "fmt": {
     "include": [
@@ -135,6 +136,11 @@
   },
   "exclude": [
     "node_modules/",
+    ".claude/",
+    ".delta/",
+    ".github/",
+    ".prototypes/",
+    ".zed/",
     "src/cli/"
   ]
 }
