@@ -141,6 +141,8 @@
     ".github/",
     ".prototypes/",
     ".zed/",
+    "build/",
+    "public/",
     "src/cli/"
   ]
 }
