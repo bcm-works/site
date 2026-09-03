@@ -34,7 +34,7 @@
     line-height: 32px;
   }
 
-  .layout-container main .posts-list {
+  .layout-container main .posts-list-cards {
     grid-template-columns: 1fr;
     gap: 40px;
   }

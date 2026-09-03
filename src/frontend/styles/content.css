@@ -238,18 +238,49 @@ ul.posts-list {
   list-style: none;
 }
 
-/* POSTS INDEX (two-column card layout, single column on small screens) */
+ul.posts-list > li {
+  margin-bottom: 32px;
+}
 
-.page-posts-list ul.posts-list {
+ul.posts-list .post-details {
+  margin-top: 12px;
+}
+
+ul.post-info {
+  font-size: var(--font-size-meta);
+  color: var(--colour-gray);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+ul.post-info {
+  flex-wrap: wrap;
+  gap: 16px;
+  display: flex;
+}
+
+ul.post-info li {
+  box-sizing: border-box;
+  flex: 0 0 calc(33.3333% - 10.6667px);
+  margin: 0;
+}
+
+/* POST CARDS (posts index and recent posts, two columns on larger screens) */
+
+ul.posts-list-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--post-card-min-width), 1fr));
   gap: 48px 32px;
   margin-bottom: 24px;
 }
 
+ul.posts-list-cards > li {
+  margin: 0;
+}
+
 .post-card {
   position: relative;
-  margin: 0;
   padding: 0;
 }
 
@@ -276,7 +307,7 @@ ul.posts-list {
   display: block;
   font-family: var(--font-family-header);
   font-weight: 500;
-  font-size: 28px;
+  font-size: 25px;
   line-height: 38px;
   color: var(--colour-foreground);
 }
@@ -293,13 +324,6 @@ ul.posts-list {
   margin-top: 10px;
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
-  color: var(--colour-gray);
-}
-
-.post-card-date {
-  display: block;
-  margin-top: 12px;
-  font-size: var(--font-size-meta);
   color: var(--colour-gray);
 }
 
@@ -334,34 +358,6 @@ ul.posts-list {
 .post-card-tags .link-tag:focus {
   color: var(--colour-highlight);
   text-decoration: none;
-}
-
-ul.posts-list > li {
-  margin-bottom: 32px;
-}
-
-ul.posts-list .post-details {
-  margin-top: 12px;
-}
-
-ul.post-info {
-  font-size: var(--font-size-meta);
-  color: var(--colour-gray);
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-ul.post-info {
-  flex-wrap: wrap;
-  gap: 16px;
-  display: flex;
-}
-
-ul.post-info li {
-  box-sizing: border-box;
-  flex: 0 0 calc(33.3333% - 10.6667px);
-  margin: 0;
 }
 
 .page-post .link-post,
