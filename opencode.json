@@ -1,5 +1,14 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama-cloud/gemma4:31b",
-  "autoupdate": true
+  "model": "ollama/gemma4:31b-cloud",
+  "autoupdate": true,
+  "permission": {
+    "edit": "ask",
+    "bash": "ask",
+    "question": "allow",
+    "read": "allow",
+    "webfetch": "allow",
+    "grep": "allow",
+    "glob": "allow"
+  }
 }
