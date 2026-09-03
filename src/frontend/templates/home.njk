@@ -60,10 +60,13 @@ body_class: page-home
 
 <ul class="posts-list posts-list-cards">
   {% set posts = search.pages("type=post", "date=desc") %}
-  {% for post in posts.slice(0, 6) %}
+  {% for post in posts.slice(0, 7) %}
   {% if post.url != '/posts/' %}
   {{ card.card(post) }}
   {% endif %}
   {% endfor %}
 </ul>
-<p><a href="/posts/">View all posts</a></p>
+
+<div class="posts-view-all">
+  <a href="/posts/">View all posts</a>
+</div>

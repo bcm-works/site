@@ -264,7 +264,7 @@ ul.post-info li {
   margin: 0;
 }
 
-/* POST CARDS (posts index and recent posts, two columns on larger screens) */
+/* Post list cards */
 
 ul.posts-list-cards {
   display: grid;
@@ -277,7 +277,7 @@ ul.posts-list-cards > li {
   margin: 0;
 }
 
-/* The card fills its grid row, so the details sit on the bottom edge */
+/* The card fills its grid row, the details stick to the bottom */
 .post-card {
   position: relative;
   display: flex;
@@ -293,7 +293,6 @@ ul.posts-list-cards > li {
   text-decoration: none;
 }
 
-/* Only the title is underlined when the entry is hovered or focused */
 .post-card-link:hover,
 .post-card-link:focus {
   text-decoration: none;
@@ -375,6 +374,10 @@ ul.posts-list-cards > li {
   color: var(--colour-highlight);
   text-decoration: var(--link-decoration-default);
   text-underline-offset: var(--link-decoration-underline-offset);
+}
+
+.posts-view-all {
+  margin: 32px 0;
 }
 
 .post-content ul li {
