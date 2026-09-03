@@ -11,7 +11,8 @@
       },
       "models": {
         "gemma4:latest": {
-          "name": "Gemma 4"
+          "name": "Gemma 4",
+          "maxTokens": 16384
         }
       }
     }
@@ -19,6 +20,11 @@
   "autoupdate": true,
   "default_agent": "plan",
   "share": "disabled",
+  "compaction": {
+    "auto": true,
+    "prune": false,
+    "reserved": 10000
+  },
   "permission": {
     "edit": "allow",
     "question": "allow",

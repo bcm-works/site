@@ -46,6 +46,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 - [GitHub CLI](https://cli.github.com/) - Consider installing via my [GitHub setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/git/github.sh).
 - AI tools - Consider installing via my [Dotfiles AI directory](https://github.com/bcm-works/dotfiles/tree/main/ai).
+- AI model - Download a local version of the `gemma4` model - `ollama pull gemma4`
 
 ## Helper Commands
 
