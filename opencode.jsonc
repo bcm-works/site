@@ -1,7 +1,21 @@
 {
-  "$schema": "https://opencode.ai/config.json",
-  "model": "opencode/muse-spark-1.3-contributor-free",
-  "small_model": "opencode/muse-spark-1.3-contributor-free",
+  // "$schema": "https://opencode.ai/config.json",
+  "model": "ollama/gemma4:latest",
+  "provider": {
+    // Use the local Gemma 4 model from Ollama
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (Local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "gemma4:latest": {
+          "name": "Gemma 4"
+        }
+      }
+    }
+  },
   "autoupdate": true,
   "default_agent": "plan",
   "share": "disabled",
