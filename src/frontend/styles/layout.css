@@ -87,9 +87,8 @@ footer {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 48px 32px;
+  padding: 32px;
   box-sizing: border-box;
-  float: left;
 }
 
 footer nav ul {

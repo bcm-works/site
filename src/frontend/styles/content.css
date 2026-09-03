@@ -169,7 +169,7 @@ header nav li.active a {
   background-position: center top;
   background-size: 100% 8px;
   background-image: var(--bg-image-hatch);
-  padding-top: 12px;
+  padding: 12px 0 32px;
 }
 
 footer aside {
