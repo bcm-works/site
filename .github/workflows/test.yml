@@ -16,8 +16,8 @@ on:
     branches:
       - main
     paths:
-      - src/*.ts
-      - src/**/*.ts
+      - .github/**
+      - src/**
       - deno.json
       - deno.lock
 
