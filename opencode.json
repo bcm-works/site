@@ -1,14 +1,17 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "ollama/gemma4:31b-cloud",
+  "model": "opencode/muse-spark-1.3-contributor-free",
+  "small_model": "opencode/muse-spark-1.3-contributor-free",
   "autoupdate": true,
+  "default_agent": "plan",
+  "share": "disabled",
   "permission": {
-    "edit": "ask",
-    "bash": "ask",
+    "edit": "allow",
     "question": "allow",
     "read": "allow",
     "webfetch": "allow",
     "grep": "allow",
-    "glob": "allow"
+    "glob": "allow",
+    "bash": "ask"
   }
 }
