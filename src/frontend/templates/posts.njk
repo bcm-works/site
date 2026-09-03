@@ -4,19 +4,27 @@ layout: layouts/page.njk
 body_class: page-posts-list
 ---
 
-{% import "components/info.njk" as info %}
 {% import "components/link.njk" as link %}
+<h1 class="page-heading">Posts</h1>
+
 <ul class="posts-list">
   {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts %}
   {% if post.url != '/posts/' %}
-  <li>
-    <div class="post-name">
-      {{ link.post(post.title, post.url) }}
-    </div>
-    <div class="post-details">
-      {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
-    </div>
+  {% set summary = post.content | md | striptags | truncate(160) %}
+  <li class="post-card">
+    <a class="post-card-link" href="{{ post.url }}">
+      <span class="post-card-title">{{ post.title }}</span>
+      {% if summary %}<span class="post-card-summary">{{ summary | safe }}</span>{% endif %}
+      <span class="post-card-date">{{ post.date | date('d LLL yyyy') }}</span>
+    </a>
+    <ul class="post-card-tags">
+      {% for tag in post.tags | sort %}
+        {% if tag != "Post" %}
+        <li>{{ link.tag(tag) }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   </li>
   {% endif %}
   {% endfor %}

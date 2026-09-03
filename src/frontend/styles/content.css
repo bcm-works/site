@@ -238,6 +238,109 @@ ul.posts-list {
   list-style: none;
 }
 
+/* POSTS INDEX (single-column card layout) */
+
+.page-heading {
+  font-family: var(--font-family-header);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48px;
+  margin: 0 0 40px;
+}
+
+.page-posts-list ul.posts-list {
+  margin-bottom: 24px;
+}
+
+.post-card {
+  position: relative;
+  margin: 0;
+  padding: 28px 0;
+  border-top: 1px solid var(--colour-gray-dark);
+}
+
+.post-card:first-child {
+  padding-top: 0;
+  border-top: 0 none;
+}
+
+.post-card-link {
+  display: block;
+  color: var(--colour-foreground);
+  text-decoration: none;
+}
+
+/* Stretch the link over the whole card so the entry is clickable */
+.post-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.post-card-title {
+  display: block;
+  font-family: var(--font-family-header);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 38px;
+  color: var(--colour-foreground);
+}
+
+.post-card-link:hover .post-card-title,
+.post-card-link:focus .post-card-title {
+  color: var(--colour-highlight);
+  text-decoration: var(--link-decoration-active);
+  text-underline-offset: var(--link-decoration-underline-offset);
+}
+
+.post-card-summary {
+  display: block;
+  margin-top: 10px;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--colour-gray);
+}
+
+.post-card-date {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--font-size-meta);
+  color: var(--colour-gray);
+}
+
+.post-card-tags {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-card-tags li {
+  margin: 0;
+}
+
+.post-card-tags .link-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--colour-gray);
+  background-color: var(--colour-gray-dark);
+  text-decoration: none;
+}
+
+.post-card-tags .link-tag:hover,
+.post-card-tags .link-tag:focus {
+  color: var(--colour-highlight);
+  text-decoration: none;
+}
+
 ul.posts-list > li {
   margin-bottom: 32px;
 }
