@@ -7,10 +7,10 @@
   <a class="post-card-link" href="{{ post.url }}">
     <span class="post-card-title">{{ post.title }}</span>
     {% if summary %}<span class="post-card-summary">{{ summary | safe }}</span>{% endif %}
-    <div class="post-details">
-      {{ info.post(post.date, post.readingInfo.words) }}
-    </div>
   </a>
+  <div class="post-details">
+    {{ info.post(post.date, post.readingInfo.words) }}
+  </div>
   <ul class="post-card-tags">
     {% for tag in post.tags | sort %}
       {% if tag != "Post" %}

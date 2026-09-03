@@ -277,13 +277,18 @@ ul.posts-list-cards > li {
   margin: 0;
 }
 
+/* The card fills its grid row, so the details sit on the bottom edge */
 .post-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 0;
 }
 
 .post-card-link {
   display: block;
+  flex: 1 0 auto;
   color: var(--colour-foreground);
   text-decoration: none;
 }
