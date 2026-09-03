@@ -34,7 +34,7 @@
     gap: 40px;
   }
 
-  .social-links-container .social-links li {
+  .social-links li {
     flex: 0 0 calc(50% - 8px);
   }
 

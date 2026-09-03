@@ -5,6 +5,8 @@ body_class: page-home
 
 {% import "components/github.njk" as github %}
 {% import "components/post-card.njk" as card %}
+{% import "components/social.njk" as social %}
+
 <div class="intro">
   <p>
     I specialise in actively leading software teams to build scalable, well-defined technical solutions.
@@ -12,44 +14,7 @@ body_class: page-home
 </div>
 
 <div class="social-links-container">
-  <ul class="social-links">
-    <li>
-      <a href="mailto:brendan@bcm.works" target="_blank" title="Send me an email at brendan@bcm.works">
-        <span class="icon fa-fw fa-solid fa-envelope"></span>
-        <span class="label">Email</span>
-      </a>
-    </li>
-    <li>
-      <a href="/resume.pdf?v={{ SITE_BUILD_ID }}" download="Resume - Brendan Murty.pdf" title="Download my resume">
-        <span class="icon fa-fw fa-solid fa-address-card"></span>
-        <span class="label">Resume</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://www.linkedin.com/in/bcm-works" title="View my LinkedIn profile">
-        <span class="icon fa-fw fa-brands fa-linkedin"></span>
-        <span class="label">LinkedIn</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://mastodon.social/@murty" title="Find me on Mastodon" rel="me">
-        <span class="icon fa-fw fa-brands fa-mastodon"></span>
-        <span class="label">Mastodon</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://steamcommunity.com/id/bcmurty/" title="View my Steam profile">
-        <span class="icon fa-fw fa-brands fa-steam"></span>
-        <span class="label">Steam</span>
-      </a>
-    </li>
-    <li>
-      <a href="https://discordapp.com/users/362579289700302858" title="View my Discord profile">
-        <span class="icon fa-fw fa-brands fa-discord"></span>
-        <span class="label">Discord</span>
-      </a>
-    </li>
-  </ul>
+  {{ social.links() }}
 </div>
 
 <h2>GitHub</h2>

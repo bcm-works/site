@@ -172,17 +172,25 @@ header nav li.active a {
   padding-top: 12px;
 }
 
-footer .icon,
-footer a,
-footer a:visited {
-  color: var(--colour-white);
-  text-decoration: none;
-}
-
 footer aside {
   float: left;
-  margin: 0 0 20px;
+  margin: 0 0 32px;
   width: 100%;
+}
+
+footer nav {
+  float: left;
+  width: 100%;
+}
+
+footer .icon,
+footer a,
+footer a:visited,
+footer .social-links a:active,
+footer .social-links a:focus,
+footer .social-links a:hover {
+  color: var(--colour-white);
+  text-decoration: none;
 }
 
 footer aside a.site-link {
@@ -190,9 +198,12 @@ footer aside a.site-link {
   float: left;
 }
 
-footer a:active,
-footer a:focus,
-footer a:hover {
+footer a.site-link:active,
+footer a.site-link:focus,
+footer a.site-link:hover,
+footer .social-links a:active .label,
+footer .social-links a:focus .label,
+footer .social-links a:hover .label {
   color: var(--colour-white);
   text-decoration: var(--link-decoration-footer);
   text-underline-offset: var(--link-decoration-underline-offset);
@@ -205,7 +216,7 @@ footer a:hover {
   margin: 32px 0;
 }
 
-.social-links-container .social-links {
+.social-links {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
@@ -214,7 +225,7 @@ footer a:hover {
   list-style: none;
 }
 
-.social-links-container .social-links li {
+.social-links li {
   flex: 0 0 calc((100% - (16px * 2)) / 3);
   box-sizing: border-box;
   margin: 0;
