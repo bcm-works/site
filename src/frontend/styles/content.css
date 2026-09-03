@@ -247,17 +247,15 @@ ul.posts-list .post-details {
 }
 
 ul.post-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
   font-size: var(--font-size-meta);
   color: var(--colour-gray);
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-ul.post-info {
-  flex-wrap: wrap;
-  gap: 16px;
-  display: flex;
 }
 
 ul.post-info li {
