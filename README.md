@@ -40,7 +40,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 ## Required Tools
 
 - [Deno](https://deno.com/) (`latest stable`) - Consider installing via my [Deno setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/deno.sh).
-- [Go](https://go.dev/) (`1.26.6`) - Consider installing via my [Go setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/go.sh).
+- [Go](https://go.dev/) (`1.27`) - Consider installing via my [Go setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/go.sh).
 
 ## Optional Tools
 
