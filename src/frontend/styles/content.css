@@ -243,15 +243,14 @@ ul.posts-list {
 .page-posts-list ul.posts-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--post-card-min-width), 1fr));
-  gap: 32px;
+  gap: 48px 32px;
   margin-bottom: 24px;
 }
 
 .post-card {
   position: relative;
   margin: 0;
-  padding: 28px 0 0;
-  border-top: 1px solid var(--colour-gray-dark);
+  padding: 0;
 }
 
 .post-card-link {
