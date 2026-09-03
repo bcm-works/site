@@ -8,7 +8,7 @@
     <span class="post-card-title">{{ post.title }}</span>
     {% if summary %}<span class="post-card-summary">{{ summary | safe }}</span>{% endif %}
     <div class="post-details">
-      {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
+      {{ info.post(post.date, post.readingInfo.words) }}
     </div>
   </a>
   <ul class="post-card-tags">

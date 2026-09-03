@@ -1,12 +1,8 @@
-{% macro post(postDate, postReadingMinutes, postReadingWords) %}
+{% macro post(postDate, postReadingWords) %}
 <ul class="post-info print-gray">
   <li class="post-date">
     <span class="icon fa-fw fa-solid fa-calendar-days"></span>
     <span class="value">{{ postDate | date('d LLL yyyy') }}</span>
-  </li>
-  <li class="post-time">
-    <span class="icon fa-fw fa-solid fa-hourglass"></span>
-    <span class="value">{{ postReadingMinutes }} minute{% if postReadingMinutes > 1 %}s{% endif %}</span>
   </li>
   <li class="post-words">
     <span class="icon fa-fw fa-solid fa-file-lines"></span>

@@ -8,7 +8,7 @@ body_class: page-post
 {% import "components/link.njk" as link %}
 <h2>{{ link.post(title, url) }}</h2>
 
-{{ info.post(date, readingInfo.minutes, readingInfo.words) }}
+{{ info.post(date, readingInfo.words) }}
 
 <ul class="tag-list print-hidden">
   {% for tag in tags|sort %}

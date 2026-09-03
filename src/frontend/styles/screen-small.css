@@ -29,18 +29,12 @@
     font-size: 22px;
   }
 
-  .layout-container main .post-card-title {
-    font-size: 23px;
-    line-height: 32px;
-  }
-
   .layout-container main .posts-list-cards {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .social-links-container .social-links li,
-  ul.post-info li {
+  .social-links-container .social-links li {
     flex: 0 0 calc(50% - 8px);
   }
 

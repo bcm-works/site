@@ -262,7 +262,7 @@ ul.post-info {
 
 ul.post-info li {
   box-sizing: border-box;
-  flex: 0 0 calc(33.3333% - 10.6667px);
+  flex: 0 0 auto;
   margin: 0;
 }
 
@@ -307,8 +307,8 @@ ul.posts-list-cards > li {
   display: block;
   font-family: var(--font-family-header);
   font-weight: 500;
-  font-size: 25px;
-  line-height: 38px;
+  font-size: 20px;
+  line-height: 30px;
   color: var(--colour-foreground);
 }
 
