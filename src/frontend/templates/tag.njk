@@ -4,6 +4,7 @@ layout: layouts/page.njk
 body_class: page-tag
 ---
 
+{% import "components/info.njk" as info %}
 {% set tag = url | replace("/tags/", "") | replace("/", "") %}
 {% set posts = search.pages(tag + " type=post", "date=desc") %}
 
@@ -23,20 +24,7 @@ body_class: page-tag
         </a>
       </div>
       <div class="post-details">
-        <ul class="post-info print-gray">
-          <li class="post-date">
-            <span class="icon fa-fw fa-solid fa-calendar-days"></span>
-            <span class="value">{{ post.date | date('d LLL yyyy') }}</span>
-          </li>
-          <li class="post-time">
-            <span class="icon fa-fw fa-solid fa-hourglass"></span>
-            <span class="value">{{ post.readingInfo.minutes }} minute{% if post.readingInfo.minutes > 1 %}s{% endif %}</span>
-          </li>
-          <li class="post-words">
-            <span class="icon fa-fw fa-solid fa-file-lines"></span>
-            <span class="value">{{ post.readingInfo.words }} words</span>
-          </li>
-        </ul>
+        {{ info.post(post.date, post.readingInfo.words) }}
       </div>
     </li>
     {% endif %}

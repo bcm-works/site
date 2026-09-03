@@ -247,6 +247,10 @@ ul.posts-list .post-details {
 }
 
 ul.post-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
   font-size: var(--font-size-meta);
   color: var(--colour-gray);
   margin: 0;
@@ -254,16 +258,109 @@ ul.post-info {
   list-style: none;
 }
 
-ul.post-info {
-  flex-wrap: wrap;
-  gap: 16px;
-  display: flex;
-}
-
 ul.post-info li {
   box-sizing: border-box;
-  flex: 0 0 calc(33.3333% - 10.6667px);
+  flex: 0 0 auto;
   margin: 0;
+}
+
+/* POST CARDS (posts index and recent posts, two columns on larger screens) */
+
+ul.posts-list-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--post-card-min-width), 1fr));
+  gap: 48px 32px;
+  margin-bottom: 24px;
+}
+
+ul.posts-list-cards > li {
+  margin: 0;
+}
+
+/* The card fills its grid row, so the details sit on the bottom edge */
+.post-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+}
+
+.post-card-link {
+  display: block;
+  flex: 1 0 auto;
+  color: var(--colour-foreground);
+  text-decoration: none;
+}
+
+/* Only the title is underlined when the entry is hovered or focused */
+.post-card-link:hover,
+.post-card-link:focus {
+  text-decoration: none;
+}
+
+/* Stretch the link over the whole card so the entry is clickable */
+.post-card-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.post-card-title {
+  display: block;
+  font-family: var(--font-family-header);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--colour-foreground);
+}
+
+.post-card-link:hover .post-card-title,
+.post-card-link:focus .post-card-title {
+  color: var(--colour-highlight);
+  text-decoration: var(--link-decoration-active);
+  text-underline-offset: var(--link-decoration-underline-offset);
+}
+
+.post-card-summary {
+  display: block;
+  margin-top: 10px;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--colour-gray);
+}
+
+.post-card-tags {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.post-card-tags li {
+  margin: 0;
+}
+
+.post-card-tags .link-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--colour-gray);
+  background-color: var(--colour-gray-dark);
+  text-decoration: none;
+}
+
+.post-card-tags .link-tag:hover,
+.post-card-tags .link-tag:focus {
+  color: var(--colour-highlight);
+  text-decoration: none;
 }
 
 .page-post .link-post,

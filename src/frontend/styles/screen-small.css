@@ -29,8 +29,12 @@
     font-size: 22px;
   }
 
-  .social-links-container .social-links li,
-  ul.post-info li {
+  .layout-container main .posts-list-cards {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .social-links-container .social-links li {
     flex: 0 0 calc(50% - 8px);
   }
 

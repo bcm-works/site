@@ -4,6 +4,7 @@
   /* LAYOUT */
   --content-max-width: 950px;
   --content-min-height: 500px;
+  --post-card-min-width: 320px;
 
   /* COLOUR SCHEME */
   --colour-black: #000000;

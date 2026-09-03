@@ -3,9 +3,8 @@ layout: layouts/page.njk
 body_class: page-home
 ---
 
-{% import "components/info.njk" as info %}
-{% import "components/link.njk" as link %}
 {% import "components/github.njk" as github %}
+{% import "components/post-card.njk" as card %}
 <div class="intro">
   <p>
     I specialise in actively leading software teams to build scalable, well-defined technical solutions.
@@ -59,19 +58,12 @@ body_class: page-home
 
 <h2>Recent Posts</h2>
 
-<ul class="posts-list posts-list-recent">
+<ul class="posts-list posts-list-cards">
   {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts.slice(0, 6) %}
   {% if post.url != '/posts/' %}
-  <li>
-    <div class="post-name">
-      {{ link.post(post.title, post.url) }}
-    </div>
-    <div class="post-details">
-      {{ info.post(post.date, post.readingInfo.minutes, post.readingInfo.words) }}
-    </div>
-  </li>
+  {{ card.card(post) }}
   {% endif %}
   {% endfor %}
-  <li><a href="/posts/">View all posts</a></li>
 </ul>
+<p><a href="/posts/">View all posts</a></p>
