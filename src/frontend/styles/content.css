@@ -49,6 +49,12 @@ h2 {
   line-height: 40px;
 }
 
+.page-home h2 {
+  margin: 10px 0 25px;
+  padding: 0 0 15px;
+  border-bottom: 1px solid var(--colour-secondary);
+}
+
 h3,
 h4 {
   font-family: var(--font-family-header);
