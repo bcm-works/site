@@ -58,4 +58,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --start-interval=1s -
   CMD deno eval \
   "const port = Deno.env.get('PORT') ?? Deno.env.get('SITE_PORT') ?? '8000'; const response = await fetch('http://127.0.0.1:' + port + '/api/health/', { method: "HEAD" }); if (!response.ok) Deno.exit(1);"
 
-CMD ["sh", "-c", "exec deno serve --cached-only --frozen --host=0.0.0.0 --port=\"${PORT:-${SITE_PORT:-8000}}\" --allow-read=/app/public --allow-env --allow-net --unstable-cron ./src/backend/server.ts"]
+CMD ["sh", "-c", "exec deno serve --cached-only --frozen --host=0.0.0.0 --port=\"${PORT:-${SITE_PORT:-8000}}\" --allow-read=/app/public --allow-env --allow-net ./src/backend/server.ts"]

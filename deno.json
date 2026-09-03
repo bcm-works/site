@@ -52,11 +52,11 @@
     },
     "serve": {
       "description": "Start the web server.",
-      "command": "deno serve --allow-read --allow-env --allow-net --unstable-cron ./src/backend/server.ts"
+      "command": "deno serve --allow-read --allow-env --allow-net ./src/backend/server.ts"
     },
     "test": {
       "description": "Run the Deno test suite.",
-      "command": "deno test --allow-all --clean --coverage=coverage --coverage-threshold=85 --unstable-cron src"
+      "command": "deno test --allow-all --clean --coverage=coverage --coverage-threshold=85 src"
     },
     "lume": {
       "description": "Run the Lume site build process.",
