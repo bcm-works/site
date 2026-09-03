@@ -40,8 +40,18 @@
     line-height: 32px;
   }
 
+  .layout-container main .posts-list {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
   .layout-container main .post-card {
     padding: 22px 0;
+  }
+
+  .layout-container main .post-card:first-child {
+    padding-top: 0;
+    border-top: 0 none;
   }
 
   .social-links-container .social-links li,
