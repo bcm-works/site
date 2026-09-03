@@ -240,14 +240,6 @@ ul.posts-list {
 
 /* POSTS INDEX (two-column card layout, single column on small screens) */
 
-.page-heading {
-  font-family: var(--font-family-header);
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 48px;
-  margin: 0 0 40px;
-}
-
 .page-posts-list ul.posts-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--post-card-min-width), 1fr));

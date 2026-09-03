@@ -5,8 +5,6 @@ body_class: page-posts-list
 ---
 
 {% import "components/link.njk" as link %}
-<h1 class="page-heading">Posts</h1>
-
 <ul class="posts-list">
   {% set posts = search.pages("type=post", "date=desc") %}
   {% for post in posts %}
