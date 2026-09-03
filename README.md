@@ -25,6 +25,7 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 - [src/frontend/manifest.json](src/frontend/manifest.json) - Progressive Web App configuration.
 - [.editorconfig](.editorconfig) - Sets basic code style rules via [EditorConfig](https://editorconfig.org)
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
+- [opencode.json](opencode.json) - Project specific config for [OpenCode](https://opencode.ai/).
 
 ## Tech Stack
 
