@@ -1,0 +1,5 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ollama-cloud/gemma4:31b",
+  "autoupdate": true
+}
