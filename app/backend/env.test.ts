@@ -2,10 +2,10 @@ import { assertEquals } from "@std/assert";
 import { Env } from "$be/env.ts";
 
 // A non-existent env file so the constructor loads from session.
-const NO_ENV_FILE = ".env.test.nonexistent";
+export const NO_ENV_FILE = ".env.test.nonexistent";
 
 // Helper: temporarily set env vars, run fn, then restore.
-async function withEnv(
+export async function withEnv(
   vars: Record<string, string | undefined>,
   fn: () => void | Promise<void>
 ): Promise<void> {
@@ -261,38 +261,6 @@ Deno.test("COMMON env getBuildDir", async (test) => {
         const site = new Env(NO_ENV_FILE);
         assertEquals(site.getBuildDir(), "dist");
       });
-    }
-  });
-});
-
-Deno.test("COMMON env postHogAnonBackendEvent", async (test) => {
-  await test.step({
-    name: "creates PostHog client and captures event when SITE_POSTHOG_ID is set",
-    fn: async () => {
-      await withEnv(
-        { SITE_POSTHOG_ID: "test-posthog-id", SITE_POSTHOG_API_HOST: "https://us.i.posthog.com" },
-        async () => {
-          const site = new Env(NO_ENV_FILE);
-          const req = new Request("https://bcm.works/test");
-          // The client flushes and shuts down before the call resolves
-          await site.postHogAnonBackendEvent(200, req, { "action": "test" });
-        }
-      );
-    }
-  });
-
-  await test.step({
-    name: "skips scanner probe paths so no event is captured",
-    fn: async () => {
-      await withEnv(
-        { SITE_POSTHOG_ID: "test-posthog-id", SITE_POSTHOG_API_HOST: "https://us.i.posthog.com" },
-        async () => {
-          const site = new Env(NO_ENV_FILE);
-          const req = new Request("https://bcm.works/.env");
-          // A scanner path is skipped before any PostHog client is created
-          await site.postHogAnonBackendEvent(404, req);
-        }
-      );
     }
   });
 });
