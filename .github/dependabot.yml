@@ -10,8 +10,9 @@ updates:
     assignees:
       - "bcm-works"
     labels:
-      - "deps"
       - "ai-generated"
+      - "deps"
+      - "infra"
     groups:
       deps-ghactions:
         patterns:
@@ -34,8 +35,9 @@ updates:
     assignees:
       - "bcm-works"
     labels:
-      - "deps"
       - "ai-generated"
+      - "deps"
+      - "frontend"
     groups:
       deps-deno:
         patterns:
@@ -60,8 +62,9 @@ updates:
     assignees:
       - "bcm-works"
     labels:
-      - "deps"
       - "ai-generated"
+      - "deps"
+      - "cli"
     groups:
       deps-gomod:
         patterns:
