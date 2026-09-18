@@ -11,7 +11,11 @@ run-name: Test ${{ github.run_number }} from ${{ github.actor }} on ${{ github.r
 on:
   # Manual run via GitHub Repo > Actions > Test > Run workflow
   workflow_dispatch:
-  # Automatically run on PRs that are targetting 'main'
+  # Run when a new commit is push to 'main'
+  push:
+    branches:
+      - main
+  # Automatically run on PRs that are targeting 'main'
   pull_request:
     branches:
       - main
