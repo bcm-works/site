@@ -6,7 +6,7 @@
 #
 
 name: Test
-run-name: Test ${{ github.run_number }} from ${{ github.actor }} on the ${{ github.ref_name }} ${{ github.ref_type }}
+run-name: Test ${{ github.run_number }} from ${{ github.actor }} on ${{ github.ref_name }}
 
 on:
   # Manual run via GitHub Repo > Actions > Test > Run workflow
@@ -35,7 +35,7 @@ jobs:
 
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     environment:
       name: ci-build
       deployment: false
