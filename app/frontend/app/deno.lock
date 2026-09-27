@@ -1,7 +1,7 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:vue@^3.5.13": "3.5.43"
+    "npm:vue@^3.5.43": "3.5.43"
   },
   "npm": {
     "@babel/helper-string-parser@7.29.7": {
@@ -144,7 +144,7 @@
   },
   "workspace": {
     "dependencies": [
-      "npm:vue@^3.5.13"
+      "npm:vue@^3.5.43"
     ]
   }
 }
