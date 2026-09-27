@@ -23,8 +23,7 @@
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.3.1/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
     "posthog": "npm:posthog-node@^5.54.1",
-    "railway": "npm:railway@^3.11.0",
-    "react": "npm:react@^19.3.0"
+    "railway": "npm:railway@^3.11.0"
   },
   "tasks": {
     "setup": {
@@ -69,7 +68,7 @@
     },
     "check": {
       "description": "Run Deno code checks.",
-      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/frontend/app/deno.json app/frontend/app/main.tsx"
+      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/frontend/app/deno.json app/frontend/app/main.ts"
     },
     "infra:login": {
       "description": "Login to the Railway CLI and link your infra project.",
@@ -90,8 +89,7 @@
   },
   "compilerOptions": {
     "types": [
-      "lume/types.ts",
-      "npm:@types/react@19.3.0"
+      "lume/types.ts"
     ],
     "jsx": "react-jsx",
     "jsxImportSource": "lume",
@@ -154,6 +152,6 @@
     "cli/",
     "app/backend/infra.railway.ts",
     "app/frontend/app/",
-    "app/frontend/components/github.tsx"
+    "app/frontend/components/github.ts"
   ]
 }

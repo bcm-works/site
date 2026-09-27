@@ -13,7 +13,7 @@ Edit the [repository labels](https://github.com/bcm-works/site/labels):
 - Add label: `ai-generated`, colour `#d28277`, description of `Created by an AI tool or an automated system.`
 - Add label: `deps`, colour `#b60205`, description of `Contains third-party dependency updates.`
 - Add label: `backend`, colour `#78619e`, description of `Contains backend API, server or infra changes.`
-- Add label: `frontend`, colour `#6dd29f`, description of `Contains frontend layout, templates, React or TSX changes.`
+- Add label: `frontend`, colour `#6dd29f`, description of `Contains frontend layout, templates, Vue or TSX changes.`
 - Add label: `cli`, colour `#e841c4`, description of `Contains local CLI tool changes.`
 
 ### GitHub Actions

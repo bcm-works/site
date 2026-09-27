@@ -44,7 +44,8 @@ const site = lume({
   location: new URL(siteUrl)
 });
 
-// The shared React component is bundled for the browser, not rendered by Lume.
+// Lume doesn't render the frontend Vue components
+
 site.ignore("components/");
 
 // Save env vars as site data variables so templates can use them
@@ -151,7 +152,7 @@ site.use(sitemap());
 
 site.use(readingInfo());
 site.use(jsx());
-site.add("app/main.tsx");
+site.add("app/main.ts");
 site.use(esbuild({
   denoConfig: "app/frontend/app/deno.json"
 }));

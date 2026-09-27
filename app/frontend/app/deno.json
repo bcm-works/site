@@ -1,8 +1,6 @@
 {
   "imports": {
-    "react": "npm:react@^19.3.0",
-    "react/jsx-runtime": "npm:react@^19.3.0/jsx-runtime",
-    "react-dom/client": "npm:react-dom@^19.3.0/client"
+    "vue": "npm:vue@^3.5.13"
   },
   "tasks": {
     "install": {
@@ -15,11 +13,6 @@
     }
   },
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "types": [
-      "npm:@types/react@^19"
-    ],
     "lib": [
       "dom",
       "dom.iterable",

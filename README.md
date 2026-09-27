@@ -36,7 +36,7 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [Go](https://go.dev/) - Tasks CLI.
 - [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Backend, Frontend, and Unit Tests.
 - [Lume](https://lume.land/) - Builds the frontend and content in to static HTML files.
-- [React](https://react.dev/) - Frontend templates and components.
+- [Vue](https://vuejs.org/) - Interactive frontend components.
 - [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
 - [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.
 - [Emblem](https://flathub.org/apps/details/org.gnome.design.Emblem) - Used to create the site logo and favicon images.

@@ -31,7 +31,7 @@ Fetch information from the following websites to clarify suggested changes:
 - Deno Lume documentation: https://lume.land/docs/
 - Deno packages (JSR): https://jsr.io/
 - Node packages (NPM): https://www.npmjs.com/
-- React documentation: https://react.dev/reference/react
+- Vue documentation: https://vuejs.org/api/
 - Go documentation: https://go.dev/doc/
 - GitHub public code: https://raw.githubusercontent.com/
 - GitHub documentation: https://docs.github.com/
