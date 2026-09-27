@@ -48,7 +48,7 @@
     "npm:@inquirer/prompts@^8.7.2": "8.7.2",
     "npm:@octokit/graphql@^9.0.5": "9.0.5",
     "npm:@types/react@19.3.0": "19.3.0",
-    "npm:chalk@6": "6.0.0",
+    "npm:chalk@^6.0.1": "6.0.1",
     "npm:date-fns@4.4.0": "4.4.0",
     "npm:date-fns@^4.4.0": "4.4.0",
     "npm:esbuild@0.28.2": "0.28.2",
@@ -547,8 +547,8 @@
     "argparse@3.0.2": {
       "integrity": "sha512-mFdDM6WqWKraGLsVb+C9CahPnzTXOefAOLq3jYcca2YZ8bEWpr++Tzj+zSaKW9+X9L5uSxcm1AZ3Y6aZJ09OhQ=="
     },
-    "chalk@6.0.0": {
-      "integrity": "sha512-2uNTXIuTTxk7ciZgAU1BQcgnchcG0xXnrs6jzkQfj9SsRa9M2s5zE8WT96hS6KmG4MzWHSrvH43DF1m4XRkrFg=="
+    "chalk@6.0.1": {
+      "integrity": "sha512-/Ce6KNm3vIbWdMlNna6RVIZ/ICQxnJxCicet5LBKK9ZffBkqzDw0xh9EiKSljdRtiIQ1S1z4YgcscUUGzNCWrA=="
     },
     "chardet@2.2.0": {
       "integrity": "sha512-rddelWYNPRrXq6PtNEN2S3f6t9ILzvqaN5pVgi4kqt9jHQaXIial9PznB5iSPVlQSLNaaH22ItWz3EJtQ10+OA=="
@@ -910,7 +910,7 @@
       "npm:@inquirer/prompts@^8.7.2",
       "npm:@octokit/graphql@^9.0.5",
       "npm:@types/react@19.3.0",
-      "npm:chalk@6",
+      "npm:chalk@^6.0.1",
       "npm:date-fns@^4.4.0",
       "npm:highlight.js@^11.12.0",
       "npm:posthog-node@^5.54.1",
