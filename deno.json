@@ -62,13 +62,25 @@
       "description": "Run the Lume site build process.",
       "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=app/frontend/lume.config.ts"
     },
+    "check": {
+      "description": "Run Deno code checks.",
+      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/frontend/app/deno.json app/frontend/app/main.ts"
+    },
     "cli:build": {
       "description": "Run the CLI build process.",
       "command": "bash ./cli/build.sh"
     },
-    "check": {
-      "description": "Run Deno code checks.",
-      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/frontend/app/deno.json app/frontend/app/main.ts"
+    "docker:build": {
+      "description": "Run the Docker build process.",
+      "command": "./task docker-build"
+    },
+    "docker:start": {
+      "description": "Start the Docker container.",
+      "command": "./task docker-start"
+    },
+    "docker:stop": {
+      "description": "Stop the Docker container.",
+      "command": "./task docker-stop"
     },
     "infra:login": {
       "description": "Login to the Railway CLI and link your infra project.",
