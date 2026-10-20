@@ -6,7 +6,7 @@
   "imports": {
     "$be/": "./app/backend/",
     "$fe/": "./app/frontend/",
-    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.3",
+    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.4",
     "@octokit/graphql": "npm:@octokit/graphql@^9.0.5",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
