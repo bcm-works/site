@@ -31,7 +31,7 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 ## Tech Stack
 
 - [Railway](https://railway.com/) - Infrastructure and deployment.
-- [GitHub Actions](https://github.com/features/actions) - Test workflow, PR template and Dependabot config.
+- [GitHub Actions](https://github.com/features/actions) - Test workflow and PR template.
 - [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
 - [Go](https://go.dev/) - Tasks CLI.
 - [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Backend, Frontend, and Unit Tests.
