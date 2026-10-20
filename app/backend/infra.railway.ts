@@ -3,6 +3,7 @@ import { defineRailway, github, preserve, project, service } from "railway/iac";
 export default defineRailway(() => {
   const siteBcm = service("site-bcm", {
     source: github("bcm-works/site", { branch: "main", checkSuites: false }),
+    build: { buildEnvironment: "V3", builder: "RAILPACK" },
     replicas: { "ams": 1 },
     deploy: { limitOverride: { containers: { cpu: 6, memoryBytes: 8000000000 } } },
     domains: [{ domain: "bcm.id.au", port: 8000 }, { domain: "bcm.works", port: 8000 }, { domain: "murty.au", port: 8000 }, { domain: "www.bcm.works", port: 8000 }, { domain: "www.murty.au", port: 8000 }],
