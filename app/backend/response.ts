@@ -1,10 +1,8 @@
 import { cors } from "$be/headers.ts";
 import { Env } from "$be/env.ts";
-import { PostHogProvider } from "$be/providers/posthog.ts";
 import { ResponseHandlerResponse } from "$be/types.ts";
 
 const env = new Env();
-const postHog = new PostHogProvider(env);
 const siteUrl: string = env.getUrl();
 
 export function responseHandler(
@@ -16,12 +14,11 @@ export function responseHandler(
   const headers = cors(request);
 
   if (responseCode === 404) {
-    // Report the 404 in the background so the redirect is not delayed.
-    postHog.postHogAnonBackendEvent(404, request).catch(() => {});
     return Response.redirect(new URL("/", siteUrl), 301);
   }
 
   headers.set("content-type", contentType);
+
   return new Response(JSON.stringify(content), { status: responseCode, headers });
 }
 
