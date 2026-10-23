@@ -1,4 +1,4 @@
-import { SitePageData as SitePageDataBase } from "$fe/types.ts";
+import { SitePageData as SitePageDataBase } from "$app/types.ts";
 
 interface PageFrameProps {
   data: SitePageData;

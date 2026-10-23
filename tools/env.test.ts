@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { Env } from "$be/env.ts";
+import { Env } from "$tools/env.ts";
 
 // A non-existent env file so the constructor loads from session.
 export const NO_ENV_FILE = ".env.test.nonexistent";

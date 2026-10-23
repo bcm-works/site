@@ -23,6 +23,7 @@
     "jsr:@std/fs@1.0.24": "1.0.24",
     "jsr:@std/fs@^1.0.24": "1.0.24",
     "jsr:@std/html@^1.0.7": "1.0.7",
+    "jsr:@std/http@*": "1.1.4",
     "jsr:@std/http@1.1.3": "1.1.3",
     "jsr:@std/http@^1.1.4": "1.1.4",
     "jsr:@std/internal@^1.0.12": "1.0.14",

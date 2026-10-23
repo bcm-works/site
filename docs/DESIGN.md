@@ -10,5 +10,5 @@
 
 - Keep CSS formatted and human readable, the build process will automatically minimise the final output.
 - Keep the design minimal and don't use unnecessary animations or complex CSS.
-- Don't repeat common values, use an existing CSS3 variable (or create a new one) in `app/frontend/styles/theme.css`.
-- Use CSS3 variable features like `var()` to reference variables from `app/frontend/styles/theme.css`.
+- Don't repeat common values, use an existing CSS3 variable (or create a new one) in `app/styles/theme.css`.
+- Use CSS3 variable features like `var()` to reference variables from `app/styles/theme.css`.

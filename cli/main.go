@@ -70,7 +70,7 @@ func ShowHelp() {
 	Log("./task tests")
 	Log(" ")
 
-	LogInfo("Start the web server.")
+	LogInfo("Build and serve the static frontend locally.")
 	Log("./task start")
 	Log(" ")
 

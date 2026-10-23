@@ -1,6 +1,6 @@
 // Lume Configuration - https://lume.land/docs/configuration/config-file/
 
-import { Env as bcmEnv } from "$be/env.ts";
+import { Env as bcmEnv } from "$tools/env.ts";
 import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
@@ -154,7 +154,7 @@ site.use(readingInfo());
 site.use(jsx());
 site.add("app/main.ts");
 site.use(esbuild({
-  denoConfig: "app/frontend/app/deno.json"
+  denoConfig: "app/app/deno.json"
 }));
 
 export default site;

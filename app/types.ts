@@ -1,5 +1,3 @@
-// Frontend Types
-
 export interface SitePageData {
   title?: string;
   description?: string;

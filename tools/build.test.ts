@@ -47,6 +47,21 @@ Deno.test("BUILD", async (test) => {
   });
 
   await test.step({
+    name: "check 'public/app/main.js'",
+    fn: async () => {
+      try {
+        const frontendAppFileContents: string = await Deno.readTextFile(
+          "public/app/main.js"
+        );
+
+        assertNotEquals(frontendAppFileContents, "");
+      } catch (_) {
+        assertEquals("File not found", "");
+      }
+    }
+  });
+
+  await test.step({
     name: "check 'public/posts.json'",
     fn: async () => {
       try {

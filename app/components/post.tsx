@@ -1,6 +1,6 @@
 import { format } from "date-fns";
-import { PostLink, TagLink } from "$fe/components/link.tsx";
-import { type PostData } from "$fe/types.ts";
+import { PostLink, TagLink } from "$app/components/link.tsx";
+import { type PostData } from "$app/types.ts";
 
 export function PostItem({ post }: { post: PostData; key?: string }) {
   // Strip out HTML and Markdown Link formatting

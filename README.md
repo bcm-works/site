@@ -11,11 +11,11 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [.github](.github/) - GitHub config, templates and workflows.
 - [.prototypes](.prototypes/) - Ideas and half-built prototypes.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
-- [app/backend](app/backend/) - Backend [Deno](https://deno.land/) file server and API.
+- [public](public/) - Generated static website output.
 - [tools](tools/) - [Deno](https://deno.land/) build scripts and command-line utilities.
-- [app/frontend](app/frontend/) - Frontend templates, components and styles.
-- [app/frontend/styles/theme.css](app/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
-- [app/frontend/manifest.json](app/frontend/manifest.json) - Frontend Progressive Web App configuration.
+- [app](app/) - Frontend templates, components, styles, and build configuration.
+- [app/styles/theme.css](app/styles/theme.css) - Frontend design colour scheme and theme setup.
+- [app/manifest.json](app/manifest.json) - Frontend Progressive Web App configuration.
 - [content](content/) - Website page content in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [cli](cli/) - Project helper tool written in [Go](https://go.dev/).
 - [docs](docs/) - Documentation and contextual information.
@@ -31,8 +31,8 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [GitHub Actions](https://github.com/features/actions) - Test workflow and PR template.
 - [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
 - [Go](https://go.dev/) - Tasks CLI.
-- [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Backend, Frontend, and Unit Tests.
-- [Lume](https://lume.land/) - Builds the frontend and content in to static HTML files.
+- [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Build tooling, frontend, and unit tests.
+- [Lume](https://lume.land/) - Builds the frontend and content into static HTML files.
 - [Vue](https://vuejs.org/) - Interactive frontend components.
 - [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
 - [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.

@@ -1,7 +1,7 @@
-import { PageFrame } from "$fe/layouts/page.tsx";
-import { type PostData } from "$fe/types.ts";
-import { PostItem } from "$fe/components/post.tsx";
-import SocialLinks from "$fe/components/social.tsx";
+import { PageFrame } from "$app/layouts/page.tsx";
+import { type PostData } from "$app/types.ts";
+import { PostItem } from "$app/components/post.tsx";
+import SocialLinks from "$app/components/social.tsx";
 
 export default function Home(data: Lume.Data) {
   const page = data as Lume.Data & { search: { pages: (...args: string[]) => unknown[] }; SITE_BUILD_ID?: string };

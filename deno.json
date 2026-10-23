@@ -4,9 +4,8 @@
   "minimumDependencyAge": 14,
   "lock": true,
   "imports": {
-    "$be/": "./app/backend/",
     "$tools/": "./tools/",
-    "$fe/": "./app/frontend/",
+    "$app/": "./app/",
     "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.4",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
@@ -34,11 +33,11 @@
     },
     "install": {
       "description": "Install Deno dependencies.",
-      "command": "deno install --quiet && cd ./app/frontend/app && deno task install"
+      "command": "deno install --quiet && cd ./app/app && deno task install"
     },
     "update": {
       "description": "Update Deno dependencies.",
-      "command": "deno outdated --update --compatible && cd ./app/frontend/app && deno task update"
+      "command": "deno outdated --update --compatible && cd ./app/app && deno task update"
     },
     "deps": {
       "description": "Update Deno and Go dependencies.",
@@ -49,8 +48,8 @@
       "command": "./task start"
     },
     "serve": {
-      "description": "Start the web server.",
-      "command": "deno serve --allow-read --allow-env --allow-net ./app/backend/server.ts"
+      "description": "Serve the built static frontend locally.",
+      "command": "deno run --allow-read --allow-net jsr:@std/http/file-server public"
     },
     "test": {
       "description": "Run the Deno test suite.",
@@ -58,11 +57,11 @@
     },
     "lume": {
       "description": "Run the Lume site build process.",
-      "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=app/frontend/lume.config.ts"
+      "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=app/lume.config.ts"
     },
     "check": {
       "description": "Run Deno code checks.",
-      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/frontend/app/deno.json app/frontend/app/main.ts"
+      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/app/deno.json app/app/main.ts"
     },
     "cli:build": {
       "description": "Run the CLI build process.",
@@ -85,9 +84,8 @@
   },
   "fmt": {
     "include": [
-      "app/backend/",
       "tools/",
-      "app/frontend/",
+      "app/",
       "deno.json"
     ],
     "lineWidth": 120,
@@ -102,9 +100,8 @@
   },
   "lint": {
     "include": [
-      "app/backend/",
       "tools/",
-      "app/frontend/",
+      "app/",
       "deno.json"
     ],
     "plugins": [
@@ -134,7 +131,7 @@
     "build/",
     "public/",
     "cli/",
-    "app/frontend/app/",
-    "app/frontend/components/github.ts"
+    "app/app/",
+    "app/components/github.ts"
   ]
 }
