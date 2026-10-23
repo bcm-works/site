@@ -6,8 +6,6 @@ cache
 temp
 cli/temp/
 
-.railway/
-
 build/
 public/
 dist/

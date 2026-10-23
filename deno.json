@@ -21,8 +21,7 @@
     "highlight": "npm:highlight.js@^11.12.0",
     "is_json/": "https://deno.land/x/is_json@v1.0.2/",
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.3.1/",
-    "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
-    "railway": "npm:railway@^3.16.0"
+    "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts"
   },
   "tasks": {
     "setup": {
@@ -68,34 +67,6 @@
     "cli:build": {
       "description": "Run the CLI build process.",
       "command": "bash ./cli/build.sh"
-    },
-    "docker:build": {
-      "description": "Run the Docker build process.",
-      "command": "./task docker-build"
-    },
-    "docker:start": {
-      "description": "Start the Docker container.",
-      "command": "./task docker-start"
-    },
-    "docker:stop": {
-      "description": "Stop the Docker container.",
-      "command": "./task docker-stop"
-    },
-    "infra:login": {
-      "description": "Login to the Railway CLI and link your infra project.",
-      "command": "railway login && railway link"
-    },
-    "infra:pull": {
-      "description": "Pull down Railway infra config.",
-      "command": "railway config pull --force && mv .railway/railway.ts app/backend/infra.railway.ts"
-    },
-    "infra:plan": {
-      "description": "Check how local infra config changes affect Railway infra.",
-      "command": "railway config plan --file app/backend/infra.railway.ts"
-    },
-    "infra:apply": {
-      "description": "Apply local infra config changes to Railway infra.",
-      "command": "railway config apply --file app/backend/infra.railway.ts"
     }
   },
   "compilerOptions": {
@@ -163,7 +134,6 @@
     "build/",
     "public/",
     "cli/",
-    "app/backend/infra.railway.ts",
     "app/frontend/app/",
     "app/frontend/components/github.ts"
   ]

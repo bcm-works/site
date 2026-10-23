@@ -36,12 +36,6 @@ func main() {
 		TaskCheck()
 	case "deps":
 		TaskDeps()
-	case "docker-build":
-		TaskDockerBuild()
-	case "docker-start":
-		TaskDockerStart()
-	case "docker-stop":
-		TaskDockerStop()
 	case "help":
 		ShowHelp()
 	case "list":
@@ -82,18 +76,6 @@ func ShowHelp() {
 
 	LogInfo("Update Deno and Go dependencies.")
 	Log("./task deps")
-	Log(" ")
-
-	LogInfo("Build the Docker image.")
-	Log("./task docker-build")
-	Log(" ")
-
-	LogInfo("Start the Docker container.")
-	Log("./task docker-start")
-	Log(" ")
-
-	LogInfo("Stop the Docker container.")
-	Log("./task docker-stop")
 	Log(" ")
 
 	LogInfo("Build the 'task' binary using Go Build.")

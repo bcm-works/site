@@ -15,9 +15,6 @@ opencode.json -linguist-detectable
 deno.lock linguist-generated
 **/deno.lock linguist-generated
 **/go.sum linguist-generated
-.railway/railway.ts linguist-generated
-app/backend/infra.railway.ts linguist-generated
-
 content/** linguist-documentation
 docs/** linguist-documentation
 

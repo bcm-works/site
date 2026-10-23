@@ -13,7 +13,6 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
 - [app/backend](app/backend/) - Backend [Deno](https://deno.land/) file server and API.
 - [tools](tools/) - [Deno](https://deno.land/) build scripts and command-line utilities.
-- [app/backend/infra.railway.ts](app/backend/infra.railway.ts) - Infra as Code, refer to [docs/INFRA.md](docs/INFRA.md).
 - [app/frontend](app/frontend/) - Frontend templates, components and styles.
 - [app/frontend/styles/theme.css](app/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
 - [app/frontend/manifest.json](app/frontend/manifest.json) - Frontend Progressive Web App configuration.
@@ -23,15 +22,12 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [docs/DESIGN.md](docs/DESIGN.md) - Frontend website design and CSS theming rules.
-- [docs/INFRA.md](docs/INFRA.md) - Infrastructure and deployment documentation.
 - [.editorconfig](.editorconfig) - Sets code style rules for supported editors via [EditorConfig](https://editorconfig.org).
-- [Dockerfile](Dockerfile) - [Docker](https://www.docker.com/) build for the static site and backend API.
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [opencode.json](opencode.json) - AI config for [OpenCode](https://opencode.ai/).
 
 ## Tech Stack
 
-- [Railway](https://railway.com/) - Infrastructure and deployment.
 - [GitHub Actions](https://github.com/features/actions) - Test workflow and PR template.
 - [PostHog](https://posthog.com/) - Site analytics and visitor usage insights.
 - [Go](https://go.dev/) - Tasks CLI.
@@ -67,25 +63,3 @@ To list all of the available tasks:
 ```bash
 ./task list
 ```
-
-Build the Docker Image:
-
-```bash
-./task docker-build
-```
-
-Start the Docker Container using the Docker Image:
-
-```bash
-./task docker-start
-```
-
-Stop the Docker Container:
-
-```bash
-./task docker-stop
-```
-
-## Infrastructure and Deployment
-
-Refer to [docs/INFRA.md](docs/INFRA.md).
