@@ -19,7 +19,6 @@ dist/
 
 *.log
 .logs/*
-!/.logs/.gitkeep
 .coverage/
 coverage.*
 
