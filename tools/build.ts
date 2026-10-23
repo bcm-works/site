@@ -1,5 +1,5 @@
-import { cmd, cmdShow } from "$be/cmd.ts";
-import { logInfo, logSuccess, logWarn } from "$be/log.ts";
+import { cmd, cmdShow } from "$tools/cmd.ts";
+import { logInfo, logSuccess, logWarn } from "$tools/log.ts";
 import { Env } from "$be/env.ts";
 
 const env = new Env();

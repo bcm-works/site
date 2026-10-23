@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { logDebug, logError, logHighlight, logInfo, logSuccess, logWarn } from "$be/log.ts";
+import { logDebug, logError, logHighlight, logInfo, logSuccess, logWarn } from "$tools/log.ts";
 
 Deno.test("COMMON log", async (test) => {
   const fns: Array<[string, (msg: string) => void]> = [

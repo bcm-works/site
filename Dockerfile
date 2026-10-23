@@ -58,6 +58,7 @@ LABEL org.opencontainers.image.description="Website at bcm.works, related assets
 LABEL org.opencontainers.image.licenses="MIT"
 
 COPY --from=build --chown=deno:deno /app/app/backend /app/app/backend
+COPY --from=build --chown=deno:deno /app/tools /app/tools
 COPY --from=build --chown=deno:deno /app/${SITE_PUBLIC_DIR} /app/public
 COPY --from=build --chown=deno:deno /app/deno.json /app/deno.json
 COPY --from=build --chown=deno:deno /app/deno.lock /app/deno.lock

@@ -21,7 +21,7 @@ My public website is used for various purposes, most importantly:
 - Shared high-level docs, designs and other artifacts in other top-level directories
 - Docs in `/src/site/README.md` and supporting updates to `/README.md`
 - Tech stack to match my skills:
-  - Dev tooling in `/src/site/bin/` directory and shortcut commands set in `/justfile`
+  - Dev tooling in `/src/site/tools/` directory and shortcut commands set in `/justfile`
   - GitHub Actions
   - GCP
   - Docker

@@ -1,6 +1,6 @@
 import { serveFile } from "@std/http/file-server";
 import { fileExists } from "$be/local.ts";
-import { logSuccess } from "$be/log.ts";
+import { logSuccess } from "$tools/log.ts";
 import { Env } from "$be/env.ts";
 import { requestInfo } from "$be/request.ts";
 import { corsHandler, responseHandler } from "$be/response.ts";

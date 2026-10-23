@@ -5,6 +5,7 @@
   "lock": true,
   "imports": {
     "$be/": "./app/backend/",
+    "$tools/": "./tools/",
     "$fe/": "./app/frontend/",
     "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.4",
     "@std/assert": "jsr:@std/assert@^1.0.19",
@@ -30,7 +31,7 @@
     },
     "build": {
       "description": "Run the site build process.",
-      "command": "deno run --allow-all ./app/backend/build.ts"
+      "command": "deno run --allow-all ./tools/build.ts"
     },
     "install": {
       "description": "Install Deno dependencies.",
@@ -54,7 +55,7 @@
     },
     "test": {
       "description": "Run the Deno test suite.",
-      "command": "deno test --allow-all --clean --coverage=.coverage --coverage-threshold=85 app"
+      "command": "deno test --allow-all --clean --coverage=.coverage --coverage-threshold=85 app tools"
     },
     "lume": {
       "description": "Run the Lume site build process.",
@@ -114,6 +115,7 @@
   "fmt": {
     "include": [
       "app/backend/",
+      "tools/",
       "app/frontend/",
       "deno.json"
     ],
@@ -130,6 +132,7 @@
   "lint": {
     "include": [
       "app/backend/",
+      "tools/",
       "app/frontend/",
       "deno.json"
     ],

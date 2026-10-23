@@ -22,7 +22,7 @@ Skills I most want to highlight here:
 - Docs in Markdown format that follow a logical structure, and link to each other when relevant
 - Tech stack to match my skills:
   - Public repository on GitHub
-  - Dev tooling at the top level `/bin/` directory and other appropriate locations
+  - Dev tooling at the top level `/tools/` directory and other appropriate locations
   - GitHub Actions
 
 ## Consequences

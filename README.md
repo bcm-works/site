@@ -11,7 +11,8 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [.github](.github/) - GitHub config, templates and workflows.
 - [.prototypes](.prototypes/) - Ideas and half-built prototypes.
 - [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
-- [app/backend](app/backend/) - Backend [Deno](https://deno.land/) file server, API and utilities.
+- [app/backend](app/backend/) - Backend [Deno](https://deno.land/) file server and API.
+- [tools](tools/) - [Deno](https://deno.land/) build scripts and command-line utilities.
 - [app/backend/infra.railway.ts](app/backend/infra.railway.ts) - Infra as Code, refer to [docs/INFRA.md](docs/INFRA.md).
 - [app/frontend](app/frontend/) - Frontend templates, components and styles.
 - [app/frontend/styles/theme.css](app/frontend/styles/theme.css) - Frontend design colour scheme and theme setup.
