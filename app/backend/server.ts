@@ -4,8 +4,7 @@ import { logSuccess } from "$be/log.ts";
 import { Env } from "$be/env.ts";
 import { requestInfo } from "$be/request.ts";
 import { corsHandler, responseHandler } from "$be/response.ts";
-import { getGithubUser } from "$be/api/github-user.ts";
-import { GitHubUserResponse, PrefetchProxyResponse, RequestInfoResponse } from "$be/types.ts";
+import { PrefetchProxyResponse, RequestInfoResponse } from "$be/types.ts";
 
 // Load Env Vars with suitable defaults
 
@@ -39,12 +38,6 @@ export default {
     // API - Health
     if (req === "/api/health/") {
       return responseHandler(request, 200, "OK");
-    }
-
-    // API - GitHub User Info
-    if (req === "/api/github-user/") {
-      const apiResponse: GitHubUserResponse | "{}" = await getGithubUser();
-      return responseHandler(request, 200, apiResponse);
     }
 
     // Handle static file requests

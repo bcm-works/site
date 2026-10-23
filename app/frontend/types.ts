@@ -22,6 +22,7 @@ export interface SitePageData {
 }
 
 export type GithubUser = {
+  username?: string;
   status?: string;
   repos?: number;
   prs?: number;

@@ -21,16 +21,10 @@ export default function Home(data: Lume.Data) {
           GitHub Profile
         </a>
       </div>
-      <div id="github-info-root" data-username="bcm-works">
-        <div id="github-info">
-          <ul>
-            <li className="github-user">
-              <span className="icon fa-fw fa-brands fa-github"></span>
-              <a href="https://github.com/bcm-works" className="value" title="View my profile on GitHub">bcm-works</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div
+        id="github-info-root"
+        data-username="bcm-works"
+      />
       <div className="section-head">
         <h2>Recent Posts</h2>
         <a className="side-link" href="/posts/" title="Show a list of all posts">All Posts</a>

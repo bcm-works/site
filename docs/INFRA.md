@@ -21,7 +21,6 @@ Edit the [repository labels](https://github.com/bcm-works/site/labels):
 #### Repository Secrets
 
 - Go to `GitHub Repo > Settings > Security and quality > Secrets and variables > Actions > Repository secrets`
-- Add new secret `SITE_GITHUB_ID` - Create a new [GitHub Classic PAT](https://github.com/settings/tokens) with just the `read:user` scope, copy that to this secret's value
 
 #### GitHub Environment - CI Build
 
@@ -56,7 +55,6 @@ Edit the [repository labels](https://github.com/bcm-works/site/labels):
 
 In the Railway service, click the `Variables` tab, then add these items: 
 
-- Add new `Secret` item named `SITE_GITHUB_ID`, refer to the setup steps for this from the GitHub Actions section above
 - Add new `Secret` item named `SITE_POSTHOG_ID`, set to a value like `aaabbbccc`
 - Add new `Plain Text` item named `PORT`, set to `8000`
 - Add new `Plain Text` item named `SITE_POSTHOG_API_HOST`, set to a value like `https://eu.posthog.com`

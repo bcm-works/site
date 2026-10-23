@@ -47,17 +47,6 @@ Deno.test("SERVER", async (test) => {
   });
 
   await test.step({
-    name: "GET /api/github-user/ returns 200",
-    fn: async () => {
-      const req = new Request("https://bcm.works/api/github-user/");
-      const res = await server.fetch(req);
-
-      assertEquals(res.status, 200);
-      await res.body?.cancel();
-    }
-  });
-
-  await test.step({
     name: "GET for an existing static file returns 200",
     fn: async () => {
       await Deno.mkdir("./public/test-coverage", { recursive: true });
