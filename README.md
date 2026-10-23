@@ -63,3 +63,17 @@ To list all of the available tasks:
 ```bash
 ./task list
 ```
+
+## Deployment
+
+The site is deployed to GitHub Pages by [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
+
+The workflow runs when changes are pushed to `main`, builds the site with `deno task build`, then deploys the generated `public/` directory.
+
+The following one-time repository configuration is required:
+
+1. Open the repository's **Settings → Pages** page.
+2. Set **Build and deployment → Source** to **GitHub Actions**.
+3. If using the custom domain, enter `bcm.works` under **Custom domain** and save it.
+4. Configure DNS for `bcm.works` to point to GitHub Pages
+5. Enable **Enforce HTTPS** after GitHub verifies the domain.

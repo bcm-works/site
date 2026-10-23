@@ -1,0 +1,67 @@
+#
+# GitHub Actions Workflow: Deploy
+#   - Builds the static site
+#   - Deploys the public directory to GitHub Pages
+#
+
+name: Deploy
+run-name: Deploy ${{ github.run_number }} from ${{ github.actor }} on ${{ github.ref_name }}
+
+on:
+  # Run when a new commit is pushed to 'main'.
+  push:
+    branches:
+      - main
+  # Allow deployments to be started manually from GitHub.
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+        with:
+          ref: main
+          fetch-depth: 1
+          show-progress: false
+
+      - name: Deno Setup
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: latest
+
+      - name: Build Site
+        run: deno task build
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-26.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
