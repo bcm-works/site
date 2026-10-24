@@ -44,6 +44,9 @@ jobs:
         with:
           deno-version-file: .tool-versions
 
+      - name: Run Deno Tests
+        run: deno task test
+
       - name: Build Site
         env:
           SITE_ENV: production
