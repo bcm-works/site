@@ -54,6 +54,6 @@ jobs:
       - name: Deno Setup
         uses: denoland/setup-deno@v2
         with:
-          deno-version: latest
+          deno-version-file: .tool-versions
       - name: Run Tests
         run: ./task test
