@@ -42,10 +42,20 @@ func Cmd(command string, workingDir ...string) {
 	}
 }
 
+// Run a Deno Task using the ASDF shim version of Deno.
+func DenoTask(denoTaskName string) {
+	Cmd("asdf exec deno task " + denoTaskName)
+}
+
+// Run a Go command using the ASDF shim version of Go.
+func GoCmd(denoTaskName string) {
+	Cmd("cd cli && asdf exec go " + denoTaskName)
+}
+
 // Run a system command with arguments and return its combined
 // output, without exiting when the command fails.
-func CmdOutput(name string, args ...string) (string, error) {
-	cmd := exec.Command(name, args...)
+func CmdOutput(command string, args ...string) (string, error) {
+	cmd := exec.Command(command, args...)
 	cmd.Dir = DirGet()
 
 	output, err := cmd.CombinedOutput()
@@ -55,8 +65,8 @@ func CmdOutput(name string, args ...string) (string, error) {
 
 // Run a system command with arguments, logging its output and
 // exiting when the command fails.
-func CmdArgs(name string, args ...string) {
-	output, err := CmdOutput(name, args...)
+func CmdArgs(command string, args ...string) {
+	output, err := CmdOutput(command, args...)
 
 	if err != nil {
 		LogError(fmt.Sprintf("Cmd Error: %s", err.Error()))
@@ -222,6 +232,13 @@ func FsExists(path string) bool {
 	}
 
 	return false
+}
+
+// Check if a binary exists on the system.
+func FsCommandExists(command string) bool {
+	_, err := exec.LookPath(command)
+
+	return err == nil
 }
 
 // Make a new directory if it doesn't already exist.

@@ -1,6 +1,6 @@
 module github.com/bcm-works/site/cli/v2
 
-go 1.27
+go 1.27.3
 
 require (
 	github.com/fatih/color v1.19.0 // direct

@@ -2,11 +2,11 @@ package main
 
 func TaskStart() {
 	LogInfo("Installing dependencies")
-	Cmd("deno task install")
+	DenoTask("install")
 
 	LogInfo("Building the site")
 	TaskBuild()
 
 	LogSuccess("Server starting at " + EnvGetUrl())
-	Cmd("deno task serve")
+	DenoTask("serve")
 }

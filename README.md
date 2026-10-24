@@ -4,8 +4,6 @@ This repository contains my website at [bcm.works](https://bcm.works/), related 
 
 Note that I use this repository to learn new skills and to demonstrate my knowledge, and that it is over-engineered compared to the technical requirements of a similar real-world project.
 
-[![Uptime](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2Fbcm-works%2Fstatus%2Fmain%2Fapi%2Fbcm-works%2Fuptime.json&style=flat-square&logo=upptime&label=Website%20Uptime&labelColor=444444)](https://github.com/bcm-works/status)
-
 ## Structure
 
 - [.github](.github/) - GitHub config, templates and workflows.
@@ -23,6 +21,7 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [docs/DESIGN.md](docs/DESIGN.md) - Frontend website design and CSS theming rules.
 - [.editorconfig](.editorconfig) - Sets code style rules for supported editors via [EditorConfig](https://editorconfig.org).
+- [.tool-versions](.tool-versions) - Defines the required runtimes for this project, used by [ASDF](https://asdf-vm.com/).
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
 - [opencode.json](opencode.json) - AI config for [OpenCode](https://opencode.ai/).
 
@@ -40,8 +39,7 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 
 ## Required Tools
 
-- [Deno](https://deno.com/) (`latest stable`) - Consider installing via my [Deno setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/deno.sh).
-- [Go](https://go.dev/) (`1.27`) - Consider installing via my [Go setup script](https://github.com/bcm-works/dotfiles/blob/main/dev/go.sh).
+- [ASDF](https://asdf-vm.com/) - Tooling runtime version manager.
 
 ## Optional Tools
 
@@ -50,9 +48,9 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 
 ## Commands
 
-A `task` binary is included to make it easier to run local dev tasks. The source code for this is in [cli](cli/). To rebuild the `task` binary, run `deno task cli:build`.
+A `task` binary is included to make it easier to run local dev tasks. The Go source code for this is in [cli](cli/). To rebuild the `task` binary, run `deno task cli:build`.
 
-Run the `setup` task to setup your local environment:
+Run the `setup` task to install local development tools:
 
 ```bash
 ./task setup
