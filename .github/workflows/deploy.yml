@@ -44,6 +44,12 @@ jobs:
         with:
           deno-version-file: .tool-versions
 
+      - name: Run Deno Install
+        run: deno task install
+
+      - name: Run Deno Build
+        run: deno task build
+
       - name: Run Deno Tests
         run: deno task test
 
