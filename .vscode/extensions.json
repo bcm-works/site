@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "sst-dev.opencode",
+    "denoland.vscode-deno",
+    "editorconfig.editorconfig",
+    "golang.go",
+    "vue.volar"
+  ]
+}
