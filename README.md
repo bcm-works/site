@@ -70,10 +70,23 @@ The site is deployed to GitHub Pages by [.github/workflows/deploy.yml](.github/w
 
 The workflow runs when changes are pushed to `main`, builds the site with `deno task build`, then deploys the generated `public/` directory.
 
-The following one-time repository configuration is required:
+Initial GitHub repository configuration is required:
 
-1. Open the repository's **Settings → Pages** page.
-2. Set **Build and deployment → Source** to **GitHub Actions**.
-3. If using the custom domain, enter `bcm.works` under **Custom domain** and save it.
-4. Configure DNS for `bcm.works` to point to GitHub Pages
-5. Enable **Enforce HTTPS** after GitHub verifies the domain.
+1. Open **Settings → Environments** and create an environment named `ci-build`.
+2. Add the following items to `ci-build` under **Environment secrets**:
+   - `SITE_AUTHOR`
+   - `SITE_URL`
+   - `SITE_LANG`
+   - `SITE_FEED_TITLE`
+   - `SITE_FEED_DESC`
+   - `SITE_FEED_DEFAULT_TITLE`
+   - `SITE_POSTHOG_ID`
+   - `SITE_POSTHOG_API_HOST`
+   - `SITE_POSTHOG_UI_HOST`
+3. Open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
+4. If using the custom domain, enter `bcm.works` under **Custom domain** and save it.
+5. Configure DNS for `bcm.works` to point to GitHub Pages.
+6. Enable **Enforce HTTPS** after GitHub verifies the domain.
+
+The build job uses the `ci-build` environment, so its environment secrets are exposed
+as the corresponding `SITE_*` variables only while the site is being built.
