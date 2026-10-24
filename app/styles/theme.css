@@ -43,34 +43,11 @@
   --colour-code-comment: var(--colour-gray);
 
   /* FONTS */
-  --font-family-body: var(--font-family-code);
-  --font-family-header: "MDIO-Black", var(--font-family-code);
-  --font-family-code: "MDIO-Regular", monospace;
-  --font-family-quote: var(--font-family-code);
+  --font-family-header: "Ubuntu", "Roboto", system-ui, sans-serif;
+  --font-family-body: "Ubuntu Mono", "Roboto Mono", ui-monospace, monospace;
+  --font-family-code: var(--font-family-body);
+  --font-family-quote: var(--font-family-body);
   --font-size-body: 1rem;
   --font-size-meta: 0.8rem;
   --line-height-body: 1.5;
-}
-
-/* CUSTOM FONTS */
-
-@font-face {
-  font-family: "MDIO-Black";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src:
-    local("MDIO-Black"),
-    url("/css/fonts/MDIO-Black.woff") format("woff");
-}
-
-@font-face {
-  font-family: "MDIO-Regular";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src:
-    local("MDIO"),
-    local("MDIO-Regular"),
-    url("/css/fonts/MDIO-Regular.woff") format("woff");
 }

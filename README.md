@@ -33,7 +33,6 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Build tooling, frontend, and unit tests.
 - [Lume](https://lume.land/) - Builds the frontend and content into static HTML files.
 - [Vue](https://vuejs.org/) - Interactive frontend components.
-- [Fonts by Mass-Driver](https://mass-driver.com/) - I have purchased licenses for use here.
 - [Font Awesome free icon pack](https://fontawesome.com/) - Used for icons on various pages and layouts.
 - [Emblem](https://flathub.org/apps/details/org.gnome.design.Emblem) - Used to create the site logo and favicon images.
 

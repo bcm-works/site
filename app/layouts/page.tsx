@@ -67,8 +67,6 @@ export function PageFrame({ data, children }: PageFrameProps) {
         <meta name="og:description" content={description} />
         <meta property="og:image" content={`${siteUrl}${image}`} />
 
-        <link rel="preload" href="/css/fonts/MDIO-Black.woff" as="font" crossOrigin="anonymous" />
-        <link rel="preload" href="/css/fonts/MDIO-Regular.woff" as="font" crossOrigin="anonymous" />
         <link rel="preload" href={`/css/bcm.min.css?v=${buildId}`} as="style" />
         <link rel="stylesheet" href={`/css/bcm.min.css?v=${buildId}`} />
         <link rel="preload" href={`/css/fonts/fontawesome/css/all.min.css?v=${buildId}`} as="style" />

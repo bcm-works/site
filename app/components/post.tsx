@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import { PostLink, TagLink } from "$app/components/link.tsx";
+import { TagLink } from "$app/components/link.tsx";
 import { type PostData } from "$app/types.ts";
 
 export function PostItem({ post }: { post: PostData; key?: string }) {
@@ -37,12 +37,8 @@ export function PostInfo({ date, words }: { date: Date; words: number }) {
   );
 }
 
-export function PostHeading({ title, url }: { title: string; url: string }) {
-  return (
-    <h2>
-      <PostLink title={title} url={url} />
-    </h2>
-  );
+export function PostHeading({ title }: { title: string }) {
+  return <h2>{title}</h2>;
 }
 
 export function PostTags({ tags }: { tags: string[] }) {
