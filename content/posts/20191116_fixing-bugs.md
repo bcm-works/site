@@ -16,7 +16,7 @@ Every new line of code is likely to introduce new bugs in a system. We have test
 
 So how should a developer react to a new bug report? I'll try to cover my general thought process below.
 
-## Step 1: Information Gathering
+### Step 1: Information Gathering
 
 - What is the impact of this bug?
 - When does this bug need to be fixed?
@@ -27,7 +27,7 @@ So how should a developer react to a new bug report? I'll try to cover my genera
 - What is the process you have to go through to experience this bug?
 - What should the system do instead of what it currently does?
 
-## Step 2: Assessment
+### Step 2: Assessment
 
 - Do I need help with this?
 - How important is this bug?
@@ -35,13 +35,13 @@ So how should a developer react to a new bug report? I'll try to cover my genera
 - Who can help me fix this bug?
 - Do I have what I need to start working on this?
 
-## Step 3: Communication
+### Step 3: Communication
 
 - Make it clear you've received the bug report
 - Explain when you'll be working on fixing it
 - Give an expectation of when you think you can fix the issue
 
-## Step 4: Issue Resolution
+### Step 4: Issue Resolution
 
 - If a temporary fix can be applied, do that first. This will give you more time to work on a more robust solution in a more relaxed timeline
 - Focus on fixing the reported issue
@@ -49,13 +49,13 @@ So how should a developer react to a new bug report? I'll try to cover my genera
 - Add debugging statements through-out this process
 - Apply the least amount of change to the system that you can
 
-## Step 5: Reporting
+### Step 5: Reporting
 
 - Update the bug report with a high-level summary of the changes made to fix the bug
 - Ask the reporter to confirm the issue is now fixed
 - Update your technical documentation, such as code comments
 
-## Step 6: Reflection
+### Step 6: Reflection
 
 - Assess how this bug was introduced into the system
 - How did this get through testing?
