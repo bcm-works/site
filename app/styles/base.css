@@ -1,32 +1,23 @@
-/* BASE LAYOUT, HELPERS, LIST DEFAULTS */
-
-html {
-  font-size: var(--base-font-size);
-  height: 100%;
-  overflow-x: hidden;
-  scrollbar-gutter: stable;
-  scroll-behavior: smooth;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-overflow-scrolling: touch;
-}
-
-body {
-  padding: 0;
-  line-height: var(--base-line-height);
-  font-family: var(--font-family-body);
-  min-height: var(--base-min-height);
-  min-width: var(--base-min-width);
-  background-color: var(--colour-background);
-  color: var(--colour-foreground);
-  scrollbar-color: var(--base-scrollbar-colour);
-  scrollbar-width: var(--base-scrollbar-width);
-}
+/* SELECTED CONTENT */
 
 ::selection {
   color: var(--colour-black);
   background-color: var(--colour-highlight);
+}
+
+/* SCROLL BARS */
+
+::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-colour);
+  border-radius: var(--scrollbar-radius);
 }
 
 /* HELPERS */

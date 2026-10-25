@@ -2,20 +2,20 @@
 
 :root {
   /* BASE */
+
   --base-font-size: 20px;
   --base-line-height: 1.5;
-  --base-min-height: 100vh;
   --base-min-width: 400px;
-  --base-scrollbar-colour: var(--colour-gray) var(--colour-black);
-  --base-scrollbar-width: thin;
 
   /* LAYOUT */
+
   --content-max-width: 900px;
   --content-min-height: 400px;
   --radius-small: 6px;
   --space-section: 48px;
 
   /* COLOUR SCHEME */
+
   --colour-black: #000000;
   --colour-gray-dark: #141414;
   --colour-gray: #999999;
@@ -28,21 +28,32 @@
   --colour-border: #2A2A2A;
   --colour-muted: var(--colour-gray);
 
-  /* DIVIDERS AND LINES - kept for frozen emphasis.css */
+  /* SCROLLBAR */
+
+  --scrollbar-colour: #1C1B31;
+  --scrollbar-width: 6px;
+  --scrollbar-radius: 0;
+
+  /* BACKGROUNDS AND DIVIDERS */
+
+  --bg-gradient: linear-gradient(90deg, #1C1B31 0%, #1B2C43 40%, var(--colour-background) 99%) no-repeat;
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */
+
   --link-decoration-default: underline solid var(--colour-tertiary) 1px;
   --link-decoration-active: underline solid var(--colour-highlight) 1px;
   --link-decoration-nav: none;
   --link-decoration-underline-offset: 4px;
 
-  /* CODE BLOCKS - used by frozen code.css */
+  /* CODE BLOCKS */
+
   --colour-code-method: var(--colour-highlight);
   --colour-code-keyword: var(--colour-white);
   --colour-code-comment: var(--colour-gray);
 
   /* FONTS */
+
   --font-family-header: "Ubuntu", "Roboto", system-ui, sans-serif;
   --font-family-body: "Ubuntu Mono", "Roboto Mono", ui-monospace, monospace;
   --font-family-code: var(--font-family-body);

@@ -191,7 +191,10 @@ ul.posts-list > li:first-child {
 .content-body em,
 .content-body strong,
 .content-body p code {
-  color: var(--colour-gray);
+  color: var(--colour-foreground);
+  background-color: var(--colour-gray-dark);
+  background-image: var(--bg-image-hatch);
+  padding: 4px;
   font-style: normal;
 }
 

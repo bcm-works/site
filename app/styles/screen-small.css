@@ -5,6 +5,7 @@
 
   .layout-container header {
     display: block;
+    padding: 24px 0 12px;
   }
 
   .layout-container header nav {
