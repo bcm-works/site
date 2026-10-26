@@ -9,7 +9,7 @@ export default function Tag(data: Lume.Data) {
 
   return (
     <PageFrame data={page}>
-      <h2>Posts tagged with {tag}</h2>
+      <h2>Tagged with {tag}</h2>
       <ul className="posts-list">
         {posts.filter((post) => post.url !== "/posts/").map((post) => <PostItem key={post.url} post={post} />)}
       </ul>
