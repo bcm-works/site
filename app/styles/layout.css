@@ -4,7 +4,10 @@ html {
   height: 100%;
   min-width: var(--base-min-width);
   overflow-x: hidden;
-  overflow-y: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: auto;
+  scrollbar-color: var(--scrollbar-colour) transparent;
+  scrollbar-width: thin;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -13,23 +16,21 @@ html {
 }
 
 body {
-  height: 100%;
+  min-height: 100%;
   padding: 0;
   min-width: var(--base-min-width);
-  overflow: hidden;
+  overflow: visible;
   line-height: var(--base-line-height);
   font-family: var(--font-family-body);
-  background: var(--colour-background) var(--bg-gradient);
-  background-size: 100% 170px;
-  background-position: 0 0;
+  background-color: var(--colour-background);
   color: var(--colour-foreground);
 }
 
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  min-height: 0;
+  min-height: 100vh;
+  min-width: var(--base-min-width);
   width: 100%;
   margin: 0;
   padding: 0;
@@ -41,7 +42,6 @@ main {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 24px;
   box-sizing: border-box;
 }
 
@@ -54,6 +54,23 @@ header {
   flex-shrink: 0;
   height: 170px;
   padding: 0 32px;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  min-width: var(--base-min-width);
+  transform: translateX(-50%);
+  background: var(--colour-background) var(--bg-gradient);
+  background-size: 100% 170px;
+  background-position: 0 0;
+  height: 170px;
+  pointer-events: none;
 }
 
 header aside {
@@ -86,13 +103,8 @@ header nav li {
 }
 
 main {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  scrollbar-gutter: stable;
-  scrollbar-color: var(--scrollbar-colour) transparent;
-  scrollbar-width: thin;
-  padding: 16px 32px 32px;
+  flex: 1 0 auto;
+  padding: 32px;
 }
 
 .content-body {
