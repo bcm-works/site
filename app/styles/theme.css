@@ -9,7 +9,7 @@
 
   /* LAYOUT */
 
-  --content-max-width: 900px;
+  --content-max-width: 1000px;
   --content-min-height: 400px;
   --radius-small: 6px;
   --space-section: 48px;
@@ -31,12 +31,10 @@
   /* SCROLLBAR */
 
   --scrollbar-colour: #1C1B31;
-  --scrollbar-width: 6px;
-  --scrollbar-radius: 0;
 
   /* BACKGROUNDS AND DIVIDERS */
 
-  --bg-gradient: linear-gradient(90deg, #1C1B31 0%, #1B2C43 40%, var(--colour-background) 99%) no-repeat;
+  --bg-gradient: linear-gradient(90deg, #1C1B31 0%, #1B2C43 50%, #1C1B31 100%) no-repeat;
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */

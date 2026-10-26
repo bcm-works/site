@@ -29,7 +29,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  height: 100dvh;
   min-height: 0;
   width: 100%;
   margin: 0;
@@ -54,7 +53,7 @@ header {
   z-index: 1;
   flex-shrink: 0;
   height: 170px;
-  padding: 0;
+  padding: 0 32px;
 }
 
 header aside {
@@ -91,9 +90,9 @@ main {
   min-height: 0;
   overflow-y: auto;
   scrollbar-gutter: stable;
-  scrollbar-color: var(--colour-scrollbar) transparent;
+  scrollbar-color: var(--scrollbar-colour) transparent;
   scrollbar-width: thin;
-  padding: 32px 0;
+  padding: 16px 32px 32px;
 }
 
 .content-body {
