@@ -57,6 +57,6 @@
   --font-family-code: var(--font-family-body);
   --font-family-quote: var(--font-family-body);
   --font-size-body: 1rem;
-  --font-size-meta: 0.8rem;
+  --font-size-meta: 1rem;
   --line-height-body: 1.5;
 }
