@@ -5,12 +5,21 @@
     height: auto;
     background: var(--colour-white) !important;
     color: var(--colour-black) !important;
+    overflow: visible;
   }
 
   body {
+    height: auto;
     background: transparent !important;
     color: var(--colour-black) !important;
+    overflow: visible;
     padding: 20px;
+  }
+
+  .layout-container {
+    height: auto;
+    min-height: auto;
+    overflow: visible;
   }
 
   main,

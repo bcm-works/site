@@ -5,21 +5,6 @@
   background-color: var(--colour-highlight);
 }
 
-/* SCROLL BARS */
-
-::-webkit-scrollbar {
-  width: var(--scrollbar-width);
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-colour);
-  border-radius: var(--scrollbar-radius);
-}
-
 /* HELPERS */
 
 .content-body .print-header,
