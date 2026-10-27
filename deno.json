@@ -6,7 +6,7 @@
   "imports": {
     "$tools/": "./tools/",
     "$app/": "./app/",
-    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.4",
+    "@inquirer/prompts": "npm:@inquirer/prompts@^8.7.5",
     "@std/assert": "jsr:@std/assert@^1.0.19",
     "@std/datetime": "jsr:@std/datetime@^0.225.7",
     "@std/dotenv": "jsr:@std/dotenv@^0.225.8",
