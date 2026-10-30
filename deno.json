@@ -105,7 +105,7 @@
       "deno.json"
     ],
     "plugins": [
-      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/lint.ts"
+      "https://cdn.jsdelivr.net/gh/lumeland/lume@3.3.1/lint.ts"
     ]
   },
   "allowScripts": {
