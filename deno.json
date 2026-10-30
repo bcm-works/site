@@ -1,5 +1,6 @@
 {
-  "nodeModulesDir": "none",
+  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
+  "nodeModulesDir": "auto",
   "preferPackageJson": false,
   "minimumDependencyAge": 14,
   "lock": true,
@@ -60,8 +61,8 @@
       "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=app/lume.config.ts"
     },
     "check": {
-      "description": "Run Deno code checks.",
-      "command": "deno --quiet lint && deno --quiet fmt && deno --quiet check && deno --quiet check --config=app/app/deno.json app/app/main.ts"
+      "description": "Run Deno linting and formatting tools.",
+      "command": "deno lint && deno fmt"
     },
     "cli:build": {
       "description": "Run the CLI build process.",
@@ -79,8 +80,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "useUnknownInCatchVariables": true,
-    "skipLibCheck": true
+    "useUnknownInCatchVariables": true
   },
   "fmt": {
     "include": [
@@ -106,12 +106,7 @@
     ],
     "plugins": [
       "https://cdn.jsdelivr.net/gh/lumeland/lume@3.2.6/lint.ts"
-    ],
-    "rules": {
-      "exclude": [
-        "no-import-prefix"
-      ]
-    }
+    ]
   },
   "allowScripts": {
     "allow": [],
