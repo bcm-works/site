@@ -43,7 +43,7 @@ export function PageFrame({ data, children }: PageFrameProps) {
   const buildId = data.SITE_BUILD_ID ?? "";
   const description = data.description ?? data.SITE_FEED_DESC ?? "";
   const title = data.title ? `${author} - ${data.title}` : author;
-  const image = data.photo_thumb_url ?? data.photo_url ?? "/images/brendan/profile/brendan_750.png";
+  const image = data.photo_thumb_url ?? data.photo_url ?? data.SITE_SOCIAL_SHARE_IMAGE;
   const date = data.date ? data.date.toISOString().slice(0, 10) : undefined;
 
   return (
