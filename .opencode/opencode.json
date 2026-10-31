@@ -20,6 +20,16 @@
     "buffer": 10000
   },
   "formatter": {
+    "gofmt": {
+      "disabled": true
+    },
+    "prettier": {
+      "disabled": true
+    },
+    "go-fmt": {
+      "command": ["go", "fmt", "$FILE"],
+      "extensions": [".go"]
+    },
     "deno-check": {
       "command": ["deno", "task", "check"],
       "extensions": [".js", ".ts", ".jsx", ".tsx"]

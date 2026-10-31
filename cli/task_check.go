@@ -14,8 +14,11 @@ func TaskCheck() {
 	LogInfo("Installing Go dependencies")
 	GoCmd("get -u -t ./...")
 
-	LogInfo("Checking Go dependencies")
+	LogInfo("Running Go Mod Tidy")
 	GoCmd("mod tidy")
+
+	LogInfo("Running Go Fmt")
+	GoCmd("fmt ./...")
 
 	LogInfo("Building the site")
 	TaskBuild()
