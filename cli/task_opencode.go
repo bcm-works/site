@@ -1,5 +1,5 @@
 package main
 
 func TaskOpenCode() {
-	CmdInteractive("bash ./cli/ai-opencode.sh")
+	CmdInteractive("bash ./.opencode/start.sh")
 }

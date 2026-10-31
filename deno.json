@@ -70,7 +70,7 @@
     },
     "ai:opencode": {
       "description": "Run the OpenCode AI tool with project specific config.",
-      "command": "bash ./cli/ai-opencode.sh"
+      "command": "bash ./.opencode/start.sh"
     }
   },
   "compilerOptions": {
