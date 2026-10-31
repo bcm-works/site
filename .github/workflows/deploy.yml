@@ -28,7 +28,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build
+    name: Build and Test
     runs-on: ubuntu-26.04
     environment: ci-build
     steps:
@@ -68,7 +68,7 @@ jobs:
         run: deno task build
 
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: public
 
@@ -85,4 +85,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
