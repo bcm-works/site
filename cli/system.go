@@ -42,6 +42,29 @@ func Cmd(command string, workingDir ...string) {
 	}
 }
 
+// Run an interactive system command using the current process's terminal,
+// or the optional 'workingDir' path string.
+func CmdInteractive(command string, workingDir ...string) {
+	var cmdDir string
+
+	if len(workingDir) > 0 {
+		cmdDir = workingDir[0]
+	} else {
+		cmdDir = DirGet()
+	}
+
+	cmd := exec.Command("bash", "-c", command)
+	cmd.Dir = cmdDir
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	if err := cmd.Run(); err != nil {
+		LogError(fmt.Sprintf("Cmd Error: %s", err.Error()))
+		os.Exit(1)
+	}
+}
+
 // Run a Deno Task using the ASDF shim version of Deno.
 func DenoTask(denoTaskName string) {
 	Cmd("asdf exec deno task " + denoTaskName)

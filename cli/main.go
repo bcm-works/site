@@ -36,6 +36,10 @@ func main() {
 		TaskCheck()
 	case "deps":
 		TaskDeps()
+	case "ai":
+		TaskOpenCode()
+	case "opencode":
+		TaskOpenCode()
 	case "help":
 		ShowHelp()
 	case "list":
