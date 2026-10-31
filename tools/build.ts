@@ -1,6 +1,7 @@
 import { cmd, cmdShow } from "$tools/cmd.ts";
 import { logInfo, logSuccess, logWarn } from "$tools/log.ts";
 import { Env } from "$tools/env.ts";
+import { addPostDescription } from "$tools/post-description.ts";
 
 const env = new Env();
 
@@ -32,6 +33,14 @@ logInfo("Copying over page content files to build directory");
 cmd(`cp content/*.md "${buildDir}"`);
 cmd(`cp -r content/posts "${buildDir}/posts"`);
 cmd(`cp -r content/tags "${buildDir}/tags"`);
+
+for await (const entry of Deno.readDir(`${buildDir}/posts`)) {
+  if (!entry.isFile || !entry.name.endsWith(".md") || entry.name === "index.md") continue;
+
+  const postPath = `${buildDir}/posts/${entry.name}`;
+  const post = await Deno.readTextFile(postPath);
+  await Deno.writeTextFile(postPath, addPostDescription(post));
+}
 
 logInfo("Building the front-end using Lume");
 

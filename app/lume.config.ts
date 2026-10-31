@@ -17,6 +17,7 @@ import langBash from "highlight/lib/languages/bash";
 import langPhp from "highlight/lib/languages/php";
 import langTypeScript from "highlight/lib/languages/typescript";
 import { format as dateInFormat } from "date-fns";
+import { postDescription } from "$tools/post-description.ts";
 
 // Load environment variables
 
@@ -25,6 +26,7 @@ const siteUrl: string = bcm.getUrl();
 const siteFeedTitle: string = bcm.get("SITE_FEED_TITLE");
 const siteFeedDesc: string = bcm.get("SITE_FEED_DESC");
 const siteFeedDefaultTitle: string = bcm.get("SITE_FEED_DEFAULT_TITLE");
+const siteFeedItemImage: string = `${siteUrl}/images/brendan/profile/brendan-teal_750.png`;
 const siteLang: string = bcm.get("SITE_LANG", "en-GB");
 const siteAuthor: string = bcm.get("SITE_AUTHOR");
 const sitePosthogId: string = bcm.get("SITE_POSTHOG_ID");
@@ -98,10 +100,9 @@ site.use(feed({
   },
   items: {
     title: "=title",
-    content: "$.post-content",
-    image: "=cover",
+    content: (data) => postDescription(String(data.content ?? "")),
+    image: siteFeedItemImage,
     published: "=date",
-    updated: undefined,
     lang: siteLang,
     authorName: siteAuthor,
     authorUrl: siteUrl
