@@ -8,7 +8,10 @@
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
 DIR="$REPO/cli"
+OPENCODE="$REPO/.opencode"
 
-OPENCODE_CLI_CONFIG_CONTENT='{"theme":{"name":"bcm"}}' \
+CLI_CONFIG=$(cat "$OPENCODE/cli.json")
+
+OPENCODE_CLI_CONFIG_CONTENT=$CLI_CONFIG \
   opencode
 
