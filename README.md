@@ -7,8 +7,8 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 ## Structure
 
 - [.github](.github/) - GitHub config, templates and workflows.
-- [.prototypes](.prototypes/) - Ideas and half-built prototypes.
-- [.zed](.zed/) - Customised [Zed Editor](https://zed.dev/) project configuration.
+- [.opencode](.opencode/) - AI config for [OpenCode](https://opencode.ai/).
+- [.vscode](.vscode/) - Customised [VS Code](https://code.visualstudio.com/) project configuration.
 - [public](public/) - Generated static website output.
 - [tools](tools/) - [Deno](https://deno.land/) build scripts and command-line utilities.
 - [app](app/) - Frontend templates, components, styles, and build configuration.
@@ -23,7 +23,6 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [.editorconfig](.editorconfig) - Sets code style rules for supported editors via [EditorConfig](https://editorconfig.org).
 - [.tool-versions](.tool-versions) - Defines the required runtimes for this project, used by [ASDF](https://asdf-vm.com/).
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
-- [opencode.json](opencode.json) - AI config for [OpenCode](https://opencode.ai/).
 
 ## Tech Stack
 
