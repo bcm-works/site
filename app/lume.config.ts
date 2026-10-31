@@ -26,7 +26,7 @@ const siteUrl: string = bcm.getUrl();
 const siteFeedTitle: string = bcm.get("SITE_FEED_TITLE");
 const siteFeedDesc: string = bcm.get("SITE_FEED_DESC");
 const siteFeedDefaultTitle: string = bcm.get("SITE_FEED_DEFAULT_TITLE");
-const siteSocialShareImage: string = `${siteUrl}/images/brendan/profile/brendan-teal_400.png`;
+const siteSocialShareImage: string = "/images/brendan/profile/brendan-teal_400.png";
 const siteLang: string = bcm.get("SITE_LANG", "en-GB");
 const siteAuthor: string = bcm.get("SITE_AUTHOR");
 const sitePosthogId: string = bcm.get("SITE_POSTHOG_ID");
@@ -102,7 +102,7 @@ site.use(feed({
   items: {
     title: "=title",
     content: (data) => postDescription(String(data.content ?? "")),
-    image: siteSocialShareImage,
+    image: `${siteUrl}${siteSocialShareImage}`,
     published: "=date",
     lang: siteLang,
     authorName: siteAuthor,
