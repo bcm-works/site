@@ -88,6 +88,7 @@
   },
   "fmt": {
     "include": [
+      ".opencode/",
       "tools/",
       "app/",
       "deno.json"
@@ -104,6 +105,7 @@
   },
   "lint": {
     "include": [
+      ".opencode/",
       "tools/",
       "app/",
       "deno.json"
@@ -123,10 +125,7 @@
   },
   "exclude": [
     "node_modules/",
-    ".delta/",
     ".github/",
-    ".prototypes/",
-    ".zed/",
     "build/",
     "public/",
     "cli/",
