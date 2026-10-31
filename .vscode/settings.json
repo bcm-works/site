@@ -1,0 +1,103 @@
+{
+  "json.schemaDownload.trustedDomains": {
+    "https://deno.land": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://models.dev/model-schema.json": true,
+    "https://opencode.ai": true,
+    "https://spec.openapis.org/": true,
+    "https://www.schemastore.org/": true
+  },
+  "editor.autoClosingBrackets": "never",
+  "editor.autoClosingQuotes": "never",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.inlineSuggest.enabled": false,
+  "editor.minimap.enabled": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.quickSuggestions": {
+    "comments": false,
+    "other": true,
+    "strings": false
+  },
+  "editor.quickSuggestionsDelay": 4000,
+  "editor.stickyScroll.enabled": true,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.wordWrap": "on",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "files.eol": "\n",
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "git.inputValidation": false,
+  "git.inputValidationLength": 150,
+  "git.inputValidationSubjectLength": null,
+  "git.openRepositoryInParentFolders": "never",
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "deno.json",
+        "deno.jsonc"
+      ],
+      "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json"
+    },
+    {
+      "fileMatch": [
+        "package.json"
+      ],
+      "url": "https://www.schemastore.org/package"
+    }
+  ],
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "workbench.editor.empty.hint": "hidden",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.list.openMode": "doubleClick",
+  "workbench.sideBar.location": "left",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.formatOnSave": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    },
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.wordWrap": "on"
+  },
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+  },
+  "terminal.integrated.initialHint": false,
+  "git.branchSortOrder": "alphabetically",
+  "git.openAfterClone": "alwaysNewWindow",
+  "git.untrackedChanges": "separate",
+  "explorer.sortOrder": "foldersNestsFiles",
+  "explorer.fileNesting.expand": false,
+  "editor.detectIndentation": false,
+  "terminal.integrated.tabs.location": "left",
+  "terminal.integrated.tabs.enabled": false
+}
