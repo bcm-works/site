@@ -23,6 +23,8 @@
   --colour-white: #FFFFFF;
   --colour-highlight: #23C5B0;
   --colour-highlight-alt: #FFC799;
+  --colour-highlight-two: #1C1B31;
+  --colour-highlight-three: #1B2C43;
   --colour-background: var(--colour-black);
   --colour-foreground: var(--colour-white);
   --colour-secondary: #0A675B;
@@ -32,11 +34,11 @@
 
   /* SCROLLBAR */
 
-  --scrollbar-colour: #1C1B31;
+  --scrollbar-colour: var(--colour-highlight-two);
 
   /* BACKGROUNDS AND DIVIDERS */
 
-  --bg-gradient: linear-gradient(90deg, #1C1B31 0%, #1B2C43 50%, #1C1B31 100%) no-repeat;
+  --bg-gradient: linear-gradient(90deg, var(--colour-highlight-two) 0%, var(--colour-highlight-three) 50%, var(--colour-highlight-two) 100%) no-repeat;
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */
