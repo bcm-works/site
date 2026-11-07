@@ -142,14 +142,14 @@ ul {
   list-style-type: disc;
   list-style-position: inside;
   list-style-image: none;
-  margin: 0 0 12px;
+  margin: 0 0 24px;
 }
 
 ol {
   list-style-type: decimal;
   list-style-position: inside;
   list-style-image: none;
-  margin: 0 0 12px;
+  margin: 0 0 24px;
 }
 
 li {

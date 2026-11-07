@@ -5,20 +5,41 @@ pre code.hljs {
   margin: 0 0 20px;
   display: block;
   overflow-x: auto;
-  background-color: var(--colour-gray-dark);
+  background: var(--colour-code-background);
 }
 
 pre code.hljs .hljs-comment {
   color: var(--colour-code-comment);
 }
 
-pre code.hljs .hljs-keyword,
-pre code.hljs .hljs-number,
-pre code.hljs .hljs-variable,
-pre code.hljs .hljs-string {
+pre code.hljs .hljs-name {
+  color: var(--colour-code-name);
+}
+
+pre code.hljs .hljs-attr {
+  color: var(--colour-code-attribute);
+}
+
+pre code.hljs .hljs-keyword {
   color: var(--colour-code-keyword);
 }
 
+pre code.hljs .hljs-number {
+  color: var(--colour-code-number);
+}
+
+pre code.hljs .hljs-variable {
+  color: var(--colour-code-variable);
+}
+
+pre code.hljs .hljs-string {
+  color: var(--colour-code-string);
+}
+
+pre code.hljs [class^="hljs-selector-"] {
+  color: var(--colour-code-selector);
+}
+
 pre code.hljs .hljs-title {
-  color: var(--colour-code-method);
+  color: var(--colour-code-title);
 }

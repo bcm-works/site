@@ -17,10 +17,12 @@
   /* COLOUR SCHEME */
 
   --colour-black: #000000;
-  --colour-gray-dark: #141414;
   --colour-gray: #999999;
+  --colour-gray-dark: #141414;
+  --colour-gray-darker: #101010;
   --colour-white: #FFFFFF;
   --colour-highlight: #23C5B0;
+  --colour-highlight-alt: #FFC799;
   --colour-background: var(--colour-black);
   --colour-foreground: var(--colour-white);
   --colour-secondary: #0A675B;
@@ -46,9 +48,16 @@
 
   /* CODE BLOCKS */
 
-  --colour-code-method: var(--colour-highlight);
-  --colour-code-keyword: var(--colour-white);
+  --colour-code-background: var(--colour-gray-darker);
   --colour-code-comment: var(--colour-gray);
+  --colour-code-keyword: var(--colour-gray);
+  --colour-code-number: var(--colour-highlight-alt);
+  --colour-code-variable: var(--colour-highlight-alt);
+  --colour-code-string: var(--colour-highlight);
+  --colour-code-selector: var(--colour-highlight-alt);
+  --colour-code-title: var(--colour-highlight-alt);
+  --colour-code-name: var(--colour-highlight-alt);
+  --colour-code-attribute: var(--color-white);
 
   /* FONTS */
 

@@ -190,11 +190,11 @@ ul.posts-list > li:first-child {
 
 .content-body em,
 .content-body strong,
-.content-body p code {
+.content-body p code,
+.content-body li code {
   color: var(--colour-foreground);
-  background-color: var(--colour-gray-dark);
-  background-image: var(--bg-image-hatch);
-  padding: 4px;
+  background-color: var(--colour-gray-darker);
+  padding: 4px 6px;
   font-style: normal;
 }
 

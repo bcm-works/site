@@ -13,7 +13,7 @@ Web apps like **UpcomingTasks** are put to better use when they are added to hom
 
 There are a few things to remember when implementing this feature in your web app.
 
-#### iOS and Android
+### iOS and Android
 
 To ensure that [iOS](http://www.apple.com/ios/) doesn't apply the default shine to your icon, you'll need to use the correct tag in the _head_ section of your page:
 
@@ -23,7 +23,7 @@ To ensure that [iOS](http://www.apple.com/ios/) doesn't apply the default shine 
 
 [Android](http://www.android.com/) browsers also support this method, sweet!
 
-#### Windows 8
+### Windows 8
 
 For Windows 8/RT devices, you'll just need to include the following in the _head_ section of your page:
 
@@ -34,7 +34,7 @@ For Windows 8/RT devices, you'll just need to include the following in the _head
 <meta name="msapplication-starturl" content="/webapphome.php" />
 ```
 
-#### Windows Phone
+### Windows Phone
 
 Unfortunately, [Windows Phone](http://www.windowsphone.com/) requires a little more setup. You'll have to form up a unique page for Windows Phone users, a sample _pin to start page_ is:
 
@@ -47,10 +47,10 @@ Unfortunately, [Windows Phone](http://www.windowsphone.com/) requires a little m
     <meta name="robots" content="noindex,nofollow">
     <meta name="viewport" content="maximum-scale=1,minimum-scale=1,width=device-width">
     <style>
-      body{margin:0;position:relative;background-color:#325ba0;color:#fff;height:100%;width:100%;padding:0}
-      #icon{font-size:160px;line-height:320px;text-align:center}
-      #instructions{margin-top:60px;text-align:center;position:relative;color:#eee}
-      #instructions strong{color:#fff}
+      body { margin:0;position:relative;background-color:#325ba0;color:#fff;height:100%;width:100%;padding:0 }
+      #icon { font-size:160px;line-height:320px;text-align:center }
+      #instructions { margin-top:60px;text-align:center;position:relative;color:#eee }
+      #instructions strong { color:#fff }
     </style>
   </head>
   <body>
@@ -66,9 +66,10 @@ Unfortunately, [Windows Phone](http://www.windowsphone.com/) requires a little m
     </div>
     <script>
       var url = 'https://yourwebapp.com/webapphome.php';
-      if(localStorage.getItem(url)) {
+
+      if (localStorage.getItem(url)) {
         window.location.replace(url);
-      }else{
+      } else {
         localStorage.setItem(url, true);
       }
     </script>
@@ -88,7 +89,7 @@ Looks great!
 
 I'd also recommend a guide to assist your users in adding the page to their home screen, as I've done for UpcomingTasks on the Add to Home page.
 
-#### Notes
+### Notes
 
 - Images referenced in the sample code above should be square PNGs at 114px and 160px square respectively
 - The image used above named `logo-144-clear.png` should be a 144px square transparent PNG
@@ -97,7 +98,7 @@ I'd also recommend a guide to assist your users in adding the page to their home
 - You might need to customise the colours defined in the CSS to match your app's design
 - The JavaScript in the Windows Phone page is required so the browser knows to redirect to the app home page after the first view
 
-#### Sources and inspiration
+### Sources and inspiration
 
 - [iOS Web App Configuration](https://gist.github.com/jdaihl/472519)
 - [Making An Awesome Windows 8 Pinned Tile for your Website](http://dontcodetired.com/blog/post/Making-An-Awesome-Windows-8-Pinned-Tile-for-your-Website.aspx)
