@@ -5,12 +5,11 @@
 # GitHub repo linguist configuration
 
 .github/** -linguist-detectable
-.zed/** -linguist-detectable
+.opencode/** -linguist-detectable
+.vscode/** -linguist-detectable
 .env.* -linguist-detectable
-.prototypes/** -linguist-detectable
 .* -linguist-detectable
 .*.* -linguist-detectable
-opencode.json -linguist-detectable
 
 deno.lock linguist-generated
 **/deno.lock linguist-generated
