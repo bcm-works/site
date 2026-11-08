@@ -42,8 +42,6 @@ body {
 header,
 main {
   width: 100%;
-  max-width: var(--content-max-width);
-  margin: 0 auto;
   box-sizing: border-box;
 }
 
@@ -55,24 +53,10 @@ header {
   z-index: 1;
   flex-shrink: 0;
   height: 170px;
-  padding: 0 32px;
-}
-
-header::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 100vw;
-  min-width: var(--base-min-width);
-  transform: translateX(-50%);
+  padding: 0 max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
   background: var(--header-bg-colour);
   background-size: 100% 170px;
   background-position: 0 0;
-  height: 170px;
-  pointer-events: none;
 }
 
 header aside {
@@ -106,7 +90,7 @@ header nav li {
 
 main {
   flex: 1 0 auto;
-  padding: 32px;
+  padding: 32px max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
 }
 
 .content-body {
