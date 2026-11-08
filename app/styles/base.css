@@ -50,6 +50,8 @@ h1,
   color: var(--colour-foreground);
   font-size: 1.70rem;
   margin-bottom: 1rem;
+  letter-spacing: -0.02rem;
+  word-spacing: -0.35rem;
 }
 
 h2 {
