@@ -18,9 +18,8 @@
     height: 80px;
   }
 
-  .layout-container main .posts-list-cards {
-    grid-template-columns: 1fr;
-    gap: 40px;
+  ul.posts-list > li {
+    flex: 0 0 calc(50% - 8px);
   }
 
   .social-links li {
@@ -29,7 +28,11 @@
 }
 
 @media only screen and (max-width: 500px) {
+  ul.posts-list > li {
+    flex: 0 0 100%;
+  }
+
   .social-links li {
-    flex: 0 0 calc(100% - 8px);
+    flex: 0 0 100%;
   }
 }

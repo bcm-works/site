@@ -2,7 +2,7 @@ import { format } from "date-fns";
 import { TagLink } from "$app/components/link.tsx";
 import { type PostData } from "$app/types.ts";
 
-export function PostItem({ post }: { post: PostData; key?: string }) {
+export function PostItem({ post, includeSummary = false }: { post: PostData; includeSummary?: boolean; key?: string }) {
   // Strip out HTML and Markdown Link formatting
   const content = (post.content ?? "").replace(/<[^>]*>/g, "").replace(/\[(.*?)\]\((.*?)\)/g, "$1").trim();
 
@@ -12,8 +12,11 @@ export function PostItem({ post }: { post: PostData; key?: string }) {
   return (
     <li className="post-item">
       <a className="post-item-link" href={post.url}>
-        <span className="post-item-title">{post.title}</span>
-        {summary && <span className="post-item-summary">{summary}</span>}
+        <span className="post-item-title">
+          <span className="post-item-icon icon fa-fw fa-solid fa-newspaper" aria-hidden="true"></span>
+          {post.title}
+        </span>
+        {includeSummary && summary && <span className="post-item-summary">{summary}</span>}
       </a>
       <div className="post-details">
         <PostInfo date={post.date} words={post.readingInfo?.words ?? 0} />

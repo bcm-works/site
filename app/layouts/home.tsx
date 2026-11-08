@@ -17,19 +17,9 @@ export default function Home(data: Lume.Data) {
         <SocialLinks buildId={page.SITE_BUILD_ID ?? ""} />
       </div>
 
-      <div className="section-head">
-        <h2>Posts</h2>
-      </div>
-
       <ul className="posts-list">
-        {posts.slice(0, 6).filter((post) => post.url !== "/posts/").map((post) => (
-          <PostItem key={post.url} post={post} />
-        ))}
+        {posts.filter((post) => post.url !== "/posts/").map((post) => <PostItem key={post.url} post={post} />)}
       </ul>
-
-      <a className="button-nav" href="/posts/" title="Show a list of all posts">
-        View all posts
-      </a>
     </PageFrame>
   );
 }
