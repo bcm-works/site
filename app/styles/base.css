@@ -1,8 +1,8 @@
 /* SELECTED CONTENT */
 
 ::selection {
-  color: var(--colour-black);
-  background-color: var(--colour-highlight);
+  color: var(--selection-colour-fg);
+  background-color: var(--selection-colour-bg);
 }
 
 /* HELPERS */

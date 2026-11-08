@@ -34,11 +34,16 @@
 
   /* SCROLLBAR */
 
-  --scrollbar-colour: var(--colour-highlight-two);
+  --scrollbar-colour: var(--colour-highlight-three);
+
+  /* TEXT SELECTION */
+
+  --selection-colour-fg: var(--colour-white);
+  --selection-colour-bg: var(--colour-highlight-three);
 
   /* BACKGROUNDS AND DIVIDERS */
 
-  --bg-gradient: linear-gradient(90deg, var(--colour-highlight-two) 0%, var(--colour-highlight-three) 50%, var(--colour-highlight-two) 100%) no-repeat;
+  --bg-header-gradient: linear-gradient(90deg, var(--colour-background) 0%, var(--colour-highlight-three) 15%, var(--colour-highlight-three) 75%, var(--colour-background) 100%) no-repeat;
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */
