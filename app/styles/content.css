@@ -193,6 +193,10 @@ ul.post-info li:first-child {
   text-decoration: none;
 }
 
+.tag-list li a:hover .icon {
+  color: inherit;
+}
+
 /* EMPHASIS, QUOTES AND DIVIDERS */
 
 .content-body blockquote {
