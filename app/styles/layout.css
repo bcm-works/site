@@ -66,7 +66,7 @@ header::before {
   width: 100vw;
   min-width: var(--base-min-width);
   transform: translateX(-50%);
-  background: var(--colour-background) var(--bg-header-gradient);
+  background: var(--header-bg-colour);
   background-size: 100% 170px;
   background-position: 0 0;
   height: 170px;

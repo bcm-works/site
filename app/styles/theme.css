@@ -5,7 +5,7 @@
 
   --base-font-size: 20px;
   --base-line-height: 1.5;
-  --base-min-width: 500px;
+  --base-min-width: 360px;
 
   /* LAYOUT */
 
@@ -43,7 +43,7 @@
 
   /* BACKGROUNDS AND DIVIDERS */
 
-  --bg-header-gradient: linear-gradient(90deg, var(--colour-background) 0%, var(--colour-highlight-three) 15%, var(--colour-highlight-three) 75%, var(--colour-background) 100%) no-repeat;
+  --header-bg-colour: var(--colour-highlight-three);
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */

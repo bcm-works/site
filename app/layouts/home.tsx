@@ -18,8 +18,7 @@ export default function Home(data: Lume.Data) {
       </div>
 
       <div className="section-head">
-        <h2>Recent Posts</h2>
-        <a className="side-link" href="/posts/" title="Show a list of all posts">View All</a>
+        <h2>Posts</h2>
       </div>
 
       <ul className="posts-list">
@@ -27,6 +26,10 @@ export default function Home(data: Lume.Data) {
           <PostItem key={post.url} post={post} />
         ))}
       </ul>
+
+      <a className="button-nav" href="/posts/" title="Show a list of all posts">
+        View all posts
+      </a>
     </PageFrame>
   );
 }

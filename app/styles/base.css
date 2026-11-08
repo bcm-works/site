@@ -22,16 +22,14 @@
 /* LINKS */
 
 a,
-a:visited,
-a.side-link {
+a:visited {
   color: var(--colour-highlight);
   text-decoration: var(--link-decoration-default);
   text-underline-offset: var(--link-decoration-underline-offset);
 }
 
 a:hover,
-a:focus,
-a.side-link {
+a:focus {
   color: var(--colour-highlight);
   text-decoration: var(--link-decoration-active);
   text-underline-offset: var(--link-decoration-underline-offset);
@@ -87,7 +85,11 @@ h6 {
   color: var(--colour-muted);
 }
 
-.section-head .side-link {
+.button-nav,
+.button-nav:focus,
+.button-nav:visited,
+.button-nav:hover {
+  color: var(--colour-muted);
   font-size: var(--font-size-meta);
   text-decoration: none;
 }

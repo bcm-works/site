@@ -43,7 +43,7 @@ header nav li.active a {
 ul.posts-list {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: 0 0 24px;
   padding: 0;
   list-style: none;
 }
@@ -156,7 +156,7 @@ ul.posts-list > li:first-child {
 }
 
 .tag-list li a,
-.section-head .side-link {
+.button-nav {
   color: var(--colour-gray);
   background-color: var(--colour-gray-dark);
   border-radius: 6px;
@@ -168,7 +168,7 @@ ul.posts-list > li:first-child {
 }
 
 .tag-list li a:hover,
-.section-head .side-link:hover {
+.button-nav:hover {
   color: var(--colour-highlight);
   text-decoration: none;
 }
