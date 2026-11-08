@@ -19,16 +19,6 @@ export interface SitePageData {
   SITE_POSTHOG_UI_HOST?: string;
 }
 
-export type GithubUser = {
-  username?: string;
-  status?: string;
-  repos?: number;
-  prs?: number;
-  starred?: number;
-  following?: number;
-  followers?: number;
-};
-
 export type PostData = {
   url: string;
   title: string;

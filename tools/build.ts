@@ -20,7 +20,6 @@ cmd(`mkdir -p "${buildDir}/_includes/layouts"`);
 cmd(`mkdir -p "${buildDir}/_includes/components"`);
 cmd(`cp -r "app/layouts/." "${buildDir}/_includes/layouts"`);
 cmd(`cp -r "app/components/." "${buildDir}/_includes/components"`);
-cmd(`cp -r "app/app" "${buildDir}/app"`);
 cmd(`mkdir -p "${buildDir}/components"`);
 cmd(`cp -r "app/components/." "${buildDir}/components"`);
 
@@ -60,7 +59,6 @@ cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/layout.css" \
   "${cssDir}/content.css" \
   "${cssDir}/social-links.css" \
-  "${cssDir}/github-info.css" \
   "${cssDir}/code.css" \
   "${cssDir}/screen-small.css" \
   "${cssDir}/print.css" \

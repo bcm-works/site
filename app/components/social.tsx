@@ -20,9 +20,9 @@ export default function SocialLinks({ buildId }: { buildId: string }) {
         </a>
       </li>
       <li>
-        <a href="https://mastodon.social/@murty" title="Find me on Mastodon" rel="me">
-          <span className="icon fa-fw fa-brands fa-mastodon"></span>
-          <span className="label">Mastodon</span>
+        <a href="https://github.com/bcm-works" title="View my profile on GitHub">
+          <span className="icon fa-fw fa-brands fa-github"></span>
+          <span className="label">GitHub</span>
         </a>
       </li>
       <li>

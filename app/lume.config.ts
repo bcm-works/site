@@ -10,7 +10,6 @@ import sitemap from "lume/plugins/sitemap.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
 import readingInfo from "lume/plugins/reading_info.ts";
 import codeHighlight from "lume/plugins/code_highlight.ts";
-import esbuild from "lume/plugins/esbuild.ts";
 import jsx from "lume/plugins/jsx.ts";
 import langJavaScript from "highlight/lib/languages/javascript";
 import langBash from "highlight/lib/languages/bash";
@@ -154,9 +153,4 @@ site.use(sitemap());
 
 site.use(readingInfo());
 site.use(jsx());
-site.add("app/main.ts");
-site.use(esbuild({
-  denoConfig: "app/app/deno.json"
-}));
-
 export default site;

@@ -34,11 +34,11 @@
     },
     "install": {
       "description": "Install Deno dependencies.",
-      "command": "deno install --quiet && cd ./app/app && deno task install"
+      "command": "deno install --quiet"
     },
     "update": {
       "description": "Update Deno dependencies.",
-      "command": "deno outdated --update --compatible && cd ./app/app && deno task update"
+      "command": "deno outdated --update --compatible"
     },
     "deps": {
       "description": "Update Deno and Go dependencies.",
@@ -117,7 +117,6 @@
   "allowScripts": {
     "allow": [],
     "deny": [
-      "npm:esbuild@0.28.2",
       "npm:chalk@6.0.0",
       "npm:lightningcss-cli@1.32.0",
       "npm:date-fns@4.4.0"
@@ -128,8 +127,6 @@
     ".github/",
     "build/",
     "public/",
-    "cli/",
-    "app/app/",
-    "app/components/github.ts"
+    "cli/"
   ]
 }
