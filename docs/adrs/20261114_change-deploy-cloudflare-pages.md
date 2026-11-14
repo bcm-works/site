@@ -13,8 +13,7 @@ Move to a more suitable static site infrastructure host.
 - Move static hosting to a new Cloudflare Pages setup
 - Keep GitHub Actions workflows, but alter final deployment logic
 - Upload only the generated `public/` directory
-- Deploy with `cloudflare/wrangler-action@v4`
-- Add supporting setup docs
+- Add supporting setup docs and config
 
 ## Consequences
 
