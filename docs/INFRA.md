@@ -19,7 +19,9 @@ Create a new Worker project in `Workers & Pages`:
 Create a new API token to use for deployment:
 
 1. Go to the Cloudflare tokens page at `Profile > API Tokens`
-2. Create a new token, add one permission: `Developer Platform > Workers > Edit`
+2. Create a new token:
+  - Account policy: `(only the relevant account)`
+  - Permissions: search for `Cloudflare Workers`, tick `Edit` for each of those
 3. Copy the token value, use this for the `CLOUDFLARE_API_TOKEN` variable below
 
 Assign the website domain to the Pages Project:

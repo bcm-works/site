@@ -70,6 +70,9 @@ jobs:
 
       - name: Deploy to Cloudflare
         uses: cloudflare/wrangler-action@v4
+        env:
+          DO_NOT_TRACK: 1
+          WRANGLER_SEND_METRICS: false
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
