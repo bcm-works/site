@@ -9,7 +9,6 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [.github](.github/) - GitHub config, templates and workflows.
 - [.opencode](.opencode/) - AI config for [OpenCode](https://opencode.ai/).
 - [.vscode](.vscode/) - Customised [VS Code](https://code.visualstudio.com/) project configuration.
-- [public](public/) - Generated static website output.
 - [tools](tools/) - [Deno](https://deno.land/) build scripts and command-line utilities.
 - [app](app/) - Frontend templates, components, styles, and build configuration.
 - [app/styles/theme.css](app/styles/theme.css) - Frontend design colour scheme and theme setup.
