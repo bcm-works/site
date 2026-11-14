@@ -27,7 +27,7 @@ Create a new API token to use for deployment:
 
 Assign the website domain to the Pages Project:
 
-1. Go to the Cloudflare Pages project, click `Custom domains`
+1. Go to the Workers project, click `Custom domains`
 2. Add the domain and complete Cloudflare's domain verification
 3. Wait for the certificate and DNS changes to become active
 4. Verify that the HTTPS version of the domain loads without errors in a web browser

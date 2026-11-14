@@ -2,7 +2,7 @@
 # GitHub Actions Workflow: Deploy
 #   - Builds the static site
 #   - Runs Deno tests
-#   - Deploys the public directory to Cloudflare Pages
+#   - Deploys the public directory to Cloudflare
 #
 
 name: Deploy
