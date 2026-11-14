@@ -19,6 +19,6 @@ rm -rf "$DIR/cli"
 rm -rf "$REPO/task"
 
 cd "$DIR"
-go build -ldflags="-s -w" .
+asdf exec go build -ldflags="-s -w" .
 
 mv "$DIR/cli" "$REPO/task"

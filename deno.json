@@ -36,13 +36,17 @@
       "description": "Install Deno dependencies.",
       "command": "deno install --quiet"
     },
-    "update": {
+    "deps": {
+      "description": "Update Deno and Go dependencies.",
+      "command": "deno task deps-deno && deno task deps-go"
+    },
+    "deps-deno": {
       "description": "Update Deno dependencies.",
       "command": "deno outdated --update --compatible"
     },
-    "deps": {
+    "deps-go": {
       "description": "Update Deno and Go dependencies.",
-      "command": "./task deps"
+      "command": "cd cli && asdf exec go get -u -t ./... && asdf exec go mod tidy"
     },
     "start": {
       "description": "Start the web server after installing and building.",
@@ -53,18 +57,30 @@
       "command": "deno run --allow-read --allow-net jsr:@std/http/file-server public"
     },
     "test": {
-      "description": "Run the Deno test suite.",
+      "description": "Run Deno tests.",
       "command": "deno test --allow-all --clean --coverage=.coverage --coverage-threshold=85 app tools"
+    },
+    "test-go": {
+      "description": "Run Go tests.",
+      "command": "cd cli && asdf exec go test -v"
     },
     "lume": {
       "description": "Run the Lume site build process.",
       "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=app/lume.config.ts"
     },
     "check": {
-      "description": "Run Deno linting and formatting tools.",
+      "description": "Run code linting and formatting tools.",
+      "command": "deno task check-deno && deno task check-go"
+    },
+    "check-deno": {
+      "description": "Run Deno code linting and formatting tools.",
       "command": "deno lint && deno fmt"
     },
-    "cli:build": {
+    "check-go": {
+      "description": "Run Go code linting and formatting tools.",
+      "command": "cd cli && asdf exec go fmt ./..."
+    },
+    "build-cli": {
       "description": "Run the CLI build process.",
       "command": "bash ./cli/build.sh"
     },
