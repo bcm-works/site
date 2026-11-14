@@ -1,5 +1,4 @@
 {
-  "$schema": "https://deno.land/x/deno/cli/schemas/config-file.v1.json",
   "nodeModulesDir": "auto",
   "preferPackageJson": false,
   "minimumDependencyAge": 14,
@@ -85,7 +84,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "useUnknownInCatchVariables": true
+    "useUnknownInCatchVariables": true,
+    "skipLibCheck": true
   },
   "fmt": {
     "include": [
