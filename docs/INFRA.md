@@ -1,13 +1,13 @@
 # Infrastructure and Deployment
 
-The site is deployed to Cloudflare Pages using the GitHub Actions Workflow at [deploy.yml](.github/workflows/deploy.yml).
+The site is deployed to [Cloudflare Pages](https://www.cloudflare.com/products/pages/) using the [GitHub Actions](https://github.com/features/actions) Workflow at [deploy.yml](.github/workflows/deploy.yml).
 
 ## Cloudflare Setup
 
-1. Sign in to the Cloudflare dashboard
+1. Login to the [Cloudflare Dashboard](https://dash.cloudflare.com/)
 2. Setup the website domain in `Domains > Overview`
-3. Create a new Pages project in `Workers & Pages`
-4. Click `Upload your static files`
+3. Create a new project in `Workers & Pages`
+4. Select `Upload your static files`
 5. Upload the built `public` directory
 6. Set `Worker name` to a suitable value, use this for the
    `CLOUDFLARE_PAGES_PROJECT` variable below.
@@ -18,9 +18,8 @@ Create a new API token to use for deployment:
 
 1. Go to Cloudflare tokens page at `My Profile > API Tokens`
 2. Create a new custom token
-3. Scope the token to the required Cloudflare account
 4. Add one permission only: `Account > Cloudflare Pages > Edit`
-5. Copy the token, use this for the `CLOUDFLARE_API_TOKEN` variable below
+5. Copy the token value, use this for the `CLOUDFLARE_API_TOKEN` variable below
 
 Assign the website domain to the Pages Project:
 
