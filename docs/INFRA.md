@@ -1,24 +1,20 @@
-# Infrastructure Setup
+# Infrastructure and Deployment
 
-This site is hosted on Cloudflare Pages using a Direct Upload project. GitHub
-Actions builds the site and Wrangler uploads only the generated `public/`
-directory.
+The site is deployed to Cloudflare Pages using the GitHub Actions Workflow at [deploy.yml](.github/workflows/deploy.yml).
 
-## Cloudflare setup
+## Cloudflare Setup
 
-1. Sign in to the Cloudflare dashboard and select the account that owns
-   `bcm.works`.
-2. Open **Workers & Pages** and create a new **Pages** project.
-3. Choose **Direct Upload**. Do not configure a Git repository build, Worker,
-   function, or custom runtime.
-4. Record the Pages project name. It is used as the
-   `CLOUDFLARE_PAGES_PROJECT` GitHub variable.
-5. Record the Cloudflare account ID from the account overview URL or account
-   details. It is used as the `CLOUDFLARE_ACCOUNT_ID` GitHub secret.
+1. Sign in to the Cloudflare dashboard
+2. Setup the website domain in `Domains > Overview`
+3. Create a new Pages project in `Workers & Pages`
+4. Click `Upload your static files`
+5. Upload the built `public` directory
+6. Set `Worker name` to a suitable value, use this for the
+   `CLOUDFLARE_PAGES_PROJECT` variable below.
+7. Set `Advanced settings > Not found handling` to `single-page-application`
+8. Copy the Account ID from the URL, use this for the `CLOUDFLARE_ACCOUNT_ID` variable below.
 
-## Cloudflare API token
-
-Create a dedicated API token for deployment:
+Create a new API token to use for deployment:
 
 1. Open the Cloudflare profile menu and select **My Profile → API Tokens**.
 2. Create a custom token.
@@ -28,17 +24,11 @@ Create a dedicated API token for deployment:
 6. Create the token and copy it immediately. It is used as the
    `CLOUDFLARE_API_TOKEN` GitHub secret and cannot be retrieved later.
 
-## GitHub configuration
+## GitHub Repo
 
-In the repository settings, configure the following values:
+Open **Settings → Environments** and create an environment named `ci-build`.
 
-### Repository or environment secrets
-
-- `CLOUDFLARE_ACCOUNT_ID` — the Cloudflare account ID.
-- `CLOUDFLARE_API_TOKEN` — the dedicated Pages Edit API token.
-
-The existing production build secrets must remain available to the `ci-build`
-environment:
+Add the following Environment Secrets:
 
 - `SITE_AUTHOR`
 - `SITE_URL`
@@ -49,16 +39,11 @@ environment:
 - `SITE_POSTHOG_ID`
 - `SITE_POSTHOG_API_HOST`
 - `SITE_POSTHOG_UI_HOST`
+- `CLOUDFLARE_ACCOUNT_ID`
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_PAGES_PROJECT`
 
-### Repository or environment variable
-
-- `CLOUDFLARE_PAGES_PROJECT` — the exact Cloudflare Pages Direct Upload
-  project name.
-
-The deployment workflow also uses the automatically provided
-`GITHUB_TOKEN`. The workflow only needs repository read permission.
-
-## Custom domain and DNS
+## Domain Setup
 
 1. In the Cloudflare Pages project, open **Custom domains**.
 2. Add `bcm.works` and complete Cloudflare's domain verification.

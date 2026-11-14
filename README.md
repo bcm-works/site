@@ -62,26 +62,7 @@ To list all of the available tasks:
 ./task list
 ```
 
-## Deployment
+## Infrastructure and Deployment
 
-The site is deployed to Cloudflare Pages using a Direct Upload project by
-[deploy.yml](.github/workflows/deploy.yml).
-
-Initial GitHub repository configuration is required:
-
-1. Open **Settings → Environments** and create an environment named `ci-build`.
-2. Add the following items to `ci-build` under **Environment secrets**:
-   - `SITE_AUTHOR`
-   - `SITE_URL`
-   - `SITE_LANG`
-   - `SITE_FEED_TITLE`
-   - `SITE_FEED_DESC`
-   - `SITE_FEED_DEFAULT_TITLE`
-   - `SITE_POSTHOG_ID`
-   - `SITE_POSTHOG_API_HOST`
-   - `SITE_POSTHOG_UI_HOST`
-3. Complete the Cloudflare Pages setup process from [INFRA.md](docs/INFRA.md)
-
-The build job uses the `ci-build` environment, so its environment secrets are exposed
-as the corresponding `SITE_*` variables only while the site is being built.
+Refer to [docs/INFRA.md](docs/INFRA.md)
 
