@@ -27,7 +27,9 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 
 ## Tech Stack
 
-- [GitHub Actions](https://github.com/features/actions) - Test workflow and PR template.
+- [Cloudflare Workers](https://developers.cloudflare.com/workers/) - Infrastructure host.
+- [Cloudflare Web Analytics](https://www.cloudflare.com/en-au/web-analytics/) - Website visitor statistics.
+- [GitHub Actions](https://github.com/features/actions) - Deployment workflow.
 - [Go](https://go.dev/) - Tasks CLI.
 - [Deno](https://deno.land/) and [TypeScript](https://www.typescriptlang.org/) - Build tooling, frontend, and unit tests.
 - [Lume](https://lume.land/) - Builds the frontend and content into static HTML files.

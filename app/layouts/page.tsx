@@ -1,4 +1,5 @@
 import { SitePageData as SitePageDataBase } from "$app/types.ts";
+import { Stats } from "$app/layouts/stats.tsx";
 
 interface PageFrameProps {
   data: SitePageData;
@@ -19,7 +20,6 @@ const speculationRules = JSON.stringify({
       and: [
         { href_matches: "/*" },
         { not: { href_matches: "/*.pdf" } },
-        { not: { href_matches: "/api/*(/)" } },
         { not: { selector_matches: ".no-prerender" } },
         { not: { selector_matches: "[rel~=nofollow]" } }
       ]
@@ -71,7 +71,12 @@ export function PageFrame({ data, children }: PageFrameProps) {
         <link rel="icon" type="image/png" sizes="32x32" href="/images/logos/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/images/logos/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/images/logos/apple-touch-icon.png" />
+
         <script type="speculationrules" dangerouslySetInnerHTML={{ __html: speculationRules }} />
+
+        <Stats
+          token={data.SITE_CLOUDFLARE_ANALTICS_TOKEN}
+        />
       </head>
       <body className={`${data.body_class ?? ""} env-${data.SITE_ENV ?? ""} build-${buildId}`}>
         <div className="layout-container">

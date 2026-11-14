@@ -43,6 +43,7 @@ Add the following Environment Secrets:
 - `SITE_FEED_TITLE`
 - `SITE_FEED_DESC`
 - `SITE_FEED_DEFAULT_TITLE`
+- `CLOUDFLARE_ANALTICS_TOKEN` - Cloudflare Web Analytics domain token
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
 

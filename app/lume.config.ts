@@ -28,6 +28,7 @@ const siteFeedDefaultTitle: string = bcm.get("SITE_FEED_DEFAULT_TITLE");
 const siteSocialShareImage: string = "/images/brendan/profile/brendan-teal_400.png";
 const siteLang: string = bcm.get("SITE_LANG", "en-GB");
 const siteAuthor: string = bcm.get("SITE_AUTHOR");
+const siteCloudflareAnalytics: string = bcm.get("CLOUDFLARE_ANALTICS_TOKEN");
 const siteIsLocal: boolean = bcm.isLocal();
 const siteEnv: string = siteIsLocal ? "local" : bcm.get("SITE_ENV", "hosted");
 const siteBuildId: string = dateInFormat(new Date(), "yyyyMMdd.HHmm");
@@ -58,6 +59,7 @@ site.data("SITE_FEED_DESC", siteFeedDesc);
 site.data("SITE_FEED_DEFAULT_TITLE", siteFeedDefaultTitle);
 site.data("SITE_SOCIAL_SHARE_IMAGE", siteSocialShareImage);
 site.data("SITE_BUILD_ID", siteBuildId);
+site.data("SITE_CLOUDFLARE_ANALTICS_TOKEN", siteCloudflareAnalytics);
 
 // Lume Plugins
 
