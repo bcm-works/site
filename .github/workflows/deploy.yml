@@ -63,6 +63,7 @@ jobs:
           SITE_FEED_TITLE: ${{ secrets.SITE_FEED_TITLE }}
           SITE_FEED_DESC: ${{ secrets.SITE_FEED_DESC }}
           SITE_FEED_DEFAULT_TITLE: ${{ secrets.SITE_FEED_DEFAULT_TITLE }}
+          CLOUDFLARE_ANALTICS_TOKEN: ${{ secrets.CLOUDFLARE_ANALTICS_TOKEN }}
         run: deno task build
 
       - name: Deploy to Cloudflare
@@ -74,4 +75,3 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-
