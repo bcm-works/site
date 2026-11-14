@@ -4,7 +4,7 @@ interface StatsProps {
 }
 
 export function Stats({ token }: StatsProps) {
-   // Check for the status of the Do Not Track browser setting
+  // Check for the status of the Do Not Track browser setting
   const doNotTrack = typeof navigator !== "undefined" &&
     (navigator.doNotTrack === "1" || navigator.doNotTrack === "yes");
 

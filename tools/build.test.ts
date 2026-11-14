@@ -120,4 +120,19 @@ Deno.test("BUILD", async (test) => {
       }
     }
   });
+
+  await test.step({
+    name: "check 'public/health'",
+    fn: async () => {
+      try {
+        const healthFileContents: string = await Deno.readTextFile(
+          "public/health"
+        );
+
+        assertEquals(healthFileContents, "OK");
+      } catch (_) {
+        assertEquals("File not found", "");
+      }
+    }
+  });
 });
