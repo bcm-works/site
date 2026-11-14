@@ -8,12 +8,11 @@ The site is deployed to [Cloudflare Pages](https://www.cloudflare.com/products/p
 2. Setup the website domain in `Domains > Overview`
 3. Complete the DNS update and verification process for that domain
 
-Create a new project in `Workers & Pages`:
+Create a new Worker project in `Workers & Pages`:
 
 1. Select `Upload your static files`
 2. Upload the built `public` directory
-3. Set `Worker name` to a suitable value, use this for the
-   `CLOUDFLARE_PAGES_PROJECT` variable below.
+3. Set `Worker name` to a suitable short and descriptive value
 4. Set `Advanced settings > Not found handling` to `single-page-application`
 5. Copy the Account ID from the URL, use this for the `CLOUDFLARE_ACCOUNT_ID` variable below
 
@@ -47,5 +46,4 @@ Add the following Environment Secrets:
 - `SITE_POSTHOG_UI_HOST`
 - `CLOUDFLARE_ACCOUNT_ID`
 - `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_PAGES_PROJECT`
 
