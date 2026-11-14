@@ -84,8 +84,8 @@
       "description": "Run the CLI build process.",
       "command": "bash ./cli/build.sh"
     },
-    "ai:opencode": {
-      "description": "Run the OpenCode AI tool with project specific config.",
+    "ai": {
+      "description": "Run OpenCode using project specific config.",
       "command": "bash ./.opencode/start.sh"
     }
   },
