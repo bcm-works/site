@@ -14,9 +14,6 @@ export interface SitePageData {
   SITE_FEED_TITLE?: string;
   SITE_BUILD_ID?: string;
   SITE_ENV?: string;
-  SITE_POSTHOG_ID?: string;
-  SITE_POSTHOG_API_HOST?: string;
-  SITE_POSTHOG_UI_HOST?: string;
 }
 
 export type PostData = {

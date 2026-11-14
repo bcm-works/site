@@ -63,9 +63,6 @@ jobs:
           SITE_FEED_TITLE: ${{ secrets.SITE_FEED_TITLE }}
           SITE_FEED_DESC: ${{ secrets.SITE_FEED_DESC }}
           SITE_FEED_DEFAULT_TITLE: ${{ secrets.SITE_FEED_DEFAULT_TITLE }}
-          SITE_POSTHOG_ID: ${{ secrets.SITE_POSTHOG_ID }}
-          SITE_POSTHOG_API_HOST: ${{ secrets.SITE_POSTHOG_API_HOST }}
-          SITE_POSTHOG_UI_HOST: ${{ secrets.SITE_POSTHOG_UI_HOST }}
         run: deno task build
 
       - name: Deploy to Cloudflare
