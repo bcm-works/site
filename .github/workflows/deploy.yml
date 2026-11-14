@@ -1,18 +1,19 @@
 #
 # GitHub Actions Workflow: Deploy
 #   - Builds the static site
-#   - Deploys the public directory to GitHub Pages
+#   - Runs Deno tests
+#   - Deploys the public directory to Cloudflare Pages
 #
 
 name: Deploy
 run-name: Deploy ${{ github.run_number }} from ${{ github.actor }} on ${{ github.ref_name }}
 
 on:
-  # Run when a new commit is pushed to 'main'.
+  # Trigger when a new commit is pushed to the 'main' branch.
   push:
     branches:
       - main
-  # Allow deployments to be started manually from GitHub.
+  # Manual trigger via GitHub Repo > Actions > Deploy > Run workflow
   workflow_dispatch:
 
 defaults:
@@ -23,7 +24,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: cloudflare-pages
   cancel-in-progress: true
 
 jobs:
@@ -67,22 +68,10 @@ jobs:
           SITE_POSTHOG_UI_HOST: ${{ secrets.SITE_POSTHOG_UI_HOST }}
         run: deno task build
 
-      - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@v5
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v4
         with:
-          path: public
-
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-26.04
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      pages: write
-      id-token: write
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v5
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy public --project-name=${{ vars.CLOUDFLARE_PAGES_PROJECT }}

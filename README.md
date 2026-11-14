@@ -20,6 +20,7 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [docs/adrs](docs/adrs/) - Architecture decision records in [Markdown](https://daringfireball.net/projects/markdown/syntax) files.
 - [docs/AI-USE.md](docs/AI-USE.md) - Policy for use of AI Code Generation tools.
 - [docs/DESIGN.md](docs/DESIGN.md) - Frontend website design and CSS theming rules.
+- [docs/INFRA.md](docs/INFRA.md) - Cloudflare Pages infrastructure setup and deployment.
 - [.editorconfig](.editorconfig) - Sets code style rules for supported editors via [EditorConfig](https://editorconfig.org).
 - [.tool-versions](.tool-versions) - Defines the required runtimes for this project, used by [ASDF](https://asdf-vm.com/).
 - [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
@@ -63,9 +64,8 @@ To list all of the available tasks:
 
 ## Deployment
 
-The site is deployed to GitHub Pages by [.github/workflows/deploy.yml](.github/workflows/deploy.yml).
-
-The workflow runs when changes are pushed to `main`, builds the site with `deno task build`, then deploys the generated `public/` directory.
+The site is deployed to Cloudflare Pages using a Direct Upload project by
+[deploy.yml](.github/workflows/deploy.yml).
 
 Initial GitHub repository configuration is required:
 
@@ -80,10 +80,8 @@ Initial GitHub repository configuration is required:
    - `SITE_POSTHOG_ID`
    - `SITE_POSTHOG_API_HOST`
    - `SITE_POSTHOG_UI_HOST`
-3. Open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
-4. If using the custom domain, enter `bcm.works` under **Custom domain** and save it.
-5. Configure DNS for `bcm.works` to point to GitHub Pages.
-6. Enable **Enforce HTTPS** after GitHub verifies the domain.
+3. Complete the Cloudflare Pages setup process from [INFRA.md](docs/INFRA.md)
 
 The build job uses the `ci-build` environment, so its environment secrets are exposed
 as the corresponding `SITE_*` variables only while the site is being built.
+
