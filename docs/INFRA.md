@@ -5,8 +5,9 @@ The site is deployed as a [Cloudflare Worker](https://developers.cloudflare.com/
 ## Cloudflare Setup
 
 1. Login to the [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Setup the website domain in `Domains > Overview`
-3. Complete the DNS update and verification process for that domain
+2. Go to `Domains > Overview`
+3. Add the website domain, disable the `Bot Preference Sync` option
+4. Complete the required DNS updates and verify the domain
 
 Create a new Worker project in `Workers & Pages`:
 

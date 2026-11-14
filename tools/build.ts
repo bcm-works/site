@@ -80,6 +80,7 @@ cmd(`cp "content/favicon.ico" "${publicDir}/favicon.ico"`);
 cmd(`cp "content/resume.pdf" "${publicDir}/resume.pdf"`);
 cmd(`cp "app/manifest.json" "${publicDir}/manifest.json"`);
 cmd(`cp "content/health.txt" "${publicDir}/health"`);
+cmd(`cp "content/robots.txt" "${publicDir}/robots.txt"`);
 
 logWarn("Deleting the build directory");
 

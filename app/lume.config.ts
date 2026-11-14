@@ -4,7 +4,6 @@ import { Env as bcmEnv } from "$tools/env.ts";
 import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
 import feed from "lume/plugins/feed.ts";
-import robots from "lume/plugins/robots.ts";
 import redirects from "lume/plugins/redirects.ts";
 import sitemap from "lume/plugins/sitemap.ts";
 import minifyHTML from "lume/plugins/minify_html.ts";
@@ -103,35 +102,6 @@ site.use(feed({
     authorName: siteAuthor,
     authorUrl: siteUrl
   }
-}));
-
-// --- Generate a custom robots.txt
-
-site.use(robots({
-  "disallow": [
-    "Mediapartners-Google",
-    "Adsbot-Google",
-    "Amazonbot",
-    "anthropic-ai",
-    "Applebot",
-    "Bytespider",
-    "CCBot",
-    "ChatGPT",
-    "Claude-Web",
-    "ClaudeBot",
-    "Diffbot",
-    "FacebookBot",
-    "Google-Extended",
-    "GPTBot",
-    "Image2dataset",
-    "ImagesiftBot",
-    "Omgili",
-    "Omgilibot",
-    "PerplexityBot",
-    "YouBot",
-    "PerplexityBot",
-    "YouBot"
-  ]
 }));
 
 // --- Minify generated HTML files
