@@ -7,10 +7,8 @@
 #
 
 REPO="$(cd "$(dirname "$0")/.." && pwd)"
-DIR="$REPO/cli"
-OPENCODE="$REPO/.opencode"
 
-CFG=$(cat "$OPENCODE/cli.json")
+CFG=$(cat "$REPO/.opencode/cli.json")
 
 OPENCODE_CLI_CONFIG_CONTENT=$CFG opencode
 
