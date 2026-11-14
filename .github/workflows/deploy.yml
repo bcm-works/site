@@ -28,8 +28,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    name: Build and Test
+  deploy:
+    name: Deploy
     runs-on: ubuntu-26.04
     environment: ci-build
     steps:
