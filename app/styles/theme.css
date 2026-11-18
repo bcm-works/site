@@ -35,7 +35,7 @@
   /* SCROLLBAR */
 
   --scrollbar-colour-fg: var(--colour-tertiary);
-  --scrollbar-colour-bg: var(--colour-gray-darker);
+  --scrollbar-colour-bg: var(--colour-background);
 
   /* TEXT SELECTION */
 
