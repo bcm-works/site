@@ -34,8 +34,8 @@
 
   /* SCROLLBAR */
 
-  --scrollbar-colour-fg: var(--colour-highlight-three);
-  --scrollbar-colour-bg: var(--colour-gray-dark);
+  --scrollbar-colour-fg: var(--colour-tertiary);
+  --scrollbar-colour-bg: var(--colour-gray-darker);
 
   /* TEXT SELECTION */
 
@@ -44,7 +44,7 @@
 
   /* BACKGROUNDS AND DIVIDERS */
 
-  --header-bg-colour: var(--colour-highlight-three);
+  --header-bg-colour: var(--colour-gray-darker);
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */
