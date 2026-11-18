@@ -39,25 +39,21 @@ export function Nav({ data }: { data: Lume.Data & SitePageDataBase }) {
         <li>
           <a href="https://www.linkedin.com/in/bcm-works" title="View my LinkedIn profile">
             <span className="icon fa-fw fa-brands fa-linkedin"></span>
-            <span className="label">LinkedIn</span>
           </a>
         </li>
         <li>
           <a href="https://github.com/bcm-works" title="View my profile on GitHub">
             <span className="icon fa-fw fa-brands fa-github"></span>
-            <span className="label">GitHub</span>
           </a>
         </li>
         <li>
           <a href="https://steamcommunity.com/id/bcmurty/" title="View my Steam profile">
             <span className="icon fa-fw fa-brands fa-steam"></span>
-            <span className="label">Steam</span>
           </a>
         </li>
         <li>
           <a href="https://discordapp.com/users/362579289700302858" title="View my Discord profile">
             <span className="icon fa-fw fa-brands fa-discord"></span>
-            <span className="label">Discord</span>
           </a>
         </li>
       </ul>

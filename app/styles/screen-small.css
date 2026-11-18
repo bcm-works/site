@@ -1,16 +1,10 @@
 @media only screen and (max-width: 850px) {
-  header .site-link {
-    gap: 10px;
+  header {
+    align-items: start;
   }
 
-  .layout-container header {
-    display: block;
-    padding: 24px 32px 16px;
-  }
-
-  .layout-container header nav {
-    margin-left: 0;
-    padding: 16px 0 0;
+  header .site-name {
+    font-size: 1.2rem;
   }
 
   .layout-container header .site-avatar {
@@ -18,13 +12,13 @@
     height: 80px;
   }
 
-  ul.posts-list > li {
+  .posts-list > li {
     flex: 0 0 calc(50% - 8px);
   }
 }
 
-@media only screen and (max-width: 500px) {
-  ul.posts-list > li {
+@media only screen and (max-width: 600px) {
+  .posts-list > li {
     flex: 0 0 100%;
   }
 }

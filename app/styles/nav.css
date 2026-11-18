@@ -1,16 +1,18 @@
 nav ul {
   display: flex;
+  flex-flow: row;
   flex-wrap: wrap;
-  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  gap: 16px;
+  align-content: center;
+  text-align: center;
+  gap: 24px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 nav li {
-  flex: 0 0 calc((100% - (16px * 2)) / 3);
   box-sizing: border-box;
   margin: 0;
 }
@@ -31,10 +33,11 @@ nav a:visited {
 }
 
 nav a:hover,
-nav a:focus {
-  color: var(--colour-foreground);
-  text-decoration: var(--link-decoration-active);
-  text-underline-offset: var(--link-decoration-underline-offset);
+nav a:hover .icon,
+nav a:focus,
+nav a:focus .icon {
+  color: var(--colour-highlight);
+  text-decoration: none;
 }
 
 nav li .icon {
@@ -44,23 +47,5 @@ nav li .icon {
 nav li.active a,
 nav li.active .icon {
   color: var(--colour-foreground);
-}
-
-nav li a:active .label,
-nav li a:hover .label {
-  text-decoration: var(--link-decoration-active);
-  text-underline-offset: var(--link-decoration-underline-offset);
-}
-
-@media only screen and (max-width: 850px) {
-  nav li {
-    flex: 0 0 calc(50% - 8px);
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  nav li {
-    flex: 0 0 100%;
-  }
 }
 

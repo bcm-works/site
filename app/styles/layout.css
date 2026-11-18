@@ -47,16 +47,17 @@ main {
 
 header {
   display: flex;
+  gap: 32px;
+  flex-direction: column;
   flex-wrap: wrap;
-  gap: 20px;
   align-items: center;
   position: sticky;
-  top: 0;
-  z-index: 1;
   padding: 32px max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
   background: var(--header-bg-colour);
-  background-size: 100% 170px;
   background-position: 0 0;
+  background-size: 100% 170px;
+  top: 0;
+  z-index: 1;
 }
 
 header aside,

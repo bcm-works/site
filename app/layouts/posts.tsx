@@ -6,8 +6,6 @@ export default function Posts(data: Lume.Data) {
 
   return (
     <PageFrame data={page}>
-      <h2>Posts</h2>
-
       <PostList data={page} />
     </PageFrame>
   );
