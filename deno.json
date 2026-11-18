@@ -21,7 +21,7 @@
     "is_json/": "https://deno.land/x/is_json@v1.0.2/",
     "lume/": "https://cdn.jsdelivr.net/gh/lumeland/lume@3.3.1/",
     "lume/jsx-runtime": "https://cdn.jsdelivr.net/gh/oscarotero/ssx@0.1.15/jsx-runtime.ts",
-    "wrangler": "npm:wrangler@^4.163.0"
+    "wrangler": "npm:wrangler@^4.164.0"
   },
   "tasks": {
     "setup": {
@@ -132,7 +132,7 @@
     ]
   },
   "allowScripts": {
-    "allow": ["npm:esbuild@0.28.2", "npm:workerd@1.20261113.1", "npm:workerd@1.20261116.1"],
+    "allow": ["npm:esbuild@0.28.2", "npm:workerd@1.20261113.1", "npm:workerd@1.20261116.1", "npm:workerd@1.20261117.1"],
     "deny": ["npm:chalk@6.0.0", "npm:date-fns@4.4.0", "npm:lightningcss-cli@1.32.0"]
   },
   "exclude": [
