@@ -21,39 +21,27 @@ header .site-link {
 ul.posts-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  margin: 0 0 24px;
+  gap: 32px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
 ul.posts-list > li {
-  flex: 0 0 calc((100% - (16px * 2)) / 3);
+  flex: stretch;
   box-sizing: border-box;
   margin: 0;
-  padding: 16px;
-  background-color: var(--colour-gray-dark);
-  border: 1px solid var(--colour-border);
-  border-radius: var(--radius-small);
+  padding: 0;
 }
 
 ul.post-info {
   display: flex;
-  flex-direction: column;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 4px 12px;
+  gap: 32px;
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-ul.post-info li {
-  width: 100%;
-  margin: 0;
-}
-
-ul.post-info li:first-child {
-  margin-right: 0;
 }
 
 .post-item {
@@ -61,13 +49,12 @@ ul.post-info li:first-child {
   flex-direction: column;
   gap: 8px;
   position: relative;
-  min-height: 175px;
 }
 
 .post-item-icon {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 5px;
+  left: 0;
   margin: 0;
   color: var(--colour-highlight);
 }
@@ -95,15 +82,12 @@ ul.post-info li:first-child {
   text-decoration: none;
 }
 
-.post-item-icon {
-  padding-top: 5px;
-}
-
 .post-item-title {
   color: var(--colour-highlight);
   padding-left: 40px;
   display: block;
   clear: both;
+  margin-bottom: 10px;
 }
 
 .post-item-link:hover .post-item-title,
