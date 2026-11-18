@@ -57,8 +57,8 @@ cmd(`cat "${cssDir}/reset.css" \
   "${cssDir}/animations.css" \
   "${cssDir}/base.css" \
   "${cssDir}/layout.css" \
+  "${cssDir}/nav.css" \
   "${cssDir}/content.css" \
-  "${cssDir}/social-links.css" \
   "${cssDir}/code.css" \
   "${cssDir}/screen-small.css" \
   "${cssDir}/print.css" \

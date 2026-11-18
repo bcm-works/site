@@ -1,5 +1,6 @@
-import { SitePageData as SitePageDataBase } from "$app/types.ts";
-import { Stats } from "$app/layouts/stats.tsx";
+import type { SitePageData as SitePageDataBase } from "$app/types.ts";
+import { Stats } from "$app/components/stats.tsx";
+import { Nav } from "$app/components/nav.tsx";
 
 interface PageFrameProps {
   data: SitePageData;
@@ -94,19 +95,8 @@ export function PageFrame({ data, children }: PageFrameProps) {
               </a>
             </aside>
 
-            <nav>
-              <ul>
-                <li className={data.url === "/" ? "active" : undefined}>
-                  <a href="/" title="Go to the home page">Home</a>
-                </li>
-                <li className={data.url.includes("/posts/") ? "active" : undefined}>
-                  <a href="/posts/" title="View all posts">Posts</a>
-                </li>
-                <li className={data.url.includes("/tags/") ? "active" : undefined}>
-                  <a href="/tags/" title="View all tags">Tags</a>
-                </li>
-              </ul>
-            </nav>
+            <Nav data={ data } />
+
           </header>
 
           <main>

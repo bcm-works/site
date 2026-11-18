@@ -47,45 +47,28 @@ main {
 
 header {
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1;
-  flex-shrink: 0;
-  height: 170px;
-  padding: 0 max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
+  padding: 32px max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
   background: var(--header-bg-colour);
   background-size: 100% 170px;
   background-position: 0 0;
 }
 
-header aside {
-  margin: 0;
+header aside,
+header nav {
+  flex: 0 0 calc(50% - 10px);
+  box-sizing: border-box;
 }
 
 header .site-link {
   display: flex;
   align-items: center;
   gap: 18px;
-}
-
-header nav {
-  margin-left: auto;
-}
-
-header nav ul {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 30px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-header nav li {
-  margin: 0;
 }
 
 main {

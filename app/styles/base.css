@@ -101,10 +101,6 @@ h6 {
   margin-right: 8px;
 }
 
-.social-links-container .icon {
-  color: var(--colour-highlight);
-}
-
 .post-info .icon {
   color: var(--colour-muted);
 }

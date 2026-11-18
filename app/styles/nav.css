@@ -1,0 +1,66 @@
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  flex: 0 0 calc((100% - (16px * 2)) / 3);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+nav li a {
+  text-decoration: none;
+}
+
+nav li a .label {
+  text-decoration: var(--link-decoration-nav);
+  text-underline-offset: var(--link-decoration-underline-offset);
+}
+
+nav a,
+nav a:visited {
+  color: var(--colour-muted);
+  text-decoration: var(--link-decoration-nav);
+}
+
+nav a:hover,
+nav a:focus {
+  color: var(--colour-foreground);
+  text-decoration: var(--link-decoration-active);
+  text-underline-offset: var(--link-decoration-underline-offset);
+}
+
+nav li .icon {
+  color: var(--colour-muted);
+}
+
+nav li.active a,
+nav li.active .icon {
+  color: var(--colour-foreground);
+}
+
+nav li a:active .label,
+nav li a:hover .label {
+  text-decoration: var(--link-decoration-active);
+  text-underline-offset: var(--link-decoration-underline-offset);
+}
+
+@media only screen and (max-width: 850px) {
+  nav li {
+    flex: 0 0 calc(50% - 8px);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  nav li {
+    flex: 0 0 100%;
+  }
+}
+

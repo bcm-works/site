@@ -16,24 +16,6 @@ header .site-link {
   margin: 0;
 }
 
-header nav a,
-header nav a:visited {
-  color: var(--colour-muted);
-  text-decoration: var(--link-decoration-nav);
-}
-
-header nav a:hover,
-header nav a:focus {
-  color: var(--colour-foreground);
-  text-decoration: var(--link-decoration-active);
-  text-underline-offset: var(--link-decoration-underline-offset);
-}
-
-header nav li.active a {
-  color: var(--colour-foreground);
-  font-weight: 600;
-}
-
 .intro {
   margin: 8px 0 16px;
 }

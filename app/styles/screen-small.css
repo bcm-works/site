@@ -18,15 +18,13 @@
     height: 80px;
   }
 
-  ul.posts-list > li,
-  .social-links li {
+  ul.posts-list > li {
     flex: 0 0 calc(50% - 8px);
   }
 }
 
 @media only screen and (max-width: 500px) {
-  ul.posts-list > li,
-  .social-links li {
+  ul.posts-list > li {
     flex: 0 0 100%;
   }
 }

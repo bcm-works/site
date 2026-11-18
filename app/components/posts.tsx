@@ -1,6 +1,17 @@
 import { format } from "date-fns";
 import { TagLink } from "$app/components/link.tsx";
-import { type PostData } from "$app/types.ts";
+import type { PostData, SitePageData as SitePageDataBase } from "$app/types.ts";
+
+export function PostList({ data }: { data: Lume.Data & SitePageDataBase }) {
+  const page = data as Lume.Data & { search: { pages: (...args: string[]) => unknown[] }; SITE_BUILD_ID?: string };
+  const posts = page.search.pages("type=post", "date=desc") as PostData[];
+
+  return (
+    <ul className="posts-list">
+      {posts.filter((post) => post.url !== "/posts/").map((post) => <PostItem key={post.url} post={post} />)}
+    </ul>
+  );
+}
 
 export function PostItem({ post, includeSummary = false }: { post: PostData; includeSummary?: boolean; key?: string }) {
   // Strip out HTML and Markdown Link formatting
