@@ -93,3 +93,22 @@ main {
 .section-head h2 {
   margin-bottom: 0;
 }
+
+@media only screen and (max-width: 900px) {
+  header {
+    align-items: start;
+  }
+
+  header .site-name {
+    font-size: 1.2rem;
+  }
+
+  .layout-container header .site-avatar {
+    width: 80px;
+    height: 80px;
+  }
+
+  ul.posts-list > li {
+    flex: stretch;
+  }
+}
