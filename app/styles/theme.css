@@ -44,7 +44,7 @@
 
   /* BACKGROUNDS AND DIVIDERS */
 
-  --header-bg-colour: var(--colour-gray-darker);
+  --header-bg-colour: var(--colour-highlight-two);
   --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */
