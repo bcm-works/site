@@ -51,13 +51,8 @@ header {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  position: sticky;
   padding: 32px max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
   background: var(--header-bg-colour);
-  background-position: 0 0;
-  background-size: 100% 170px;
-  top: 0;
-  z-index: 1;
 }
 
 header aside,
