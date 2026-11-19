@@ -52,7 +52,7 @@ header {
   flex-wrap: wrap;
   align-items: center;
   padding: 32px max(32px, calc((100% - var(--content-max-width)) / 2 + 32px));
-  background: var(--header-bg-colour);
+  background-color: var(--header-bg-colour);
 }
 
 header aside,
