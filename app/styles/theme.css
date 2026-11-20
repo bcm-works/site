@@ -13,11 +13,13 @@
   --content-min-height: 400px;
   --radius-small: 6px;
   --space-section: 48px;
+  --header-bg-colour: var(--colour-highlight-three);
 
   /* COLOUR SCHEME */
 
   --colour-black: #000000;
   --colour-gray: #999999;
+  --colour-gray-mid: #595959;
   --colour-gray-dark: #141414;
   --colour-gray-darker: #101010;
   --colour-white: #FFFFFF;
@@ -34,18 +36,13 @@
 
   /* SCROLLBAR */
 
-  --scrollbar-colour-fg: var(--colour-tertiary);
-  --scrollbar-colour-bg: var(--colour-background);
+  --scrollbar-colour-fg: var(--colour-gray-mid);
+  --scrollbar-colour-bg: transparent;
 
   /* TEXT SELECTION */
 
   --selection-colour-fg: var(--colour-white);
   --selection-colour-bg: var(--colour-highlight-three);
-
-  /* BACKGROUNDS AND DIVIDERS */
-
-  --header-bg-colour: var(--colour-gray-darker);
-  --bg-image-hatch: repeating-linear-gradient(-45deg, transparent 0 2px, var(--colour-black) 4px 8px);
 
   /* LINKS */
 

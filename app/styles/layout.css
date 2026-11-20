@@ -1,4 +1,10 @@
 /* LAYOUT */
+
+* {
+  scrollbar-color: var(--scrollbar-colour-fg) var(--scrollbar-colour-bg);
+  scrollbar-width: thin;
+}
+
 html {
   font-size: var(--base-font-size);
   height: 100%;
@@ -6,9 +12,8 @@ html {
 
   overflow-x: hidden;
   overflow-y: scroll;
+
   scrollbar-gutter: stable;
-  scrollbar-color: var(--scrollbar-colour-fg) var(--scrollbar-colour-bg);
-  scrollbar-width: thin;
   scroll-behavior: smooth;
 
   text-rendering: optimizeLegibility;

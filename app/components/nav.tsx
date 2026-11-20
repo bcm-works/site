@@ -27,13 +27,11 @@ export function Nav({ data }: { data: Lume.Data & SitePageDataBase }) {
         <li>
           <a href="mailto:brendan@bcm.works" target="_blank" title="Send me an email at brendan@bcm.works">
             <span className="icon fa-fw fa-solid fa-envelope"></span>
-            <span className="label">Email</span>
           </a>
         </li>
         <li>
           <a href={`/resume.pdf?v=${buildId}`} download="Resume - Brendan Murty.pdf" title="Download my resume">
             <span className="icon fa-fw fa-solid fa-address-card"></span>
-            <span className="label">Resume</span>
           </a>
         </li>
         <li>

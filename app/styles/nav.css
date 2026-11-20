@@ -1,7 +1,14 @@
+nav {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0 0 10px;
+}
+
 nav ul {
   display: flex;
   flex-flow: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   align-content: center;
@@ -18,6 +25,8 @@ nav li {
 }
 
 nav li a {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
 }
 
@@ -48,4 +57,3 @@ nav li.active a,
 nav li.active .icon {
   color: var(--colour-foreground);
 }
-
