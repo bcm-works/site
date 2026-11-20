@@ -108,7 +108,7 @@
       ".opencode/",
       "tools/",
       "app/",
-      "deno.json"
+      "deno.jsonc"
     ],
     "lineWidth": 120,
     "useTabs": false,
@@ -125,7 +125,7 @@
       ".opencode/",
       "tools/",
       "app/",
-      "deno.json"
+      "deno.jsonc"
     ],
     "plugins": [
       "https://cdn.jsdelivr.net/gh/lumeland/lume@3.3.1/lint.ts"

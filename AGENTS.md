@@ -15,8 +15,8 @@
 ### TypeScript files - `*.ts` and `*.tsx`
 
 - Always check Deno code changes using the custom `deno task check` command, which includes Deno lint, check and fmt.
-- Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.json`.
-- If a Node package is required, add it to the `imports` list in `deno.json` with the value containing the standard `node:` prefix.
+- Stick to standard Deno built-in features as much as possible, and if a third-party dependency is required, use the required JSR package(s) and add them to the `imports` list in `deno.jsonc`.
+- If a Node package is required, add it to the `imports` list in `deno.jsonc` with the value containing the standard `node:` prefix.
 
 ### Go files - `*.go` and `go.mod`
 

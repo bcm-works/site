@@ -22,7 +22,7 @@ Note that I use this repository to learn new skills and to demonstrate my knowle
 - [docs/INFRA.md](docs/INFRA.md) - Cloudflare infrastructure setup and deployment.
 - [.editorconfig](.editorconfig) - Sets code style rules for supported editors via [EditorConfig](https://editorconfig.org).
 - [.tool-versions](.tool-versions) - Defines the required runtimes for this project, used by [ASDF](https://asdf-vm.com/).
-- [deno.json](deno.json) - [Deno](https://deno.land/) imports, tasks and configuration.
+- [deno.jsonc](deno.jsonc) - [Deno](https://deno.land/) imports, tasks and configuration.
 
 ## Tech Stack
 

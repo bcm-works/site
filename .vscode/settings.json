@@ -1,21 +1,14 @@
 {
-  "json.schemaDownload.trustedDomains": {
-    "https://deno.land": true,
-    "https://developer.microsoft.com/json-schemas/": true,
-    "https://json-schema.org/": true,
-    "https://json.schemastore.org/": true,
-    "https://models.dev/model-schema.json": true,
-    "https://opencode.ai": true,
-    "https://spec.openapis.org/": true,
-    "https://www.schemastore.org/": true
-  },
+  "deno.enable": true,
+  "deno.lint": true,
+  "editor.defaultFormatter": "denoland.vscode-deno",
   "editor.autoClosingBrackets": "never",
   "editor.autoClosingQuotes": "never",
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": false,
   "editor.minimap.enabled": false,
   "editor.multiCursorModifier": "ctrlCmd",
@@ -40,27 +33,24 @@
   "git.inputValidationLength": 150,
   "git.inputValidationSubjectLength": null,
   "git.openRepositoryInParentFolders": "never",
-  "json.schemas": [
-    {
-      "fileMatch": [
-        "deno.json",
-        "deno.jsonc"
-      ],
-      "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json"
-    },
-    {
-      "fileMatch": [
-        "package.json"
-      ],
-      "url": "https://www.schemastore.org/package"
-    }
-  ],
   "terminal.integrated.enableMultiLinePasteWarning": "never",
+  "terminal.integrated.initialHint": false,
+  "git.branchSortOrder": "alphabetically",
+  "git.openAfterClone": "alwaysNewWindow",
+  "git.untrackedChanges": "separate",
+  "explorer.sortOrder": "foldersNestsFiles",
+  "explorer.fileNesting.expand": false,
+  "editor.detectIndentation": false,
+  "terminal.integrated.tabs.location": "left",
+  "terminal.integrated.tabs.enabled": false,
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.list.openMode": "doubleClick",
   "workbench.sideBar.location": "left",
+  "accessibility.signals.lineHasInlineSuggestion": {
+    "sound": "off"
+  },
   "[typescriptreact]": {
     "editor.defaultFormatter": "vscode.typescript-language-features"
   },
@@ -88,16 +78,29 @@
     "editor.unicodeHighlight.invisibleCharacters": false,
     "editor.wordWrap": "on"
   },
-  "accessibility.signals.lineHasInlineSuggestion": {
-    "sound": "off"
+  "json.schemaDownload.trustedDomains": {
+    "https://deno.land": true,
+    "https://developer.microsoft.com/json-schemas/": true,
+    "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://models.dev/model-schema.json": true,
+    "https://opencode.ai": true,
+    "https://spec.openapis.org/": true,
+    "https://www.schemastore.org/": true
   },
-  "terminal.integrated.initialHint": false,
-  "git.branchSortOrder": "alphabetically",
-  "git.openAfterClone": "alwaysNewWindow",
-  "git.untrackedChanges": "separate",
-  "explorer.sortOrder": "foldersNestsFiles",
-  "explorer.fileNesting.expand": false,
-  "editor.detectIndentation": false,
-  "terminal.integrated.tabs.location": "left",
-  "terminal.integrated.tabs.enabled": false
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "deno.jsonc",
+        "deno.jsoncc"
+      ],
+      "url": "https://raw.githubusercontent.com/denoland/deno/refs/heads/main/cli/schemas/config-file.v1.json"
+    },
+    {
+      "fileMatch": [
+        "package.json"
+      ],
+      "url": "https://www.schemastore.org/package"
+    }
+  ]
 }
