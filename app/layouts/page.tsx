@@ -95,8 +95,7 @@ export function PageFrame({ data, children }: PageFrameProps) {
               </a>
             </aside>
 
-            <Nav data={ data } />
-
+            <Nav data={data} />
           </header>
 
           <main>

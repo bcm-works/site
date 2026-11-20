@@ -1,7 +1,7 @@
 import type { SitePageData as SitePageDataBase } from "$app/types.ts";
 
 export function Nav({ data }: { data: Lume.Data & SitePageDataBase }) {
-  const buildId: string = data.SITE_BUILD_ID ?? '';
+  const buildId: string = data.SITE_BUILD_ID ?? "";
 
   return (
     <nav>

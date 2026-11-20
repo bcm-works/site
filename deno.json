@@ -132,7 +132,13 @@
     ]
   },
   "allowScripts": {
-    "allow": ["npm:esbuild@0.28.2", "npm:workerd@1.20261113.1", "npm:workerd@1.20261116.1", "npm:workerd@1.20261117.1", "npm:workerd@1.20261118.1"],
+    "allow": [
+      "npm:esbuild@0.28.2",
+      "npm:workerd@1.20261113.1",
+      "npm:workerd@1.20261116.1",
+      "npm:workerd@1.20261117.1",
+      "npm:workerd@1.20261118.1"
+    ],
     "deny": ["npm:chalk@6.0.0", "npm:date-fns@4.4.0", "npm:lightningcss-cli@1.32.0"]
   },
   "exclude": [
