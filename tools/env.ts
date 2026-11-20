@@ -5,7 +5,7 @@ export class Env {
   private envFileDefault: string = "./.env";
 
   constructor(envFile: string = this.envFileDefault) {
-    // Attempt to load the env file, or fallback to using the system env vars
+    // Attempt to load the env file, or fallback to using system env vars
     try {
       this.env = envParse(Deno.readTextFileSync(envFile));
     } catch (_error: unknown) {

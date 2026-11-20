@@ -1,7 +1,8 @@
+// deno-coverage-ignore-file
+
 import { execSync, StdioOptions } from "node:child_process";
 
 // Run a system command, default to hiding the output
-// deno-coverage-ignore-start
 export function cmd(command: string, mode: StdioOptions = "ignore"): string {
   try {
     const result = execSync(
@@ -17,7 +18,6 @@ export function cmd(command: string, mode: StdioOptions = "ignore"): string {
     return JSON.stringify({ result: error, status: "error" });
   }
 }
-// deno-coverage-ignore-stop
 
 // Run a system command and display the output
 export function cmdShow(command: string): Buffer | string {

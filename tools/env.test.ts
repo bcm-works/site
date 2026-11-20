@@ -1,10 +1,8 @@
 import { assertEquals } from "@std/assert";
 import { Env } from "$tools/env.ts";
 
-// A non-existent env file so the constructor loads from session.
 export const NO_ENV_FILE = ".env.test.nonexistent";
 
-// Helper: temporarily set env vars, run fn, then restore.
 export async function withEnv(
   vars: Record<string, string | undefined>,
   fn: () => void | Promise<void>

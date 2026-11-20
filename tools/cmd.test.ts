@@ -1,10 +1,6 @@
 import { assertEquals } from "@std/assert";
 import { cmdExists, cmdResult, cmdShow } from "$tools/cmd.ts";
 
-// Note: execSync spawns via 'sh', which is not covered by --allow-run=deno.
-// Steps that require successful execution are skipped gracefully when permissions
-// are insufficient; only failure-path behaviour can be asserted in this context.
-
 Deno.test("COMMON cmd", async (test) => {
   await test.step({
     name: "cmdResult returns a non-empty string when the command succeeds",
