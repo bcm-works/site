@@ -1,5 +1,5 @@
 ---
-layout: layouts/content.tsx
+layout: pages/page.tsx
 body_class: page-home
 ---
 

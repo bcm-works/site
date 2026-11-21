@@ -1,5 +1,5 @@
-import { PageFrame } from "$app/layouts/page.tsx";
-import { TagLink } from "$app/components/link.tsx";
+import { PageFrame } from "$app/components/layout.tsx";
+import { TagLink } from "$app/components/content.tsx";
 import type { PostData } from "$app/types.ts";
 
 export default function Tags(data: Lume.Data) {

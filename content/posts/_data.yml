@@ -1,2 +1,2 @@
 type: post
-layout: layouts/post.tsx
+layout: pages/post.tsx

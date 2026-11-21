@@ -1,4 +1,4 @@
 ---
 title: Tags
-layout: layouts/tags.tsx
+layout: pages/tags.tsx
 ---

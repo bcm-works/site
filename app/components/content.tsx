@@ -1,5 +1,4 @@
 import { format } from "date-fns";
-import { TagLink } from "$app/components/link.tsx";
 import type { PostData, SitePageData as SitePageDataBase } from "$app/types.ts";
 
 export function PostList({ data }: { data: Lume.Data & SitePageDataBase }) {
@@ -66,3 +65,13 @@ export function PostTags({ tags }: { tags: string[] }) {
     </ul>
   );
 }
+
+export function TagLink({ tag }: { tag: string }) {
+  return (
+    <a href={`/tags/${tag}/`} title={`View posts tagged with ${tag}`} className="link-tag">
+      <span className="icon fa-fw fa-solid fa-tag" aria-hidden="true"></span>
+      {tag}
+    </a>
+  );
+}
+

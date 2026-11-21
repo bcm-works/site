@@ -16,9 +16,9 @@ logWarn(`Clearing the build (./${buildDir}) and public (./${publicDir}) director
 cmd(`rm -rf "${buildDir}"`);
 cmd(`mkdir -p "${buildDir}"`);
 cmd(`mkdir -p "${buildDir}/_data"`);
-cmd(`mkdir -p "${buildDir}/_includes/layouts"`);
+cmd(`mkdir -p "${buildDir}/_includes/pages"`);
 cmd(`mkdir -p "${buildDir}/_includes/components"`);
-cmd(`cp -r "app/layouts/." "${buildDir}/_includes/layouts"`);
+cmd(`cp -r "app/pages/." "${buildDir}/_includes/pages"`);
 cmd(`cp -r "app/components/." "${buildDir}/_includes/components"`);
 cmd(`mkdir -p "${buildDir}/components"`);
 cmd(`cp -r "app/components/." "${buildDir}/components"`);

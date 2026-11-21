@@ -1,6 +1,6 @@
-import { PageFrame } from "$app/layouts/page.tsx";
+import { PageFrame } from "$app/components/layout.tsx";
 import type { PostData } from "$app/types.ts";
-import { PostHeading, PostInfo, PostTags } from "$app/components/posts.tsx";
+import { PostHeading, PostInfo, PostTags } from "$app/components/content.tsx";
 
 export default function Post(data: Lume.Data) {
   const page = data as Lume.Data & PostData & { content: string };

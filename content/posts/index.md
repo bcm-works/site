@@ -1,4 +1,4 @@
 ---
 title: Posts
-layout: layouts/posts.tsx
+layout: pages/posts.tsx
 ---

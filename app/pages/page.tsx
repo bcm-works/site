@@ -1,4 +1,4 @@
-import { PageFrame } from "$app/layouts/page.tsx";
+import { PageFrame } from "$app/components/layout.tsx";
 
 export default function Home(data: Lume.Data) {
   const page = data as Lume.Data & { content: string };
