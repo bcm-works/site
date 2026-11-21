@@ -13,7 +13,10 @@ export default function Post(data: Lume.Data) {
 
       <PostTags tags={page.tags ?? []} />
 
-      <div className="post-content" dangerouslySetInnerHTML={{ __html: page.content }} />
+      <div
+        className="post-content"
+        dangerouslySetInnerHTML={{ __html: page.content }}
+      />
     </PageFrame>
   );
 }
