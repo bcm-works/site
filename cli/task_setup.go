@@ -13,6 +13,8 @@ func TaskSetup() {
 
 	Cmd("asdf plugin add deno https://github.com/asdf-community/asdf-deno.git")
 	Cmd("asdf plugin add golang https://github.com/asdf-community/asdf-golang.git")
+	Cmd("asdf plugin add shellcheck https://github.com/luizm/asdf-shellcheck.git")
+
 	Cmd("asdf install")
 
 	LogInfo("Initialising ENV file")

@@ -69,8 +69,8 @@
       "command": "TZ=Australia/Sydney LUME_LOGS=error deno run --allow-all lume/cli.ts --config=app/lume.config.ts"
     },
     "check": {
-      "description": "Run code linting and formatting tools.",
-      "command": "deno task check-deno && deno task check-go"
+      "description": "Run all code linting and formatting tools.",
+      "command": "deno task check-deno && deno task check-go && deno task check-sh"
     },
     "check-deno": {
       "description": "Run Deno code linting and formatting tools.",
@@ -79,6 +79,10 @@
     "check-go": {
       "description": "Run Go code linting and formatting tools.",
       "command": "cd cli && asdf exec go fmt ./..."
+    },
+    "check-sh": {
+      "description": "Run Bash code linting and formatting tools.",
+      "command": "asdf exec shellcheck ./**/*.sh"
     },
     "build-cli": {
       "description": "Run the CLI build process.",
@@ -139,7 +143,11 @@
       "npm:workerd@1.20261117.1",
       "npm:workerd@1.20261118.1"
     ],
-    "deny": ["npm:chalk@6.0.0", "npm:date-fns@4.4.0", "npm:lightningcss-cli@1.32.0"]
+    "deny": [
+      "npm:chalk@6.0.0",
+      "npm:date-fns@4.4.0",
+      "npm:lightningcss-cli@1.32.0"
+    ]
   },
   "exclude": [
     "node_modules/",
