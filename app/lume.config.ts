@@ -15,7 +15,7 @@ import langBash from "highlight/lib/languages/bash";
 import langPhp from "highlight/lib/languages/php";
 import langTypeScript from "highlight/lib/languages/typescript";
 import { format as dateInFormat } from "date-fns";
-import { postDescription } from "$tools/post-description.ts";
+import { postDescription } from "$tools/post-descr.ts";
 
 // Load environment variables
 

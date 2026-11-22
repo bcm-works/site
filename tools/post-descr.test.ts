@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { addPostDescription, postDescription } from "$tools/post-description.ts";
+import { addPostDescription, postDescription } from "$tools/post-descr.ts";
 
 Deno.test("postDescription returns the first two plain-text sentences", () => {
   assertEquals(

@@ -14,6 +14,7 @@ function toPlainText(markdown: string): string {
 
 export function postDescription(markdown: string): string {
   const body = markdown.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, "");
+
   const text = toPlainText(body);
 
   return [...sentenceSegmenter.segment(text)]
@@ -26,5 +27,6 @@ export function addPostDescription(markdown: string): string {
   if (/^description:\s*.+$/m.test(markdown)) return markdown;
 
   const description = JSON.stringify(postDescription(markdown));
+
   return markdown.replace(/^(---\s*\n)/, `$1description: ${description}\n`);
 }
