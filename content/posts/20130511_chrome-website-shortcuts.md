@@ -1,4 +1,5 @@
 ---
+description: "The Chrome Web Store offers a huge library of free and paid apps for use in the Chrome browser. However, if you're simply after a quick way to access the key websites you use day to day, creating a shortcut app doesn't require huge amounts of effort."
 title: Create website shortcut apps in Chrome
 date: 2013-05-11
 url: /posts/20130511_chrome-website-shortcuts/

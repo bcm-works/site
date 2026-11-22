@@ -1,4 +1,5 @@
 ---
+description: "UpcomingTasks is an open-source responsive Basecamp 2 client that I created back in September 2012. It had a small, loyal user base of about 1,000 users."
 title: Farewell UpcomingTasks
 date: 2016-10-14
 url: /posts/20161014_farewell-upcomingtasks/

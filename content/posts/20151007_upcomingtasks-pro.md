@@ -1,4 +1,5 @@
 ---
+description: "In case you didn't know, UpcomingTasks is the simplified way to manage your Basecamp 2 tasks when you're away from your computer. I created UpcomingTasks in September 2012 out of frustration with the current offerings for managing Basecamp 2 tasks on mobile devices."
 title: Announcing UpcomingTasks Pro
 date: 2015-10-07
 url: /posts/20151007_upcomingtasks-pro/

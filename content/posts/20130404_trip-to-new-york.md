@@ -1,4 +1,5 @@
 ---
+description: "I recently visited New York to see how Ella was going with her studies there. I had some vague plans (who wants to overplan a holiday anyway) of what to see and do when I was there."
 title: Trip to New York
 date: 2013-04-04
 url: /posts/20130404_trip-to-new-york/

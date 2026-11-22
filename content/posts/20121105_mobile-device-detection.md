@@ -1,4 +1,5 @@
 ---
+description: "If you need to customise the output of a webpage before the browser gets to it, you can use PHP to do so. Check out my minimal ismobile function:"
 title: Mobile device detection
 date: 2012-11-05
 url: /posts/20121105_mobile-device-detection/

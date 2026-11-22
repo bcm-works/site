@@ -1,4 +1,5 @@
 ---
+description: "Sublime Text is a heavily customisable text editor designed for programmers. It has a free trial, and can be purchased for $59."
 title: Sublime Text 2 configuration
 date: 2012-11-05
 url: /posts/20121111_sublime-text-2-configuration/

@@ -1,4 +1,5 @@
 ---
+description: "Kevin Rudd, the former Prime Minister of Australia, shares his thoughts on schnitzels with SchnitMyDadSays: Trueh is, I don't mind a bit of Schnitzel. But not too big."
 title: Kevin Rudd offers his thoughts on schnitzels
 date: 2014-01-13
 url: /posts/20140113_kevin-rudd-smds/

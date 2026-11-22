@@ -1,4 +1,5 @@
 ---
+description: "Check out your recent Basecamp 2 updates with the new progress view in UpcomingTasks. View recently edited or completed tasks and also view your comments."
 title: UpcomingTasks progress view
 date: 2013-02-22
 url: /posts/20130222_upcomingtasks-progress-view/

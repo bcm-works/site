@@ -1,4 +1,5 @@
 ---
+description: "With the rise of AI Code Generation tools, this quote from an IBM Training Manual in 1979 remains relevant today: A computer can never be held accountable, therefore a computer must never make a management decision. There's no doubt that these tools have increased the amount of code that can be produced, but the real issues arise when you actually consider the technical quality of the output."
 title: Reflections on AI Code Generation
 date: 2026-06-16
 url: /posts/20260616_ai-code-gen/

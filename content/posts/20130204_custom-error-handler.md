@@ -1,4 +1,5 @@
 ---
+description: "When a website or web app is viewable publically, it's a good idea to modify how PHP errors are handled. The default is to show a, sometimes dangerously detailed, error to the visitor."
 title: Custom error handler
 date: 2013-02-04
 url: /posts/20130204_custom-error-handler/

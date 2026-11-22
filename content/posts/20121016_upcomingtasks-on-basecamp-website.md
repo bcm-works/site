@@ -1,4 +1,5 @@
 ---
+description: "Check out UpcomingTasks on the Basecamp 2 Extras page! Screenshot of a previous version of the Basecamp 2 Extras page"
 title: UpcomingTasks on Basecamp 2 Extras page
 date: 2012-10-16
 url: /posts/20121016_upcomingtasks-basecamp/

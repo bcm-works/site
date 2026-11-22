@@ -1,4 +1,5 @@
 ---
+description: "Colt McAnlis gave an insightful talk recently named Performance Checklist for the Mobile Web (Video, Slides), where he explains: One in four users will abandon a site if it's not loaded in three seconds Is that enough time to load that crazy video slider the client wants on the home page? Probably not."
 title: Website performance tips
 date: 2013-06-07
 url: /posts/20130607_website-performance-tips/

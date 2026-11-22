@@ -1,4 +1,5 @@
 ---
+description: "After using Basecamp 2 for some time on my Windows Phone, I decided to build a third-party web based mobile client to improve the system for mobile devices. This became UpcomingTasks."
 title: Querying the Basecamp 2 API
 date: 2012-11-05
 url: /posts/20121105_querying-the-basecamp-api/

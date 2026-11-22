@@ -1,4 +1,5 @@
 ---
+description: "It's easy to add themes to your website and allow your visitors to customise their experience. This post will guide you through implementing theme support on your website using PHP, CSS and cookies."
 title: Add some character to your website with themes
 date: 2013-01-31
 url: /posts/20130131_website-themes/

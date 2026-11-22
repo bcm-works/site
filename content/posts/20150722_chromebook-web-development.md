@@ -1,4 +1,5 @@
 ---
+description: "To fill the time commuting to work, I recently bought a Chromebook which is basically a cheap laptop designed to use Chrome Apps instead of traditional, installable desktop applications. Chromebook devices run Chrome OS created by Google and based on the Linux kernel."
 title: Configuring a Chromebook for web development
 date: 2015-07-22
 url: /posts/20150722_chromebook-web-development/

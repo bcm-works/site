@@ -1,4 +1,5 @@
 ---
+description: "UpcomingTasks has received some design updates today, the most obvious of which is the new menu, which uses vertical space more effectively than the previous design. Just press on the page title to toggle the menu."
 title: UpcomingTasks design updates
 date: 2013-02-25
 url: /posts/20130225_upcomingtasks-updates/

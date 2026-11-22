@@ -1,4 +1,5 @@
 ---
+description: "Redirecting a user consistently can be a challenging in a complex website, as you can't be sure which method (JavaScript or the HTTP location header) is most suitable. This can be handled with a rather simple PHP function:"
 title: Visitor redirection
 date: 2012-11-05
 url: /posts/20121105_visitor-redirection/

@@ -1,4 +1,5 @@
 ---
+description: "I've been a little light on UpcomingTasks updates over the last few months. I hope these recent updates are worth the wait!"
 title: UpcomingTasks Updates
 date: 2013-10-07
 url: /posts/20131007_upcomingtasks-updates/

@@ -1,4 +1,5 @@
 ---
+description: "I've made a few updates to UpcomingTasks over the last month, here's a quick rundown on what's changed. Improved support for small accounts If your account only has one project, UpcomingTasks will now tweak some features to improve the experience."
 title: UpcomingTasks Updates in October 2014
 date: 2014-10-19
 url: /posts/20141019_upcomingtasks-updates/

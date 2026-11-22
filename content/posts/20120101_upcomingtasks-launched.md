@@ -1,4 +1,5 @@
 ---
+description: "I created an open-source responsive Basecamp 2 client called UpcomingTasks to easily manage tasks on smaller devices. It used the official API to interact with Basecamp 2 tasks, projects and user data."
 title: UpcomingTasks launched
 date: 2012-01-01
 url: /posts/20120101_upcomingtasks-launched/

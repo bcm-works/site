@@ -1,4 +1,5 @@
 ---
+description: "Software is created by humans, who all make mistakes, get distracted, misunderstand things and lose focus. This is unavoidable."
 title: Fixing bugs without losing your mind
 date: 2019-11-16
 url: /posts/20191116_fixing-bugs/

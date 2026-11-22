@@ -1,4 +1,5 @@
 ---
+description: "Looking to further my knowledge in my web development career, I recently bought Effective Programming: More Than Writing Code by Jeff Atwood. Jeff has had a successful career as a developer and you probably know of him as the founder of Stack Overflow, the question and answer site for programmers."
 title: More Than Writing Code
 date: 2013-12-17
 url: /posts/20131217_more-than-writing-code/
