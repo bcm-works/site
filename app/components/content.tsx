@@ -74,4 +74,3 @@ export function TagLink({ tag }: { tag: string }) {
     </a>
   );
 }
-
